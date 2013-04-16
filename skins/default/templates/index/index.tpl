@@ -1,0 +1,41 @@
+<h1>
+	myVBC
+	
+	{if $isAuth}
+	&nbsp;-&nbsp; {$user.prename} {$user.name}
+	{/if}
+</h1>
+
+{if $isAuth}
+	{include file='index/myDatas.tpl'}
+	{include file='index/myTeams.tpl'}
+	{include file='index/myGames.tpl'}
+	{include file='index/mySchreiber.tpl'}
+	{include file='index/myRefGames.tpl'}
+{else}
+<table class="overview">
+<tr>
+	<td style="text-align: center;width: 200px; height: 200px;">
+		<img src="{$templateDir}/images/logo_vbcl.gif">
+	</td>
+	<td style="">
+		<h3>
+			Willkommen in der VBC Langenthal Web-Verwaltung
+		</h3>
+		<p>
+			Um die Funktionen dieser Web-Verwaltung zu benutzen, müssen Sie sich zuerst authentifizieren.
+		</p>
+
+		<p class="indented">
+			<a href="?page=auth"><img src="{$templateDir}/images/icons/key.png">&nbsp;Mit E-Mail Adresse und Passwort anmelden</a>
+		</p>
+		
+				
+		<p> <img src="{$templateDir}/images/icons/exclamation.png"> Wenn Sie noch keinen Zugang haben, schreiben Sie bitte eine E-Mail an {mailto address=myVBC@vbclangenthal.ch} um einen
+			Zugang einzurichten!
+		</p>
+	</td>
+</tr>
+</table>
+
+{/if}

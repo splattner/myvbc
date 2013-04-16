@@ -1,0 +1,36 @@
+@CHARSET "ISO-8859-1";
+
+div#header {
+	display: none;
+}
+
+p.alphabet {
+	display: none;
+}
+
+p.submenu {
+	display: none;
+}
+
+a.icons {
+	display: none;
+}
+
+table.wide {
+
+	width: 100%;
+
+}
+
+h1 {
+	border: none;
+	padding-bottom: 25px;
+}
+
+table.legend {
+	display: none;
+}
+
+#overDiv {
+	display: none;
+}
