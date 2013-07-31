@@ -1,6 +1,7 @@
 <?php
 MyModel::loadModel("person");
 MyModel::loadModel("order");
+MyModel::loadModel("team");
 
 
 
@@ -79,13 +80,34 @@ class PageOrder extends MyPage
 	}
 	
 	public function newAction() {
+		$teams = new MTeam();
+		$rs = $teams->getRS("","teams.name");
+		
+		$this->smarty->assign("teams", $rs->getArray());
+		
+		
 		$this->smarty->assign("subContent1", "order/new.tpl");
 
 		if (isset($_POST["doNew"])) {
 			
 			$order = new MOrder();
-			$order->comment = $_POST["comment"];	
-			$order->addNewOrder();
+			$order->comment = $_POST["comment"];
+			$order->teamid = $_POST["teamid"];
+			$orderid = $order->addNewOrder();
+			
+			if ($order->teamid > 0) {
+				$team = new MTeam();
+				$members = $team->getAllMember($order->teamid)->getArray();
+				
+				$order = new MOrder();
+				$order->addLicenceToOrder($personID, $orderID);
+				
+				foreach($members as $person) {
+					$order->addLicenceToOrder($person["personID"], $orderid);
+				}
+			}
+			
+			
 			
 			return "main";
 		}

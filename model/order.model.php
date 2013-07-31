@@ -167,6 +167,9 @@ class MOrder extends MyModel {
 					" . $this->db->qstr($this->comment) . ",
 					" . $this->session->uid . ")";
 		$this->db->Execute($sql);
+		
+		return $this->db->Insert_ID();
+		
 	}
 }
 
