@@ -5,7 +5,6 @@ MyModel::loadModel("report");
 MyModel::loadModel("player");
 MyModel::loadModel("notification");
 MyModel::loadModel("game");
-MyModel::loadModel("workflow");
 
 
 class PageAdmin extends MyPage
@@ -86,16 +85,6 @@ class PageAdmin extends MyPage
 		
 	}
 	
-	public function workflowAction() {
-		$this->smarty->assign("subContent1", "administration/workflowTable.tpl");
-	
-		$workflow = new MWorkflow();
-		$rs = $workflow->getRS();
-	
-		$this->smarty->assign("workflows", $rs->getArray());
-	
-	
-	}
 	
 	public function editReportAction() {
 		$reportID = $this->db->qstr($_GET["reportID"]);

@@ -27,10 +27,6 @@
 <a href="?page=notification" {popup caption="Benachrichtigung" text="Benachrichtigungs-Meldungen anschauen und bestätigen"}><img src="skins/default/images/icons/note.png"></a>
 {/if}
 
-{if $canWorkflow}
-<a href="?page=workflow" {popup caption="Workflow" text="Workflow Status pr&uuml;fen und ausl&ouml;sen"}><img src="skins/default/images/icons/cog.png"></a>
-{/if}
-
 {if $canAdmin}
 <a href="?page=admin" {popup caption="Administration" text="Administrative Aufgaben. Zugangsberechtigungen verwalten"}><img src="skins/default/images/icons/wrench.png"></a>
 {/if}

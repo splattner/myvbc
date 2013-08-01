@@ -7,7 +7,7 @@
 		<select id="personID">
 			<option value="0"></option>
 			{foreach item=person from=$persons}
-				<option value="{$person.id}">{$person.prename} {$person.name}</option>
+				<option value="{$person.id}">{$person.name} {$person.prename} </option>
 			{/foreach}
 		</select>
 	</td>

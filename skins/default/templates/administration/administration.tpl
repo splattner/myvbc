@@ -6,7 +6,6 @@
 	<a {popup caption="Berichte" text="Berichte verwalten"} href="index.php?page={$currentPage}&action=report"><img src="{$templateDir}/images/icons/report.png"></a>
 	<a {popup caption="Benachrichtigungen" text="Benachrichtigungs Subscriptions verwalten"} href="index.php?page={$currentPage}&action=notifications"><img src="{$templateDir}/images/icons/note.png"></a>
 	<a {popup caption="Sonstiges" text="Sonstige Funktionen"} href="index.php?page={$currentPage}&action=functions"><img src="{$templateDir}/images/icons/computer.png"></a>
-	<a {popup caption="Workflows" text="Workflows"} href="index.php?page={$currentPage}&action=workflow"><img src="{$templateDir}/images/icons/cog.png"></a>
 </p>
 
 

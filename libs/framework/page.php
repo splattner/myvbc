@@ -205,7 +205,6 @@ abstract class MyPage {
 		$this->smarty->assign("canAdmin", $this->acl->acl_check("admin", "main", "user", $this->session->uid));
 		$this->smarty->assign("canReport", $this->acl->acl_check("report", "main", "user", $this->session->uid));
 		$this->smarty->assign("canNotification", $this->acl->acl_check("notification", "main", "user", $this->session->uid));
-		$this->smarty->assign("canWorkflow", $this->acl->acl_check("workflow", "main", "user", $this->session->uid));
 	}
 	
 	/**
