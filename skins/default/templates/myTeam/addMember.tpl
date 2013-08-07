@@ -23,7 +23,7 @@
 			{if $canAddMember}
 			<p>
 				<a {popup caption="Neu" text="Neue Person erfassen"} href="index.php?page={$currentPage}&action=new&teamID={$teamID}"><img src="{$templateDir}/images/icons/add.png"></a>
-				Wenn eine Person noch nicht im System erfasst ist, k�nnen Sie diese hier hinzuf&uuml;gen.
+				Wenn eine Person noch nicht im System erfasst ist, k&ouml;nnen Sie diese hier hinzuf&uuml;gen.
 			</p>
 			{/if}
 		</td>

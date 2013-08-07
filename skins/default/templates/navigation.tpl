@@ -24,7 +24,7 @@
 {/if}
 
 {if $canNotification}
-<a href="?page=notification" {popup caption="Benachrichtigung" text="Benachrichtigungs-Meldungen anschauen und bestätigen"}><img src="skins/default/images/icons/note.png"></a>
+<a href="?page=notification" {popup caption="Benachrichtigung" text="Benachrichtigungs-Meldungen anschauen und bestätigen"}><img  src="skins/default/images/icons/note.png"></a>
 {/if}
 
 {if $canAdmin}

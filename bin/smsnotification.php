@@ -24,7 +24,7 @@ $dsn = "mysql://"
 $db = NewADOConnection($dsn);
 
 $days = 2;
-$send = "send";
+$send = "";
 
 
 

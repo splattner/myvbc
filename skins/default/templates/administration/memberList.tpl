@@ -20,9 +20,9 @@
 <tr>
 	<td>
 	{if !empty($member.password)}
-		<img src="{$templateDir}/images/icons/bullet_green.png">
+		<img src="{$templateDir}/images/icons/user_green.png">
 	{else}
-		<img src="{$templateDir}/images/icons/bullet_red.png">
+		<img src="{$templateDir}/images/icons/user_red.png">
 	{/if}
 	</td>
 	<td>{$member.prename}</td>

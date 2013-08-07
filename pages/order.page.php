@@ -95,6 +95,7 @@ class PageOrder extends MyPage
 			$order->teamid = $_POST["teamid"];
 			$orderid = $order->addNewOrder();
 			
+			// Add all members of the selected team to this order
 			if ($order->teamid > 0) {
 				$team = new MTeam();
 				$members = $team->getAllMember($order->teamid)->getArray();

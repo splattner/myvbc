@@ -45,8 +45,8 @@ class PageAddress extends MyPage
 		
 		$person = new MPerson();
 		
-		if($onlyChar == "") { $rs = $person->getAddressEntry("","persons.name ASC, persons.prename ASC");} 
-		else { $rs = $person->getAddressEntry("persons.name LIKE '" . $onlyChar . "%'","persons.name ASC, persons.prename ASC");}
+		if($onlyChar == "") { $rs = $person->getAddressEntry("","persons.active DESC, persons.name ASC, persons.prename ASC");} 
+		else { $rs = $person->getAddressEntry("persons.name LIKE '" . $onlyChar . "%'","persons.active DESC, persons.name ASC, persons.prename ASC");}
 		
 		$persons = $rs->GetArray();
 		$this->smarty->assign("persons", $persons);

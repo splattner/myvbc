@@ -53,11 +53,15 @@
 	
 	<tr>
 		<td colspan="2">
-		{if ($allowedit || ($order.owner == $uid && $order.status == 1))}
-			<input type="submit" name="doEdit" value="bearbeiten">
+		{if ($order.status == 4)}
+			<p class="hightlight" >Bestellung abgeschlossen, Bearbeitung nicht mehr m&ouml;glich!</p>
 		{else}
-			<p class="hightlight" >Bearbeiten ist nicht mehr möglich, der Bestellvorgang wurde bereits ausgelöst, oder das ist nich deine Bestellung <br />
-			Wenn etwas nicht in Ordnung ist, melde dich beim Chef-TK!</p>
+			{if ($allowedit || ($order.owner == $uid && $order.status == 1))}
+				<input type="submit" name="doEdit" value="bearbeiten">
+			{else}
+				<p class="hightlight" >Bearbeiten ist nicht mehr möglich, der Bestellvorgang wurde bereits ausgel&oumlst, oder das ist nich deine Bestellung <br />
+				Wenn etwas nicht in Ordnung ist, melde dich beim Chef-TK!</p>
+			{/if}
 		{/if}
 		</td>
 	</tr>

@@ -1,7 +1,9 @@
 <table class="overview">
 	<tr>
 		<th>
-			Meine Daten
+			Meine Daten 
+			 <a {popup caption="Daten bearbeiten" text="Meine Daten bearbeiten"} href="index.php?page=mydata&action=edit"><img src="{$templateDir}/images/icons/book_edit.png"></a>
+			 <a {popup caption="Passwort"  text="Neues Passwort setzen"}  href="index.php?page=mydata&action=editPassword"><img src="{$templateDir}/images/icons/key.png"></a>
 		</th>
 	</tr>
 	<tr>
@@ -18,10 +20,6 @@
 				E-Mail: {$user.email}<br />
 			</p>
 			
-			<p>
-				<a href="index.php?page=mydata&action=edit"><img src="{$templateDir}/images/icons/book_edit.png">&nbsp;Meine Daten bearbeiten</a>
-				<br /><a href="index.php?page=mydata&action=editPassword"><img src="{$templateDir}/images/icons/key.png">&nbsp;Passwort ändern</a>
-			</p>
 		</td>
 	</tr>
 </table>

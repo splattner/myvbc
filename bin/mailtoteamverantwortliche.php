@@ -7,9 +7,11 @@ ob_start();
 require_once('../libs/PHPMailer_v5.0.2/class.phpmailer.php');
 require_once('../libs/MimeMailParser/MimeMailParser.class.php'); 
 
+require_once "../etc/confic.inc.php";
 
-mysql_connect("localhost","sebasti4_vbclmyv","f5hVN1fTuMEb");
-mysql_select_db("sebasti4_vbclmyvbc");
+
+mysql_connect($config["db"]["server"],$config["db"]["username"],$config["db"]["password"]);
+mysql_select_db($config["db"]["database"]);
 
 
 // read from stdin
