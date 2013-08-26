@@ -23,7 +23,6 @@ class MGame extends MyModel {
 				WHERE
 					persons.schreiber = 1
 					AND persons.active = 1
-					AND persons.refid = 0
 				ORDER BY
 					persons.name, persons.prename";
 		$rs = $this->db->Execute($sql); //RS of all Persons who are allowed to write
