@@ -173,5 +173,11 @@ class MPerson extends MyModel {
 		$notification->addNewAdressNotifcation($personID);
 		
 	}
+	
+	public function setState($personID, $newState) {
+		
+		$sql = "UPDATE persons SET active = $newState WHERE id = " . $personID;
+		$this->db->Execute($sql);
+	}
 }
 ?>

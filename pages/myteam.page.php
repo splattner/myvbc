@@ -63,7 +63,8 @@ class PageMyteam extends MyPage
 				$player->insert();
 				$this->smarty->assign("messages","Person wurde zu Team hinzugef&uuml;gt");
 				
-				$player->updateStatus();
+				// No Update after adding to Team. This is done in model
+				//$player->updateStatus();
 				
 	
 				return "main";
@@ -88,7 +89,8 @@ class PageMyteam extends MyPage
 		
 		$this->smarty->assign("messages","Person wurde aus Team entfernt");
 		
-		$player->updateStatus();
+		// No Update after delete
+		//$player->updateStatus();
 
 		return "main";
 	}

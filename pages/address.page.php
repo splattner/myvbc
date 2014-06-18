@@ -104,9 +104,22 @@ class PageAddress extends MyPage
 		$person->removeAccess($personID);
 		$person->delete("id = " . $this->db->qstr($personID));
 		
-		$this->smarty->assign("messages","Person wurde aus Datenbank gelöscht!");
+		$this->smarty->assign("messages","Person wurde aus Datenbank gel&ouml;scht!");
 		
 		return "main";
+	}
+	
+	
+	public function setStateAction() {
+		
+		$personID = $_GET["personID"];
+		$state = $_GET["state"];
+		
+		$person = new MPerson();
+		$person->setState($personID, $state);
+		
+		return "main";
+	
 	}
 	
 	public function importAction() {

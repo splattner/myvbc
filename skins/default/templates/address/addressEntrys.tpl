@@ -13,9 +13,9 @@
 <tr>
 	<td>
 		{if $person.active == 1}
-			<img src="{$templateDir}/images/icons/bullet_green.png">
+			<a class="icons" href="index.php?page={$currentPage}&action=setState&state=0&personID={$person.id}" {popup caption="Status bearbeiten" text="Person auf inaktiv setzen"}><img src="{$templateDir}/images/icons/bullet_green.png"></a>
 		{else}
-			<img src="{$templateDir}/images/icons/bullet_red.png">
+			<a class="icons" href="index.php?page={$currentPage}&action=setState&state=1&personID={$person.id}" {popup caption="Status bearbeiten" text="Person auf aktiv setzen"}><img src="{$templateDir}/images/icons/bullet_red.png"></a>
 		{/if}
 	</td>
 	<td>{$person.prename}</td>
@@ -30,7 +30,7 @@
 	<td align="right">
 		{if $person.active == 1}<a class="icons" {popup caption="Teams" text=$person.liga}><img src="{$templateDir}/images/icons/group.png"</a>{/if}
 		<a class="icons" href="index.php?page={$currentPage}&action=edit&personID={$person.id}" {popup caption="bearbeiten" text="Personendaten bearbeiten"}><img src="{$templateDir}/images/icons/book_edit.png"></a>
-		<a class="icons" onclick="return confirm('Willst du diesen Eintrag wirklich löschen?')" href="index.php?page={$currentPage}&action=delete&personID={$person.id}" {popup caption="löschen" bgcolor="#FF0000" text="Person aus System entfernen. Achtung: Dies geschieht sofort und kann nicht rückgängig gemacht werden"}><img src="{$templateDir}/images/icons/book_delete.png" alt="Mitglied l&ouml;schen"></a>
+		<a class="icons" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" href="index.php?page={$currentPage}&action=delete&personID={$person.id}" {popup caption="lï¿½schen" bgcolor="#FF0000" text="Person aus System entfernen. Achtung: Dies geschieht sofort und kann nicht rï¿½ckgï¿½ngig gemacht werden"}><img src="{$templateDir}/images/icons/book_delete.png" alt="Mitglied l&ouml;schen"></a>
 	</td>
 </tr>
 {/foreach}

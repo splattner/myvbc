@@ -80,7 +80,8 @@ class PageTeam extends MyPage
 		$player->team = $_GET["teamID"];
 		$player->delete("team=" . $teamID . " AND person=" . $personID);
 		
-		$player->updateStatus();
+		// No Update after delete
+		//$player->updateStatus();
 
 		return "member";
 	}
@@ -100,7 +101,10 @@ class PageTeam extends MyPage
 				$player->typ = $_POST["typ"];
 	
 				$player->insert();
-				$player->updateStatus();
+				
+				// No Update after adding to Team. This is done in model
+				//$player->updateStatus();
+				
 				$this->smarty->assign("messages","Person wurde zu Team hinzugef&uuml;gt");
 	
 				return "member";

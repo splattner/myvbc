@@ -12,8 +12,10 @@ class MPlayer extends MyModel {
 		$this->db->Execute($sql);
 		
 		//Set new Status
+		
 		$sql = "UPDATE persons RIGHT JOIN players ON persons.id = players.person SET active = 1";
 		$this->db->Execute($sql);
+		
 	}
 
 	public function insert() {
@@ -21,9 +23,12 @@ class MPlayer extends MyModel {
 		parent::insert();
 
 		/* Add Notification */
-                $notification = MyApplication::getInstance("notification");
-                $notification->addNewTeamMemberNotification($this->person, $this->team);
-
+        $notification = MyApplication::getInstance("notification");
+        $notification->addNewTeamMemberNotification($this->person, $this->team);
+        
+        // Update Active Status. After affing to a Team he is for sure active
+        $sql = "UPDATE persons SET active = 1 WHERE id = " . $this->person;
+        $this->db->Execute($sql);
 
 
 	}
@@ -34,8 +39,8 @@ class MPlayer extends MyModel {
 		parent::delete($where);
 
 		/* Add Notification */
-                $notification = MyApplication::getInstance("notification");
-                $notification->addRemoveTeamMemberNofitication($this->person, $this->team);
+        $notification = MyApplication::getInstance("notification");
+        $notification->addRemoveTeamMemberNofitication($this->person, $this->team);
 
 
 
