@@ -28,7 +28,7 @@
 	<td>{$person.mobile}</td>
 	<td>{$person.email}</td>
 	<td align="right">
-		{if $person.active == 1}<a class="icons" {popup caption="Teams" text=$person.liga}><img src="{$templateDir}/images/icons/group.png"</a>{/if}
+		{if $person.active == 1 && isset($person.liga)}<a class="icons" {popup caption="Teams" text=$person.liga}><img src="{$templateDir}/images/icons/group.png"</a>{/if}
 		<a class="icons" href="index.php?page={$currentPage}&action=edit&personID={$person.id}" {popup caption="bearbeiten" text="Personendaten bearbeiten"}><img src="{$templateDir}/images/icons/book_edit.png"></a>
 		<a class="icons" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" href="index.php?page={$currentPage}&action=delete&personID={$person.id}" {popup caption="l�schen" bgcolor="#FF0000" text="Person aus System entfernen. Achtung: Dies geschieht sofort und kann nicht r�ckg�ngig gemacht werden"}><img src="{$templateDir}/images/icons/book_delete.png" alt="Mitglied l&ouml;schen"></a>
 	</td>
