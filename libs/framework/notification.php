@@ -40,7 +40,7 @@ class MyNotification {
 		
 		$changedStatus = false;
 		
-		$message .="<p> alt / neu (fett geschrieben bei Änderung)</p>";
+		$message .="<p> alt / neu (fett geschrieben bei &Auml;nderung)</p>";
 		$message .= "<ul>";
 		
 		if($personOld["prename"] != $personNew["prename"]) {
@@ -124,6 +124,32 @@ class MyNotification {
 		$personNew = $personNew[0];
 		
 		$message .= "<p>" . $personNew["prename"] . " " . $personNew["name"] . " wurde neu Eingetragen</p>";
+		
+
+		
+
+		$message .= "<ul>";
+		
+
+		$message .= "<li>Vorname : " . $personNew["prename"] . "</li>";
+		$message .= "<li>Name : " . $personNew["name"] . "</li>";
+		$message .= "<li>Ort : " . $personNew["ort"] . "</li>";
+		$message .= "<li>PLZ : " . $personNew["plz"] . "</li>";
+		$message .= "<li>Adresse : " . $personNew["address"] . "</li>";
+		$message .= "<li>Telefon : " . $personNew["phone"] . "</li>";
+		$message .= "<li>Mobile : " . $personNew["mobile"] . "</li>";
+		$message .= "<li>E-Mail : " . $personNew["email"] . "</li>";
+		$message .= "<li>Bemerkung zu Lizenz : " . $personNew["comment_licence"] . "</li>";
+
+		$message .= "<li>Schreiber: ";
+		if($personNew["schreiber"] == 0) {
+			$message .= "<b>Nein</b>";
+		} else {
+			$message .= "<b>Ja</b>";
+		}
+	
+		$message .= "</li>";
+		$message .= "</ul>";
 
 		$this->addNewNotification(1,$message, $personID);
 	}
@@ -163,7 +189,7 @@ class MyNotification {
 	
 	public function addNewOrderNotification() {
 
-    	$message .= "<p>Es wurde eine neue Lizenzbestellung auf Status \"Bestellung ausgelöst\" gesetzt</p>";
+    	$message .= "<p>Es wurde eine neue Lizenzbestellung auf Status \"Bestellung ausgel&ouml;st\" gesetzt</p>";
 		$this->addNewNotification(5,$message, 0);
 	}
 	
