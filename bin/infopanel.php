@@ -2,6 +2,7 @@
 
 
 require "class.svrs.php";
+require "class.swissvolley.php";
 
 $vereinID = 22;
 $days = 7;
@@ -15,11 +16,37 @@ if (isset($_GET["do"])) {
 
 if ($do == "buildTable") {
 	$svrs = new svrs();
+
+	$sv = new swissvolley();
+	$teamid_d1 = 23111;
 	
 	$nextGames = $svrs->get_nextGamesbyVerein($vereinID,$days);
 	$lastGames = $svrs->get_lastGamesbyVerein($vereinID,$days);
 
 	
+	$lastGames_National_raw = $sv->get_GamesbyTeamID($teamid_d1);
+	
+	foreach($lastGames_National_raw as $game) {
+		
+		$today = new DateTime("now");
+		$playDate = DateTime::createFromFormat("Y-m-d H:i:s", $game->PlayDate);
+		
+		$diff = $today->diff($playDate);
+		
+		if ($game->IsResultCommited == 1 && $diff->d <= $days && $diff->m == 0) {			
+			$body_lastGames_national = 
+				"<tr>"
+					."<td>" . $playDate->format("d.m.Y") . "</td>"
+					."<td>" . $game->LeagueCatCaption . "</td>"
+					."<td>" . $game->TeamHomeCaption . "</td>"
+					."<td>" . $game->TeamAwayCaption . "</td>"
+					."<td>" . $game->NumberOfWinsHome . ":" . $game->NumberOfWinsAway . "</td>"
+
+				."</tr>";
+		}
+}
+
+	//print_r($lastGames_National);
 	
 	$header_lastGames = "<table class=\"results_small\">
 						<tr>
@@ -102,7 +129,7 @@ if ($do == "buildTable") {
 	$footer = "</table>";
 		
 	$output_nextGames = $header_nextGames . $body_nextGames . $footer;
-	$output_lastGames = $header_lastGames . $body_lastGames . $footer;
+	$output_lastGames = $header_lastGames . "<tr><td><b>Regional</b></td></tr>" . $body_lastGames . "<tr><td><b>National</b></td></tr>". $body_lastGames_national . $footer;
 	
 	
 	echo "<h3>Resultate</h3>" . $output_lastGames . "<h3>N&auml;chste Spiele</h3>". $output_nextGames;
