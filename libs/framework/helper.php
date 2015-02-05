@@ -56,11 +56,9 @@ class MyHelper {
 		$mail = new PHPMailer();
 				
 		$mail->IsSMTP();
-//		$mail->SMTPAuth   = true;                  // enable SMTP authentication
 		$mail->Host       = "localhost"; // sets the SMTP server
 		$mail->Port       = 25;                    // set the SMTP port for the GMAIL server
-//		$mail->Username   = "sebastian@vbclangenthal.ch"; // SMTP account username
-//		$mail->Password   = "552755";        // SMTP account password
+
 		
 		$mail->SetFrom($originator_email, $originator_name);
 		$mail->AddAddress($recipient_email,$recipient_name);
