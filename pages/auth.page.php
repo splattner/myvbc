@@ -56,7 +56,7 @@ class PageAuth extends MyPage
 			
 			$password = MyHelper::generatePW(8);
 			
-			$content = "Zugangsdaten für myVBC\nE-Mail Adresse: " . $currentPerson["email"] . "\nPasswort: " . $password;
+			$content = "Zugangsdaten fÃ¼r myVBC\nE-Mail Adresse: " . $currentPerson["email"] . "\nPasswort: " . $password;
 			
 			if($currentPerson["mobile"] != "") {
 				MyHelper::sendSMS("myVBC",$currentPerson["mobile"], $content);
@@ -66,11 +66,10 @@ class PageAuth extends MyPage
 				$mail = new PHPMailer();
 				
 				$mail->IsSMTP();
-//				$mail->SMTPAuth   = true;                  // enable SMTP authentication
+
 				$mail->Host       = "localhost"; // sets the SMTP server
 				$mail->Port       = 25;                    // set the SMTP port for the GMAIL server
-//				$mail->Username   = "sebastian@vbclangenthal.ch"; // SMTP account username
-//				$mail->Password   = "552755";        // SMTP account password
+
 				
 				$mail->SetFrom("myVBC@vbclangenthal.ch", "myVBC");
 				$mail->AddAddress($currentPerson["email"],$currentPerson["prename"] . " " . $currentPerson["name"]);

@@ -6,7 +6,6 @@ define( '_MYVBC', 1 );
 
 require_once "../etc/confic.inc.php";
 require_once "../libs/adodb5/adodb.inc.php";
-require_once "../libs/sms/SMS.php";
 require_once "../libs/sms/aspsms.class.php";
 require_once "../libs/PHPMailer_v5.0.2/class.phpmailer.php";
 
@@ -87,10 +86,7 @@ Datum: " . $tag . "." . $monat . "." . $jahr .
 		list($stunden, $minuten, $sekunden) = explode(":", $zeit);
 		
 		if ($send == "send") {
-			//$sms = new SMS($config["aspsms"]["username"], $config["aspsms"]["password"]);
-			//$sms->setOriginator("myVBC");
-			//$sms->addRecipient($row["mobile"]);
-			//$sms->setContent($smstext);
+
 			
 			$aspsms = new Aspsms($config["aspsms"]["username"], $config["aspsms"]["password"], array(
 					'Originator' => 'myVBC'
@@ -104,18 +100,7 @@ Datum: " . $tag . "." . $monat . "." . $jahr .
 			if (!$status) {
 				echo "Aspsms Error: " . $aspsms->getSendStatus();
 			}
-			
-			//$result = $sms->sendSMS();
-			//if ($result != 1) {
-			//	$error = $sms->getErrorDescription();
-			//
-			//	if (isset($error) && $error != "") {
-			//		print "<div class=\"error\">Error: $error</div>";
-			//	}
-			//
-			//}
-			
-			$sms = NULL;
+
 		}
 
 

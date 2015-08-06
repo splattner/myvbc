@@ -1,5 +1,6 @@
 <?php
-require_once("libs/framework/sms.php");
+require_once "libs/sms/aspsms.class.php";
+require_once "etc/confic.inc.php";
 
 class MyHelper {
 	
@@ -42,14 +43,18 @@ class MyHelper {
 	}
 	
 	public static function sendSMS($originator, $recipient, $content) {
-		$sms = new MySMS();
+
+        $aspsms = new Aspsms($config["aspsms"]["username"], $config["aspsms"]["password"], array(
+            'Originator' => 'myVBC'
+        ));
+
+        $aspsms->sendTextSms($content, array(
+            '0' => $recipient
+        ));
 		
-		$sms->setOriginator($originator);
-		$sms->addRecipient($recipient);
-		$sms->setContent($content);
-		$sms->sendSMS();
+
 		
-		unset($sms);
+		unset($aspsms);
 	}
 	
 	public static function sendEMail($originator_email, $originator_name, $recipient_email, $recipient_name, $subject, $content) {
