@@ -59,6 +59,7 @@ class PPersondata extends MyPlugin {
 			$person->schreiber = $_POST["schreiber"];
 			if ($person->schreiber == NULL) $person->schreiber = 0;
 			$person->sms = $_POST["sms"];
+            if ($person->sms == NULL) $person->sms = 0;
 			$person->licence = $_POST["licence"];
 			$person->licence_comment = $_POST["licence_comment"];
 			$person->refid = $_POST["refid"];
