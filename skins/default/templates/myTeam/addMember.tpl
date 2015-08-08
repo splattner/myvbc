@@ -1,4 +1,8 @@
 {include file='messages/info.tpl'}
+
+<script src="libs/chosen/chosen.jquery.js"></script>
+<link rel="stylesheet" href="libs/chosen/chosen.css">
+
 <form action="index.php?page={$currentPage}&action=addMember&teamID={$teamID}" method="POST">
 <table class="edit">
 	<tr>
@@ -14,7 +18,7 @@
 			Person ausw&auml;hlen
 		</td>
 		<td>
-			<select name="person">
+			<select class="person-select" name="person">
 				<option value="0" >(Bitte ausw&auml;hlen)</option>
 				{foreach item=user from=$users}
 					<option value="{$user.id}">{$user.name} {$user.prename} </option>
@@ -49,3 +53,7 @@
 
 </table>
 </form>
+
+<script type="text/javascript">
+    $('.person-select').chosen();
+</script>

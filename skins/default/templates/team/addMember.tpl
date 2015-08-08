@@ -20,7 +20,7 @@
 			Person ausw&auml;hlen
 		</td>
 		<td width="70%">
-			<select name="person">
+			<select class="person-select" name="person">
 				<option value="0" >(Bitte ausw&auml;hlen)</option>
 				{foreach item=user from=$users}
 					<option value="{$user.id}">{$user.name} {$user.prename}</option>
@@ -51,6 +51,5 @@
 </form>
 
 <script type="text/javascript">
-
-    $("input[value='person']").chosen({no_results_text: "Keine Person mit diesem Namen gefunden!"});
+    $('.person-select').chosen();
 </script>
