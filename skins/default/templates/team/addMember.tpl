@@ -1,4 +1,10 @@
 {include file='messages/info.tpl'}
+
+<script src="libs/chosen/chosen.jquery.js"></script>
+<link rel="stylesheet" href="libs/chosen/chosen.css">
+
+
+
 <form action="index.php?page={$currentPage}&action=addMember&teamID={$teamID}" method="POST">
 <table class="edit">
 	<tr>
@@ -43,3 +49,8 @@
 
 </table>
 </form>
+
+<script type="text/javascript">
+
+    $("input[value='person']").chosen({no_results_text: "Keine Person mit diesem Namen gefunden!"});
+</script>
