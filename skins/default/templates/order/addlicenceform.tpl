@@ -1,7 +1,4 @@
 
-<script src="libs/chosen/chosen.jquery.js"></script>
-<link rel="stylesheet" href="libs/chosen/chosen.css">
-
 <table class="wide">
 <tr>
 	<td width="2%">
