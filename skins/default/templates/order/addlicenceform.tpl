@@ -5,7 +5,7 @@
 		<img src="{$templateDir}/images/icons/bullet_yellow.png">
 	</td>
 	<td width="25%">
-		<select class="person-select" id="personID">
+		<select id="personID">
 			<option value="0"></option>
 			{foreach item=person from=$persons}
 				<option value="{$person.id}">{$person.name} {$person.prename} </option>
@@ -17,7 +17,3 @@
 	</td>
 </tr>
 </table>
-
-<script type="text/javascript">
-    $('.person-select').chosen();
-</script>
