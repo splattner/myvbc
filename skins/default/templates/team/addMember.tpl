@@ -20,7 +20,7 @@
 			Person ausw&auml;hlen
 		</td>
 		<td width="70%">
-			<select class="person-select" name="person">
+			<select width="80%" class="person-select" name="person">
 				<option value="0" >(Bitte ausw&auml;hlen)</option>
 				{foreach item=user from=$users}
 					<option value="{$user.id}">{$user.name} {$user.prename}</option>
