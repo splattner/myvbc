@@ -1,5 +1,8 @@
 
 <div style="width:70%; margin: auto;" class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">myVBC Login</h3>
+    </div>
 	<div class="panel-body">
 
 		<form action="?page=auth&action=login" method="post">
