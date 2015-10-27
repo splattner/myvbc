@@ -9,6 +9,7 @@
 
 
         <script src="libs/jquery/jquery-1.11.3.min.js"></script>
+
 		
 	{$xajax_javascript}
 	
@@ -23,6 +24,10 @@
 		
 	<link rel="stylesheet" type="text/css" media="screen, print" href="skins/default/css/style.css">
 	<link rel="stylesheet" type="text/css" media="print" href="skins/default/css/print.css">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 		
 	</head>
