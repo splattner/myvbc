@@ -2,10 +2,10 @@
 <table class="edit">
 	<tr>
 		<th width="30%">
-			Zugang hinzufügen
+			Zugang hinzufï¿½gen
 		</th>
 		<th width="70%" style="text-align: right;">
-			<a {popup caption="zurück" text="Zurück zur Übersicht"} href="index.php?page={$currentPage}&action=addaccess><img src="{$templateDir}/images/icons/cross.png"></a>
+			<a {popup caption="zurï¿½ck" text="Zurï¿½ck zur ï¿½bersicht"} href="index.php?page={$currentPage}&action=addaccess><img src="{$templateDir}/images/icons/cross.png"></a>
 		</th>
 	</tr>
 	<tr>
@@ -13,7 +13,7 @@
 			Person ausw&auml;hlen
 		</td width="70%">
 		<td>
-			<select name="person">
+			<select style="width:80%;" class="person-select" name="person">
 				<option value="0" >(Bitte ausw&auml;hlen)</option>
 				{foreach item=user from=$users}
 					<option value="{$user.id}">{$user.prename} {$user.name}</option>
@@ -42,3 +42,8 @@
 
 </table>
 </form>
+
+<script type="text/javascript">
+	$('.person-select').chosen();
+</script>
+
