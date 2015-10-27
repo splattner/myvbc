@@ -2,8 +2,8 @@
 	<tr>
 		<th>
 			Meine Daten 
-			 <a {popup caption="Daten bearbeiten" text="Meine Daten bearbeiten"} href="index.php?page=mydata&action=edit"><img src="{$templateDir}/images/icons/book_edit.png"></a>
-			 <a {popup caption="Passwort"  text="Neues Passwort setzen"}  href="index.php?page=mydata&action=editPassword"><img src="{$templateDir}/images/icons/key.png"></a>
+			 <a {popup caption="Daten bearbeiten" text="Meine Daten bearbeiten"} href="index.php?page=mydata&action=edit"><i class="fa fa-pencil-square-o"></i></a>
+			 <a {popup caption="Passwort"  text="Neues Passwort setzen"}  href="index.php?page=mydata&action=editPassword"><i class="fa fa-key"></i></a>
 		</th>
 	</tr>
 	<tr>
