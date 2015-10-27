@@ -5,20 +5,23 @@
     </div>
 	<div class="panel-body">
 
-		<form action="?page=auth&action=login" method="post">
 
-            <div class="input-group margin-bottom-sm">
+
+
+        <form action="?page=auth&action=login" method="post">
+            <div class="form-group">
+                <label for="email">E-Mail Adresse</label>
                 <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-                <input class="form-control" type="text" placeholder="Email address" name="email">
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email" name="email">
             </div>
-            <div class="input-group">
+            <div class="form-group">
+                <label for="password">Passwort</label>
                 <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                <input class="form-control" type="password" placeholder="Password" name="password">
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="password">
             </div>
 
-            <input class="btn btn-default" type="submit" value="Login" name="doLogin">
-
-		</form>
+            <button type="submit" class="btn btn-default" value="Login" name="doLogin">Submit</button>
+        </form>
 
 
 	</div>
