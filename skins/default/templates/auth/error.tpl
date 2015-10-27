@@ -1,20 +1,19 @@
-<table class="overview">
+<div style="width:70%; margin: auto;" class="panel panel-danger">
+	<div class="panel-heading">
+		<h3 class="panel-title">myVBC Login</h3>
+	</div>
+	<div class="panel-body">
 
-<tr>
-	<td style="width: 200px; height: 200px;">
-		<img src="{$templateDir}/images/enter.jpg">
-	</td>
-	<td style="text-align: center">
 		<p>
-			<b><img src="{$templateDir}/images/icons/exclamation.png"> Ihr Login versuch war leider ungültig</b>
+			<b><i class="fa fa-exclamation-triangle"></i> Ihr Login versuch war leider ung&uuml;ltig</b><br />
+			<a href="?page=auth"><i class="fa fa-caret-square-o-right"></i>&nbsp;Nochmals versuchen</a>
 		</p>
-			<p class="indented">
-			<a href="?page=auth"><img src="{$templateDir}/images/icons/key.png">&nbsp;Nochmals versuchen</a>A
-		</p>
-	</td>
-
-</tr>
 
 
-</table>
+
+	</div>
+</div>
+
+
+
 

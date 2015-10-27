@@ -6,12 +6,10 @@
 	<div class="panel-body">
 
 		<p>
-			<b><i class="fa fa-check-square"></i> Sie wurden erfolgreich angemeldet</b>
-		</p>
-
-		<p class="indented">
+			<b><i class="fa fa-check-square"></i> Sie wurden erfolgreich angemeldet</b><br />
 			<a href="?page=index"><i class="fa fa-caret-square-o-right"></i> Weiter zu myVBC</a>
 		</p>
+
 
 
 	</div>
