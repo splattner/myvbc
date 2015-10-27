@@ -1,3 +1,6 @@
+<script src="libs/chosen/chosen.jquery.js"></script>
+<link rel="stylesheet" href="libs/chosen/chosen.css">
+
 <form action="index.php?page={$currentPage}&action=createAccess&step2" method="POST">
 <table class="edit">
 	<tr>
@@ -13,7 +16,7 @@
 			Person ausw&auml;hlen
 		</td>
 		<td width="70%">
-			<select name="personID">
+			<select style="width:80%;" class="person-select" name="personID">
 				<option value="0" >(Bitte ausw&auml;hlen)</option>
 				{foreach item=user from=$users}
 					<option value="{$user.id}">{$user.prename} {$user.name}</option>
@@ -23,9 +26,13 @@
 	</tr>
 	<td>
 		<td colspan="2">
-			<input type="submit" name="doChoose" value="auswählen">
+			<input type="submit" name="doChoose" value="auswï¿½hlen">
 		</td>
 	</tr>
 
 </table>
 </form>
+
+<script type="text/javascript">
+	$('.person-select').chosen();
+</script>

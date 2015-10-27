@@ -19,12 +19,12 @@
 				Ihr Passwort wird Ihnen per SMS oder E-Mail zugestellt. 
 				Deshalb ist es wichtig, dass Ihre Angaben stimmen. <br/>
 				Wenn keine Mobile-Nummer hinterlegt ist, wird Ihnen dass Passwort per E-Mail zugestellt.<br />
-				Prüfen Sie deshalb bitte ob 1. Ihre Mobile Nummer simmt, wenn keine Mobile Nummer vorhanden ist,
-				prüfen Sie bitte Ihre E-Mail Adresse.
+				Pr&uuml;fen Sie deshalb bitte ob 1. Ihre Mobile Nummer simmt, wenn keine Mobile Nummer vorhanden ist,
+				pr&uuml;fen Sie bitte Ihre E-Mail Adresse.
 			</p>
 			<p>
 				<b style="color: #FF0000;">Achtung:</b> Wenn die hier angezeigten Daten nicht stimmen, 
-				müssen Sie dies zuerst per E-Mail an {mailto address=myVBC@vbclangenthal.ch} melden, 
+				m&uuml;ssen Sie dies zuerst per E-Mail an {mailto address=myVBC@vbclangenthal.ch} melden,
 				damit die korrekte Adresse eingetragen werden kann!
 				<br /> <br /><b>Erst danach kann Ihr Zugang erstellt werden!</b>
 			</p>
@@ -38,7 +38,7 @@
 		<td width="70%">
 			{$persons[0].mobile}
 			{if not $persons[0].mobile == ""}
-			<br /><b style="color: #FF0000;">Diese Nummer wird für den Passwort versand benutzt!</b>
+			<br /><b style="color: #FF0000;">Diese Nummer wird f&uuml;r den Passwort versand benutzt!</b>
 			{/if}
 		</td>
 	</tr>
@@ -48,7 +48,7 @@
 		<td width="70%">
 			{$persons[0].email}
 			{if $persons[0].mobile == "" && $person[0].email != ""}
-			<br /><b style="color: #FF0000;">Diese E-Mail Adresse wird für den Passwort Versand benutzt!</b>
+			<br /><b style="color: #FF0000;">Diese E-Mail Adresse wird f&uuml;r den Passwort Versand benutzt!</b>
 			{/if}
 		</td>
 	</tr>
