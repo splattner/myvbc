@@ -1,5 +1,5 @@
 
-<div style="width:60%" class="panel panel-primary">
+<div style="width:70%; margin: auto;" class="panel panel-primary">
 	<div class="panel-body">
 
 		<form action="?page=auth&action=login" method="post">
