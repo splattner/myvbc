@@ -1,5 +1,5 @@
 
-<div class="panel panel-primary">
+<div style="width:60%" class="panel panel-primary">
 	<div class="panel-body">
 
 		<form action="?page=auth&action=login" method="post">
@@ -16,7 +16,7 @@
             <input class="btn btn-default" type="submit" value="Login" name="doLogin">
 
 		</form>
-        
+
 
 	</div>
 	<div class="panel-footer">
