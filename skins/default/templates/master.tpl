@@ -33,7 +33,7 @@
 	</head>
 	<body>
 	{popup_init src="libs/overlib421/overlib.js"}
-	<div id="container">
+	<div id="myvbc">
 		<div id="header">
 			<div id="navigation">
 				{include file='navigation.tpl'}
