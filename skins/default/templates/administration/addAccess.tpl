@@ -1,3 +1,6 @@
+<script src="libs/chosen/chosen.jquery.js"></script>
+<link rel="stylesheet" href="libs/chosen/chosen.css">
+
 <form action="index.php?page={$currentPage}&action=addAccess" method="POST">
 <table class="edit">
 	<tr>
