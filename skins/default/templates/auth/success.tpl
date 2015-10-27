@@ -1,20 +1,22 @@
-<table class="overview">
 
-<tr>
-	<td style="width: 200px; height: 200px;">
-		<img src="{$templateDir}/images/enter.jpg">
-	</td>
-	<td style="text-align: center">
+<div style="width:70%; margin: auto;" class="panel panel-success">
+	<div class="panel-heading">
+		<h3 class="panel-title">myVBC Login</h3>
+	</div>
+	<div class="panel-body">
+
 		<p>
-			<b><img src="{$templateDir}/images/icons/accept.png"> Sie wurden erfolgreich angemeldet</b>
+			<b><i class="fa fa-check-square"></i> Sie wurden erfolgreich angemeldet</b>
 		</p>
+
 		<p class="indented">
-			<a href="?page=index"><img src="{$templateDir}/images/icons/arrow_right.png"> Weiter zu myVBC</a>
+			<a href="?page=index"><i class="fa fa-caret-square-o-right"></i> Weiter zu myVBC</a>
 		</p>
-	</td>
-
-</tr>
 
 
-</table>
+	</div>
+</div>
+
+
+
 
