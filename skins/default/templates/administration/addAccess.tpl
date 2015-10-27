@@ -2,10 +2,10 @@
 <table class="edit">
 	<tr>
 		<th width="30%">
-			Zugang hinzuf�gen
+			Zugang hinzuf&uuml;gen
 		</th>
 		<th width="70%" style="text-align: right;">
-			<a {popup caption="zur�ck" text="Zur�ck zur �bersicht"} href="index.php?page={$currentPage}&action=addaccess><img src="{$templateDir}/images/icons/cross.png"></a>
+			<a {popup caption="zur�ck" text="Zur&uuml;ck zur �bersicht"} href="index.php?page={$currentPage}&action=addaccess><img src="{$templateDir}/images/icons/cross.png"></a>
 		</th>
 	</tr>
 	<tr>
