@@ -26,7 +26,7 @@
 	</tr>
 	<td>
 		<td colspan="2">
-			<input type="submit" name="doChoose" value="ausw�hlen">
+			<input type="submit" name="doChoose" value="ausw&auml;hlen">
 		</td>
 	</tr>
 
