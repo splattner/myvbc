@@ -13,7 +13,7 @@
 
 
     {$xajax_javascript}
-    
+
     {$customer_javascript}
 
     <link rel="stylesheet" type="text/css" media="screen, print" href="skins/default/css/style.css">
@@ -43,6 +43,7 @@
 
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
+                $('[data-tooltip="true"]').tooltip();
             })
 
         </script>

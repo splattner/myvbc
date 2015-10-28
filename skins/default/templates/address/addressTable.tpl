@@ -1,5 +1,6 @@
 <p class="submenu">
-    <a data-toggle="tooltip" data-placement="bottom" title="Neue Person erfassen" href="index.php?page={$currentPage}&action=new">
+    <a data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Neue Person erfassen"
+       href="index.php?page={$currentPage}&action=new">
         <i class="fa fa-plus-square fa-2x"></i>
     </a>
 
@@ -42,12 +43,12 @@
         <tr>
             <td>
                 {if $person.active == 1}
-                    <a class="icons"
-                       href="index.php?page={$currentPage}&action=setState&state=0&personID={$person.id}" {popup caption="Status bearbeiten" text="Person auf inaktiv setzen"}><img
+                    <a class="icons" data-toggle="tooltip" data-placement="bottom" title="Person auf inaktiv setzen"
+                       href="index.php?page={$currentPage}&action=setState&state=0&personID={$person.id}" }><img
                                 src="{$templateDir}/images/icons/bullet_green.png"></a>
                 {else}
-                    <a class="icons"
-                       href="index.php?page={$currentPage}&action=setState&state=1&personID={$person.id}" {popup caption="Status bearbeiten" text="Person auf aktiv setzen"}><img
+                    <a class="icons" data-toggle="tooltip" data-placement="bottom" title="Person auf aktiv setzen"
+                       href="index.php?page={$currentPage}&action=setState&state=1&personID={$person.id}"><img
                                 src="{$templateDir}/images/icons/bullet_red.png"></a>
                 {/if}
             </td>
@@ -66,10 +67,13 @@
                         <i class="fa fa-users"></i>
                     </a>
                 {/if}
-                <a data-toggle="tooltip" data-placement="bottom" title="Person bearbeiten" class="icons" href="index.php?page={$currentPage}&action=edit&personID={$person.id}">
+                <a data-toggle="tooltip" data-placement="bottom" title="Person bearbeiten" class="icons"
+                   href="index.php?page={$currentPage}&action=edit&personID={$person.id}">
                     <i class="fa fa-pencil-square-o"></i>
                 </a>
-                <a data-toggle="tooltip" data-placement="bottom" title="Person L&ouml;schen" class="icons" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" href="index.php?page={$currentPage}&action=delete&personID={$person.id}">
+                <a data-toggle="tooltip" data-placement="bottom" title="Person L&ouml;schen" class="icons"
+                   onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
+                   href="index.php?page={$currentPage}&action=delete&personID={$person.id}">
                     <i style="color: red;" class="fa fa-trash-o"></i>
                 </a>
             </td>
@@ -82,14 +86,14 @@
 {literal}
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#addressTable').DataTable( {
+            $('#addressTable').DataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/505bef35b56/i18n/German.json"
                 },
-                "order": [[ 1, "desc" ], [ 2, "desc"]],
+                "order": [[1, "desc"], [2, "desc"]],
                 "columnDefs": [
-                    { "targets": 0, "orderable": false },
-                    { "targets": 7, "orderable": false }
+                    {"targets": 0, "orderable": false},
+                    {"targets": 7, "orderable": false}
                 ]
             });
         });
