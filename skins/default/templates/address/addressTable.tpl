@@ -22,7 +22,7 @@
 </table>
 
 
-<table id="addressTable" class="table table-condensed">
+<table id="addressTable" class="table table-striped table-condensed">
     <thead>
     <tr>
         <th width="2%">&nbsp;</th>
