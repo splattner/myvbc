@@ -8,7 +8,7 @@
 			Bestellung bearbeiten
 		</th>
 		<th width="70%" style="text-align: right;">
-			<a {popup caption="zurück" text="Zurück zur Übersicht"} href="index.php?page={$currentPage}&action=main"><img src="{$templateDir}/images/icons/cross.png" ></a>
+			<a {popup caption="zur&uuml;ck" text="Zurï¿½ck zur ï¿½bersicht"} href="index.php?page={$currentPage}&action=main"><img src="{$templateDir}/images/icons/cross.png" ></a>
 		</th>
 	</tr>
 	<tr>
@@ -16,7 +16,7 @@
 		<td width="70%">{$order.createdate|date_format:"%a, %d %B %y - %H:%M"}</td>
 	</tr>
 		<tr>
-		<td width="30%">Letze Status Änderung</td>
+		<td width="30%">Letze Status &Auml;nderung</td>
 		<td width="70%">{$order.lastupdate|date_format:"%a, %d %B %y - %H:%M"}</td>
 	</tr>
 	<tr>
@@ -32,7 +32,7 @@
 			{else}
 				{$order.statustext}&nbsp;
 				{if ($order.owner == $uid && $order.status == 1)}
-					<a {popup caption="Bestellung abschliessen" text="Sobald sie die Bestellung schliessen, wird der Bestellvorgang eingeleitet. Achtung: Danach können sie an dieser Bestellung nichts mehr ändern!"} href="index.php?page={$currentPage}&action=closeOrder&orderID={$order.id}">
+					<a {popup caption="Bestellung abschliessen" text="Sobald sie die Bestellung schliessen, wird der Bestellvorgang eingeleitet. Achtung: Danach kï¿½nnen sie an dieser Bestellung nichts mehr ï¿½ndern!"} href="index.php?page={$currentPage}&action=closeOrder&orderID={$order.id}">
 						<img src="{$templateDir}/images/icons/accept.png" > Bestellung abschliessen
 					</a>
 				{/if}
@@ -59,7 +59,7 @@
 			{if ($allowedit || ($order.owner == $uid && $order.status == 1))}
 				<input type="submit" name="doEdit" value="bearbeiten">
 			{else}
-				<p class="hightlight" >Bearbeiten ist nicht mehr möglich, der Bestellvorgang wurde bereits ausgel&oumlst, oder das ist nich deine Bestellung <br />
+				<p class="hightlight" >Bearbeiten ist nicht mehr mï¿½glich, der Bestellvorgang wurde bereits ausgel&oumlst, oder das ist nich deine Bestellung <br />
 				Wenn etwas nicht in Ordnung ist, melde dich beim Chef-TK!</p>
 			{/if}
 		{/if}
@@ -72,7 +72,7 @@
 
 <p class="submenu">
 	{if ($allowedit && $order.status != 4 )|| $order.status == 1}
-	<a onClick="showaddLicenceForm({$orderID})" {popup caption="neue Lizenz" text="Neue Lizenz zu dieser Bestellung hinzufügen"} href="#"><img src="{$templateDir}/images/icons/basket_put.png"></a>
+	<a onClick="showaddLicenceForm({$orderID})" {popup caption="neue Lizenz" text="Neue Lizenz zu dieser Bestellung hinzufï¿½gen"} href="#"><img src="{$templateDir}/images/icons/basket_put.png"></a>
 	{/if}
 </p>
 

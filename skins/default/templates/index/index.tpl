@@ -1,12 +1,7 @@
-<h1>
-	myVBC
-	
-	{if $isAuth}
-	&nbsp;-&nbsp; {$user.prename} {$user.name}
-	{/if}
-</h1>
-
 {if $isAuth}
+
+    {include file='messages/info.tpl'}
+
 	{include file='index/myDatas.tpl'}
 	{include file='index/myTeams.tpl'}
 	{include file='index/myGames.tpl'}
@@ -23,7 +18,7 @@
 			Willkommen in der VBC Langenthal Web-Verwaltung
 		</h3>
 		<p>
-			Um die Funktionen dieser Web-Verwaltung zu benutzen, müssen Sie sich zuerst authentifizieren.
+			Um die Funktionen dieser Web-Verwaltung zu benutzen, m&uuml;ssen Sie sich zuerst authentifizieren.
 		</p>
 
 		<p class="indented">

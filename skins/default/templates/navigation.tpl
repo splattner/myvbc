@@ -1,41 +1,102 @@
-<a href="?page=index" {popup caption="Übersicht" text="Deine myVBC Startseite"}><img src="skins/default/images/icons/house.png"></a>
+<div class="navbar-header">
+    <a class="navbar-brand" href="#">
+        myvbc
+    </a>
+</div>
+
+<ul class="nav navbar-nav">
 
 
+    <li role="presentation">
+        <a href="?page=index" data-toggle="tooltip" data-placement="bottom" title="myVBC Startseite"><img
+                    src="skins/default/images/icons/house.png"></a>
+    </li>
+
+    {if $canAddress}
+        <li role="presentation">
+
+            <a href="?page=address" data-toggle="tooltip" data-placement="bottom" title="Mitglieder Verwaltung"><img
+                        src="skins/default/images/icons/book_addresses.png"></a>
+        </li>
+    {/if}
+
+    {if $canOrder}
+        <li role="presentation">
+            <a href="?page=order" data-toggle="tooltip" data-placement="bottom" title="Lizenzbestellung"><img
+                        src="skins/default/images/icons/basket.png"></a>
+        </li>
+    {/if}
+
+    {if $canTeam}
+        <li role="presentation">
+            <a href="?page=team" data-toggle="tooltip" data-placement="bottom" title="Team Verwaltung"><img
+                        src="skins/default/images/icons/group.png"></a>
+        </li>
+    {/if}
+
+    {if $canGames}
+        <li role="presentation">
+            <a href="?page=games" data-toggle="tooltip" data-placement="bottom" title="Spiele"><img
+                        src="skins/default/images/icons/sport_soccer.png"></a>
+        </li>
+    {/if}
+
+    {if $canReport}
+        <li role="presentation">
+            <a href="?page=report" data-toggle="tooltip" data-placement="bottom" title="Reports"><img
+                        src="skins/default/images/icons/report.png"></a>
+        </li>
+    {/if}
 
 
-{if $canAddress}
-<a href="?page=address" {popup caption="Mitglieder Verwaltung" text="Alle Adressen bearbeiten oder neue Personen eintragen"}><img src="skins/default/images/icons/book_addresses.png"></a>
-{/if}
+    {if $canNotification}
+        <li role="presentation">
+            <a href="?page=notification" data-toggle="tooltip" data-placement="bottom" title="Benachrichtigungen"><img
+                        src="skins/default/images/icons/note.png"></a>
+        </li>
+    {/if}
 
-{if $canOrder}
-<a href="?page=order" {popup caption="Lizenzbestellung" text="neue Lizenzen bestellen, Status von Bestellungen prüfen"}><img src="skins/default/images/icons/basket.png"></a>
-{/if}
 
-{if $canTeam}
-<a href="?page=team" {popup caption="Team Verwaltung" text="Team Daten bearbeiten. Neue Teams erstellen. Personen den Teams zuordnen"}><img src="skins/default/images/icons/group.png"></a>
-{/if}
+    {if $canAdmin}
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">
+                <img src="skins/default/images/icons/wrench.png"><span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li role="presentation">
+                    <a href="index.php?page={$currentPage}&action=updateStatus">
+                        Aktiv Status aktualisieren</a>
+                </li>
+                <li role="presentation">
+                    <a href="index.php?page={$currentPage}&action=changePassword">
+                        Passw&ouml;rter &auml;ndern</a>
+                </li>
+                <li role="presentation">
+                    <a href="index.php?page={$currentPage}&action=clearGames">
+                        Spiele entfernen</a>
+                </li>
+                <li role="presentation">
+                    <a href="index.php?page={$currentPage}&action=gacl">
+                        ACL Settings</a>
+                </li>
+            </ul>
+        </li>
+    {/if}
+</ul>
+<ul class="nav navbar-nav navbar-right">
 
-{if $canGames}
-<a href="?page=games" {popup caption="Spiele" text="Spiele verwaltung und von Externen Quellen importieren. Schreiber den Spielen zuweisen"}><img src="skins/default/images/icons/sport_soccer.png"></a>
-{/if}
+    <li role="presentation">
+        {if not $isAuth}
+            <a href="?page=auth" data-toggle="tooltip" data-placement="bottom" title="Anmelden"><img
+                        src="skins/default/images/icons/key.png"></a>
+        {/if}
+        {if $isAuth}
+            <a href="?page=auth" data-toggle="tooltip" data-placement="bottom" title="Beenden"><img
+                        src="skins/default/images/icons/cross.png"></a>
+        {/if}
+    </li>
 
-{if $canReport}
-<a href="?page=report" {popup caption="Reports" text="Berichte, Dokumente erstellen. Teamlisten, Schreiberlisten, etc"}><img src="skins/default/images/icons/report.png"></a>
-{/if}
+</ul>
 
-{if $canNotification}
-<a href="?page=notification" {popup caption="Benachrichtigung" text="Benachrichtigungs-Meldungen anschauen und bestätigen"}><img  src="skins/default/images/icons/note.png"></a>
-{/if}
 
-{if $canAdmin}
-<a href="?page=admin" {popup caption="Administration" text="Administrative Aufgaben. Zugangsberechtigungen verwalten"}><img src="skins/default/images/icons/wrench.png"></a>
-{/if}
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-
-{if not $isAuth}
-	<a href="?page=auth" {popup caption="Anmelden" text="Mit E-Mail Adresse und Passwort an myVBC anmelden"} ><img src="skins/default/images/icons/key.png"></a>
-{/if}
-{if $isAuth}
-	<a href="?page=auth" {popup caption="Beenden" text="myVBC beenden und ausloggen"}><img src="skins/default/images/icons/cross.png"></a>
-{/if}

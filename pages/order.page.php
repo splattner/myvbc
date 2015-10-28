@@ -59,6 +59,12 @@ class PageOrder extends MyPage
 		$rs = $order->getOrder();
 		$this->smarty->assign("orders", $rs->getArray());
 
+		$teams = new MTeam();
+		$rs = $teams->getRS("","teams.name");
+
+		$this->smarty->assign("teams", $rs->getArray());
+
+
 	}
 	
 	public function closeOrderAction() {
@@ -80,13 +86,6 @@ class PageOrder extends MyPage
 	}
 	
 	public function newAction() {
-		$teams = new MTeam();
-		$rs = $teams->getRS("","teams.name");
-		
-		$this->smarty->assign("teams", $rs->getArray());
-		
-		
-		$this->smarty->assign("subContent1", "order/new.tpl");
 
 		if (isset($_POST["doNew"])) {
 			
@@ -107,8 +106,8 @@ class PageOrder extends MyPage
 					$order->addLicenceToOrder($person["personID"], $orderid);
 				}
 			}
-			
-			
+
+			$this->smarty->assign("messages","Lizenzbestellung eingetragen. Sie k&ouml;nnen diese nun bearbeiten");
 			
 			return "main";
 		}

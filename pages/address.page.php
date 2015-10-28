@@ -20,51 +20,21 @@ class PageAddress extends MyPage
 	public function init() {
 		parent::init();
 		$this->smarty->assign("content", $this->template);
-		
-		//Register XAJAX Functions
-		$this->xajax->register(XAJAX_FUNCTION, array("getAddressEntrys", $this, "getAddressEntrys"));
-		
-		$this->customerJavaScript .= "
-			<script type=\"text/javascript\">
-				function getAddressEntrys(char) {
-					xajax_getAddressEntrys(char);
-				}
-			</script>
-		";
+
 		
 	}
-	
-	public function cleanup() {
-		parent::cleanup();
-		$this->session->share["onlyChar"] = "";
-	}
-	
-	public function getAddressEntrys($onlyChar = "") {
-		$this->smarty->assign("content", "address/addressEntrys.tpl");
-		$this->session->share["onlyChar"] = $onlyChar;
-		
-		$person = new MPerson();
-		
-		if($onlyChar == "") { $rs = $person->getAddressEntry("","persons.active DESC, persons.name ASC, persons.prename ASC");} 
-		else { $rs = $person->getAddressEntry("persons.name LIKE '" . $onlyChar . "%'","persons.active DESC, persons.name ASC, persons.prename ASC");}
-		
-		$persons = $rs->GetArray();
-		$this->smarty->assign("persons", $persons);
-		
-		$objResponse = new xajaxResponse();
-		$objResponse->assign("addressEntrys", "innerHTML", $this->render());
-		
-		return $objResponse;
-	}
+
+
 	
 	public function mainAction() {
 		$this->smarty->assign("subContent1", "address/addressTable.tpl");
-		
-		$this->loaderJavaScript = "
-			<script type=\"text/javascript\">
-				getAddressEntrys('" . $this->session->share["onlyChar"] . "');
-			</script>
-		";
+
+		$person = new MPerson();
+		$rs = $person->getAddressEntry("","persons.active DESC, persons.name ASC, persons.prename ASC");
+		$persons = $rs->GetArray();
+		$this->smarty->assign("persons", $persons);
+
+
 	}
 	
 	public function editAction() {

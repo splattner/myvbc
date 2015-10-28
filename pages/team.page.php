@@ -119,19 +119,21 @@ class PageTeam extends MyPage
 	}
 	
 	public function newAction() {
-		$this->smarty->assign("subContent1", "team/new.tpl");
+
 		
 			
 		if (isset($_POST["doNew"])) {
-			$person = new MTeam($this->db);
-			$person->extid = $_POST["extid"];
-			$person->name = $_POST["name"];
-			$person->extname = $_POST["extname"];
-			$person->liga = $_POST["liga"];
-			$person->extliga = $_POST["extliga"];
-			$person->typ = $_POST["typ"];
+			$team = new MTeam($this->db);
+			$team->extid = $_POST["extid"];
+			$team->name = $_POST["name"];
+			$team->extname = $_POST["extname"];
+			$team->liga = $_POST["liga"];
+			$team->extliga = $_POST["extliga"];
+			$team->typ = $_POST["typ"];
 
-			$person->insert();
+			$team->insert();
+
+			$this->smarty->assign("messages","Neues Team wurde eingetragen");
 			
 			return "main";
 		}
@@ -145,6 +147,8 @@ class PageTeam extends MyPage
 
 		$player = new MPlayer();
                 $player->updateStatus();
+
+        $this->smarty->assign("messages","Team wurde gelöscht");
 		
 		return "main";
 	}

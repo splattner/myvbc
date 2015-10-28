@@ -18,7 +18,7 @@
                 <input type="password" class="form-control" id="password" placeholder="Password" name="password">
             </div>
 
-            <button type="submit" class="btn btn-default" value="Login" name="doLogin">Submit</button>
+            <button type="submit" class="btn btn-primary" value="Login" name="doLogin"><i class="fa fa-sign-in"></i> Login</button>
         </form>
 
 

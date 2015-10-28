@@ -1,10 +1,8 @@
 
 {if not $messages == 0}
-<table class="info">
-<tr>
-	<td>
-		<img src="{$templateDir}/images/icons/information.png"> {$messages}
-	</td>
-</tr>
-</table>
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {$messages}
+
+    </div>
 {/if}

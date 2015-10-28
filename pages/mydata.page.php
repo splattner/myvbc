@@ -47,23 +47,22 @@ class PageMydata extends MyPage
 	}
 	
 	public function editPasswordAction() {
-		$this->smarty->assign("subContent1", "myData/editPassword.tpl");
-		
+
 		if (isset($_POST["doEdit"])){
 			if ($_POST["password"] == $_POST["confirm"]) {
 				if (strlen($_POST["password"]) >=8) {
 					$person = new MPerson();
 					$person->changePassword($this->session->uid, $_POST["password"]);
-					$this->smarty->assign("messages","Ihr Passwort wurde geändert");
+					$this->smarty->assign("messages","Ihr Passwort wurde ge&auml;ndert");
 				} else {
 					$this->smarty->assign("messages","Das Passwort muss min. 8 Zeichen haben");
 				}
 			} else {
-				$this->smarty->assign("messages","Die beiden Passwörter stimmen nicht überein!");
+				$this->smarty->assign("messages","Die beiden Passw&ouml;rter stimmen nicht &uuml;berein!");
 			}
 			
 		}
-		
+
 	}
 }
 

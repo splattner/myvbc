@@ -22,11 +22,11 @@ a {
 	text-decoration: none;
 	color: #000088;
 }
-
 select {
 	background-color: #DDDDDD;
 	border: 1px solid #AAAAAA;
 }
+
 
 input {
 	background-color: #DDDDDD;
@@ -62,16 +62,7 @@ div#header {
 
 }
 
-div#navigation {
-	float: left;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 7px;
-	padding-bottom: 6px;
-	width: 750px;
-	background-color: #DDDDDD;
 
-}
 
 div#loader {
 	float:left;
@@ -97,18 +88,6 @@ img {
 	border: none;
 }
 
-h1 {
-	font-size: 14pt;
-	font-weight: bold;
-	
-	width: 100%;
-	border-bottom: 2px dotted #888888;
-}
-
-h2 {
-	font-size: 11pt;
-	font-weight: bold;	
-}
 
 table.wide {
 	
@@ -119,7 +98,6 @@ table.wide {
 	background-color: #BBBBBB;
 	
 }
-
 
 
 
