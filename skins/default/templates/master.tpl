@@ -13,18 +13,7 @@
 
 
     {$xajax_javascript}
-
-    {literal}
-        <script type="text/javascript">
-            xajax.callback.global.onRequest = function () {
-                xajax.$('loading').style.display = 'block';
-            }
-            xajax.callback.global.beforeResponseProcessing = function () {
-                xajax.$('loading').style.display = 'none';
-            }
-        </script>
-    {/literal}
-
+    
     {$customer_javascript}
 
     <link rel="stylesheet" type="text/css" media="screen, print" href="skins/default/css/style.css">
