@@ -6,6 +6,7 @@ if($_SERVER["HTTPS"] != "on") {
    exit();
 }
 
+header("Content-Type: text/html; charset=utf-8");
 
 @session_start();
 
@@ -53,6 +54,7 @@ $dsn = "mysql://"
 . $config["db"]["database"];
 $db = NewADOConnection($dsn);
 $db->debug = $config["system"]["debug"];
+$db->EXECUTE("set names 'utf8'");
 MyApplication::setInstance("db", $db);
 
 /**
