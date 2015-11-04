@@ -65,6 +65,10 @@
             </a>
             <ul class="dropdown-menu">
                 <li role="presentation">
+                    <a href="index.php?page={$currentPage}&action=admin">
+                        Allgemein</a>
+                </li>
+                <li role="presentation">
                     <a href="index.php?page={$currentPage}&action=updateStatus">
                         Aktiv Status aktualisieren</a>
                 </li>
