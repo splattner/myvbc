@@ -65,23 +65,23 @@
             </a>
             <ul class="dropdown-menu">
                 <li role="presentation">
-                    <a href="index.php?page={$currentPage}&action=admin">
+                    <a href="index.php?page=admin">
                         Allgemein</a>
                 </li>
                 <li role="presentation">
-                    <a href="index.php?page={$currentPage}&action=updateStatus">
+                    <a href="index.php?page=admin&action=updateStatus">
                         Aktiv Status aktualisieren</a>
                 </li>
                 <li role="presentation">
-                    <a href="index.php?page={$currentPage}&action=changePassword">
+                    <a href="index.php?page=admin&action=changePassword">
                         Passw&ouml;rter &auml;ndern</a>
                 </li>
                 <li role="presentation">
-                    <a href="index.php?page={$currentPage}&action=clearGames">
+                    <a href="index.php?page=admin&action=clearGames">
                         Spiele entfernen</a>
                 </li>
                 <li role="presentation">
-                    <a href="index.php?page={$currentPage}&action=gacl">
+                    <a href="index.php?page=admin&action=gacl">
                         ACL Settings</a>
                 </li>
             </ul>
