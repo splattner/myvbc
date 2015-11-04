@@ -36,6 +36,6 @@ table.legend {
 }
 
 
-a[href]::after {
-	content: " (" attr(href) ")"
+a[href]:after {
+	content: none !important;
 }
