@@ -34,3 +34,8 @@ table.legend {
 #overDiv {
 	display: none;
 }
+
+
+a[href]::after {
+	content: " (" attr(href) ")"
+}
