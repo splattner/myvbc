@@ -50,7 +50,7 @@ class MPerson extends MyModel {
 	public function getAddressEntry($where = "", $orderby = "") {
 		$sql = "SELECT
 				persons.*,
-				GROUP_CONCAT(teams.liga SEPARATOR '<br />') AS liga
+				GROUP_CONCAT(teams.liga SEPARATOR '\n') AS liga
 			FROM
 				persons
 			LEFT JOIN

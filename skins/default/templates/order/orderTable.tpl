@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <label for="teamid" class="col-sm-2 control-label">Bestellung f&uuml;r Team</label>
                         <div class="col-sm-10">
-                            <select class="form-control" onchange='getGames(this.value);' name="teamid">
+                            <select class="form-control" name="teamid">
                                 <option value="0">(Team ausw&auml;hlen)</option>
                                 {foreach item=team from=$teams}
                                     <option value="{$team.id}">{$team.name}</option>

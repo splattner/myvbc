@@ -148,7 +148,7 @@ class PageTeam extends MyPage
 		$player = new MPlayer();
                 $player->updateStatus();
 
-        $this->smarty->assign("messages","Team wurde gelöscht");
+        $this->smarty->assign("messages","Team wurde gel&ouml;scht");
 		
 		return "main";
 	}

@@ -8,51 +8,49 @@
 
 
     <li role="presentation">
-        <a href="?page=index" data-toggle="tooltip" data-placement="bottom" title="myVBC Startseite"><img
-                    src="skins/default/images/icons/house.png"></a>
+        <a href="?page=index" data-toggle="tooltip" data-placement="bottom" title="myVBC Startseite"><i class="fa fa-home"></i></a>
     </li>
 
     {if $canAddress}
         <li role="presentation">
-
-            <a href="?page=address" data-toggle="tooltip" data-placement="bottom" title="Mitglieder Verwaltung"><img
-                        src="skins/default/images/icons/book_addresses.png"></a>
+            <a href="?page=address" data-toggle="tooltip" data-placement="bottom" title="Mitglieder Verwaltung"><i class="fa fa-globe"></i></a>
         </li>
     {/if}
 
     {if $canOrder}
         <li role="presentation">
-            <a href="?page=order" data-toggle="tooltip" data-placement="bottom" title="Lizenzbestellung"><img
-                        src="skins/default/images/icons/basket.png"></a>
+            <a href="?page=order" data-toggle="tooltip" data-placement="bottom" title="Lizenzbestellung"><i class="fa fa-shopping-cart"></i></a>
         </li>
     {/if}
 
     {if $canTeam}
         <li role="presentation">
-            <a href="?page=team" data-toggle="tooltip" data-placement="bottom" title="Team Verwaltung"><img
-                        src="skins/default/images/icons/group.png"></a>
+            <a href="?page=team" data-toggle="tooltip" data-placement="bottom" title="Team Verwaltung"><i class="fa fa-users"></i></a>
         </li>
     {/if}
 
-    {if $canGames}
+    {if $canKey}
         <li role="presentation">
-            <a href="?page=games" data-toggle="tooltip" data-placement="bottom" title="Spiele"><img
-                        src="skins/default/images/icons/sport_soccer.png"></a>
+            <a href="?page=games" data-toggle="tooltip" data-placement="bottom" title="Spiele"><i class="fa fa-futbol-o"></i></a>
+        </li>
+    {/if}
+
+    {if $canKey}
+        <li role="presentation">
+            <a href="?page=key" data-toggle="tooltip" data-placement="bottom" title="Schl&uuml;ssel"><i class="fa fa-key"></i></a>
         </li>
     {/if}
 
     {if $canReport}
         <li role="presentation">
-            <a href="?page=report" data-toggle="tooltip" data-placement="bottom" title="Reports"><img
-                        src="skins/default/images/icons/report.png"></a>
+            <a href="?page=report" data-toggle="tooltip" data-placement="bottom" title="Reports"><i class="fa fa-book"></i></a>
         </li>
     {/if}
 
 
     {if $canNotification}
         <li role="presentation">
-            <a href="?page=notification" data-toggle="tooltip" data-placement="bottom" title="Benachrichtigungen"><img
-                        src="skins/default/images/icons/note.png"></a>
+            <a href="?page=notification" data-toggle="tooltip" data-placement="bottom" title="Benachrichtigungen"><i class="fa fa-comments"></i></a>
         </li>
     {/if}
 
@@ -61,7 +59,7 @@
         <li role="presentation" class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                aria-expanded="false">
-                <img src="skins/default/images/icons/wrench.png"><span class="caret"></span>
+                <i class="fa fa-wrench"></i><span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li role="presentation">
@@ -92,12 +90,10 @@
 
     <li role="presentation">
         {if not $isAuth}
-            <a href="?page=auth" data-toggle="tooltip" data-placement="bottom" title="Anmelden"><img
-                        src="skins/default/images/icons/key.png"></a>
+            <a href="?page=auth" data-toggle="tooltip" data-placement="bottom" title="Anmelden"><i class="fa fa-sign-in"></i></a>
         {/if}
         {if $isAuth}
-            <a href="?page=auth" data-toggle="tooltip" data-placement="bottom" title="Beenden"><img
-                        src="skins/default/images/icons/cross.png"></a>
+            <a href="?page=auth" data-toggle="tooltip" data-placement="bottom" title="Beenden"><i class="fa fa-sign-out"></i></a>
         {/if}
     </li>
 
