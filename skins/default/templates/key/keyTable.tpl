@@ -83,7 +83,7 @@
             <td>{$key.person}</td>
             <td>{$key.label}</td>
             <td>{$key.nr}</td>
-            <td>{$key.lastUpdate}</td>
+            <td>{$key.lastUpdate|date_format:"%d.%m.%y"}</td>
             <td align="right">
                 </a>
                 <a onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" data-toggle="tooltip" data-placement="bottom" title="Schl&uuml;ssel löschen" href="index.php?page={$currentPage}&action=delete&keyID={$key.id}">
