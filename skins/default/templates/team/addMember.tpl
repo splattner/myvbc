@@ -12,7 +12,7 @@
 			Mitglied zu Team hinzuf&uuml;gen
 		</th>
 		<th width="70%" style="text-align: right">
-			<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i style="color: red" class="fa fa-times"></i></a>
+			<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=member&teamID={$teamID}"><i style="color: red" class="fa fa-times"></i></a>
 		</th>
 	</tr>
 	<tr>
