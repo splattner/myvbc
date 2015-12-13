@@ -1,7 +1,7 @@
 <p class="submenu">
-	<a {popup caption="neue Person hinzuf&uuml;gen" text="Neue Person zu diesem Team hinzuf&uuml;gen"} href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}"><img src="{$templateDir}/images/icons/add.png"></a>
-	<a {popup caption="zur&uuml;ck" text="Zur&uuml;ck zur Team &Uuml;bersicht"} href="index.php?page={$currentPage}&action=main"><img src="{$templateDir}/images/icons/cross.png"></a>
-	<a href="#" onClick='window.print()' {popup caption="Drucken" text="Diese Liste drucken"}><img src="{$templateDir}/images/icons/printer.png"></a>
+	<a data-toggle="tooltip" data-placement="bottom" title="neue Person hinzuf&uuml;gen" href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}"><i class="fa fa-plus-square fa-2x"></i></a>
+	<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fa fa-caret-square-o-left fa-2x"></i></a>
+	<a href="#" onClick='window.print()' data-toggle="tooltip" data-placement="bottom" title="Drucken"><i class="fa fa-print fa-2x"></i></a>
 </p>
 
 <h3>
@@ -58,7 +58,7 @@
 		{/if}
 	</td>
 	<td style="text-align: right;">
-		<a onclick="return confirm('Willst du diesen Eintrag wirklich l�schen?')" class="icons" {popup caption="aus Team entfernen" bgcolor="#FF0000" text="Person aus diesem Team entfernen"} href="index.php?page={$currentPage}&action=deleteMember&teamID={$teamID}&personID={$person.personID}"><img src="{$templateDir}/images/icons/group_delete.png" alt="Mitglied l&oumlschen"></a>
+		<a onclick="return confirm('Willst du diesen Eintrag wirklich l�schen?')" class="icons" data-toggle="tooltip" data-placement="bottom" title="aus Team entfernen" href="index.php?page={$currentPage}&action=deleteMember&teamID={$teamID}&personID={$person.personID}"><i style="color: red;" class="fa fa-trash-o"></i></a>
 	</td>
 </tr>
 {/foreach}
