@@ -5,7 +5,7 @@
 	<th>Nachrichten-Typ</th>
 	<th>Inhalt</th>
 	<th>Datum</th>
-	<th>Auslöser</th>
+	<th>Auslï¿½ser</th>
 	<th>&nbsp;</th>
 </tr>
 
@@ -16,7 +16,7 @@
 	<td>{$notification.date|date_format:"%d.%m.%Y - %H:%M"}</td>
 	<td>{$notification.prename} {$notification.name}</td>
 	<td align="right">
-		<a class="icons" {popup caption="Erledigt" text="Diese Nachricht als erledigt markieren. Nachricht wird anschliessend nicht mehr angezeigt"} href="index.php?page={$currentPage}&action=delete&notificationID={$notification.notificationID}"><img src="{$templateDir}/images/icons/note_delete.png" ></a>
+		<a class="icons" data-toggle="tooltip" data-placement="bottom" title="Nachricht lÃ¶schen" href="index.php?page={$currentPage}&action=delete&notificationID={$notification.notificationID}"><i style="color: red;" class="fa fa-trash-o"></i></a>
 
 	</td>
 </tr>

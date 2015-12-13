@@ -1,5 +1,5 @@
 <p>
-	<a href="index.php?page={$currentPage}&action=main"><img src="{$templateDir}/images/icons/cross.png" alt="zur&uuml;ck"></a>
+	<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fa fa-caret-square-o-left"></i></a>
 </p>
 
 <h3>Spiele importieren</h3>
@@ -15,7 +15,7 @@ Team ausw&auml;hlen:
 		{/if}
 	{/foreach}
 </select>
-<a href="#" onClick='importGames()'><img src="{$templateDir}/images/icons/add.png"></a>
+<a data-toggle="tooltip" data-placement="bottom" title="Spiele importieren" href="#" onClick='importGames()'><i class="fa fa-plus-square"></i></a>
 </p>
 
 <table class="legend">

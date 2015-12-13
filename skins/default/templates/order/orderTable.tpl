@@ -1,6 +1,6 @@
 <p class="submenu">
     <a href="#" data-toggle="modal" data-tooltip="true" data-target="#myModal" title="Neue Lizenzbestelung">
-        <i class="fa fa-plus-square fa-2x"></i>
+        <i class="fa fa-plus-square"></i>
     </a>
 </p>
 

@@ -1,5 +1,5 @@
 <p>
-	<a {popup caption="Importieren" text="Spiele aus einer externen Quelle importieren"} href="index.php?page={$currentPage}&action=import"><img src="{$templateDir}/images/icons/basket_put.png" alt="Daten importieren"></a>
+	<a data-toggle="tooltip" data-placement="bottom" title="Spiele importieren" href="index.php?page={$currentPage}&action=import"><i class="fa fa-cloud-download"></i></a>
 </p>
 
 <p>

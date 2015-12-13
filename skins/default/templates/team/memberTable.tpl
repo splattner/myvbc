@@ -1,7 +1,7 @@
 <p class="submenu">
-	<a data-toggle="tooltip" data-placement="bottom" title="neue Person hinzuf&uuml;gen" href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}"><i class="fa fa-plus-square fa-2x"></i></a>
-	<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fa fa-caret-square-o-left fa-2x"></i></a>
-	<a href="#" onClick='window.print()' data-toggle="tooltip" data-placement="bottom" title="Drucken"><i class="fa fa-print fa-2x"></i></a>
+	<a data-toggle="tooltip" data-placement="bottom" title="neue Person hinzuf&uuml;gen" href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}"><i class="fa fa-plus-square"></i></a>
+	<a w href="index.php?page={$currentPage}&action=main"><i class="fa fa-caret-square-o-left"></i></a>
+	<a href="#" onClick='window.print()' data-toggle="tooltip" data-placement="bottom" title="Drucken"><i class="fa fa-print"></i></a>
 </p>
 
 <h3>
@@ -58,7 +58,7 @@
 		{/if}
 	</td>
 	<td style="text-align: right;">
-		<a onclick="return confirm('Willst du diesen Eintrag wirklich l�schen?')" class="icons" data-toggle="tooltip" data-placement="bottom" title="aus Team entfernen" href="index.php?page={$currentPage}&action=deleteMember&teamID={$teamID}&personID={$person.personID}"><i style="color: red;" class="fa fa-trash-o"></i></a>
+		<a onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" class="icons" data-toggle="tooltip" data-placement="bottom" title="aus Team entfernen" href="index.php?page={$currentPage}&action=deleteMember&teamID={$teamID}&personID={$person.personID}"><i style="color: red;" class="fa fa-trash-o"></i></a>
 	</td>
 </tr>
 {/foreach}
