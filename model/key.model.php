@@ -26,6 +26,27 @@ class MKey extends MyModel {
         return $this->db->Execute($sql);
     }
 
+	public function getMyKeys($personID) {
+		$sql = "SELECT
+					accesskeys.id AS id,
+					accesskeys.label AS label,
+					accesskeys.nr as nr,
+					CONCAT(persons.prename, ' ', persons.name) AS person,
+					accesskeys.lastUpdate as lastUpdate
+				FROM
+				    accesskeys
+				LEFT JOIN
+					persons ON accesskeys.person = persons.id
+				WHERE
+                	person = " . $this->db->qstr($personID) ."
+                ORDER BY
+                  persons.name,
+                  persons.prename";
+
+
+		return $this->db->Execute($sql);
+
+	}
 
 
 }

@@ -21,6 +21,23 @@
 			Mobile: {$user.mobile}<br />
 			E-Mail: {$user.email}<br />
 		</p>
+
+		<p>
+			Die folgenden Schl&uuml;ssel sind mir zugeordnet:
+		</p>
+		<ul>
+
+		{foreach item=key from=$keys}
+			<li>
+				 {$key.label} Schl&uuml;ssel seit {$key.lastUpdate|date_format:"%d.%m.%y"}
+			</li>
+		{/foreach}
+		</ul>
+
+		<p>
+			F&uuml;r Korrekturen am Schl&uuml;ssel Inventar melde dich bitte beim Chef-TK
+		</p>
+
 	</div>
 </div>
 

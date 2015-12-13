@@ -1,5 +1,7 @@
 <?php
 MyModel::loadModel("person");
+MyModel::loadModel("key");
+
 
 require_once("libs/framework/dataSources/svrs.datasource.php");
 
@@ -67,6 +69,16 @@ class PageIndex extends MyPage
             	$mySchreibers[] = $currentSchreiber;
 			}
 			$this->smarty->assign("mySchreibers", $mySchreibers);
+
+
+			/*
+			 * Get myKeys
+			 */
+			$keys = new MKey();
+			$mykeys = $keys->getMyKeys($this->session->uid);
+
+
+			$this->smarty->assign("keys", $mykeys);
 		
 		}
 	}
