@@ -39,6 +39,7 @@ class MyNotification {
 		$personNew = $personNew[0];
 		
 		$changedStatus = false;
+		$message = "";
 		
 		$message .="<p> alt / neu (fett geschrieben bei &Auml;nderung)</p>";
 		$message .= "<ul>";
@@ -136,9 +137,6 @@ class MyNotification {
 		$personNew = $personNew[0];
 		
 		$message .= "<p>" . $personNew["prename"] . " " . $personNew["name"] . " wurde neu Eingetragen</p>";
-		
-
-		
 
 		$message .= "<ul>";
 		
@@ -155,6 +153,13 @@ class MyNotification {
 
 		$message .= "<li>Schreiber: ";
 		if($personNew["schreiber"] == 0) {
+			$message .= "<b>Nein</b>";
+		} else {
+			$message .= "<b>Ja</b>";
+		}
+
+		$message .= "<li>Vereintbeitritt unterzeichnet: ";
+		if($personNew["signature"] == 0) {
 			$message .= "<b>Nein</b>";
 		} else {
 			$message .= "<b>Ja</b>";
