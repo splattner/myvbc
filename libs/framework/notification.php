@@ -104,6 +104,18 @@ class MyNotification {
                         $message .= "</li>";
                 }
 
+		if($personOld["signature"] != $personNew["signature"]) {
+			$changedStatus = true;
+			$message .= "<li>Vereintbeitritt unterzeichnet: ";
+			if($personNew["signature"] == 0) {
+				$message .= "<b>Nein</b>";
+			} else {
+				$message .= "<b>Ja</b>";
+			}
+
+			$message .= "</li>";
+		}
+
 		$message .= "</ul>";
 
 		if($changedStatus) { 
