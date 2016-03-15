@@ -55,7 +55,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td width="30%"><b>Zusätzliche Daten</td>
+		<td width="30%"><b>Zus&auml;tzliche Daten</td>
 		<td width="70%" >&nbsp;</td>
 	</tr>
 	<tr>

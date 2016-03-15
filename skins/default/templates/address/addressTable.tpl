@@ -15,8 +15,8 @@
 <table class="legend">
     <tr>
         <td>
-            <img src="{$templateDir}/images/icons/bullet_green.png"> Aktiv in einem Team <br/>
-            <img src="{$templateDir}/images/icons/bullet_red.png"> Inaktiv (keinem Team zugeordnet) <br/>
+            <i class="fa fa-user" style="color:green"></i> Aktiv in einem Team <br/>
+            <i class="fa fa-user" style="color: red"></i> Inaktiv (keinem Team zugeordnet) <br/>
         </td>
     </tr>
 </table>
@@ -26,12 +26,13 @@
     <thead>
     <tr>
         <th width="2%">&nbsp;</th>
+        <th width="3%">&nbsp;</th>
         <th width="10%">Vorname</th>
         <th width="10%">Name</th>
         <th width="21%">Adresse</th>
         <th width="12%">Telefon</th>
         <th width="12%">Mobile</th>
-        <th width="23%">E-Mail</th>
+        <th width="20%">E-Mail</th>
         <th width="10%">&nbsp;</th>
     </tr>
 
@@ -44,12 +45,24 @@
             <td>
                 {if $person.active == 1}
                     <a class="icons" data-toggle="tooltip" data-placement="bottom" title="Person auf inaktiv setzen"
-                       href="index.php?page={$currentPage}&action=setState&state=0&personID={$person.id}" }><img
-                                src="{$templateDir}/images/icons/bullet_green.png"></a>
+                       href="index.php?page={$currentPage}&action=setState&state=0&personID={$person.id}" }>
+                        <i class="fa fa-user" style="color:green"></i>
+                    </a>
                 {else}
                     <a class="icons" data-toggle="tooltip" data-placement="bottom" title="Person auf aktiv setzen"
-                       href="index.php?page={$currentPage}&action=setState&state=1&personID={$person.id}"><img
-                                src="{$templateDir}/images/icons/bullet_red.png"></a>
+                       href="index.php?page={$currentPage}&action=setState&state=1&personID={$person.id}">
+                        <i class="fa fa-user" style="color: red"></i>
+                    </a>
+                {/if}
+            </td>
+            <td>
+                {if $person.signature == 1}
+                    <i class="fa fa-certificate"></i>
+                {else}
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-certificate fa-stack-1x"></i>
+                        <i class="fa fa-ban fa-stack-2x text-danger"></i>
+                    </span>
                 {/if}
             </td>
             <td>{$person.prename}</td>
