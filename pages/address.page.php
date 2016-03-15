@@ -91,6 +91,18 @@ class PageAddress extends MyPage
 		return "main";
 	
 	}
+
+	public function setSignatureAction() {
+
+		$personID = $_GET["personID"];
+		$state = $_GET["state"];
+
+		$person = new MPerson();
+		$person->setSignature($personID, $state);
+
+		return "main";
+
+	}
 	
 	public function importAction() {
 		

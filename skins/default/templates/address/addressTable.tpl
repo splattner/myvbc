@@ -29,11 +29,11 @@
         <th width="3%">&nbsp;</th>
         <th width="10%">Vorname</th>
         <th width="10%">Name</th>
-        <th width="21%">Adresse</th>
-        <th width="12%">Telefon</th>
-        <th width="12%">Mobile</th>
+        <th width="20%">Adresse</th>
+        <th width="10%">Telefon</th>
+        <th width="10%">Mobile</th>
         <th width="20%">E-Mail</th>
-        <th width="10%">&nbsp;</th>
+        <th width="15%">&nbsp;</th>
     </tr>
 
     </thead>
@@ -58,6 +58,10 @@
             <td>
                 {if $person.signature == 1}
                     <i class="fa fa-check-square-o"></i>
+                {else}
+                    <a class="icons" data-toggle="tooltip" data-placement="bottom" title="Beitrittgesuch unterschrieben" href="index.php?page={$currentPage}&action=setSignature&state=1&personID={$person.id}">
+                        <i class="fa fa-square-o"></i>
+                    </a>
                 {/if}
             </td>
             <td>{$person.prename}</td>

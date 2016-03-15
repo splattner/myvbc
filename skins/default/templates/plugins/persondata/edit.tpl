@@ -55,6 +55,16 @@
 		</td>
 	</tr>
 	<tr>
+		<td width="30%">Vereinsbeitritt unterzeichnet</td>
+		<td>
+			{if $person[0].signature == 1}
+				<input type='checkbox' name='signature' value='1' checked="checked">
+			{else}
+				<input type='checkbox' name='signature' value='1'>
+			{/if}
+		</td>
+	</tr>
+	<tr>
 		<td width="30%"><b>Zus&auml;tzliche Daten</td>
 		<td width="70%" >&nbsp;</td>
 	</tr>

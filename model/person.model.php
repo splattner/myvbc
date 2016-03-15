@@ -179,5 +179,11 @@ class MPerson extends MyModel {
 		$sql = "UPDATE persons SET active = $newState WHERE id = " . $personID;
 		$this->db->Execute($sql);
 	}
+
+	public function setSignature($personID, $newState) {
+
+		$sql = "UPDATE persons SET signature = $newState WHERE id = " . $personID;
+		$this->db->Execute($sql);
+	}
 }
 ?>

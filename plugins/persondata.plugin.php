@@ -56,6 +56,8 @@ class PPersondata extends MyPlugin {
 					$_POST["birthdayMonth"] . "-" . 
 					$_POST["birthdayDay"];
 			$person->gender = $_POST["gender"];
+			$person->signature = $_POST["signature"];
+			if ($person->signature == NULL) $person->signature = 0;
 			$person->schreiber = $_POST["schreiber"];
 			if ($person->schreiber == NULL) $person->schreiber = 0;
 			$person->sms = $_POST["sms"];
@@ -96,6 +98,8 @@ class PPersondata extends MyPlugin {
 			$person->gender = $_POST["gender"];
 			$person->schreiber = $_POST["schreiber"];
 			if ($person->schreiber == NULL) $person->schreiber = 0;
+			$person->signature = $_POST["signature"];
+			if ($person->signature == NULL) $person->signature = 0;
 			$person->sms = $_POST["sms"];
 			$person->licence = $_POST["licence"];
 			$person->licence_comment = $_POST["licence_comment"];
