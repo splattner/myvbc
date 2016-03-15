@@ -5,7 +5,7 @@
 	<th>Nachrichten-Typ</th>
 	<th>Inhalt</th>
 	<th>Datum</th>
-	<th>Ausl�ser</th>
+	<th>Ausl&ouml;ser</th>
 	<th>&nbsp;</th>
 </tr>
 
