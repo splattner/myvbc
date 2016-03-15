@@ -182,8 +182,22 @@ class MPerson extends MyModel {
 
 	public function setSignature($personID, $newState) {
 
+		/* Generate Notification befor */
+		$personold = new MPerson();
+		$personoldRS = $personold->getRS("id=".$personID);
+		$personoldData = $personoldRS->getArray();
+
 		$sql = "UPDATE persons SET signature = $newState WHERE id = " . $personID;
 		$this->db->Execute($sql);
+
+		/* Generate Notification after */
+		$personnew = new MPerson();
+		$personnewRS = $personnew->getRS("id=" . $personID);
+		$personnewData = $personnewRS->getArray();
+
+		/* Add Notification */
+		$notification = MyApplication::getInstance("notification");
+		$notification->addChangeAddressNotification($personoldData, $personnewData);
 	}
 }
 ?>
