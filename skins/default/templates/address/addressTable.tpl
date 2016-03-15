@@ -59,7 +59,7 @@
                 {if $person.signature == 1}
                     <i class="fa fa-certificate"></i>
                 {else}
-                    <span class="fa-stack fa-lg">
+                    <span class="fa-stack">
                         <i class="fa fa-certificate fa-stack-1x"></i>
                         <i class="fa fa-ban fa-stack-2x text-danger"></i>
                     </span>
