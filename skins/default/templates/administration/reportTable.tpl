@@ -1,12 +1,51 @@
 <h3>Berichte Verwaltung</h3>
 
 <p>
-	<a  title="Neuer Bericht erfassen" href="index.php?page={$currentPage}&action=addReport">
+	<a data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neuer Bericht erfassen" href="#">
 		<i class="fa fa-plus-square"></i>
 	</a>
 </p>
 
 {include file='messages/info.tpl'}
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">neuer Report</h4>
+			</div>
+			<div class="modal-body">
+				<form id="reportform" class="form-horizontal" action="index.php?page={$currentPage}&action=addReport"
+					  method="POST">
+
+					<div class="form-group">
+						<label for="title" class="col-sm-3 control-label">Titel</label>
+
+						<div class="col-sm-9">
+							<input class="form-control" type="text" id="title" name="title">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="query" class="col-sm-3 control-label">Wuery</label>
+
+						<div class="col-sm-9">
+							<textarea lass="form-control" id="query" name="query" rows="20" cols="40"></textarea>
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
+				<button type="submit" class="btn btn-primary" name="doNew" form="reportform">weiter</button>
+
+			</div>
+		</div>
+	</div>
+</div>
 
 <table class="wide">
 <tr>

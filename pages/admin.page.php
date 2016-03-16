@@ -47,7 +47,7 @@ class PageAdmin extends MyPage
 			$person = new MPerson();
 			$person->createAccess($personID,$groupID);
 			
-			$this->smarty->assign("messages","Zugang für Person wurde eingerichtet");
+			$this->smarty->assign("messages","Zugang fï¿½r Person wurde eingerichtet");
 			
 			return "access";		
 		}
@@ -68,7 +68,7 @@ class PageAdmin extends MyPage
 		$person = new MPerson();
 		$person->removeAccess($personID);
 		
-		$this->smarty->assign("messages","Zugang für Person wurde entfernt");
+		$this->smarty->assign("messages","Zugang fï¿½r Person wurde entfernt");
 		
 		return "access";
 		
@@ -121,8 +121,6 @@ class PageAdmin extends MyPage
 			
 			return "report";
 		}
-		
-		$this->smarty->assign("subContent1", "administration/newReport.tpl");
 	}
 	
 	public function deleteReportAction() {
@@ -131,7 +129,7 @@ class PageAdmin extends MyPage
 		$reports = new MReport();
 		
 		$reports->delete("id=" . $this->db->qstr($reportID));
-		$this->smarty->assign("messages","Bericht wurde gelöscht");
+		$this->smarty->assign("messages","Bericht wurde gelï¿½scht");
 		
 		return "report";
 		
