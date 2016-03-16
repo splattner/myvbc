@@ -1,7 +1,9 @@
 <h3>Berichte Verwaltung</h3>
 
 <p>
-	<a {popup caption="neuer Bericht" text="Neuer Bericht zum System hinzufügen"}href="index.php?page={$currentPage}&action=addReport"><img src="{$templateDir}/images/icons/report_add.png"></a>
+	<a  title="Neuer Bericht erfassen" href="index.php?page={$currentPage}&action=addReport">
+		<i class="fa fa-plus-square"></i>
+	</a>
 </p>
 
 {include file='messages/info.tpl'}
@@ -18,8 +20,13 @@
 	<td><img src="{$templateDir}/images/icons/bullet_green.png""></td>
 	<td>{$report.title}</td>
 	<td align="right">
-		<a class="icons" href="index.php?page={$currentPage}&action=editReport&reportID={$report.id}" {popup caption="bearbeiten" text="Bericht bearbeiten"}><img src="{$templateDir}/images/icons/report_edit.png"></a>
-		<a class="icons" onclick="return confirm('Willst du diesen Eintrag wirklich löschen?')" href="index.php?page={$currentPage}&action=deleteReport&reportID={$report.id}" {popup caption="löschen" bgcolor="#FF0000" text="Bericht aus System entfernen. Achtung: Dies geschieht sofort und kann nicht rückgängig gemacht werden"}><img src="{$templateDir}/images/icons/report_delete.png"></a>
+		<a class="icons" data-toggle="tooltip" data-placement="bottom" title="Report bearbeiten" href="index.php?page={$currentPage}&action=editReport&reportID={$report.id}">
+			<i class="fa fa-pencil-square-o"></i>
+		</a>
+		<a onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" data-toggle="tooltip" data-placement="bottom" title="Report l&ouml;schen" href="index.php?page={$currentPage}&action=deleteReport&reportID={$report.id}">
+			<i style="color: red;" class="fa fa-trash-o"></i>
+		</a>
+
 	</td>
 </tr>
 {/foreach}
