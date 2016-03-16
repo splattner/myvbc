@@ -63,19 +63,13 @@
             </a>
             <ul class="dropdown-menu">
                 <li role="presentation">
-                    <a href="index.php?page=admin">
-                        Allgemein</a>
-                    <ul class="dropdown-menu">
-                        <li role="presentation">
-                            <a href="index.php?page={$currentPage}&action=access">Zugangsberechtigung</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="index.php?page={$currentPage}&action=report">Berichte</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="index.php?page={$currentPage}&action=notifications">Benachrichtigungen</a>
-                        </li>
-                    </ul>
+                    <a href="index.php?page=admin&action=access">Zugangsberechtigung</a>
+                </li>
+                <li role="presentation">
+                    <a href="index.php?page=admin&action=report">Berichte</a>
+                </li>
+                <li role="presentation">
+                    <a href="index.php?page=admin&action=notifications">Benachrichtigungen</a>
                 </li>
                 <li role="presentation">
                     <a href="index.php?page=admin&action=updateStatus">
