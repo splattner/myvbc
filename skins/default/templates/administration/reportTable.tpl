@@ -29,7 +29,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="query" class="col-sm-3 control-label">Wuery</label>
+						<label for="query" class="col-sm-3 control-label">Query</label>
 
 						<div class="col-sm-9">
 							<textarea lass="form-control" id="query" name="query" rows="20" cols="40"></textarea>

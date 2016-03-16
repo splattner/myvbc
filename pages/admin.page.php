@@ -129,7 +129,7 @@ class PageAdmin extends MyPage
 		$reports = new MReport();
 		
 		$reports->delete("id=" . $this->db->qstr($reportID));
-		$this->smarty->assign("messages","Bericht wurde gel�scht");
+		$this->smarty->assign("messages","Bericht wurde gel&ouml;scht");
 		
 		return "report";
 		
