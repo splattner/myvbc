@@ -5,7 +5,6 @@
 			Passwort &auml;ndern
 		</th>
 		<th width="70%" style="text-align: right;">
-			<a href="index.php?page={$currentPage}&action=functions"><img src="{$templateDir}/images/icons/cross.png"></a>
 		</th>
 	</tr>
 	<tr>
@@ -31,7 +30,7 @@
 	</tr>
 	<td>
 		<td colspan="2">
-			<input type="submit" name="changePassword" value="&auml;ndern">
+			<input class="btn btn-primary" type="submit" name="changePassword" value="&auml;ndern">
 		</td>
 	</tr>
 
