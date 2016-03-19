@@ -71,7 +71,7 @@ class MOrder extends MyModel {
 	public function getPersonOrders($personID) {
 		$sql = "SELECT
 				order.createdate as 'date',
-				orderstatus.status as 'status',
+				orderstatus.id as 'status',
 				order.comment as 'order_comment',
 				licences.typ as 'licence'
 			FROM
