@@ -31,10 +31,10 @@
 <table class="legend">
 	<tr>
 		<td>
-			<img src="{$templateDir}/images/icons/bullet_green.png"> Status: Erfassen<br/>
-			<img src="{$templateDir}/images/icons/bullet_yellow.png"> Status: Bestellung ausgel&ouml;st<br/>
-			<img src="{$templateDir}/images/icons/bullet_blue.png"> Status: In Bearbeitung<br/>
-			<img src="{$templateDir}/images/icons/bullet_red.png"> Status: Abgeschlossen<br/>
+			<img src="{$templateDir}/images/icons/bullet_green.png">Erfassen<br/>
+			<img src="{$templateDir}/images/icons/bullet_yellow.png">Bestellung ausgel&ouml;st<br/>
+			<img src="{$templateDir}/images/icons/bullet_blue.png">In Bearbeitung<br/>
+			<img src="{$templateDir}/images/icons/bullet_red.png">Abgeschlossen<br/>
 		</td>
 	</tr>
 </table>
@@ -42,17 +42,17 @@
 <table class="wide">
 <tr>
 	<th witth="2%"</th>
-	<th width="29%">Bestelldatum</th>
-	<th width="29%">Lizenz</th>
-	<th width="40">Kommentar zur Bestellung</th>
+	<th width="20%">Bestelldatum</th>
+	<th width="20%">Lizenz</th>
+	<th width="58">Kommentar zur Bestellung</th>
 </tr>
 {foreach item=myorder from=$myorders}
 <tr>
 	<td>
-		{if $order.status == 1}<img src="{$templateDir}/images/icons/bullet_green.png">{/if}
-		{if $order.status == 2}<img src="{$templateDir}/images/icons/bullet_yellow.png">{/if}
-		{if $order.status == 3}<img src="{$templateDir}/images/icons/bullet_blue.png">{/if}
-		{if $order.status == 4}<img src="{$templateDir}/images/icons/bullet_red.png">{/if}
+		{if $myorder.status == 1}<img src="{$templateDir}/images/icons/bullet_green.png">{/if}
+		{if $myorder.status == 2}<img src="{$templateDir}/images/icons/bullet_yellow.png">{/if}
+		{if $myorder.status == 3}<img src="{$templateDir}/images/icons/bullet_blue.png">{/if}
+		{if $myorder.status == 4}<img src="{$templateDir}/images/icons/bullet_red.png">{/if}
 	</td>
 	<td>{$myorder.date}</td>
 	<td>{$myorder.licence}</td>
