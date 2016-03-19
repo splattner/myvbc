@@ -41,7 +41,7 @@
 
 <table class="wide">
 <tr>
-	<th witth="2%"</th>
+	<th width="2%"</th>
 	<th width="20%">Bestelldatum</th>
 	<th width="20%">Lizenz</th>
 	<th width="58">Kommentar zur Bestellung</th>
