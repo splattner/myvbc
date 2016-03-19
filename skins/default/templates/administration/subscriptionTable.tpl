@@ -1,7 +1,9 @@
 <h3>Benachrichtigungs Verwaltung</h3>
 
 <p>
-	<a {popup caption="neuer Subscription" text="Person auf einen Nachrichtentype einschreiben"}href="index.php?page={$currentPage}&action=addNoteSubscription"><img src="{$templateDir}/images/icons/note_add.png"></a>
+	<a data-toggle="tooltip" data-placement="bottom" title="Person auf einen Nachrichtentype einschreiben" href="index.php?page={$currentPage}&action=addNoteSubscription">
+		<i class="fa fa-plus-square"></i>
+	</a>
 </p>
 
 {include file='messages/info.tpl'}
@@ -20,8 +22,12 @@
 	<td>{$subscription.type}</td>
 	<td>{$subscription.prename} {$subscription.name}</td>
 	<td align="right">
-		{if $subscription.email == 1}<img src="{$templateDir}/images/icons/email.png">{/if}
-		<a class="icons" href="index.php?page={$currentPage}&action=deleteNoteSubscription&typeID={$subscription.typeid}&personID={$subscription.personid}" {popup caption="löschen" bgcolor="#FF0000" text="Subscription entfernen Achtung: Dies geschieht sofort und kann nicht rückgängig gemacht werden"}><img src="{$templateDir}/images/icons/note_delete.png"></a>
+		{if $subscription.email == 1}<i class="fa fa-envelope-o"></i>{/if}
+		<a data-toggle="tooltip" data-placement="bottom" title="Subscription entfernen." class="icons"
+		   onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
+		   href="index.php?page={$currentPage}&action=deleteNoteSubscription&typeID={$subscription.typeid}&personID={$subscription.personid}">
+			<i style="color: red;" class="fa fa-trash-o"></i>
+		</a>
 	</td>
 </tr>
 {/foreach}
@@ -33,7 +39,7 @@
 	<th>Nachrichten-Typ</th>
 	<th>Datum</th>
 	<th>Inhalt</th>
-	<th>Auslöser</th>
+	<th>Ausl&ouml;ser</th>
 	<th>&nbsp</th>
 </tr>
 
@@ -44,8 +50,12 @@
 	<td>{$allnotification.date|date_format:"%d.%m.%Y - %H:%M"}</td>
 	<td>{$allnotification.prename} {$allnotification.name}</td>
 		<td align="right">
-		<a class="icons" href="index.php?page={$currentPage}&action=deleteNote&notificationID={$allnotification.notificationID}" {popup caption="löschen" bgcolor="#FF0000" text="Diese Benachrichtigung global löschen. Achtung: Dies geschieht sofort und kann nicht rückgängig gemacht werden"}><img src="{$templateDir}/images/icons/note_delete.png"></a>
-	</td>
+			<a data-toggle="tooltip" data-placement="bottom" title="Diese Benachrichtigung global l&ouml;schen. " class="icons"
+			   onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
+			   href="index.php?page={$currentPage}&action=deleteNote&notificationID={$allnotification.notificationID}">
+				<i style="color: red;" class="fa fa-trash-o"></i>
+			</a>
+		</td>
 </tr>
 {/foreach}
 {if empty($allnotifications)}

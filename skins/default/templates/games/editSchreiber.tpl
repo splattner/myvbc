@@ -4,7 +4,7 @@
 			Schreiber zu Spiel hinzuf&uuml;gen
 		</th>
 		<th width="70%" style="text-align: right">
-			<a {popup caption="zurück" text="Zurück zur Übersicht"} href="index.php?page={$currentPage}&action=main"><img src="{$templateDir}/images/icons/cross.png" alt="zur&uuml;ck"></a>
+			<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i style="color:red" class="fa fa-times"></i></a>
 		</th>
 	</tr>
 	<tr>
@@ -31,7 +31,7 @@
 		<td width="30%"></td>
 		<td width="70%">
 			<div id="schreiberinfo">
-				<p>Bitte wählen Sie zuerst einen Schreiber aus, <br />anschliessend werden hier die Informationen angezeigt!</p>
+				<p>Bitte w&auml;hlen Sie zuerst einen Schreiber aus, <br />anschliessend werden hier die Informationen angezeigt!</p>
 			</div>
 		</td>
 	</tr>
@@ -41,16 +41,16 @@
 	<tr>
 		<td colspan="2">
 			<p>
-				<b>Vorschläge</b>: Personen die an diesem Tag, aber nicht zur gleichen Zeit, Heimspiele haben
+				<b>Vorschlï¿½ge</b>: Personen die an diesem Tag, aber nicht zur gleichen Zeit, Heimspiele haben
 			</p>
 			<ul style="list-style-image:url({$templateDir}/images/icons/bullet_green.png)">
 			{if !empty($proposals)}
 				{foreach item=proposal from=$proposals}
-					<li>{$proposal.prename} {$proposal.name}, Schreibereinsätze: {$proposal.anzahl} <br />
+					<li>{$proposal.prename} {$proposal.name}, Schreibereins&auml;tze: {$proposal.anzahl} <br />
 					 	{$proposal.date}, {$proposal.ort} - {$proposal.halle}</li>
 				{/foreach}
 			{else}
-				<li>Keine Vorschläge, da keine anderen Heimspiele an diesem Tag</li>
+				<li>Keine Vorschl&auml;ge, da keine anderen Heimspiele an diesem Tag</li>
 			{/if}
 			</ul>
 		</td>

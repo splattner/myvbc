@@ -8,7 +8,7 @@ Bericht ausw&auml;hlen:
 		<option value="{$report.id}">{$report.title}</option>
 	{/foreach}
 </select>
-<input type="submit" value="anzeigen" />
+<input class="btn btn-primary" type="submit" value="anzeigen" />
 
 </p>
 </form>

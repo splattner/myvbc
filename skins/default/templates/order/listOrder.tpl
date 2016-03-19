@@ -32,7 +32,7 @@
 			{else}
 				{$order.statustext}&nbsp;
 				{if ($order.owner == $uid && $order.status == 1)}
-					<a {popup caption="Bestellung abschliessen" text="Sobald sie die Bestellung schliessen, wird der Bestellvorgang eingeleitet. Achtung: Danach k�nnen sie an dieser Bestellung nichts mehr �ndern!"} href="index.php?page={$currentPage}&action=closeOrder&orderID={$order.id}">
+					<a data-toggle="tooltip" data-placement="bottom" title="Sobald sie die Bestellung schliessen, wird der Bestellvorgang eingeleitet. Achtung: Danach k&ouml;nnen Sie an dieser Bestellung nichts mehr &auml;ndern!"  href="index.php?page={$currentPage}&action=closeOrder&orderID={$order.id}">
 						<img src="{$templateDir}/images/icons/accept.png" > Bestellung abschliessen
 					</a>
 				{/if}

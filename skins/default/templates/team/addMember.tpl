@@ -43,7 +43,7 @@
 	</tr>
 	<td>
 		<td colspan="2">
-			<input type="submit" name="doAdd" value="hinzuf&uuml;gen">
+			<input type="submit" class="btn btn-primary" name="doAdd" value="hinzuf&uuml;gen">
 		</td>
 	</tr>
 

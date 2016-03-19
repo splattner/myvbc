@@ -44,7 +44,7 @@
 	</tr>
 	<td>
 		<td colspan="2">
-			<input type="submit" name="doEdit" value="bearbeiten">
+			<input type="submit" class="btn btn-primary" name="doEdit" value="bearbeiten">
 		</td>
 	</tr>
 

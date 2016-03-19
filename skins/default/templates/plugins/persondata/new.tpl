@@ -93,7 +93,7 @@
 
 	<tr>
 		<td colspan="2">
-			<input type="submit" name="doNew" value="eintragen">
+			<input type="submit" class="btn btn-primary" name="doNew" value="eintragen">
 		</td>
 	</tr>
 
