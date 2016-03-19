@@ -1,5 +1,5 @@
 <p class="submenu">
-	<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index"><i style="color: red" class="fa fa-times"></i></a>
+	<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index"><i class="fa fa-caret-square-o-left"></i></a>
 	{if $canAddMember}
 		<a data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Person dem Team hinzuf&uuml;gen"
 		   href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}">
