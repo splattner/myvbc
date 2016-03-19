@@ -3,7 +3,7 @@
 <tr>
 	<td><img src="{$templateDir}/images/icons/bullet_green.png"></td>
 	<td>{$schreiber.prename} {$schreiber.name}</td>
-	<td><a href="#" {popup caption="entfernen" bgcolor="#FF0000" text="Diesen Schreiber vom Spiel entfernen"} onClick="removeSchreiber({$schreiber.id},{$gameID},{$teamID})" ><img src="{$templateDir}/images/icons/delete.png"></a></td>
+	<td><a href="#" data-toggle="tooltip" data-placement="bottom" title="Diesen Schreiber vom Spiel entfernen" onClick="removeSchreiber({$schreiber.id},{$gameID},{$teamID})" ><i style="color: red;" class="fa fa-trash-o"></i></a></td>
 </tr>
 {/foreach}
 <tr>
@@ -17,6 +17,6 @@
 		</select>
 	</td>
 	<td>
-		<a href="#" {popup caption="hinzufügen" text="Diesen Schreiber dem Spiel hinzufügen"} onClick="addSchreiber({$gameID}, {$teamID})"><img src="{$templateDir}/images/icons/add.png"></a>
+		<a href="#" data-toggle="tooltip" data-placement="bottom" title="Diesen Schreiber dem Spiel hinzuf&uuml;gen" onClick="addSchreiber({$gameID}, {$teamID})"><i class="fa fa-plus-square"></i></a>
 	</td>
 </table>

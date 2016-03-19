@@ -1,9 +1,14 @@
 <p class="submenu">
-	<a {popup caption="zur&uuml;ck" text="Zur&uuml;ck zur &Uuml;bersicht"} href="index.php?page=index"><img src="{$templateDir}/images/icons/cross.png"></a>
+	<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index"><i style="color: red" class="fa fa-times"></i></a>
 	{if $canAddMember}
-	<a {popup caption="hinzuf&uuml;gen" text="Person dem Team hinzuf&uuml;gen"} href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}"><img src="{$templateDir}/images/icons/add.png"></a>
+		<a data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Person dem Team hinzuf&uuml;gen"
+		   href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}">
+			<i class="fa fa-plus-square"></i>
+		</a>
 	{/if}
-	<a href="#" onClick='window.print()' {popup caption="Drucken" text="Diese Liste drucken"}><img src="{$templateDir}/images/icons/printer.png"></a>
+	<a data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
+		<i class="fa fa-print"></i>
+	</a>
 </p>
 
 {include file='messages/info.tpl'}
@@ -54,10 +59,17 @@
 	<td>{if $person.email|count_characters > 0} {mailto address=$person.email}{else}Keine E-Mail Adresse{/if}</td>
 	<td align="right">
 		{if $canEditMember}
-		<a class="icons" {popup caption="bearbeiten" text="Daten dieser Person bearbeiten"} href="index.php?page={$currentPage}&action=edit&teamID={$person.teamID}&personID={$person.personID}"><img src="{$templateDir}/images/icons/group_edit.png"></a>
+			<a data-toggle="tooltip" data-placement="bottom" title="Daten dieser Person bearbeiten" class="icons"
+			   href="index.php?page={$currentPage}&action=edit&teamID={$person.teamID}&personID={$person.personID}">
+				<i class="fa fa-pencil-square-o"></i>
+			</a>
 		{/if}
 		{if $canDeleteMember}
-		<a onclick="return confirm('Willst du diesen Eintrag wirklich l�schen?')" class="icons" {popup caption="entfernen" bgcolor="#FF0000" text="Diese Person aus dem Team entfernen"} href="index.php?page={$currentPage}&action=deleteMember&teamID={$person.teamID}&personID={$person.personID}"><img src="{$templateDir}/images/icons/group_delete.png"></a>
+			<a data-toggle="tooltip" data-placement="bottom" title="Diese Person aus dem Team entfernen" class="icons"
+			   onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
+			   href="index.php?page={$currentPage}&action=deleteMember&teamID={$person.teamID}&personID={$person.personID}">
+				<i style="color: red;" class="fa fa-trash-o"></i>
+			</a>
 		{/if}
 
 	</td>

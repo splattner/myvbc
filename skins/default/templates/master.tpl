@@ -52,7 +52,6 @@
 
 </head>
 <body>
-{popup_init src="libs/overlib421/overlib.js"}
 <div id="myvbc">
     <div id="header">
         <div class="navbar navbar-default">

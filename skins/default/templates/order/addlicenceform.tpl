@@ -13,7 +13,9 @@
 		</select>
 	</td>
 	<td colspan="3">
-		<a href="#" {popup caption="hinzuf&uuml;gen" text="Lizenz f&uuml;r diese Person zur Bestellung hinzuf&uuml;gen"} onClick="addLicenceToOrder({$orderID})"><img src="{$templateDir}/images/icons/add.png"></a>
+		<a href="#" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Lizenz f&uuml;r diese Person zur Bestellung hinzuf&uuml;gen" onClick="addLicenceToOrder({$orderID})">
+			<i class="fa fa-plus-square"></i>
+		</a>
 	</td>
 </tr>
 </table>

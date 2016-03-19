@@ -72,7 +72,7 @@
 
 <p class="submenu">
 	{if ($allowedit && $order.status != 4 )|| $order.status == 1}
-	<a onClick="showaddLicenceForm({$orderID})" {popup caption="neue Lizenz" text="Neue Lizenz zu dieser Bestellung hinzuf�gen"} href="#"><img src="{$templateDir}/images/icons/basket_put.png"></a>
+	<a onClick="showaddLicenceForm({$orderID})" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Neue Lizenz zu dieser Bestellung hinzuf&uuml$;gen" href="#"><i class="fa fa-plus-square"></i></a>
 	{/if}
 </p>
 

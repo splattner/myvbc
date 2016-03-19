@@ -10,7 +10,7 @@
 			Mitglied zu Team hinzuf&uuml;gen
 		</th>
 		<th style="text-align: right;">
-			<a {popup caption="zur&uuml;ck" text="Zur&uuml;ck zur &Uuml;bersicht"}  href="index.php?page={$currentPage}&action=main&teamID={$teamID}"><img src="{$templateDir}/images/icons/cross.png"></a>
+			<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main&teamID={$teamID}"><i style="color: red" class="fa fa-times"></i></a>
 		</th>
 	</tr>
 	<tr>
@@ -26,7 +26,7 @@
 			</select>
 			{if $canAddMember}
 			<p>
-				<a {popup caption="Neu" text="Neue Person erfassen"} href="index.php?page={$currentPage}&action=new&teamID={$teamID}"><img src="{$templateDir}/images/icons/add.png"></a>
+				<a data-toggle="tooltip" data-placement="bottom" title="Neue Person erfassen"  href="index.php?page={$currentPage}&action=new&teamID={$teamID}"><i class="fa fa-plus-square"></i></a>
 				Wenn eine Person noch nicht im System erfasst ist, k&ouml;nnen Sie diese hier hinzuf&uuml;gen.
 			</p>
 			{/if}
