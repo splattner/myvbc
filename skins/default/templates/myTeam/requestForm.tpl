@@ -5,6 +5,7 @@
         border: 1px solid black;
         width: 80%;
         margin: auto;
+        margin-top: 20px;
     }
 
     table.requestForm td {
@@ -107,7 +108,7 @@
     *	(bei minderjährigen Neumitgliedern bedarf es der Unterschrift eines Elternteils bzw. des gesetzlichen Vormunds) <br />
 </p>
 <p style="margin: 40px; font-size: 12pt;">
-    Bitte fett geschriebene Abschnitte ausfüllen, Formular ausdrucken und per Post zurücksenden an: <br />
+    Bitte Angaben prüfen (ggfs. korrigieren) und Formular per Post zurücksenden an: <br />
     VBC Langenthal <br />
     Postfach 1034 <br />
     4901 Langenthal
