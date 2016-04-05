@@ -137,8 +137,9 @@ class PageMyteam extends MyPage
 
 	public function requestFormAction() {
 
-		$this->template = "myTeam/requestForm.tpl";
-		
+		$this->smarty->assign("subContent1", "myTeam/requestForm.tpl");
+
+
 		$personID = $_GET["personID"];
 
 		$user = new MPerson();
@@ -147,7 +148,7 @@ class PageMyteam extends MyPage
 
 
 
-		//$this->smarty->assign("subContent1", "myTeam/requestForm.tpl");
+
 
 
 
