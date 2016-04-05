@@ -70,7 +70,7 @@
 	<td align="right">
 		<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Beitrittsgesuch" class="icons"
 		   href="index.php?page={$currentPage}&action=requestForm&personID={$person.personID}">
-			<i class="fa a-file-pdf-o"></i>
+			<i class="fa fa-file-pdf-o"></i>
 		</a>
 		{if $canEditMember}
 			<a data-toggle="tooltip" data-placement="bottom" title="Daten dieser Person bearbeiten" class="icons"
