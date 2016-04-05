@@ -1,9 +1,9 @@
-<style >
-
-    .requestForm{
+<style type="text/css">
+<!--
+    .requestForm {
         border: 1px solid black;
     }
-
+-->
 </style>
 
 <p class="submenu">
