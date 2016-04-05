@@ -2,6 +2,7 @@
     {literal}
     .requestForm {
         border: 1px solid black;
+        width: 100%;
     }
     {/literal}
 </style>
@@ -23,9 +24,10 @@
     </tr>
 
     <tr>
-        <td<b>Strasse, Nr.</b></td>
+        <td><b>Strasse, Nr.</b></td>
         <td>{$person[0].prename}</td>
     </tr>
+
     <tr>
         <td><b>PLZ, Ort</b></td>
         <td>{$person[0].plz} {$person[0].ort}</td>
@@ -35,19 +37,25 @@
         <td><b>Telefonnummer</b></td>
         <td>{$person[0].phone}</td>
     </tr>
+
     <tr>
         <td><b>Mobiltelefonnummer</b></td>
         <td>{$person[0].mobile}</td>
     </tr>
+
     <tr>
         <td><b>E-Mail Adresse</b></td>
         <td>{$person[0].email}</td>
     </tr>
+
     <tr>
-        <td><b>E-Mail Adresse <br />
-            Eltern / gesetzlicher Vormund (wenn Minderj&auml;rig)</b></td>
+        <td>
+            <b>E-Mail Adresse <br />
+            Eltern / gesetzlicher Vormund (wenn Minderj&auml;rig)</b>
+        </td>
         <td>{$person[0].email-parent}</td>
     </tr>
+
     <tr>
         <td><b>Geburtsdatum</b></td>
         <td>{$person[0].birthday}</td>
