@@ -1,8 +1,9 @@
 <style type="text/css">
+    {literal}
     .requestForm {
         border: 1px solid black;
     }
-
+    {/literal}
 </style>
 
 <p class="submenu">
