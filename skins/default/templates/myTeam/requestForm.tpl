@@ -8,43 +8,44 @@
 <h1>Beitrittsgesuch in den VBC Langenthal</h1>
 <h2>Angaben Neumitglied</h2>
 
-<table>
+<table >
     <tr>
-        <td>Vorname / Name</td>
+        <td><b>Vorname / Name</b></td>
         <td>{$person[0].prename} / {$person[0].name}</td>
     </tr>
     <tr>
-        <td>Strasse, Nr.</td>
+        <td<b>Strasse, Nr.</b></td>
         <td>{$person[0].prename}</td>
     </tr>
     <tr>
-        <td>PLZ, Ort</td>
+        <td><b>PLZ, Ort</b></td>
         <td>{$person[0].plz} {$person[0].ort}<td>
     </tr>
 
     <tr>
-        <td>Telefonnummer</td>
+        <td><b>Telefonnummer</b></td>
         <td>{$person[0].phone}</td>
     </tr>
     <tr>
-        <td>Mobiltelefonnummer</td>
+        <td><b>Mobiltelefonnummer</b></td>
         <td>{$person[0].mobile}</td>
     </tr>
     <tr>
-        <td>E-Mail Adresse</td>
+        <td><b>E-Mail Adresse</b></td>
         <td>{$person[0].email}</td>
     </tr>
     <tr>
-        <td>E-Mail Adresse <br />
-            Eltern / gesetzlicher Vormund (wenn Minderj&auml;rig)</td>
+        <td><b>E-Mail Adresse <br />
+            Eltern / gesetzlicher Vormund (wenn Minderj&auml;rig)</b></td>
         <td>{$person[0].email-parent}</td>
     </tr>
     <tr>
-        <td>Geburtsdatum</td>
+        <td><b>Geburtsdatum</b></td>
         <td>{$person[0].birthday}</td>
     </tr>
 </table>
 
+<br /><br />
 
 <p>
     Ich möchte Mitglied des VBC Langenthal werden, habe die Statuten gelesen und anerkenne sie als verbindlich.
