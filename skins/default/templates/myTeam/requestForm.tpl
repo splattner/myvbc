@@ -4,10 +4,10 @@
     .requestForm {
         border: 1px solid black;
         width: 100%;
-        margin: 10px;
+        margin: 20px;
     }
 
-    .requestFrom th td {
+    .requestFrom td {
         padding: 5px;
         border: 1px solid black;
     }
