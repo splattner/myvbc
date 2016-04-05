@@ -19,6 +19,7 @@ class MTeam extends MyModel {
 					persons.schreiber AS schreiber,
 					persons.birthday AS birthday,
 					players.typ AS typ,
+					persons.signature AS signature,
 					teams.id AS teamID
 				FROM
 					persons

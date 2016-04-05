@@ -28,7 +28,8 @@
 
 <table class="wide">
 <tr>
-	<th>&nbsp;</th>
+	<th></th>
+	<th></th>
 	<th>Name</th>
 	<th>Adresse</th>
 	<th>Kontakt-Daten</th>
@@ -44,6 +45,13 @@
 		{if $person.typ == 2}<img src="{$templateDir}/images/icons/bullet_yellow.png">{/if}
 		{if $person.typ == 3}<img src="{$templateDir}/images/icons/bullet_red.png">{/if}
 		{if $person.typ == 4}<img src="{$templateDir}/images/icons/bullet_blue.png">{/if}
+	</td>
+	<td>
+		{if $person.signature == 1}
+			<i class="fa fa-check-square-o"></i>
+		{else}
+			<i class="fa fa-square-o"></i>
+		{/if}
 	</td>
 	<td>
 		{$person.prename} {$person.name}
