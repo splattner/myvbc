@@ -1,3 +1,10 @@
+<p class="submenu">
+    <a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index"><i class="fa fa-caret-square-o-left"></i></a>
+    <a data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
+        <i class="fa fa-print"></i>
+    </a>
+</p>
+
 <h1>Beitrittsgesuch in den VBC Langenthal</h1>
 <h2>Angaben Neumitglied</h2>
 
@@ -12,7 +19,7 @@
     </tr>
     <tr>
         <td>PLZ, Ort</td>
-        <td><{$person[0].plz} {$person[0].ort}td>
+        <td>{$person[0].plz} {$person[0].ort}<td>
     </tr>
 
     <tr>
@@ -33,7 +40,7 @@
     </tr>
     <tr>
         <td>Geburtsdatum</td>
-        <td>$person[0].birthday</td>
+        <td>{$person[0].birthday}</td>
     </tr>
 </table>
 <p>
