@@ -87,8 +87,7 @@
     Insbesondere verpflichte ich mich, anlässlich der vom Verein durchgeführten Anlässe (SAR-SM, Minivolleyballturniere, Beachturniere oder sonstige Anlässe) als Helfer/in aktiv mitzuwirken.
 </p>
      
-<p style="margin: 40px; font-size: 12pt;">
-    <br />
+<p style="float: left; margin: 35px; font-size: 12pt;">
     ________________________________________ <br />
     Ort, Datum
     <br /><br /><br />
@@ -96,8 +95,7 @@
     Unterschrift Neumitglied
 </p>
 
-<p style="float: left; margin: 40px; font-size: 12pt;">
-    <br />
+<p style="float: left; margin: 35px; font-size: 12pt;">
     ________________________________________ <br />
     Ort, Datum
     <br /><br /><br />
