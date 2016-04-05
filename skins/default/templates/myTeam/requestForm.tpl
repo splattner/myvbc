@@ -1,13 +1,13 @@
 <style type="text/css">
     {literal}
 
-    .requestForm {
+    table.requestForm {
         border: 1px solid black;
-        width: 100%;
+        width: 80%;
         margin: 20px;
     }
 
-    .requestFrom td {
+    table.requestFrom td {
         padding: 5px;
         border: 1px solid black;
     }
