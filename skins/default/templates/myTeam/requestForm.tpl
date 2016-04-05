@@ -7,8 +7,9 @@
         margin: 10px;
     }
 
-    .requestFrom td {
-        padding: 10px;
+    .requestFrom th td {
+        padding: 5px;
+        border: 1px solid black;
     }
     {/literal}
 </style>
