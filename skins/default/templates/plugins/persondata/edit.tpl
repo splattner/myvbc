@@ -33,8 +33,8 @@
 		<td width="70%"><input class="textinput" type="text" name="email" value="{$person[0].email}"></td>
 	</tr>
 	<tr>
-		<td width="30%">E-Mail Eltern / Vormund</td>
-		<td width="70%"><input class="textinput" type="text" name="email-parent" value="{$person[0].email-parent}"></td>
+		<td width="30%">E-Mail Eltern / gesetzlicher Vormund</td>
+		<td width="70%"><input class="textinput" type="text" name="email_parent" value="{$person[0].email_parent}"></td>
 	</tr>
 	<tr>
 		<td width="30%">Schiedsrichter ID (wenn vorhanden)</td>

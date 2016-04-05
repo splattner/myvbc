@@ -51,7 +51,7 @@ class PPersondata extends MyPlugin {
 			$person->phone = $_POST["phone"];
 			$person->mobile = $_POST["mobile"];
 			$person->email = $_POST["email"];
-			$person->email-parent = $_POST["email-parent"];
+			$person->email_parent = $_POST["email_parent"];
 			$person->birthday = 
 					$_POST["birthdayYear"] ."-" . 
 					$_POST["birthdayMonth"] . "-" . 
@@ -92,7 +92,7 @@ class PPersondata extends MyPlugin {
 			$person->phone = $_POST["phone"];
 			$person->mobile = $_POST["mobile"];
 			$person->email = $_POST["email"];
-			$person->email-parent = $_POST["email-parent"];
+			$person->email_parent = $_POST["email_parent"];
 			$person->birthday = 
 					$_POST["birthdayYear"] ."-" . 
 					$_POST["birthdayMonth"] . "-" . 

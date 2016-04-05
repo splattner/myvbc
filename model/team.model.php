@@ -16,7 +16,7 @@ class MTeam extends MyModel {
 					persons.phone AS phone,
 					persons.mobile AS mobile,
 					persons.email AS email,
-					persons.email-parent AS email-parent,
+					persons.email_parent AS email_parent,
 					persons.schreiber AS schreiber,
 					persons.birthday AS birthday,
 					players.typ AS typ,
