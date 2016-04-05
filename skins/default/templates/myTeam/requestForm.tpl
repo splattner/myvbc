@@ -35,7 +35,8 @@
         <td>{$person[0].email}</td>
     </tr>
     <tr>
-        <td>E-Mail Adresse Eltern / gesetzlicher Vormund (wenn Minderj&auml;rig</td>
+        <td>E-Mail Adresse <br />
+            Eltern / gesetzlicher Vormund (wenn Minderj&auml;rig)</td>
         <td>{$person[0].email-parent}</td>
     </tr>
     <tr>
@@ -43,6 +44,8 @@
         <td>{$person[0].birthday}</td>
     </tr>
 </table>
+
+
 <p>
     Ich möchte Mitglied des VBC Langenthal werden, habe die Statuten gelesen und anerkenne sie als verbindlich.
     Insbesondere verpflichte ich mich, anlässlich der vom Verein durchgeführten Anlässe (SAR-SM, Minivolleyballturniere, Beachturniere oder sonstige Anlässe) als Helfer/in aktiv mitzuwirken.

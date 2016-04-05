@@ -143,7 +143,8 @@ class PageMyteam extends MyPage
 		$this->smarty->assign("person", $rs->getArray());
 
 
-		$this->smarty->assign("subContent1", "myTeam/requestForm.tpl");
+		$this->template = "myTeam/requestForm.tpl";
+		//$this->smarty->assign("subContent1", "myTeam/requestForm.tpl");
 
 
 
