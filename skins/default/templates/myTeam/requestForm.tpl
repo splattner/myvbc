@@ -20,7 +20,7 @@
     </a>
 </p>
 
-<img src="images/logo_vbcl.gif" />
+<img src="skins/default/images/logo_vbcl.gif" />
 
 <h1>Beitrittsgesuch in den VBC Langenthal</h1>
 <h2>Angaben Neumitglied</h2>
