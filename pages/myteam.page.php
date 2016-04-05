@@ -134,6 +134,20 @@ class PageMyteam extends MyPage
 
 		return $return;
 	}
+
+	public function requestFormAction() {
+		$personID = $_GET["personID"];
+
+		$user = new MPerson();
+		$rs = $user->getRS("id=" . $personID);
+		$this->smarty->assign("person", $rs->getArray());
+
+
+		$this->smarty->assign("subContent1", "myTeam/requestForm.tpl");
+
+
+
+	}
 		
 
 }

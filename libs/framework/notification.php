@@ -88,6 +88,11 @@ class MyNotification {
 			$message .= "<li>E-Mail : " . $personOld["email"] . " / <b>" . $personNew["email"] . "</b></li>";
 		}
 
+		if($personOld["email-parent"] != $personNew["email-parent"]) {
+			$changedStatus = true;
+			$message .= "<li>E-Mail Eltern / Vormund: " . $personOld["email-parent"] . " / <b>" . $personNew["email-parent"] . "</b></li>";
+		}
+
 		if($personOld["comment_licence"] != $personNew["comment_licence"]) {
 			$changedStatus = true;
 			$message .= "<li>Bemerkung zu Lizenz : " . $personOld["comment_licence"] . " / <b>" . $personNew["comment_licence"] . "</b></li>";
@@ -149,6 +154,7 @@ class MyNotification {
 		$message .= "<li>Telefon : " . $personNew["phone"] . "</li>";
 		$message .= "<li>Mobile : " . $personNew["mobile"] . "</li>";
 		$message .= "<li>E-Mail : " . $personNew["email"] . "</li>";
+		$message .= "<li>E-Mail Eltern / Vormund : " . $personNew["email-parent"] . "</li>";
 		$message .= "<li>Bemerkung zu Lizenz : " . $personNew["comment_licence"] . "</li>";
 
 		$message .= "<li>Schreiber: ";
