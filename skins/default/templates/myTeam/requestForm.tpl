@@ -7,10 +7,21 @@
         margin: 10px;
     }
 
-    td.requestFrom {
+    .requestFrom td {
         padding: 10px;
     }
     {/literal}
+</style>
+
+<style type="text/css" media="print">
+    {literal}
+
+    h1 {
+        display: none;
+    }
+
+    {/literal}
+
 </style>
 
 <p class="submenu">
@@ -78,16 +89,20 @@
 </p>
      
 <p>
-    <br /><br/>
+    <br /><br/><br />
+    ________________________________________ <br />
     Ort, Datum
-    <br /><br />
+    <br /><br /><br />
+    ________________________________________ <br />
     Unterschrift Neumitglied
 </p>
 
 <p>
-    <br /><br />
+    <br /><br /><br />
+    ________________________________________ <br />
     Ort, Datum
-    <br /><br />
+    <br /><br /><br />
+    ________________________________________ <br />
     Unterschrift gesetzlicher Vormund*
 </p>
 
