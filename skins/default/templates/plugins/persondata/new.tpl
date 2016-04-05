@@ -33,6 +33,10 @@
 		<td width="70%"><input class="textinput" type="text" name="email"></td>
 	</tr>
 	<tr>
+		<td width="30%">E-Mail Eltern / Vormund</td>
+		<td width="70%"><input class="textinput" type="text" name="email-parent"></td>
+	</tr>
+	<tr>
 		<td width="30%">Schiedsrichter ID (wenn vorhanden)</td>
 		<td width="70%"><input class="textinput" type="text" name="refid"></td>
 	</tr>

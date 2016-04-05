@@ -22,6 +22,8 @@
 		<img src="{$templateDir}/images/icons/bullet_yellow.png"> Captain / Teamverantwortlicher <br />
 		<img src="{$templateDir}/images/icons/bullet_red.png"> Trainer <br />
 		<img src="{$templateDir}/images/icons/bullet_blue.png"> Sonstige Funktion <br />
+		<i class="fa fa-check-square-o"></i> Betrittsgesuch unterschrieben<br />
+		<i class="fa fa-square-o"></i> Beitrittsgesuch nicht unterschrieben
 	</td>
 </tr>
 </table>
