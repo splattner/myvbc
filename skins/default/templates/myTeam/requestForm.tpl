@@ -88,7 +88,7 @@
 </p>
      
 <p style="margin: 40px; font-size: 12pt;">
-    <br /><br/><br />
+    <br />
     ________________________________________ <br />
     Ort, Datum
     <br /><br /><br />
@@ -96,8 +96,8 @@
     Unterschrift Neumitglied
 </p>
 
-<p style="margin: 40px; font-size: 12pt;">
-    <br /><br /><br />
+<p style="float: left; margin: 40px; font-size: 12pt;">
+    <br />
     ________________________________________ <br />
     Ort, Datum
     <br /><br /><br />
@@ -105,7 +105,7 @@
     Unterschrift gesetzlicher Vormund*
 </p>
 
-<p style="margin: 40px; font-size: 10pt;">
+<p style="clear: left; margin: 40px; font-size: 10pt;">
     *	(bei minderjährigen Neumitgliedern bedarf es der Unterschrift eines Elternteils bzw. des gesetzlichen Vormunds) <br />
 </p>
 <p style="margin: 40px; font-size: 12pt;">
