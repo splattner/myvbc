@@ -84,12 +84,12 @@
 
 <br /><br />
 
-<p style="margin: 20px;">
+<p style="margin: 40px; font-size: 12pt;">
     Ich möchte Mitglied des VBC Langenthal werden, habe die Statuten gelesen und anerkenne sie als verbindlich.
     Insbesondere verpflichte ich mich, anlässlich der vom Verein durchgeführten Anlässe (SAR-SM, Minivolleyballturniere, Beachturniere oder sonstige Anlässe) als Helfer/in aktiv mitzuwirken.
 </p>
      
-<p style="margin: 20px;">
+<p style="margin: 40px; font-size: 12pt;">
     <br /><br/><br />
     ________________________________________ <br />
     Ort, Datum
@@ -98,7 +98,7 @@
     Unterschrift Neumitglied
 </p>
 
-<p style="margin: 20px;">
+<p style="margin: 40px; font-size: 12pt;">
     <br /><br /><br />
     ________________________________________ <br />
     Ort, Datum
@@ -107,9 +107,10 @@
     Unterschrift gesetzlicher Vormund*
 </p>
 
-<p style="margin: 20px;">
+<p style="margin: 40px; font-size: 10pt;">
     *	(bei minderjährigen Neumitgliedern bedarf es der Unterschrift eines Elternteils bzw. des gesetzlichen Vormunds) <br />
-    <br />
+</p>
+<p style="margin: 40px; font-size: 12pt;">
     Bitte fett geschriebene Abschnitte ausfüllen, Formular ausdrucken und per Post zurücksenden an: <br />
     VBC Langenthal <br />
     Postfach 1034 <br />
