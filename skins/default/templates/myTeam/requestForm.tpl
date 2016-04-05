@@ -1,8 +1,14 @@
 <style type="text/css">
     {literal}
+
     .requestForm {
         border: 1px solid black;
         width: 100%;
+        margin: 10px;
+    }
+
+    td.requestFrom {
+        padding: 10px;
     }
     {/literal}
 </style>
@@ -14,42 +20,44 @@
     </a>
 </p>
 
+<img src="images/logo_vbcl.gif" />
+
 <h1>Beitrittsgesuch in den VBC Langenthal</h1>
 <h2>Angaben Neumitglied</h2>
 
 <table class="requestForm">
     <tr>
-        <td><b>Vorname / Name</b></td>
+        <td width="30%"><b>Vorname / Name</b></td>
         <td>{$person[0].prename} / {$person[0].name}</td>
     </tr>
 
     <tr>
-        <td><b>Strasse, Nr.</b></td>
+        <td width="30%"><b>Strasse, Nr.</b></td>
         <td>{$person[0].prename}</td>
     </tr>
 
     <tr>
-        <td><b>PLZ, Ort</b></td>
+        <td width="30%"><b>PLZ, Ort</b></td>
         <td>{$person[0].plz} {$person[0].ort}</td>
     </tr>
 
     <tr>
-        <td><b>Telefonnummer</b></td>
+        <td width="30%"><b>Telefonnummer</b></td>
         <td>{$person[0].phone}</td>
     </tr>
 
     <tr>
-        <td><b>Mobiltelefonnummer</b></td>
+        <td width="30%"><b>Mobiltelefonnummer</b></td>
         <td>{$person[0].mobile}</td>
     </tr>
 
     <tr>
-        <td><b>E-Mail Adresse</b></td>
+        <td width="30%"><b>E-Mail Adresse</b></td>
         <td>{$person[0].email}</td>
     </tr>
 
     <tr>
-        <td>
+        <td width="30%">
             <b>E-Mail Adresse <br />
             Eltern / gesetzlicher Vormund (wenn Minderj&auml;rig)</b>
         </td>
@@ -57,7 +65,7 @@
     </tr>
 
     <tr>
-        <td><b>Geburtsdatum</b></td>
+        <td width="30%"><b>Geburtsdatum</b></td>
         <td>{$person[0].birthday}</td>
     </tr>
 </table>
