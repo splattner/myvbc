@@ -1,9 +1,8 @@
 <style type="text/css">
-<!--
     .requestForm {
         border: 1px solid black;
     }
--->
+
 </style>
 
 <p class="submenu">
@@ -16,7 +15,7 @@
 <h1>Beitrittsgesuch in den VBC Langenthal</h1>
 <h2>Angaben Neumitglied</h2>
 
-<table class="requestform">
+<table class="requestForm">
     <tr>
         <td><b>Vorname / Name</b></td>
         <td>{$person[0].prename} / {$person[0].name}</td>
