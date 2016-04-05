@@ -1,3 +1,11 @@
+<style >
+
+    .requestForm{
+        border: 1px solid black;
+    }
+
+</style>
+
 <p class="submenu">
     <a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index"><i class="fa fa-caret-square-o-left"></i></a>
     <a data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
@@ -8,18 +16,19 @@
 <h1>Beitrittsgesuch in den VBC Langenthal</h1>
 <h2>Angaben Neumitglied</h2>
 
-<table >
+<table class="requestform">
     <tr>
         <td><b>Vorname / Name</b></td>
         <td>{$person[0].prename} / {$person[0].name}</td>
     </tr>
+
     <tr>
         <td<b>Strasse, Nr.</b></td>
         <td>{$person[0].prename}</td>
     </tr>
     <tr>
         <td><b>PLZ, Ort</b></td>
-        <td>{$person[0].plz} {$person[0].ort}<td>
+        <td>{$person[0].plz} {$person[0].ort}</td>
     </tr>
 
     <tr>
