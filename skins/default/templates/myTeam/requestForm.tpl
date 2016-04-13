@@ -46,7 +46,7 @@
 
     <tr>
         <td width="30%"><b>Strasse, Nr.</b></td>
-        <td>{$person[0].prename}</td>
+        <td>{$person[0].address}</td>
     </tr>
 
     <tr>
@@ -74,7 +74,7 @@
             <b>E-Mail Adresse <br />
             Eltern / gesetzlicher Vormund (wenn Minderj&auml;rig)</b>
         </td>
-        <td>{$person[0].email-parent}</td>
+        <td>{$person[0].email_parent}</td>
     </tr>
 
     <tr>
