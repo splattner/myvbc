@@ -23,7 +23,7 @@
 		<td width="30%">Status</td>
 		<td width="70%">
 			{if $allowedit}
-				<select name="statusID">
+				<select class="form-control" name="statusID">
 					<option value="0"></option>
 					{foreach item=status from=$statuslist}
 					<option {if $order.status == $status.id} selected="selected" {/if} value="{$status.id}">{$status.description}</option>
@@ -44,7 +44,7 @@
 		<td width="30%">Bemerkung zur Bestellung</td>
 		<td width="70%">
 			{if (($allowedit && $order.status != 4) || ($order.owner == $uid && $order.status == 1))}
-				<textarea name="comment" cols="40" rows="6">{$order.comment}</textarea>
+				<textarea class="form-control" name="comment" cols="40" rows="6">{$order.comment}</textarea>
 			{else}
 				{$order.comment}
 			{/if}
