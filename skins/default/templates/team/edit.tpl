@@ -42,7 +42,7 @@
 				{/if}
 			</select>
 	</tr>
-	<td>
+	<tr>
 		<td width="30%"></td>
 		<td width="70%">
 			<input type="submit" class="btn btn-primary" name="doEdit" value="bearbeiten">
