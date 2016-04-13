@@ -106,7 +106,7 @@ class MNotification extends MyModel {
 		return $this->db->Execute($sql);
 	}
 	
-	public function getAllNotifications() {
+	public function getAllNotifications($from = 0, $to = 200) {
 				$sql = "SELECT 
 					notification.id AS notificationID,
 					notificationtype.name AS type,
@@ -122,7 +122,7 @@ class MNotification extends MyModel {
 					persons ON notification.personid = persons.id
 				ORDER BY
 					notification.date DESC
-				LIMIT 0,200";
+				LIMIT " . $this->db->qstr($from) ." ," . $this->db->qstr($to);
 
 		return $this->db->Execute($sql);
 	}
