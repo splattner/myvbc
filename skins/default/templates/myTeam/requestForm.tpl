@@ -79,9 +79,12 @@
 
     <tr>
         <td width="30%"><b>Geburtsdatum</b></td>
-        <td>{$person[0].birthday}</td>
+        <td>{$person[0].birthday|date_format:"%d.%m.%Y"}</td>
     </tr>
 </table>
+
+<p></p>
+<p></p>
 
 <p style="margin: 40px; font-size: 12pt;">
     Ich möchte Mitglied des VBC Langenthal werden, habe die Statuten gelesen und anerkenne sie als verbindlich.
@@ -114,4 +117,10 @@
     4901 Langenthal
 </p>
 
-
+{literal}
+<script language="javascript" type="text/javascript">
+    <!--
+    window.print();
+    -->
+</script>
+{/literal}
