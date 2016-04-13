@@ -52,7 +52,8 @@
 	</tr>
 	
 	<tr>
-		<td colspan="2">
+		<td width="30%"></td>
+		<td width="70%">
 		{if ($order.status == 4)}
 			<p class="hightlight" >Bestellung abgeschlossen, Bearbeitung nicht mehr m&ouml;glich!</p>
 		{else}
