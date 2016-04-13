@@ -122,7 +122,7 @@ class MNotification extends MyModel {
 					persons ON notification.personid = persons.id
 				ORDER BY
 					notification.date DESC
-				LIMIT " . $this->db->qstr($from) ." ," . $this->db->qstr($to);
+				LIMIT " . $from ." ," . $to;
 
 		return $this->db->Execute($sql);
 	}
