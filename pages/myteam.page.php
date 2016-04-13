@@ -146,12 +146,6 @@ class PageMyteam extends MyPage
 		$rs = $user->getRS("id=" . $personID);
 		$this->smarty->assign("person", $rs->getArray());
 
-
-
-
-
-
-
 	}
 		
 

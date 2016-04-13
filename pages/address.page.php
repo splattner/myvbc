@@ -107,6 +107,19 @@ class PageAddress extends MyPage
 	public function importAction() {
 		
 	}
+
+	public function requestFormAction() {
+
+		$this->smarty->assign("subContent1", "address/requestForm.tpl");
+
+
+		$personID = $_GET["personID"];
+
+		$user = new MPerson();
+		$rs = $user->getRS("id=" . $personID);
+		$this->smarty->assign("person", $rs->getArray());
+
+	}
 }
 
 ?>
