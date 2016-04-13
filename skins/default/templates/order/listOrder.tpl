@@ -57,7 +57,7 @@
 			<p class="hightlight" >Bestellung abgeschlossen, Bearbeitung nicht mehr m&ouml;glich!</p>
 		{else}
 			{if ($allowedit || ($order.owner == $uid && $order.status == 1))}
-				<input type="submit" name="doEdit" value="bearbeiten">
+				<input class="btn btn-primary" type="submit" name="doEdit" value="bearbeiten">
 			{else}
 				<p class="hightlight" >Bearbeiten ist nicht mehr m&ouml;glich, der Bestellvorgang wurde bereits ausgel&oumlst, oder das ist nich deine Bestellung <br />
 				Wenn etwas nicht in Ordnung ist, melde dich beim Chef-TK!</p>
