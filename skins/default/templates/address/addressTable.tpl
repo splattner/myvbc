@@ -108,7 +108,7 @@
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/505bef35b56/i18n/German.json"
                 },
-                "order": [[2, "asc"], [3, "asc"]],
+                "order": [[3, "asc"], [2, "asc"]],
                 "columnDefs": [
                     {"targets": 0, "orderable": false},
                     {"targets": 1, "orderable": false},
