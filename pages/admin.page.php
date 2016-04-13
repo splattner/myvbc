@@ -47,7 +47,7 @@ class PageAdmin extends MyPage
 			$person = new MPerson();
 			$person->createAccess($personID,$groupID);
 			
-			$this->smarty->assign("messages","Zugang f�r Person wurde eingerichtet");
+			$this->smarty->assign("messages","Zugang f&uuml;r Person wurde eingerichtet");
 			
 			return "access";		
 		}
@@ -68,7 +68,7 @@ class PageAdmin extends MyPage
 		$person = new MPerson();
 		$person->removeAccess($personID);
 		
-		$this->smarty->assign("messages","Zugang f�r Person wurde entfernt");
+		$this->smarty->assign("messages","Zugang f&uuml;r Person wurde entfernt");
 		
 		return "access";
 		

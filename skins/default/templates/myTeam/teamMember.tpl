@@ -52,7 +52,10 @@
 		{if $person.signature == 1}
 			<i class="fa fa-check-square-o"></i>
 		{else}
-			<i class="fa fa-square-o"></i>
+			<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Beitrittsgesuch" class="icons"
+			   href="index.php?page={$currentPage}&action=requestForm&personID={$person.personID}">
+				<i class="fa fa-file-pdf-o"></i>
+			</a>
 		{/if}
 	</td>
 	<td>
@@ -68,10 +71,7 @@
 	<td>{$person.birthday|date_format:"%d.%m.%Y"}</td>
 	<td>{if $person.email|count_characters > 0} {mailto address=$person.email}{else}Keine E-Mail Adresse{/if}</td>
 	<td align="right">
-		<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Beitrittsgesuch" class="icons"
-		   href="index.php?page={$currentPage}&action=requestForm&personID={$person.personID}">
-			<i class="fa fa-file-pdf-o"></i>
-		</a>
+
 		{if $canEditMember}
 			<a data-toggle="tooltip" data-placement="bottom" title="Daten dieser Person bearbeiten" class="icons"
 			   href="index.php?page={$currentPage}&action=edit&teamID={$person.teamID}&personID={$person.personID}">
