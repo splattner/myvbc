@@ -76,7 +76,7 @@
             <td align="right">
                 {if $person.signature == 0 }
                 <a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Beitrittsgesuch" class="icons"
-                   href="index.php?page={$currentPage}&action=requestForm&personID={$person.personID}">
+                   href="index.php?page={$currentPage}&action=requestForm&personID={$person.id}">
                     <i class="fa fa-file-pdf-o"></i>
                 </a>
                 {/if}
