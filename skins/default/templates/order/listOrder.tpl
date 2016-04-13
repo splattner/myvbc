@@ -59,7 +59,7 @@
 			{if ($allowedit || ($order.owner == $uid && $order.status == 1))}
 				<input type="submit" name="doEdit" value="bearbeiten">
 			{else}
-				<p class="hightlight" >Bearbeiten ist nicht mehr m�glich, der Bestellvorgang wurde bereits ausgel&oumlst, oder das ist nich deine Bestellung <br />
+				<p class="hightlight" >Bearbeiten ist nicht mehr m&ouml;glich, der Bestellvorgang wurde bereits ausgel&oumlst, oder das ist nich deine Bestellung <br />
 				Wenn etwas nicht in Ordnung ist, melde dich beim Chef-TK!</p>
 			{/if}
 		{/if}
@@ -73,6 +73,8 @@
 <p class="submenu">
 	{if ($allowedit && $order.status != 4 )|| $order.status == 1}
 	<a onClick="showaddLicenceForm({$orderID})" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Neue Lizenz zu dieser Bestellung hinzuf&uuml$;gen" href="#"><i class="fa fa-plus-square"></i></a>
+		Achtung: Es k&ouml;nnen nur Lizenzen für Personen bestellt werden, die das Beitrittsgesuch des VBC Langenthal unterzeichnet haben.
+		<br> Wenn du ein Spieler nicht findest, prüfe in deiner Teamliste ob das Beitrittsgesuch unterschrieben wurde. Wenn nicht, bitte ausdrucken, unterzeichnen lassen und an unser Sekretariat senden.
 	{/if}
 </p>
 

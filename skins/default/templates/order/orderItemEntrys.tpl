@@ -25,7 +25,7 @@
 
 	<td align="right">
 		{if (($allowedit && $order[0].status != 4) || ($order[0].owner == $uid && $order[0].status == 1))}
-			<a onclick="removeLicenceFromOrder({$orderitem.personID},{$orderitem.orderID})" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Diese Lizent entfernen" href="#"><i style="color: red;" class="fa fa-trash-o"></i></a>
+			<a onclick="removeLicenceFromOrder({$orderitem.personID},{$orderitem.orderID})" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Diese Lizenz entfernen" href="#"><i style="color: red;" class="fa fa-trash-o"></i></a>
 		{/if}	
 	</td>
 </tr>

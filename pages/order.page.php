@@ -212,7 +212,7 @@ class PageOrder extends MyPage
 		$this->smarty->assign("orderID", $orderID);
 		
 		$person = new MPerson();
-		$rs = $person->getRS("active = 1","persons.name ASC, persons.prename ASC");
+		$rs = $person->getRS("active = 1 AND signature = 1","persons.name ASC, persons.prename ASC");
 		$this->smarty->assign("persons", $rs->getArray());
 		
 		// Create AJAX Response
