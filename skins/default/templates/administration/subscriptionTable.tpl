@@ -37,8 +37,8 @@
 <table class="wide">
 <tr>
 	<th>Nachrichten-Typ</th>
-	<th>Datum</th>
 	<th>Inhalt</th>
+	<th>Datum</th>
 	<th>Ausl&ouml;ser</th>
 	<th>&nbsp</th>
 </tr>
