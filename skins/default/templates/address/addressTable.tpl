@@ -74,6 +74,12 @@
             <td>{$person.mobile}</td>
             <td>{$person.email}</td>
             <td align="right">
+                {if $person.signature == 0 }
+                <a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Beitrittsgesuch" class="icons"
+                   href="index.php?page={$currentPage}&action=requestForm&personID={$person.personID}">
+                    <i class="fa fa-file-pdf-o"></i>
+                </a>
+                {/if}
                 {if $person.active == 1 && isset($person.liga)}
                     <a class="icons" data-toggle="tooltip" data-placement="bottom" title="{$person.liga}">
                         <i class="fa fa-users"></i>
