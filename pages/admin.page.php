@@ -234,7 +234,7 @@ class PageAdmin extends MyPage
 		$this->smarty->assign("subContent1", "administration/addSubsciption.tpl");
 		
 		$persons = new MPerson();
-		$rs = $persons->getRS("","name ASC, prename ASC");
+		$rs = $persons->getRS("active=1","name ASC, prename ASC");
 		$this->smarty->assign("users", $rs->getArray());
 		
 		$notification = new MNotification();
