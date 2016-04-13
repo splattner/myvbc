@@ -111,6 +111,7 @@
                 "order": [[2, "desc"], [3, "desc"]],
                 "columnDefs": [
                     {"targets": 0, "orderable": false},
+                    {"targets": 1, "orderable": false},
                     {"targets": 8, "orderable": false}
                 ]
             });
