@@ -11,23 +11,23 @@
 	</tr>
 	<tr>
 		<td width="30%">Externe ID</td>
-		<td width="70%"><input class="textinput" type="text" name="extid" value="{$team.extid}"></d>
+		<td width="70%"><input class="form-control" type="text" name="extid" value="{$team.extid}"></d>
 	</tr>
 	<tr>
 		<td width="30%">Name</td>
-		<td width="70%"><input class="textinput" type="text" name="name" value="{$team.name}"></d>
+		<td width="70%"><input class="form-control" type="text" name="name" value="{$team.name}"></d>
 	</tr>
 	<tr>
 		<td width="30%">Externer Name</td>
-		<td width="70%"><input class="textinput" type="text" name="extname" value="{$team.extname}"></d>
+		<td width="70%"><input class="form-control" type="text" name="extname" value="{$team.extname}"></d>
 	</tr>
 	<tr>
 		<td width="30%">Liga</td>
-		<td width="70%"><input class="textinput" type="text" name="liga" value="{$team.liga}"></d>
+		<td width="70%"><input class="form-control" type="text" name="liga" value="{$team.liga}"></d>
 	</tr>
 	<tr>
 		<td width="30%">Externe Liga</td>
-		<td width="70%"><input class="textinput" type="text" name="extliga" value="{$team.extliga}"></d>
+		<td width="70%"><input class="form-control" type="text" name="extliga" value="{$team.extliga}"></d>
 	</tr>
 	<tr>
 		<td width="30%">Type</td>
@@ -43,7 +43,8 @@
 			</select>
 	</tr>
 	<td>
-		<td colspan="2">
+		<td width="30%"></td>
+		<td width="70%">
 			<input type="submit" class="btn btn-primary" name="doEdit" value="bearbeiten">
 		</td>
 	</tr>
