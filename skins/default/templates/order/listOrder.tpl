@@ -72,9 +72,11 @@
 
 <p class="submenu">
 	{if ($allowedit && $order.status != 4 )|| $order.status == 1}
-	<a onClick="showaddLicenceForm({$orderID})" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Neue Lizenz zu dieser Bestellung hinzuf&uuml$;gen" href="#"><i class="fa fa-plus-square"></i></a>
-		Achtung: Es k&ouml;nnen nur Lizenzen für Personen bestellt werden, die das Beitrittsgesuch des VBC Langenthal unterzeichnet haben.
-		<br> Wenn du ein Spieler nicht findest, prüfe in deiner Teamliste ob das Beitrittsgesuch unterschrieben wurde. Wenn nicht, bitte ausdrucken, unterzeichnen lassen und an unser Sekretariat senden.
+	<a onClick="showaddLicenceForm({$orderID})" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Neue Lizenz zu dieser Bestellung hinzuf&uuml;gen" href="#"><i class="fa fa-plus-square"></i></a>
+		<div class="alert alert-info" role="alert">
+			<b>Achtung:</b> Es k&ouml;nnen nur Lizenzen für Personen bestellt werden, die das Beitrittsgesuch des VBC Langenthal unterzeichnet haben.
+			<br> Wenn du ein Spieler nicht findest, prüfe in deiner Teamliste ob das Beitrittsgesuch unterschrieben wurde. Wenn nicht, bitte ausdrucken, unterzeichnen lassen und an unser Sekretariat senden.
+		</div>
 	{/if}
 </p>
 
