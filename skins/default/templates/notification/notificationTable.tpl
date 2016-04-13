@@ -17,7 +17,6 @@
 	<td>{$notification.prename} {$notification.name}</td>
 	<td align="right">
 		<a class="icons" data-toggle="tooltip" data-placement="bottom" title="Nachricht löschen" href="index.php?page={$currentPage}&action=delete&notificationID={$notification.notificationID}"><i style="color: red;" class="fa fa-trash-o"></i></a>
-
 	</td>
 </tr>
 {/foreach}
