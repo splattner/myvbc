@@ -26,7 +26,7 @@
 		</p>
 		
 				
-		<p> <img src="{$templateDir}/images/icons/exclamation.png"> Wenn Sie noch keinen Zugang haben, schreiben Sie bitte eine E-Mail an {mailto address=myVBC@vbclangenthal.ch} um einen
+		<p> <img src="{$templateDir}/images/icons/exclamation.png"> Wenn Sie noch keinen Zugang haben, schreiben Sie bitte eine E-Mail an {mailto address="myVBC@vbclangenthal.ch"} um einen
 			Zugang einzurichten!
 		</p>
 	</td>
