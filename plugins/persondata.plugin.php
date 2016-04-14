@@ -114,7 +114,7 @@ class PPersondata extends MyPlugin {
 			$person->update("id=" . $this->db->qstr($this->data["personID"]), $this->db->qstr($this->data["personID"]));
 			
 			$this->smarty->assign("messages","Die Daten wurden bearbeitet!");
-			$this->smarty->assign("allowSignature", $this->acl->acl_check("address", "setSignature", "user", $this->session->uid));
+
 
 			unset($_POST["doEdit"]);
 			
@@ -128,5 +128,7 @@ class PPersondata extends MyPlugin {
 		$licences = new MLicence();
 		$rs = $licences->getLicenceList();
 		$this->smarty->assign("licences", $rs->getArray());
+
+		$this->smarty->assign("allowSignature", $this->acl->acl_check("address", "setSignature", "user", $this->session->uid));
 	}
 }
