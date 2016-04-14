@@ -100,8 +100,12 @@ class PPersondata extends MyPlugin {
 			$person->gender = $_POST["gender"];
 			$person->schreiber = $_POST["schreiber"];
 			if ($person->schreiber == NULL) $person->schreiber = 0;
-			$person->signature = $_POST["signature"];
-			if ($person->signature == NULL) $person->signature = 0;
+
+			if($this->acl->acl_check("address", "setSignature", "user", $this->session->uid)) {
+				$person->signature = $_POST["signature"];
+				if ($person->signature == NULL) $person->signature = 0;
+			}
+
 			$person->sms = $_POST["sms"];
 			$person->licence = $_POST["licence"];
 			$person->licence_comment = $_POST["licence_comment"];
@@ -110,6 +114,7 @@ class PPersondata extends MyPlugin {
 			$person->update("id=" . $this->db->qstr($this->data["personID"]), $this->db->qstr($this->data["personID"]));
 			
 			$this->smarty->assign("messages","Die Daten wurden bearbeitet!");
+			$this->smarty->assign("allowSignature", $this->acl->acl_check("address", "setSignature", "user", $this->session->uid));
 
 			unset($_POST["doEdit"]);
 			

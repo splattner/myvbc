@@ -58,6 +58,7 @@
 			</select>
 		</td>
 	</tr>
+	{if $allowSignature}
 	<tr>
 		<td width="30%">Vereinsbeitritt unterzeichnet</td>
 		<td>
@@ -68,6 +69,7 @@
 			{/if}
 		</td>
 	</tr>
+	{/if}
 	<tr>
 		<td width="30%"><b>Zus&auml;tzliche Daten</td>
 		<td width="70%" >&nbsp;</td>
