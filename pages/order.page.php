@@ -100,10 +100,11 @@ class PageOrder extends MyPage
 				$members = $team->getAllMember($order->teamid)->getArray();
 				
 				$order = new MOrder();
-				$order->addLicenceToOrder($personID, $orderID);
 				
 				foreach($members as $person) {
-					$order->addLicenceToOrder($person["personID"], $orderid);
+					if($person["signature"] == 1) {
+						$order->addLicenceToOrder($person["personID"], $orderid);
+					}
 				}
 			}
 
