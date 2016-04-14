@@ -115,7 +115,6 @@ class PPersondata extends MyPlugin {
 			
 			$this->smarty->assign("messages","Die Daten wurden bearbeitet!");
 
-
 			unset($_POST["doEdit"]);
 			
 			return "main";

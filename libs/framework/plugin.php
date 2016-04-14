@@ -31,6 +31,13 @@ abstract class MyPlugin {
 	 */
 	public $page;
 
+	/**
+	 * Provides the PHPGACL Functions
+	 * @access public
+	 * @var mixed
+	 */
+	public $acl;
+
 	
 	/*
 	 * Contains the HTLM Skin File for this Plugin
@@ -63,6 +70,7 @@ abstract class MyPlugin {
 		$this->smarty = MyApplication::getInstance("smarty");
 		$this->db = MyApplication::getInstance("db");
 		$this->notification = MyApplication::getInstance("notification");
+		$this->acl = MyApplication::getInstance("acl");
 
 		$this->registerPlugin($registerAs);
 		
