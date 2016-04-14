@@ -32,6 +32,13 @@ abstract class MyPlugin {
 	public $page;
 
 	/**
+	 * The Session object to manage all Session related stuff
+	 * @access public
+	 * @var mixed
+	 */
+	public $session;
+
+	/**
 	 * Provides the PHPGACL Functions
 	 * @access public
 	 * @var mixed
@@ -68,6 +75,7 @@ abstract class MyPlugin {
 
 		$this->page = MyApplication::getInstance("page");
 		$this->smarty = MyApplication::getInstance("smarty");
+		$this->session = MyApplication::getInstance("session");
 		$this->db = MyApplication::getInstance("db");
 		$this->notification = MyApplication::getInstance("notification");
 		$this->acl = MyApplication::getInstance("acl");
