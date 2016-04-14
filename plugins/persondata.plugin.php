@@ -128,6 +128,6 @@ class PPersondata extends MyPlugin {
 		$rs = $licences->getLicenceList();
 		$this->smarty->assign("licences", $rs->getArray());
 
-		$this->smarty->assign("allowSignature", $this->acl->acl_check("address", "setSignature", "user", $this->session->uid));
+        $this->smarty->assign("allowSignature", $this->acl->acl_check("address", "setSignature", "user", $this->session->uid));
 	}
 }
