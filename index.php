@@ -101,7 +101,7 @@ MyApplication::setInstance("session",$session);
  * Initialize the XAJAX Object
  */
 $xajax = new xajax("index.php?ajax&page=" . $session->currentPage);
-$xajax->configure("javascript URI", "libs/xajax_0.5_standard");
+$xajax->configure("javascript URI", "libs/xajax-0.6-beta1");
 $xajax->configure('debug',$config["system"]["ajaxdebug"]);
 MyApplication::setInstance("xajax", $xajax);
 
