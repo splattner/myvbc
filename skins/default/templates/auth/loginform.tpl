@@ -24,7 +24,7 @@
 
 	</div>
 	<div class="panel-footer">
-		Bei Problemen wenden Sie sich bitte an {mailto address=myVBC@vbclangenthal.ch}
+		Bei Problemen wenden Sie sich bitte an {mailto address="myVBC@vbclangenthal.ch"}
 	<div>
 
 
