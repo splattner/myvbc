@@ -44,13 +44,18 @@ class MyHelper {
 	
 	public static function sendSMS($originator, $recipient, $content) {
 
-        $aspsms = new Aspsms($config["aspsms"]["username"], $config["aspsms"]["password"], array(
-            'Originator' => 'myVBC'
-        ));
+		try {
+			$aspsms = new Aspsms($config["aspsms"]["username"], $config["aspsms"]["password"], array(
+				'Originator' => 'myVBC'
+			));
 
-        $aspsms->sendTextSms($content, array(
-            '0' => $recipient
-        ));
+			$aspsms->sendTextSms($content, array(
+				'0' => $recipient
+			));
+		} catch (Exception $e) {
+			print_r($e);
+		}
+
 		
 
 		
