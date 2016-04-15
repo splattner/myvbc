@@ -22,11 +22,11 @@
 		</p>
 
 		<p class="indented">
-			<a href="?page=auth"><img src="{$templateDir}/images/icons/key.png">&nbsp;Mit E-Mail Adresse und Passwort anmelden</a>
+			<a href="?page=auth"><i class="fa fa-sign-in"></i>&nbsp;Mit E-Mail Adresse und Passwort anmelden</a>
 		</p>
 		
 				
-		<p> <img src="{$templateDir}/images/icons/exclamation.png"> Wenn Sie noch keinen Zugang haben, schreiben Sie bitte eine E-Mail an {mailto address="myVBC@vbclangenthal.ch"} um einen
+		<p> <i class="fa fa-exclamation-circle"></i> Wenn Sie noch keinen Zugang haben, schreiben Sie bitte eine E-Mail an {mailto address="myVBC@vbclangenthal.ch"} um einen
 			Zugang einzurichten!
 		</p>
 	</td>
