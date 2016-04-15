@@ -24,7 +24,7 @@
 			</p>
 			<p>
 				<b style="color: #FF0000;">Achtung:</b> Wenn die hier angezeigten Daten nicht stimmen, 
-				m&uuml;ssen Sie dies zuerst per E-Mail an {mailto address=myVBC@vbclangenthal.ch} melden,
+				m&uuml;ssen Sie dies zuerst per E-Mail an {mailto address="myVBC@vbclangenthal.ch"} melden,
 				damit die korrekte Adresse eingetragen werden kann!
 				<br /> <br /><b>Erst danach kann Ihr Zugang erstellt werden!</b>
 			</p>
