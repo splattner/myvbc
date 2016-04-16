@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "233aff820de39e71d16909275989a3f9",
-    "content-hash": "a34f3bb26f1c6c84fa3c6e3a5887f38a",
+    "hash": "fc2e1af307f65c786a75199387b78bed",
+    "content-hash": "c9b5d803e21f90da8c76b7834b891774",
     "packages": [
         {
             "name": "nadar/aspsms",
-            "version": "v1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nadar/aspsms.git",
-                "reference": "6ffda5a1622eea7a147be886d34fe6f9beddda36"
+                "reference": "dc459411b7349629e7e1054ac8c631cfebf63064"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nadar/aspsms/zipball/6ffda5a1622eea7a147be886d34fe6f9beddda36",
-                "reference": "6ffda5a1622eea7a147be886d34fe6f9beddda36",
+                "url": "https://api.github.com/repos/nadar/aspsms/zipball/dc459411b7349629e7e1054ac8c631cfebf63064",
+                "reference": "dc459411b7349629e7e1054ac8c631cfebf63064",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "php",
                 "sms"
             ],
-            "time": "2015-01-06 08:13:46"
+            "time": "2016-04-15 20:49:05"
         }
     ],
     "packages-dev": [],
