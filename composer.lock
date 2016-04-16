@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ebe4e4c1612dfbdfdaabf6f4e7502161",
-    "content-hash": "dfbe56986328bb77d41d94119de887ed",
+    "hash": "130a84785e64fae641aefaa13ce58adb",
+    "content-hash": "ad49315c1639077dc0d55effe83bd58d",
     "packages": [
         {
             "name": "adodb/adodb-php",
@@ -223,13 +223,68 @@
                 "templating"
             ],
             "time": "2015-12-21 01:57:06"
+        },
+        {
+            "name": "xajax/xajax",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Xajax/Xajax.git",
+                "reference": "49ea682f4dffbda7a2984e7d07450207d233ad7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Xajax/Xajax/zipball/49ea682f4dffbda7a2984e7d07450207d233ad7c",
+                "reference": "49ea682f4dffbda7a2984e7d07450207d233ad7c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "xajax_core/"
+                },
+                "files": [
+                    "xajax_core/xajax.inc.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jared White"
+                },
+                {
+                    "name": "J. Max Wilson"
+                },
+                {
+                    "name": "Joseph Woolley"
+                },
+                {
+                    "name": "Steffen Konerow"
+                }
+            ],
+            "description": "Xajax is an open source PHP class library for easily creating powerful PHP-driven, web-based Ajax Applications. Using Xajax, you can asynchronously call PHP functions and update the content of your your webpage without reloading the page.",
+            "homepage": "http://xajaxproject.org",
+            "keywords": [
+                "asynchronous",
+                "php",
+                "xajax"
+            ],
+            "time": "2014-10-22 16:40:16"
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "xajax/xajax": 20
+    },
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": []

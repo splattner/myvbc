@@ -27,7 +27,6 @@ require __DIR__ . '/vendor/autoload.php';
  */
 require_once "libs/phpgacl-3.3.7/gacl.class.php";
 require_once "libs/phpgacl-3.3.7/gacl_api.class.php";
-require_once "libs/xajax-0.6-beta1/xajax_core/xajax.inc.php";
 
 /**
  * Include my libs
