@@ -4,14 +4,16 @@
 ob_start();
 
 
-require_once('../libs/PHPMailer_v5.0.2/class.phpmailer.php');
-require_once('../libs/MimeMailParser/MimeMailParser.class.php'); 
+/**
+ * Composer
+ */
+require __DIR__ . '..//vendor/autoload.php';
 
 require_once "../etc/confic.inc.php";
 
 
-mysql_connect($config["db"]["server"],$config["db"]["username"],$config["db"]["password"]);
-mysql_select_db($config["db"]["database"]);
+mysqli_connect($config["db"]["server"],$config["db"]["username"],$config["db"]["password"]);
+mysqli_select_db($config["db"]["database"]);
 
 
 // read from stdin

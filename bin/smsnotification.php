@@ -5,16 +5,18 @@
 define( '_MYVBC', 1 );
 
 require_once "../etc/confic.inc.php";
-require_once "../vendor/adodb/adodb-php/adodb.inc.php";
-require_once "../vendor/nadar/aspsms/src/Aspsms.php";
-require_once "../vendor/phpmailer/phpmailer/class.phpmailer.php";
+
+/**
+ * Composer
+ */
+require __DIR__ . '..//vendor/autoload.php';
 
 
 
 /**
  * Initialize the Database Connection
  */
-$dsn = "mysql://" 
+$dsn = "mysqli://"
 . $config["db"]["username"] . ":" 
 . $config["db"]["password"] . "@"
 . $config["db"]["server"] . "/"
