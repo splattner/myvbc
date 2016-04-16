@@ -1,1 +1,0 @@
-[20-Oct-2012 10:16:23] PHP Fatal error:  Out of memory (allocated 5767168) (tried to allocate 7680 bytes) in /usr/lib/php/PEAR/ErrorStack.php on line 782

@@ -5,13 +5,11 @@
 define( '_MYVBC', 1 );
 
 require_once "../etc/confic.inc.php";
-require_once "../libs/adodb5/adodb.inc.php";
+require_once "../vendor/adodb/adodb-php/adodb.inc.php";
 require_once "../vendor/nadar/aspsms/src/Aspsms.php";
-require_once "../libs/PHPMailer_v5.0.2/class.phpmailer.php";
+require_once "../vendor/phpmailer/phpmailer/class.phpmailer.php";
 
-//require_once "../etc/confic.inc.php";
-//require_once "../libs/adodb5/adodb.inc.php";
-//require_once "../libs/sms/SMS.php";
+
 
 /**
  * Initialize the Database Connection
