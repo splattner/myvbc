@@ -1,0 +1,66 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "233aff820de39e71d16909275989a3f9",
+    "content-hash": "a34f3bb26f1c6c84fa3c6e3a5887f38a",
+    "packages": [
+        {
+            "name": "nadar/aspsms",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nadar/aspsms.git",
+                "reference": "6ffda5a1622eea7a147be886d34fe6f9beddda36"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nadar/aspsms/zipball/6ffda5a1622eea7a147be886d34fe6f9beddda36",
+                "reference": "6ffda5a1622eea7a147be886d34fe6f9beddda36",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "@stable",
+                "phpunit/phpunit": "@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Aspsms\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "nadar",
+                    "homepage": "https://github.com/nadar",
+                    "role": "Creator"
+                }
+            ],
+            "description": "php class for sending sms over aspsms",
+            "homepage": "https://github.com/nadar/aspsms",
+            "keywords": [
+                "php",
+                "sms"
+            ],
+            "time": "2015-01-06 08:13:46"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

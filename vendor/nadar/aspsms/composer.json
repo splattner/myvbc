@@ -1,0 +1,36 @@
+{
+    "name": "nadar/aspsms",
+    "type": "library",
+    "description": "php class for sending sms over aspsms",
+    "keywords": ["sms","php"],
+    "homepage": "https://github.com/nadar/aspsms",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "nadar",
+            "homepage": "https://github.com/nadar",
+            "role": "Creator"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "fabpot/php-cs-fixer": "@stable",
+        "phpunit/phpunit": "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aspsms\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Aspsms\\Test\\": "tests/"
+        }
+    },
+    "config": {
+      "bin-dir": "bin"
+    }
+}

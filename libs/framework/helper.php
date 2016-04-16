@@ -1,5 +1,7 @@
 <?php
-require_once "libs/sms/aspsms.class.php";
+
+use Aspsms\Aspsms;
+
 require_once "etc/confic.inc.php";
 
 class MyHelper {
@@ -44,6 +46,8 @@ class MyHelper {
 	
 	public static function sendSMS($originator, $recipient, $content) {
 
+        global $config;
+
 		try {
 			$aspsms = new Aspsms($config["aspsms"]["username"], $config["aspsms"]["password"], array(
 				'Originator' => 'myVBC'
@@ -53,7 +57,7 @@ class MyHelper {
 				'0' => $recipient
 			));
 		} catch (Exception $e) {
-			print_r($e);
+			//print_r($e);
 		}
 
 		

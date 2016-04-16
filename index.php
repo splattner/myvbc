@@ -16,6 +16,12 @@ header("Content-Type: text/html; charset=utf-8");
 // Set flag that this is a parent file
 define( '_MYVBC', 1 );
 
+
+/**
+ * Composer
+ */
+require __DIR__ . '/vendor/autoload.php';
+
 /**
  * Include 3-Party libs
  */
@@ -25,7 +31,6 @@ require_once "libs/phpgacl-3.3.7/gacl_api.class.php";
 require_once "libs/smarty-3.1.29/libs/Smarty.class.php";
 require_once "libs/xajax-0.6-beta1/xajax_core/xajax.inc.php";
 require_once "libs/PHPMailer_v5.0.2/class.phpmailer.php";
-require_once "libs/sms/SMS.php";
 
 /**
  * Include my libs
