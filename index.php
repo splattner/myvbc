@@ -25,12 +25,9 @@ require __DIR__ . '/vendor/autoload.php';
 /**
  * Include 3-Party libs
  */
-require_once "libs/adodb5/adodb.inc.php";
 require_once "libs/phpgacl-3.3.7/gacl.class.php";
 require_once "libs/phpgacl-3.3.7/gacl_api.class.php";
-require_once "libs/smarty-3.1.29/libs/Smarty.class.php";
 require_once "libs/xajax-0.6-beta1/xajax_core/xajax.inc.php";
-require_once "libs/PHPMailer_v5.0.2/class.phpmailer.php";
 
 /**
  * Include my libs
