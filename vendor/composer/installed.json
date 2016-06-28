@@ -162,61 +162,6 @@
         ]
     },
     {
-        "name": "xajax/xajax",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Xajax/Xajax.git",
-            "reference": "49ea682f4dffbda7a2984e7d07450207d233ad7c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Xajax/Xajax/zipball/49ea682f4dffbda7a2984e7d07450207d233ad7c",
-            "reference": "49ea682f4dffbda7a2984e7d07450207d233ad7c",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2"
-        },
-        "time": "2014-10-22 16:40:16",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "": "xajax_core/"
-            },
-            "files": [
-                "xajax_core/xajax.inc.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-2-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Jared White"
-            },
-            {
-                "name": "J. Max Wilson"
-            },
-            {
-                "name": "Joseph Woolley"
-            },
-            {
-                "name": "Steffen Konerow"
-            }
-        ],
-        "description": "Xajax is an open source PHP class library for easily creating powerful PHP-driven, web-based Ajax Applications. Using Xajax, you can asynchronously call PHP functions and update the content of your your webpage without reloading the page.",
-        "homepage": "http://xajaxproject.org",
-        "keywords": [
-            "asynchronous",
-            "php",
-            "xajax"
-        ]
-    },
-    {
         "name": "phpmailer/phpmailer",
         "version": "v5.2.16",
         "version_normalized": "5.2.16.0",
@@ -277,5 +222,60 @@
             }
         ],
         "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
+    },
+    {
+        "name": "xajax/xajax",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Xajax/Xajax.git",
+            "reference": "49ea682f4dffbda7a2984e7d07450207d233ad7c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Xajax/Xajax/zipball/49ea682f4dffbda7a2984e7d07450207d233ad7c",
+            "reference": "49ea682f4dffbda7a2984e7d07450207d233ad7c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "time": "2014-10-22 16:40:16",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "": "xajax_core/"
+            },
+            "files": [
+                "xajax_core/xajax.inc.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Jared White"
+            },
+            {
+                "name": "J. Max Wilson"
+            },
+            {
+                "name": "Joseph Woolley"
+            },
+            {
+                "name": "Steffen Konerow"
+            }
+        ],
+        "description": "Xajax is an open source PHP class library for easily creating powerful PHP-driven, web-based Ajax Applications. Using Xajax, you can asynchronously call PHP functions and update the content of your your webpage without reloading the page.",
+        "homepage": "http://xajaxproject.org",
+        "keywords": [
+            "asynchronous",
+            "php",
+            "xajax"
+        ]
     }
 ]
