@@ -38,13 +38,13 @@ class MKey extends MyModel {
 				LEFT JOIN
 					persons ON accesskeys.person = persons.id
 				WHERE
-                	person = " . $this->db->qstr($personID) ."
+                	person = ?
                 ORDER BY
                   persons.name,
                   persons.prename";
 
-
-		return $this->db->Execute($sql);
+        $sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($personID));
 
 	}
 

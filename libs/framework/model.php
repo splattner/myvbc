@@ -29,21 +29,27 @@ class MyModel {
 	public function update($where) {
 		
 		$sql = "UPDATE `" . $this->table . "` SET ";
-		
+        $values = array();
+
 		foreach($this->fields as $key => $value)
 		{
-			$sql .= $key . " = " . $this->db->qstr($value) .", ";
+			$sql .= $key . " = ?, ";
+            $values[] =  $value;
+
 		}
 			
 		$sql = substr($sql, 0, -2); // Remove last ","
 		$sql .= " WHERE " . $where;
-		$this->db->Execute($sql);
+
+        $sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, $values);
 	
 	}
 	
 	public function insert() {
 		
 		$sql = "INSERT INTO `" . $this->table . "` (";
+        $values = array();
 		
 		foreach($this->fields as $key => $value)
 		{
@@ -54,12 +60,14 @@ class MyModel {
 		
 		foreach($this->fields as $key => $value)
 		{
-			$sql .= $this->db->qstr($value) . ", ";
+			$sql .= "? , ";
+            $values[] =  $value;
 		}
 		$sql = substr($sql, 0, -2); // Remove last ","
 		$sql  .= ")";
-							
-		$this->db->Execute($sql);
+
+        $sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, $values);
 		
 		return $this->db->Insert_ID();
 	}
@@ -71,17 +79,35 @@ class MyModel {
 		
 		if($where != "") {
 			$sql .= " WHERE " . $where;
+            //$sql .= " WHERE ? ";
 		}
 		
 		if($orderby != "") {
 			$sql .= " ORDER BY " . $orderby;
+            //$sql .= " ORDER BY ? ";
 		}
-		
-		return $this->db->Execute($sql);
+/*
+        $sql = $this->db->Prepare($sql);
+
+        //print_r($sql);
+
+        if($where != "" && $orderby != "") {
+            return $this->db->Execute($sql, array($where, $orderby));
+        } else if($where != "") {
+            return $this->db->Execute($sql, array($where));
+        } else if($orderby != "") {
+            return $this->db->Execute($sql, array($orderby));
+        } else {*/
+            return $this->db->Execute($sql);
+        /*}*/
+
 	}
 	
 	public function delete($id) {
-		$this->db->Execute("DELETE FROM `" . $this->table . "` WHERE " . $id);
+
+        $sql = $this->db->Prepare("DELETE FROM `" . $this->table . "` WHERE ?");
+
+		$this->db->Execute($sql, array($id));
 	}
 	
 	public function __get($name) {

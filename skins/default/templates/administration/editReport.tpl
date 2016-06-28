@@ -1,3 +1,14 @@
+{literal}
+    <link rel="stylesheet" href="libs/codemirror-5.14/lib/codemirror.css">
+    <script src="libs/codemirror-5.14/lib/codemirror.js"></script>
+    <script>
+        var editor = CodeMirror.fromTextArea(query, {
+            lineNumbers: true
+        });
+    </script>
+{/literal}
+
+
 <form action="index.php?page={$currentPage}&action=editReport&reportID={$report[0].id}" method="POST">
 <table class="edit">
 	<tr>
@@ -15,7 +26,7 @@
 	<tr>
 		<td width="30%">Query</td>
 		<td width="70%">
-			<textarea name="query" rows="20" cols="40">{$report[0].query}</textarea>
+			<textarea id="query" name="query" rows="20" cols="40">{$report[0].query}</textarea>
 			</td>
 	</tr>
 

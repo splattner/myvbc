@@ -78,11 +78,8 @@ class MySession {
 	 */
 	public function auth($email, $password) {
 		
-		$email = $this->db->qstr($email);
-		$password = $this->db->qstr($password);
-		
-		$sql = "SELECT * FROM persons WHERE email = " . $email . " AND password = MD5(" . $password . ")";
-		$rs = $this->db->execute($sql);
+        $sql = $this->db->Prepare("SELECT * FROM persons WHERE email = ? AND password = MD5(?)");
+        $rs = $this->db->execute($sql,array($email, $password));
 		
 		/**
 		 * Check if any record are available and if acl allowes to authenticate

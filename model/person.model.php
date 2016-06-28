@@ -23,10 +23,11 @@ class MPerson extends MyModel {
 				LEFT JOIN
 					teams ON games.team = teams.id
 				WHERE
-					persons.id = " . $this->db->qstr($personID) ."
+					persons.id = ?
 				ORDER BY
 					games.date";
-		return $this->db->Execute($sql);
+		$sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($personID));
 	}
 	
 	public function getMyTeams($personID) {
@@ -41,9 +42,10 @@ class MPerson extends MyModel {
 				LEFT JOIN
 					persons ON players.person = persons.id
 				WHERE
-					persons.id = " . $this->db->qstr($personID);
-				
-		return $this->db->Execute($sql);
+					persons.id = ?";
+
+		$sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($personID));
 	}
 
 
@@ -87,13 +89,17 @@ class MPerson extends MyModel {
 				LEFT JOIN
 					teams ON games.team = teams.id
 				WHERE
-					persons.id = " . $this->db->qstr($personID);
-		return $this->db->Execute($sql);
+					persons.id = ?";
+
+		$sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($personID));
 	}
 	
 	public function changePassword($personID, $newPassword) {
-		$sql = "UPDATE persons SET password = MD5('" . $newPassword . "') WHERE id = " . $this->db->qstr($personID);
-		$this->db->Execute($sql);
+		$sql = "UPDATE persons SET password = MD5('?') WHERE id = ?";
+
+		$sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, array($newPassword,$personID));
 	}
 	
 	public function getPersonsWithAccess() {
@@ -131,10 +137,11 @@ class MPerson extends MyModel {
 		$sql = "UPDATE 
 				`" . $this->table . "` 
 				SET 
-					changed = " . $this->db->qstr($value) ."
-				WHERE id = " . $this->db->qstr($personID);
-		
-		$this->db->Execute($sql);
+					changed = ?
+				WHERE id = ?";
+
+		$this->db->Prepare($sql);
+		$this->db->Execute($sql, array($value, $personID));
 	}
 	
 	public function removeAccess($personID) {
@@ -176,8 +183,9 @@ class MPerson extends MyModel {
 	
 	public function setState($personID, $newState) {
 		
-		$sql = "UPDATE persons SET active = $newState WHERE id = " . $personID;
-		$this->db->Execute($sql);
+		$sql = "UPDATE persons SET active = ? WHERE id = ?";
+		$sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, array($newState, $personID));
 	}
 
 	public function setSignature($personID, $newState) {
@@ -187,8 +195,8 @@ class MPerson extends MyModel {
 		$personoldRS = $personold->getRS("id=".$personID);
 		$personoldData = $personoldRS->getArray();
 
-		$sql = "UPDATE persons SET signature = $newState WHERE id = " . $personID;
-		$this->db->Execute($sql);
+
+		$this->setState($personID,$newState);
 
 		/* Generate Notification after */
 		$personnew = new MPerson();

@@ -64,11 +64,14 @@ class MGame extends MyModel {
 				LEFT JOIN 
 					games ON schreiber.game = games.id
 				WHERE
-					games.id = " . $this->db->qstr($gameID);
-		return $this->db->Execute($sql);
+					games.id = ? ";
+		$sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($gameID));
 	}
 	
 	public function getGamesFromPersonOnDate($personID, $date) {
+
+        $date = $date . "%";
 		
 		$sql = "SELECT 
 					games.date as date,
@@ -86,11 +89,12 @@ class MGame extends MyModel {
 				LEFT JOIN
 					teams ON games.team = teams.id
 				WHERE
-					persons.id = " . $this->db->qstr($personID) ."
-					AND games.date like '" . $date . "%'
+					persons.id = ?
+					AND games.date like ?
 				ORDER BY
 					games.date";
-		return $this->db->Execute($sql);
+		$sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($personID, $date));
 	}
 
 	public function clearGames() {

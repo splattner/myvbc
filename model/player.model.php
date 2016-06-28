@@ -27,8 +27,9 @@ class MPlayer extends MyModel {
         $notification->addNewTeamMemberNotification($this->person, $this->team);
         
         // Update Active Status. After affing to a Team he is for sure active
-        $sql = "UPDATE persons SET active = 1 WHERE id = " . $this->person;
-        $this->db->Execute($sql);
+        $sql = "UPDATE persons SET active = 1 WHERE id = ?";
+		$sql = $this->db->Prepare($sql);
+        $this->db->Execute($sql, array($this->person));
 
 
 	}

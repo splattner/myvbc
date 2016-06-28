@@ -29,11 +29,11 @@ class MTeam extends MyModel {
 				LEFT JOIN
 					teams ON teams.id = players.team
 				WHERE
-					teams.id = " . $this->db->qstr($teamID) ."
+					teams.id = ?
 				ORDER BY
 					players.typ ASC, persons.name ASC, persons.prename ASC";
-	
-		return $this->db->Execute($sql);
+		$sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($teamID));
 	}
 	
 }

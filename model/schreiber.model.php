@@ -18,17 +18,19 @@ class MSchreiber extends MyModel {
 						FROM 
 							schreiber 
 						WHERE 
-							game = " . $this->db->qstr($gameID) . " AND
-							person = " . $this->db->qstr($schreiberID);
-			
-			$rs = $this->db->Execute($sql_check);
+							game = ? AND
+							person = ?";
+
+			$sql_check = $this->db->Prepare($sql_check);
+			$rs = $this->db->Execute($sql_check, array($gameID, $schreiberID));
 			
 			if ($rs->RecordCount() == 0) {
 				$sql = "INSERT INTO schreiber (game, person) 
-					VALUES(" . $this->db->qstr($gameID) . "," . $this->db->qstr($schreiberID) .")
+					VALUES(?,?)
 				";
-				
-				$this->db->Execute($sql);
+
+				$sql = $this->db->Prepare($sql);
+				$this->db->Execute($sql, array($gameID, $schreiberID));
 			}
 		}
 	}
@@ -37,8 +39,9 @@ class MSchreiber extends MyModel {
 		$sql = "DELETE FROM 
 					schreiber 
 				WHERE 
-				game = " . $this->db->qstr($gameID) . " AND person = " . $this->db->qstr($schreiberID);
-		$this->db->Execute($sql);
+				game = ? AND person = ?";
+		$sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, array($gameID, $schreiberID));
 	}
 	
 	public function getSchreiberProposal($gameID) {
@@ -48,6 +51,8 @@ class MSchreiber extends MyModel {
 		$game = $rs_game->getArray();
 		
 		list($datum, $zeit) = explode(" ", $game[0]["date"]);
+
+        $datum = $datum . "%";
 		
 		$sql = "SELECT 
 					persons.name AS name,
@@ -67,8 +72,8 @@ class MSchreiber extends MyModel {
  				LEFT JOIN
  					schreiber ON persons.id = schreiber.person
 				WHERE
-					games.date LIKE '" . $datum . "%'
-					AND NOT games.date = '" . $game[0]["date"] . "'
+					games.date LIKE ?
+					AND NOT games.date = ?
 					AND games.heimspiel = 1
 					AND persons.schreiber = 1
 					AND persons.active = 1
@@ -78,7 +83,8 @@ class MSchreiber extends MyModel {
 				ORDER BY
 					anzahl
 				";
-		return $this->db->Execute($sql);
+		$sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($datum, $game[0]["date"]));
 	}
 	
 }

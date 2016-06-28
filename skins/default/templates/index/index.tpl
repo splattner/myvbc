@@ -26,7 +26,7 @@
 		</p>
 		
 				
-		<p> <i class="fa fa-exclamation-circle"></i> Wenn Sie noch keinen Zugang haben, schreiben Sie bitte eine E-Mail an {mailto address="myVBC@vbclangenthal.ch"} um einen
+		<p> <i class="fa fa-exclamation-circle"></i> Wenn Sie noch keinen Zugang haben, schreiben Sie bitte eine E-Mail an <a href="mailto:myVBC@vbclangenthal.ch" >myVBC@vbclangenthal.ch</a> um einen
 			Zugang einzurichten!
 		</p>
 	</td>

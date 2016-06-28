@@ -92,10 +92,12 @@ class PageAdmin extends MyPage
 		if (isset($_POST["doEdit"])) {
 			
 			$sql ="UPDATE reports SET
-				title = " . $this->db->qstr($_POST["title"]) .",
-				query = '" . $_POST["query"] ."'
-				WHERE id = " . $reportID;
-			$this->db->Execute($sql);
+				title = ?,
+				query = ?
+				WHERE id = ?";
+
+			$sql = $this->db->Prepare($sql);
+			$this->db->Execute($sql, array($_POST["title"],$_POST["query"], $reportID ));
 			
 			$this->smarty->assign("messages","Die Daten wurden bearbeitet!");
 			
@@ -112,10 +114,10 @@ class PageAdmin extends MyPage
 		if (isset($_POST["doNew"])) {
 			
 		
-			$sql ="INSERT INTO reports (title, query) VALUES (
-				" . $this->db->qstr($_POST["title"]) . ",
-				'" . $_POST["query"] . "')";
-			$this->db->Execute($sql);
+			$sql ="INSERT INTO reports (title, query) VALUES (?,?)";
+
+            $sql = $this->db->Prepare($sql);
+            $this->db->Execute($sql, array($_POST["title"],$_POST["query"] ));
 			
 			$this->smarty->assign("messages","Neuer Bericht wurde eingetragen");
 			

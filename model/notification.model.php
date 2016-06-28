@@ -13,32 +13,35 @@ class MNotification extends MyModel {
 		$sql = "INSERT INTO 
 			notification (type, message, objectid, date, personid) 
 			VALUES (
-				" . $this->db->qstr($type) .",
-				" . $this->db->qstr($message) .",
-				" . $this->db->qstr($objectID) .",
+				?,
+				?,
+				?,
 				NOW(),
-				" . $this->db->qstr($personID)."
+				?
 			)";
-		
-		$this->db->Execute($sql);
+        $sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, array($type, $message, $objectID, $personID));
 		echo $this->db->ErrorMsg();
 		$notificationid = $this->db->Insert_ID();
 		
 		//Get all Subscriptions for this Notification type
-		$sql = "SELECT personid, email FROM notificationsubscription  WHERE typeid = '" . $type ."'";
-		$rs = $this->db->Execute($sql);
+		$sql = "SELECT personid, email FROM notificationsubscription  WHERE typeid = ?";
+        $sql = $this->db->Prepare($sql);
+		$rs = $this->db->Execute($sql, array($type));
 
 		
 		//Add new notificationstatus
 		while ($res = $rs->fetchRow()) {
-			$sql = "INSERT INTO notificationstatus (notificationid, personid) VALUES(". $notificationid ."," . $res["personid"] .")";
-			$this->db->Execute($sql);
+			$sql = "INSERT INTO notificationstatus (notificationid, personid) VALUES(?,?)";
+            $sql = $this->db->Prepare($sql);
+			$this->db->Execute($sql, array($notificationid, $res["personid"]));
 			
 			// Send E-Mail if enabled for this person
 			if ($res["email"] == 1) {
-				$sql = "SELECT prename, name, email FROM persons WHERE id = " . $this->db->qstr($res["personid"]);
-				
-				$rs_currentPerson = $this->db->Execute($sql);
+				$sql = "SELECT prename, name, email FROM persons WHERE id = ?";
+
+                $sql = $this->db->Prepare($sql);
+				$rs_currentPerson = $this->db->Execute($sql, array($res["personid"]));
 				$currentPerson = $rs_currentPerson->fetchRow();
 				
 				$content = "<p>Du hast eine neue Benachrichtigung auf myVBC erhalten:</p><p>" . $message . "</p>";
@@ -62,22 +65,21 @@ class MNotification extends MyModel {
 	
 	public function deleteNotificationStatus($notificationID, $personID) {
 		
-		$sql = "DELETE FROM notificationstatus WHERE notificationid = " . $this->db->qstr($notificationID) . " AND personid = " . $this->db->qstr($personID);
-		$this->db->Execute($sql);
+		$sql = "DELETE FROM notificationstatus WHERE notificationid = ? AND personid = ?";
+		$sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, array($notificationID, $personID));
 	}
 	
 	public function deleteSubscribtion($typeID, $personID) {
-		$sql = "DELETE FROM notificationsubscription WHERE typeid = " . $this->db->qstr($typeID) . " AND personid = " . $this->db->qstr($personID);
-		$this->db->Execute($sql);
+		$sql = "DELETE FROM notificationsubscription WHERE typeid = ? AND personid = ?";
+		$sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, array($typeID, $personID));
 	}
 	
 	public function addSubscription($typeID, $personID, $email) {
-		$sql = "INSERT INTO notificationsubscription (typeid, personid, email) VALUES(
-				" . $this->db->qstr($typeID) . ",
-				" . $this->db->qstr($personID) .",
-				" . $this->db->qstr($email) ."
-				)";
-		$this->db->Execute($sql);
+		$sql = "INSERT INTO notificationsubscription (typeid, personid, email) VALUES(?,?,?)";
+		$sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, array($typeID, $personID, $email));
 	}
 	
 	
@@ -99,11 +101,12 @@ class MNotification extends MyModel {
 				LEFT JOIN
 					persons ON notification.personid = persons.id
 				WHERE
-					notificationstatus.personid = " . $this->db->qstr($personID) . "
+					notificationstatus.personid = ?
 				ORDER BY
 					notification.date";
 
-		return $this->db->Execute($sql);
+		$sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($personID));
 	}
 	
 	public function getAllNotifications($from = 0, $to = 200) {
@@ -178,11 +181,12 @@ class MNotification extends MyModel {
 				LEFT JOIN
 					persons ON notification.personid = persons.id
 				WHERE
-					notification.objectid = " . $this->db->qstr($personID) . "
+					notification.objectid = ?
 				ORDER BY
 					notification.date DESC";
 
-		return $this->db->Execute($sql);
+		$sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($personID));
 	
 	}
 	

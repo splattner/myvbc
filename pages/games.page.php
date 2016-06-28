@@ -132,10 +132,17 @@ class PageGames extends MyPage
 		
 		if($this->session->share["teamID"] != 0) {
 			$sql .= " WHERE
-					games.team = " . $this->session->share["teamID"];
+					games.team = ?";
 		}
 		$sql .= " ORDER BY games.date";
-		$rs = $this->db->Execute($sql);
+
+		$sql = $this->db->Prepare($sql);
+
+		if($this->session->share["teamID"] != 0) {
+			$rs = $this->db->Execute($sql, array($this->session->share["teamID"]));
+		} else {
+			$rs = $this->db->Execute($sql);
+		}
 		
 		$games = $rs->getArray();
 		
@@ -323,8 +330,9 @@ class PageGames extends MyPage
 					LEFT JOIN 
 						teams ON teams.id = games.team 
 					WHERE 
-						games.id = " . $this->db->qstr($gameID);
-		$rs = $this->db->Execute($sql_game);
+						games.id = ?";
+        $sql_game = $this->db->Prepare($sql_game);
+		$rs = $this->db->Execute($sql_game, $gameID);
 		$this->smarty->assign("game", $rs->getArray());
 		
 		$this->loaderJavaScript .= "

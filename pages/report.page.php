@@ -17,7 +17,7 @@ class PageReport extends MyPage {
 		parent::init();
 		$this->smarty->assign("content", $this->template);
 		
-		$this->publicReports = array("5"); //Schreibereins‰tze is Public
+		$this->publicReports = array("5"); //Schreibereins√§tze is Public
 	}
 	
 	public function mainAction() {

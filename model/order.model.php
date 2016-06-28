@@ -12,18 +12,19 @@ class MOrder extends MyModel {
 		
 		$sql = "INSERT INTO 
 					orderitem (orderid, personid) 
-				VALUES(
-					" . $this->db->qstr($orderID) . ",
-					" . $this->db->qstr($personID) . ")";
-		$this->db->Execute($sql);
+				VALUES(?,?)";
+		$sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, array($orderID, $personID));
 		
 		$sql = "UPDATE orderitem SET 
-					licence_id = (SELECT persons.licence FROM persons WHERE persons.id = " . $this->db->qstr($personID) . "),
-					licence_comment = (SELECT persons.licence_comment FROM persons WHERE persons.id = " . $this->db->qstr($personID) . ")
+					licence_id = (SELECT persons.licence FROM persons WHERE persons.id = ?),
+					licence_comment = (SELECT persons.licence_comment FROM persons WHERE persons.id = ?)
 				WHERE
-					orderid = " . $this->db->qstr($orderID) . "
-					AND personid = " . $this->db->qstr($personID);
-		$this->db->Execute($sql);
+					orderid = ?
+					AND personid = ?";
+
+		$sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, array($personID, $personID, $orderID, $personID));
 	}
 	
 	public function removeLicenceFromOrder($personID, $orderID) {
@@ -31,9 +32,10 @@ class MOrder extends MyModel {
 		$sql = "DELETE FROM 
 					orderitem
 				WHERE
-					orderid = " . $this->db->qstr($orderID) . " AND
-					personid = " . $this->db->qstr($personID);
-		$this->db->Execute($sql);
+					orderid = ? AND
+					personid = ?";
+		$sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, array($orderID, $personID));
 	}
 	
 	public function getOrder($orderID = "") {
@@ -58,14 +60,18 @@ class MOrder extends MyModel {
 		
 			
 		if ($orderID != "") {
-			$sql .= " WHERE order.id = " . $this->db->qstr($orderID);
+			$sql .= " WHERE order.id = ?";
 		}
 		
 		$sql .= " ORDER BY order.status ASC, order.lastupdate DESC";
-		
-		
-		
-		return $this->db->Execute($sql);
+
+		$sql = $this->db->Prepare($sql);
+
+		if ($orderID != "") {
+			return $this->db->Execute($sql, array($orderID));
+		} else {
+			return $this->db->Execute($sql);
+		}
 	}
 	
 	public function getPersonOrders($personID) {
@@ -83,9 +89,10 @@ class MOrder extends MyModel {
 			LEFT JOIN
 				licences ON orderitem.licence_id = licences.id
 			WHERE
-				orderitem.personid = " . $this->db->qstr($personID);
-		
-		return $this->db->Execute($sql);
+				orderitem.personid = ?";
+
+		$sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($personID));
 	}
 
 	
@@ -107,10 +114,11 @@ class MOrder extends MyModel {
 				LEFT JOIN
 					`licences` ON orderitem.licence_id = licences.id
 				WHERE
-					order.id = " . $this->db->qstr($orderID) . "
+					order.id = ?
 				ORDER BY persons.name ASC, persons.prename ASC";
-		
-		return $this->db->Execute($sql);
+
+		$sql = $this->db->Prepare($sql);
+		return $this->db->Execute($sql, array($orderID));
 	}
 	
 	public function getStatusList() {
@@ -125,8 +133,9 @@ class MOrder extends MyModel {
 	public function updateStatus($statusID, $orderID) {
 		$sql = "UPDATE 
 					`order`
-				SET status = " . $this->db->qstr($statusID) . ", lastupdate = NOW() WHERE id = " . $this->db->qstr($orderID);
-		$this->db->Execute($sql);
+				SET status = ?, lastupdate = NOW() WHERE id = ?";
+		$this->db->Prepare($sql);
+		$this->db->Execute($sql, array($statusID, $orderID));
 		
 		/* Add Notifications if order is complete */
 		if ($statusID == 4) {
@@ -138,8 +147,9 @@ class MOrder extends MyModel {
 					FROM
 						orderitem
 					WHERE
-						orderid = " . $this->db->qstr($orderID);
-			$rs = $this->db->Execute($sql);
+						orderid = ?";
+			$sql = $this->db->Prepare($sql);
+			$rs = $this->db->Execute($sql, array($orderID));
 			$personids = $rs->getArray();
 			
 			$mperson = new MPerson();
@@ -164,9 +174,10 @@ class MOrder extends MyModel {
 					NOW(),
 					NOW(),
 					1,
-					" . $this->db->qstr($this->comment) . ",
+					?,
 					" . $this->session->uid . ")";
-		$this->db->Execute($sql);
+        $sql = $this->db->Prepare($sql);
+		$this->db->Execute($sql, array($this->comment));
 		
 		return $this->db->Insert_ID();
 		
