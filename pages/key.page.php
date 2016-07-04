@@ -59,7 +59,7 @@ class PageKey extends MyPage
         $keyID = $_GET["keyID"];
 
         $key = new MKey();
-        $key->delete("id=" . $this->db->qstr($keyID));
+        $key->delete(array("id" => $keyID));
 
 
         $this->smarty->assign("messages","Schl&uuml;ssel wurde gel&ouml;scht");

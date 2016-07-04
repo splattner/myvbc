@@ -79,13 +79,13 @@ class PageMyteam extends MyPage
 	}
 	
 	public function deleteMemberAction() {
-		$teamID = $this->db->qstr($_GET["teamID"]);
-		$personID = $this->db->qstr($_GET["personID"]);
+		$teamID = $_GET["teamID"];
+		$personID = $_GET["personID"];
 		
 		$player = new MPlayer();
-		$player->team = $_GET["teamID"];
-		$player->person = $_GET["personID"];
-		$player->delete("team=" . $teamID . " AND person=" . $personID);
+		$player->team = $teamID;
+		$player->person = $personID;
+		$player->delete(array("team" => $teamID, "person" => $personID));
 		
 		$this->smarty->assign("messages","Person wurde aus Team entfernt");
 		

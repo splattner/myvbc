@@ -80,7 +80,7 @@ class PageOrder extends MyPage
 		
 		$orderID = $_GET["orderID"];
 		$order = new MOrder();
-		$order->delete("id = " . $this->db->qstr($orderID));
+		$order->delete(array("id" => $orderID));
 		
 		return "main";	
 	}

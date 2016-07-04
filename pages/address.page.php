@@ -72,7 +72,7 @@ class PageAddress extends MyPage
 		
 		$person = new MPerson();
 		$person->removeAccess($personID);
-		$person->delete("id = " . $this->db->qstr($personID));
+		$person->delete(array("id" => $personID));
 		
 		$this->smarty->assign("messages","Person wurde aus Datenbank gel&ouml;scht!");
 		

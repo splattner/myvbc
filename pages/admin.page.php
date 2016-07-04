@@ -130,7 +130,7 @@ class PageAdmin extends MyPage
 		$reportID = $_GET["reportID"];
 		$reports = new MReport();
 		
-		$reports->delete("id=" . $this->db->qstr($reportID));
+		$reports->delete(array("id" => $reportID));
 		$this->smarty->assign("messages","Bericht wurde gel&ouml;scht");
 		
 		return "report";
@@ -204,7 +204,7 @@ class PageAdmin extends MyPage
 		$notificationID = $_GET["notificationID"];
 		
 		$notification = new MNotification();
-		$notification->delete("id=" . $notificationID);
+		$notification->delete(array("id" => $notificationID));
 		
 		return "notifications";
 	}

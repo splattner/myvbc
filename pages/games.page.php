@@ -277,7 +277,7 @@ class PageGames extends MyPage
 		$gameID = $this->db->qstr($_GET["gameID"]);
 		
 		$game = new MGame();
-		$game->delete("id=" . $gameID);
+		$game->delete(array("id" => $gameID));
 		
 		return "main";
 	}

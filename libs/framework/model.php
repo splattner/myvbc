@@ -103,11 +103,23 @@ class MyModel {
 
 	}
 	
-	public function delete($id) {
+	public function delete($where) {
 
-        $sql = $this->db->Prepare("DELETE FROM `" . $this->table . "` WHERE ?");
+		$whereValues = array();
 
-		$this->db->Execute($sql, array($id));
+		$sql = "DELETE FROM `" . $this->table . "` WHERE";
+
+		foreach($where as $key => $value)
+		{
+			$sql .= " " . $key . " = ? AND";
+			$whereValues[] =  $value;
+		}
+		$sql = substr($sql, 0, -3); // Remove last AND
+
+        $sql = $this->db->Prepare($sql);
+
+
+		$this->db->Execute($sql, $whereValues);
 	}
 	
 	public function __get($name) {

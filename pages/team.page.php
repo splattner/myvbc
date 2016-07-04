@@ -72,13 +72,13 @@ class PageTeam extends MyPage
 	}
 	
 	public function deleteMemberAction() {
-		$teamID = $this->db->qstr($_GET["teamID"]);
-		$personID = $this->db->qstr($_GET["personID"]);
+		$teamID = $_GET["teamID"];
+		$personID = $_GET["personID"];
 		
 		$player = new MPlayer();
-		$player->person = $_GET["personID"];
-		$player->team = $_GET["teamID"];
-		$player->delete("team=" . $teamID . " AND person=" . $personID);
+		$player->person = $personID;
+		$player->team = $teamID;
+		$player->delete(array("team" => $teamID, "person" => $personID));
 		
 		// No Update after delete
 		//$player->updateStatus();
@@ -143,7 +143,7 @@ class PageTeam extends MyPage
 		$teamID = $_GET["teamID"];
 		
 		$team = new MTeam();
-		$team->delete("id=" . $this->db->qstr($teamID));
+		$team->delete(array("id" => $teamID));
 
 		$player = new MPlayer();
                 $player->updateStatus();
