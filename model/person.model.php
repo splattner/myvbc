@@ -96,7 +96,7 @@ class MPerson extends MyModel {
 	}
 	
 	public function changePassword($personID, $newPassword) {
-		$sql = "UPDATE persons SET password = MD5('?') WHERE id = ?";
+		$sql = "UPDATE persons SET password = MD5(?) WHERE id = ?";
 
 		$sql = $this->db->Prepare($sql);
 		$this->db->Execute($sql, array($newPassword,$personID));
