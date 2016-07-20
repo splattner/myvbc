@@ -206,6 +206,9 @@ abstract class MyPage {
 		$this->smarty->assign("canReport", $this->acl->acl_check("report", "main", "user", $this->session->uid));
 		$this->smarty->assign("canNotification", $this->acl->acl_check("notification", "main", "user", $this->session->uid));
 		$this->smarty->assign("canKey", $this->acl->acl_check("key", "main", "user", $this->session->uid));
+
+
+
 	}
 	
 	/**
@@ -271,6 +274,11 @@ abstract class MyPage {
 		$this->smarty->assign("share", $this->session->share);
 		$this->smarty->assign("plugins", $this->plugins);
 		$this->smarty->assign("uid", $this->session->uid);
+
+
+        $notification = new MNotification();
+        $rs = $notification->getNotificationStatus($this->session->uid);
+        $this->smarty->assign("numOfNotification", $rs->RecordCount());
 		
 		
 		if (!$this->isAjaxCall) {
