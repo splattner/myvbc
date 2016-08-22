@@ -14,6 +14,7 @@
             </div>
             <div class="modal-body">
                 <form id="licenceform" class="form-horizontal" action="index.php?page={$currentPage}&action=new" method="POST">
+                    <input type="hidden" name="doNew" value="true" />
 
                     <div class="form-group">
                         <label for="teamid" class="col-sm-2 control-label">Bestellung f&uuml;r Team</label>
@@ -37,7 +38,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
-                <button type="submit" class="btn btn-primary" name="doNew" form="licenceform">weiter</button>
+                <button type="submit" class="btn btn-primary" name="doNew" onClick="document.getElementById('licenceform').submit();">weiter</button>
 
             </div>
         </div>
