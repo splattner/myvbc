@@ -55,7 +55,25 @@ class MPerson extends MyModel {
 
 
 		$sql = "SELECT
-				persons.*,
+				persons.id,
+				persons.name,
+				persons.prename,
+				persons.address,
+				persons.plz,
+				persons.ort,
+				persons.email,
+				persons.email_parent,
+				persons.phone,
+				persons.mobile,
+				persons.birthday,
+				persons.gender,
+				persons.schreiber,
+				persons.sms,
+				persons.licence,
+				persons.licence_comment,
+				persons.active,
+				persons.signature,
+				persons.refid,
 				CONCAT('[', GROUP_CONCAT(CONCAT('{\"name\": \"', teams.name , '\",', '\"liga\": \"', teams.liga , '\"}')), ']') as teams,
 				GROUP_CONCAT(teams.liga SEPARATOR '\n') AS liga
 			FROM

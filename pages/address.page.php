@@ -29,12 +29,6 @@ class PageAddress extends MyPage
 	public function mainAction() {
 		$this->smarty->assign("subContent1", "address/addressTable.tpl");
 
-		$person = new MPerson();
-		$rs = $person->getAddressEntry(array(),array("persons.active" => "DESC", "persons.name" => "ASC", "persons.prename" => "ASC"));
-		$persons = $rs->GetArray();
-		$this->smarty->assign("persons", $persons);
-
-
 	}
 	
 	public function editAction() {
