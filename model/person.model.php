@@ -49,9 +49,14 @@ class MPerson extends MyModel {
 	}
 
 
-	public function getAddressEntry($where = "", $orderby = "") {
+	public function getAddressEntry($where = array(), $orderby = array()) {
+
+        $whereValues = array();
+
+
 		$sql = "SELECT
 				persons.*,
+				CONCAT('[', GROUP_CONCAT(CONCAT('{\"name\": \"', teams.name , '\",', '\"liga\": \"', teams.liga , '\"}')), ']') as teams,
 				GROUP_CONCAT(teams.liga SEPARATOR '\n') AS liga
 			FROM
 				persons
@@ -59,19 +64,39 @@ class MPerson extends MyModel {
 				players ON persons.id = players.person
 			LEFT JOIN
 				teams on players.team = teams.id";
-			
-		if($where != "") {
-                       	$sql .= " WHERE " . $where;
-        	}
 
-		$sql .= " GROUP BY persons.id";
+        if (count($where) > 0) {
+            $sql .= " WHERE ";
 
-        	if($orderby != "") {
-                       	$sql .= " ORDER BY " . $orderby;
-		}
+            $i = 0;
+            foreach ($where as $key => $value) {
+                $i++;
+                $sql .= $key . " ?";
+                $whereValues[] = $value;
 
-		return $this->db->Execute($sql);
+                if (count($where) > 1 && $i < count($where)) {
+                    $sql .= " AND ";
+                }
+
+            }
         }
+
+        $sql .= " GROUP BY persons.id";
+
+        if (count($orderby) > 0) {
+            $sql .= " ORDER BY";
+            foreach ($orderby as $key => $value) {
+                $sql .= " " . $key . " " . $value . ",";
+            }
+            $sql = substr($sql, 0, -1); // Remove last AND
+        }
+
+        if (count($where) > 0) {
+            return $this->db->Execute($sql, $whereValues);
+        } else {
+            return $this->db->Execute($sql);
+        }
+    }
 
 	public function getMySchreibers($personID) {
 		$sql = "SELECT
@@ -151,18 +176,20 @@ class MPerson extends MyModel {
 	
 	
 	/* Override the update Function to create Notification Messages */
-	public function update($where, $personID) {
+	public function update($where) {
+
+		$personID = $where[$this->pk];
 			
 		/* Generate Notification befor */
 		$personold = new MPerson();
-		$personoldRS = $personold->getRS("id=".$personID);
+		$personoldRS = $personold->getRS(array($personold->pk . " =" => $personID));
 		$personoldData = $personoldRS->getArray();
 		
 		parent::update($where);
 		
 		/* Generate Notification after */
 		$personnew = new MPerson();
-		$personnewRS = $personnew->getRS("id=" . $personID);
+		$personnewRS = $personnew->getRS(array($personnew->pk . " =" => $personID));
 		$personnewData = $personnewRS->getArray();
 		
 		/* Add Notification */
@@ -192,7 +219,7 @@ class MPerson extends MyModel {
 
 		/* Generate Notification befor */
 		$personold = new MPerson();
-		$personoldRS = $personold->getRS("id=".$personID);
+		$personoldRS = $personold->getRS(array($personold->pk ." =" => $personID));
 		$personoldData = $personoldRS->getArray();
 
 
@@ -200,7 +227,7 @@ class MPerson extends MyModel {
 
 		/* Generate Notification after */
 		$personnew = new MPerson();
-		$personnewRS = $personnew->getRS("id=" . $personID);
+		$personnewRS = $personnew->getRS(array($personnew->pk ." =" => $personID));
 		$personnewData = $personnewRS->getArray();
 
 		/* Add Notification */

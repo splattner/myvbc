@@ -99,6 +99,7 @@ class MOrder extends MyModel {
 	public function getOrderItems($orderID) {
 		$sql = "SELECT
 					order.id AS orderID,
+					orderitem.id as orderitemid,
 					persons.id AS personID,
 					order.status AS status,
 					persons.name AS name,

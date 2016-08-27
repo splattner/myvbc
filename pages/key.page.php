@@ -29,7 +29,7 @@ class PageKey extends MyPage
         $this->smarty->assign("keys", $rs->getArray());
 
         $persons = new MPerson();
-        $rs = $persons->getRS("","name ASC, prename ASC");
+        $rs = $persons->getRS(array(),array("name" => "ASC", "prename" => "ASC"));
         $this->smarty->assign("users", $rs->getArray());
 
     }

@@ -27,11 +27,55 @@ class MyApplication {
 	}
 	
 	static public function run() {
-		$page = MyApplication::getInstance("page");
-		
-		$page->init();
-		$page->work();
-		$page->render();
+
+        $session = MyApplication::getInstance("session");
+
+		/**
+		 * Check if this is an API Call
+		 */
+		$request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+		$isAPICall = ($request[0] == "api");
+        $basicAuth = false;
+
+		if ($isAPICall) {
+
+            if ($session->isAuth || isset($_SERVER['PHP_AUTH_USER'])) {
+
+                if (isset($_SERVER['PHP_AUTH_USER'])) {
+
+                    $basicAuth = true;
+
+                    $email = $_SERVER['PHP_AUTH_USER'];
+                    $password = $_SERVER['PHP_AUTH_PW'];
+
+                    if (!$session->auth($email, $password)) {
+                        http_response_code(401);
+						return;
+                    }
+
+                }
+
+                $api = MyApplication::getInstance("API");
+                $api->call();
+
+                if ($basicAuth) {
+                    $session->closeMySession();
+                }
+            } else {
+                http_response_code(403);
+                return;
+            }
+
+		} else {
+			$page = MyApplication::getInstance("page");
+
+			$page->init();
+			$page->work();
+			$page->render();
+
+		}
+
+
 	}
 	
 	static public function finish() {

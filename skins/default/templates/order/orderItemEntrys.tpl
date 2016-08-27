@@ -20,7 +20,7 @@
 	</td>
 
 	<td>
-		{$orderitem.comment} 
+		<a href="#" id="ordercomment" data-type="text" data-pk="{$orderitem.orderitemid}" data-url="api/orderitem" data-title="Kommentar &auml;ndern">K{$orderitem.comment}</a>
 	</td>
 
 	<td align="right">

@@ -25,7 +25,7 @@ class PageTeam extends MyPage
 		$this->smarty->assign("subContent1", "team/teamTable.tpl");
 		
 		$teams = new MTeam();
-		$rs = $teams->getRS("","teams.name");
+		$rs = $teams->getRS(array(),array("teams.name" => "ASC"));
 
 		$this->smarty->assign("teams", $rs->getArray());
 	}
@@ -50,7 +50,7 @@ class PageTeam extends MyPage
 		}
 		
 		$team = new MTeam();
-		$rs = $team->getRS("id=". $teamID);
+		$rs = $team->getRS(array($team->pk ." =" => $teamID));
 
 		$this->smarty->assign("teams", $rs->getArray());
 	}
@@ -65,7 +65,7 @@ class PageTeam extends MyPage
 		$rs = $team->getAllMember($teamID);
 		$this->smarty->assign("persons", $rs->getArray());	
 		
-		$rs = $team->getRS("id=" . $this->db->qstr($teamID),"");
+		$rs = $team->getRS(array($team->pk ." =" => $teamID));
 		$currentTeam = $rs->getArray();
 		$teamName = $currentTeam[0]["name"];
 		$this->smarty->assign("teamName", $teamName);
@@ -114,7 +114,7 @@ class PageTeam extends MyPage
 		}
 		
 		$persons = new MPerson();
-		$rs = $persons->getRS("","name ASC, prename ASC");
+		$rs = $persons->getRS(array(),array("name" => "ASC", "prename" => "ASC"));
 		$this->smarty->assign("users", $rs->getArray());
 	}
 	

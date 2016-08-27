@@ -64,7 +64,7 @@ abstract class MyPage {
 	 * @var boolean
 	 */
 	public $isAjaxCall;
-	
+
 	
 	/**
 	 * Template Name
@@ -122,10 +122,10 @@ abstract class MyPage {
 	 * @access public
 	 * @var mixed
 	 */
-	public $plugins;	
-	
+	public $plugins;
 
-	/**
+
+    /**
 	 * Constructor for the MyPage Class
 	 * @param mixed $config
 	 * @param mixed $db
@@ -158,8 +158,8 @@ abstract class MyPage {
 		 * 	Check if this is a Ajax Call
 		 */
 		$this->isAjaxCall = isset($_GET["ajax"]);
-			
-		
+
+
 		/**
 		 * Get the Action from $_GET, default is main
 		 */
@@ -226,6 +226,7 @@ abstract class MyPage {
 	 * or Process Ajax Requests
 	 */
 	public function work() {
+
 		if (!$this->isAjaxCall) {
 			$actionFunction  = $this->action;
 			while ($actionFunction != NULL) {
@@ -279,12 +280,13 @@ abstract class MyPage {
         $notification = new MNotification();
         $rs = $notification->getNotificationStatus($this->session->uid);
         $this->smarty->assign("numOfNotification", $rs->RecordCount());
-		
+
 		
 		if (!$this->isAjaxCall) {
 			$this->smarty->display("master.tpl");
 		} else {
-			return utf8_encode($this->smarty->fetch("ajaxmaster.tpl"));
+            return utf8_encode($this->smarty->fetch("ajaxmaster.tpl"));
+            return utf8_encode($this->smarty->fetch("ajaxmaster.tpl"));
 		}
 	}
 	

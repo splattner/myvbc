@@ -26,7 +26,7 @@ class PageReport extends MyPage {
 		
 		$reports = new MReport();
 		
-		$rs = $reports->getRS("","");
+		$rs = $reports->getRS();
 		
 		$this->smarty->assign("reports", $rs->getArray());
 		

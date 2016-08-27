@@ -47,7 +47,7 @@ class MSchreiber extends MyModel {
 	public function getSchreiberProposal($gameID) {
 		
 		$mgame = new MGame();
-		$rs_game = $mgame->getRS("id=" . $this->db->qstr($gameID));
+		$rs_game = $mgame->getRS(array($mgame->pk ." =" =>$gameID));
 		$game = $rs_game->getArray();
 		
 		list($datum, $zeit) = explode(" ", $game[0]["date"]);

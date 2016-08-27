@@ -30,7 +30,7 @@ class PageAddress extends MyPage
 		$this->smarty->assign("subContent1", "address/addressTable.tpl");
 
 		$person = new MPerson();
-		$rs = $person->getAddressEntry("","persons.active DESC, persons.name ASC, persons.prename ASC");
+		$rs = $person->getAddressEntry(array(),array("persons.active" => "DESC", "persons.name" => "ASC", "persons.prename" => "ASC"));
 		$persons = $rs->GetArray();
 		$this->smarty->assign("persons", $persons);
 
@@ -116,7 +116,7 @@ class PageAddress extends MyPage
 		$personID = $_GET["personID"];
 
 		$user = new MPerson();
-		$rs = $user->getRS("id=" . $personID);
+		$rs = $user->getRS(array($user->pk ." =" => $personID));
 		$this->smarty->assign("person", $rs->getArray());
 
 	}

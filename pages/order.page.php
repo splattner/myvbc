@@ -31,6 +31,10 @@ class PageOrder extends MyPage
 			<script type=\"text/javascript\">
 				function getItemsEntry(orderID) {
 					xajax_getItemsEntry(orderID);
+
+				$.fn.editable.defaults.mode = 'inline';
+				$('#ordercomment').editable();
+
 				}
 				
 				function showaddLicenceForm(orderID) {
@@ -44,6 +48,7 @@ class PageOrder extends MyPage
 				function removeLicenceFromOrder(personID, orderID) {
 					xajax_removeLicenceFromOrder(personID, orderID);
 				}
+
 			</script>
 		";
 		
@@ -60,7 +65,7 @@ class PageOrder extends MyPage
 		$this->smarty->assign("orders", $rs->getArray());
 
 		$teams = new MTeam();
-		$rs = $teams->getRS("","teams.name");
+		$rs = $teams->getRS(array(),array("teams.name" => "ASC"));
 
 		$this->smarty->assign("teams", $rs->getArray());
 
@@ -126,7 +131,7 @@ class PageOrder extends MyPage
 			
 			$order->update("id=" . $this->db->qstr($orderID));
 			
-			$rs = $order->getRS("id=" . $orderID, "");
+			$rs = $order->getRS(array($order->pk ." =" => $orderID));
 			$orderdetail = $rs->getArray();
 			
 		
@@ -161,10 +166,11 @@ class PageOrder extends MyPage
 		
 		$this->loaderJavaScript .= "
 			<script type=\"text/javascript\">
-				getItemsEntry(" . $orderID . ")
+				getItemsEntry(" . $orderID . ");
 			</script>
+
 		";
-		$this->smarty->assign("loaderJavaScript", $loaderJavaScript);
+		$this->smarty->assign("loaderJavaScript", $this->loaderJavaScript);
 		
 	}
 	
@@ -213,7 +219,7 @@ class PageOrder extends MyPage
 		$this->smarty->assign("orderID", $orderID);
 		
 		$person = new MPerson();
-		$rs = $person->getRS("active = 1 AND signature = 1","persons.name ASC, persons.prename ASC");
+		$rs = $person->getRS(array("active =" => "1", "signature =" => "1"),array("persons.name" => "ASC", "persons.prename" => "ASC"));
 		$this->smarty->assign("persons", $rs->getArray());
 		
 		// Create AJAX Response

@@ -137,7 +137,7 @@ class MyNotification {
 		$message ="";
 				
 		$person = new MPerson();
-		$rs = $person->getRS("id=".$personID);
+		$rs = $person->getRS(array($person->pk . " =" => $personID));
 		$personNew = $rs->getArray();
 		$personNew = $personNew[0];
 		
@@ -182,12 +182,12 @@ class MyNotification {
 		$message ="";
 		
 		$person = new MPerson();
-		$rs = $person->getRS("id=".$personID);
+		$rs = $person->getRS(array($person->pk . " =" => $personID));
 		$personNew = $rs->getArray();
 		$personNew = $personNew[0];
 		
 		$licence = new MLicence();
-		$rs = $licence->getRS("id=" . $personNew["licence"]);
+		$rs = $licence->getRS(array($person->pk . " =" => $personNew["licence"]));
 		$licenceData = $rs->getArray();
 		$licenceData = 	$licenceData[0];
 		
@@ -201,7 +201,7 @@ class MyNotification {
 		$message = "";
 
                 $person = new MPerson();
-                $rs = $person->getRS("id=".$personID);
+                $rs = $person->getRS(array($person->pk . " =" => $personID));
                 $personNew = $rs->getArray();
                 $personNew = $personNew[0];
 
@@ -224,14 +224,14 @@ class MyNotification {
 		$message = "";
 
 		$person = new MPerson();
-		$rs = $person->getRS("id=".$personID);
+		$rs = $person->getRS(array($person->pk . " =" => $personID));
 		
 		$personData = $rs->getArray();
 		$personData = $personData[0];
 
 		
 		$team = new MTeam();
-		$rs = $team->getRS("id=".$teamID);
+		$rs = $team->getRS(array($team->pk . " =" => $teamID));
 
 		$teamData = $rs->getArray();
 		$teamData = $teamData[0];
@@ -247,14 +247,14 @@ class MyNotification {
 		  $message = "";
 
                 $person = new MPerson();
-                $rs = $person->getRS("id=".$personID);
+                $rs = $person->getRS(array($person->pk . " =" => $personID));
 
                 $personData = $rs->getArray();
                 $personData = $personData[0];
 
 
                 $team = new MTeam();
-                $rs = $team->getRS("id=".$teamID);
+                $rs = $team->getRS(array($team->pk . " =" => $teamID));
 
                 $teamData = $rs->getArray(); 
                 $teamData = $teamData[0];

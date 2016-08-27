@@ -50,7 +50,7 @@ class PageAuth extends MyPage
 		if (isset($_POST["doAdd"])) {
 			$person = new MPerson();
 			
-			$rs = $person->getRS("id=" . $this->db->qstr($personID));
+			$rs = $person->getRS(array($person->pk ." =" => $personID));
 			$currentPerson = $rs->getArray();
 			$currentPerson = $currentPerson[0];
 			
@@ -96,13 +96,13 @@ class PageAuth extends MyPage
 			$this->setTemplate("auth/createAccess.tpl");
 			
 			$person = new MPerson();
-			$rs = $person->getRS("id=" . $this->db->qstr($personID));
+			$rs = $person->getRS(array($person->pk ." =" => $personID));
 			$this->smarty->assign("persons", $rs->getArray());
 			
 		} else {
 			$this->setTemplate("auth/choosePerson.tpl");
 			$persons = new MPerson();
-			$rs = $persons->getRS("password IS NULL AND active = 1","name ASC, prename ASC");
+			$rs = $persons->getRS(array("password IS" => "NULL", "active =" => "1"),array("name" => "ASC", "prename" =>  "ASC"));
 			$this->smarty->assign("users", $rs->getArray());
 		}
 		

@@ -24,7 +24,7 @@ class PageIndex extends MyPage
 		if ($this->session->isAuth) {
 			
 			$user = new MPerson();
-			$rs = $user->getRS("id=" . $this->session->uid);
+			$rs = $user->getRS(array($user->pk ." =" => $this->session->uid));
 			$currentUser = $rs->getArray();
 
 			$this->smarty->assign("user", $currentUser[0]);

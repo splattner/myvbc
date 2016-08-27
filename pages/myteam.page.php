@@ -40,7 +40,7 @@ class PageMyteam extends MyPage
 				
 		$this->smarty->assign("persons", $rs->getArray());
 		
-		$rs_team = $team->getRS("id=" . $this->db->qstr($teamID));
+		$rs_team = $team->getRS(array("id =" => $teamID));
 		$currentTeam = $rs_team->getArray();
 		
 		$this->smarty->assign("teamName", $currentTeam[0]["name"]);
@@ -74,7 +74,7 @@ class PageMyteam extends MyPage
 		}
 		
 		$persons = new MPerson();
-		$rs = $persons->getRS("","name ASC, prename ASC");
+		$rs = $persons->getRS(array(),array("name" => "ASC", "prename" => "ASC"));
 		$this->smarty->assign("users", $rs->getArray());
 	}
 	
@@ -143,7 +143,7 @@ class PageMyteam extends MyPage
 		$personID = $_GET["personID"];
 
 		$user = new MPerson();
-		$rs = $user->getRS("id=" . $personID);
+		$rs = $user->getRS(array($user->pk ." =" => $personID));
 		$this->smarty->assign("person", $rs->getArray());
 
 	}

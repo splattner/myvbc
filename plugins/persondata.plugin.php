@@ -111,8 +111,7 @@ class PPersondata extends MyPlugin {
 			$person->licence_comment = $_POST["licence_comment"];
 			$person->refid = $_POST["refid"];
 			
-			$person->update("id=" . $this->db->qstr($this->data["personID"]), $this->db->qstr($this->data["personID"]));
-			
+
 			$this->smarty->assign("messages","Die Daten wurden bearbeitet!");
 
 			unset($_POST["doEdit"]);
@@ -121,7 +120,7 @@ class PPersondata extends MyPlugin {
 		}
 		
 		$person = new MPerson();
-		$rs = $person->getAddressEntry("persons.id = " . $this->db->qstr($this->data["personID"])); 
+		$rs = $person->getAddressEntry(array("persons.id =" => $this->data["personID"]));
 		$this->smarty->assign("person", $rs->getArray());
 		
 		$licences = new MLicence();

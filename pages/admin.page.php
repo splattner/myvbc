@@ -53,7 +53,7 @@ class PageAdmin extends MyPage
 		}
 		
 		$persons = new MPerson();
-		$rs = $persons->getRS("","name ASC, prename ASC");
+		$rs = $persons->getRS(array(),array("name" => "DESC", "prename" => "ASC"));
 		$this->smarty->assign("users", $rs->getArray());
 		
 		$arogroups = new MAroGroup();
@@ -106,7 +106,7 @@ class PageAdmin extends MyPage
 		$this->smarty->assign("subContent1", "administration/editReport.tpl");
 		
 		$report = new MReport();
-		$rs = $report->getRS("id = " . $reportID); 
+		$rs = $report->getRS(array($report->pk ." =" => $reportID));
 		$this->smarty->assign("report", $rs->getArray());	
 	}
 	
@@ -178,7 +178,7 @@ class PageAdmin extends MyPage
 		$this->smarty->assign("subContent1", "administration/changePassword.tpl");
 
 		$persons = new MPerson();
-		$rs = $persons->getRS("","name ASC, prename ASC");
+		$rs = $persons->getRS(array(),array("name" => "DESC", "prename" => "ASC"));
 		$this->smarty->assign("users", $rs->getArray());
 
 
@@ -236,7 +236,7 @@ class PageAdmin extends MyPage
 		$this->smarty->assign("subContent1", "administration/addSubsciption.tpl");
 		
 		$persons = new MPerson();
-		$rs = $persons->getRS("active=1","name ASC, prename ASC");
+		$rs = $persons->getRS(array("active =" => "1",array("name" => "DESC", "prename" => "ASC")));
 		$this->smarty->assign("users", $rs->getArray());
 		
 		$notification = new MNotification();

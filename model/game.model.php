@@ -12,7 +12,7 @@ class MGame extends MyModel {
 		$schreiber = array();
 		
 		$game = new MGame();
-		$rs_game = $game->getRS("id=" . $this->db->qstr($gameID));
+		$rs_game = $game->getRS(array($game->pk . " =" => $gameID));
 		$arr_game = $rs_game->getArray(); //All Datas for the current Game
 		$currentTeam = $arr_game[0]["team"]; // The team for the current Game
 		

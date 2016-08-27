@@ -74,7 +74,7 @@ class PageGames extends MyPage
 	
 
 		$team = new MTeam();
-		$rs = $team->getRS("","name");
+		$rs = $team->getRS(array(),array("name" => "ASC"));
 		$this->smarty->assign("teams", $rs->getArray());
 		
 	
@@ -93,7 +93,7 @@ class PageGames extends MyPage
 		$this->smarty->assign("content", "games/schreiberInfo.tpl");
 		
 		$game = new MGame();
-		$rs_currentGame = $game->getRS("id=" . $this->db->qstr($gameID));
+		$rs_currentGame = $game->getRS(array($game->pk ." =" => $gameID));
 		$currentGame = $rs_currentGame->getArray();
 		
 		//the number of events this person already has
@@ -176,7 +176,7 @@ class PageGames extends MyPage
 		";
 		
 		$team = new MTeam();
-		$rs = $team->getRS("","name");
+		$rs = $team->getRS(array(),array("name" => "ASC"));
 		$this->smarty->assign("teams", $rs->getArray());
 
 			
@@ -188,7 +188,7 @@ class PageGames extends MyPage
 		
 		if ($teamID > 0) {
 			$team = new MTeam();
-			$rs = $team->getRS("id=" . $this->db->qstr($teamID));
+			$rs = $team->getRS(array($team->pk ." =" => $teamID));
 			$teamData = $rs->getArray();
 			
 			switch($teamData[0]["typ"]) {
@@ -208,7 +208,7 @@ class PageGames extends MyPage
 			for ($i = 0 ; $i < count($games); $i++) {
 				
 				$localGame = new MGame();
-				$rs = $localGame->getRS("extid= " . $games[$i]["extid"]);
+				$rs = $localGame->getRS(array("extid =" => $games[$i]["extid"]));
 				$localGames = $rs->getArray();
 				if (count($localGames) >= 1) {
 					if($games[$i]["datum"] != $localGames[0]["date"] || $games[$i]["ort"] != $localGames[0]["ort"] || $games[$i]["halle"] != $localGames[0]["halle"]){
@@ -241,7 +241,7 @@ class PageGames extends MyPage
 		$games = $this->getGamesFromSource($this->session->share["teamID"]);
 		
 		$team = new MTeam();
-		$rs = $team->getRS("id=" . $this->session->share["teamID"]);
+		$rs = $team->getRS(array($team->pk ." =" => $this->session->share["teamID"]));
 		$team = $rs->getArray();
 		
 		foreach ($games as $game) {
@@ -308,7 +308,7 @@ class PageGames extends MyPage
 		}
 	
 		$game = new MGame();
-		$rs = $game->getRS("id=" . $gameID);
+		$rs = $game->getRS(array($game->pk ." =" => $gameID));
 		$this->smarty->assign("games", $rs->getArray());		
 	}
 	

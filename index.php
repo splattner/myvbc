@@ -38,6 +38,8 @@ require_once "libs/framework/session.php";
 require_once "libs/framework/model.php";
 require_once "libs/framework/notification.php";
 require_once "libs/framework/plugin.php";
+require_once "libs/framework/API.php";
+require_once "libs/framework/PublicAPI.php";
 
 
 /**
@@ -104,7 +106,7 @@ MyApplication::setInstance("session",$session);
  * Initialize the XAJAX Object
  */
 $xajax = new xajax("index.php?ajax&page=" . $session->currentPage);
-$xajax->configure("javascript URI", "vendor/xajax/xajax/");
+$xajax->configure("javascript URI", "vendor/xajax/xajax");
 $xajax->configure('debug',$config["system"]["ajaxdebug"]);
 MyApplication::setInstance("xajax", $xajax);
 

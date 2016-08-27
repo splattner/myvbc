@@ -8,7 +8,7 @@ class MReport extends MyModel {
 	
 	public function getReport($reportID) {
 		
-		$rs = $this->getRS("id=" . $this->db->qstr($reportID),"");
+		$rs = $this->getRS(array("id =" => $reportID));
 		$currentReport = $rs->getArray();
 		
 		$sql = $currentReport[0]["query"];
@@ -18,7 +18,7 @@ class MReport extends MyModel {
 	}
 	
 	public function getTitle($reportID) {
-		$rs = $this->getRS("id=" . $this->db->qstr($reportID),"");
+		$rs = $this->getRS(array("id =" => $reportID));
 		$currentReport = $rs->getArray();
 		
 		return $currentReport[0]["title"];

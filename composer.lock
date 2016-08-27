@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "adodb/adodb-php",
-            "version": "v5.20.4",
+            "version": "v5.20.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ADOdb/ADOdb.git",
-                "reference": "1a47f1078318557ac278c82b1b401c8dfc62ae4d"
+                "reference": "7ce997d4c5957a1a96e7ab483ad088b15f02b191"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ADOdb/ADOdb/zipball/1a47f1078318557ac278c82b1b401c8dfc62ae4d",
-                "reference": "1a47f1078318557ac278c82b1b401c8dfc62ae4d",
+                "url": "https://api.github.com/repos/ADOdb/ADOdb/zipball/7ce997d4c5957a1a96e7ab483ad088b15f02b191",
+                "reference": "7ce997d4c5957a1a96e7ab483ad088b15f02b191",
                 "shasum": ""
             },
             "require": {
@@ -59,7 +59,7 @@
                 "library",
                 "php"
             ],
-            "time": "2016-03-31 08:10:52"
+            "time": "2016-08-10 11:08:40"
         },
         {
             "name": "nadar/aspsms",
@@ -170,16 +170,16 @@
         },
         {
             "name": "smarty/smarty",
-            "version": "v3.1.29",
+            "version": "v3.1.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smarty-php/smarty.git",
-                "reference": "35480f10e7ce9b0fdaf23d3799d7b79463919b1e"
+                "reference": "ed2b7f1146cfda13df1eea8a5f707a1b771b6e7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/35480f10e7ce9b0fdaf23d3799d7b79463919b1e",
-                "reference": "35480f10e7ce9b0fdaf23d3799d7b79463919b1e",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/ed2b7f1146cfda13df1eea8a5f707a1b771b6e7e",
+                "reference": "ed2b7f1146cfda13df1eea8a5f707a1b771b6e7e",
                 "shasum": ""
             },
             "require": {
@@ -221,7 +221,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-12-21 01:57:06"
+            "time": "2016-08-07 18:46:49"
         },
         {
             "name": "xajax/xajax",
