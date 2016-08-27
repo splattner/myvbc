@@ -32,9 +32,6 @@ class PageOrder extends MyPage
 				function getItemsEntry(orderID) {
 					xajax_getItemsEntry(orderID);
 
-				$.fn.editable.defaults.mode = 'inline';
-				$('#ordercomment').editable();
-
 				}
 				
 				function showaddLicenceForm(orderID) {
