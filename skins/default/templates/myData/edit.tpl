@@ -1,4 +1,3 @@
-{include file='messages/info.tpl'}
 <table class="edit">
 	<tr>
 		<th width="30%">

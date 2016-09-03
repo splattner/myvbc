@@ -14,11 +14,11 @@
 	</tr>
 	<tr>
 		<td width="30%">Datum / Zeit</td>
-		<td width="70%">[[ game.datum]]</td>
+		<td width="70%">[[ game.datum ]]</td>
 	</tr>
 	<tr>
-		<td width="30%">Ort / halle</td>
-		<td width="70%">[[ game.ort]] - [[ game.halle]]</td>
+		<td width="30%">Ort / Halle</td>
+		<td width="70%">[[ game.ort ]] - [[ game.halle]]</td>
 	</tr>
 	<tr>
 		<td width="30%">Schreiber</td>
@@ -63,7 +63,7 @@
             </p>
 
             <ul ng-if="(schreiberInfo.games).length > 0" style="list-style-image:url({$templateDir}/images/icons/bullet_red.png)">
-                <li ng-repeat="game in schreiberinfo.game">[[ game.date ]], [[ game.ort]] - [[game.halle]]</li>
+                <li ng-repeat="game in (schreiberInfo.games)">[[ game.date ]], [[ game.ort]] - [[game.halle]]</li>
             </ul>
 
             <p ng-if="(schreiberInfo.games).length == 0">Keine anderen Spiele an diesem Tag</p>

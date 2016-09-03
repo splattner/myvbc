@@ -81,8 +81,10 @@ class PPersondata extends MyPlugin {
 
 
 	private function editEntry() {
+
 		
 		if (isset($_POST["doEdit"])) {
+
 			$person = new MPerson();
 			$person->name = $_POST["name"];
 			$person->prename = $_POST["prename"];
@@ -93,10 +95,7 @@ class PPersondata extends MyPlugin {
 			$person->mobile = $_POST["mobile"];
 			$person->email = $_POST["email"];
 			$person->email_parent = $_POST["email_parent"];
-			$person->birthday = 
-					$_POST["birthdayYear"] ."-" . 
-					$_POST["birthdayMonth"] . "-" . 
-					$_POST["birthdayDay"];
+			$person->birthday = $_POST["birthday"];
 			$person->gender = $_POST["gender"];
 			$person->schreiber = $_POST["schreiber"];
 			if ($person->schreiber == NULL) $person->schreiber = 0;
@@ -110,6 +109,8 @@ class PPersondata extends MyPlugin {
 			$person->licence = $_POST["licence"];
 			$person->licence_comment = $_POST["licence_comment"];
 			$person->refid = $_POST["refid"];
+
+            $person->update(array($person->pk => $this->data["personID"]));
 			
 
 			$this->smarty->assign("messages","Die Daten wurden bearbeitet!");

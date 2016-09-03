@@ -21,45 +21,50 @@
 </tr>
 </table>
 
-<table class="wide">
-<tr>
-	<th>&nbsp;</th>
-	<th>Name</th>
-	<th>Adresse</th>
-	<th>Kontakt-Daten</th>
-	<th>Geburtstag</th>
-	<th>E-Mail</th>
-	<th>&nbsp;</th>
-</tr>
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>&nbsp;</th>
+		<th>Name</th>
+		<th>Adresse</th>
+		<th>Kontakt-Daten</th>
+		<th>Geburtstag</th>
+		<th>E-Mail</th>
+		<th>&nbsp;</th>
+	</tr>
+	</thead>
+	<tbody>
+	{foreach item=person from=$persons}
+		<tr>
+			<td>
+				{if $person.typ == 1}<img src="{$templateDir}/images/icons/bullet_green.png">{/if}
+				{if $person.typ == 2}<img src="{$templateDir}/images/icons/bullet_yellow.png">{/if}
+				{if $person.typ == 3}<img src="{$templateDir}/images/icons/bullet_red.png">{/if}
+				{if $person.typ == 4}<img src="{$templateDir}/images/icons/bullet_blue.png">{/if}
+			</td>
+			<td>
+				{$person.prename} {$person.name}
+			</td>
+			<td>{$person.address}<br />
+				{$person.plz} {$person.ort} <br />
+			</td>
+			<td>
+				Telefon: {$person.phone} <br />
+				Mobile: {$person.mobile}
+			</td>
+			<td>{$person.birthday|date_format:"%d.%m.%Y"}</td>
+			<td>{if $person.email|count_characters > 0}
+					{mailto address=$person.email}
+				{else}
+					Keine E-Mail Adresse
+				{/if}
+			</td>
+			<td style="text-align: right;">
+				<a onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" class="icons" data-toggle="tooltip" data-placement="bottom" title="aus Team entfernen" href="index.php?page={$currentPage}&action=deleteMember&teamID={$teamID}&personID={$person.personID}"><i style="color: red;" class="fa fa-trash-o"></i></a>
+			</td>
+		</tr>
+	{/foreach}
+	</tbody>
 
-{foreach item=person from=$persons}
-<tr>
-	<td>
-		{if $person.typ == 1}<img src="{$templateDir}/images/icons/bullet_green.png">{/if}
-		{if $person.typ == 2}<img src="{$templateDir}/images/icons/bullet_yellow.png">{/if}
-		{if $person.typ == 3}<img src="{$templateDir}/images/icons/bullet_red.png">{/if}
-		{if $person.typ == 4}<img src="{$templateDir}/images/icons/bullet_blue.png">{/if}
-	</td>
-	<td>
-		{$person.prename} {$person.name}
-	</td>
-	<td>{$person.address}<br />
-		{$person.plz} {$person.ort} <br />
-	</td>
-	<td>
-		Telefon: {$person.phone} <br />
-		Mobile: {$person.mobile}
-	</td>
-	<td>{$person.birthday|date_format:"%d.%m.%Y"}</td>
-	<td>{if $person.email|count_characters > 0}
-			{mailto address=$person.email}
-		{else}
-			Keine E-Mail Adresse
-		{/if}
-	</td>
-	<td style="text-align: right;">
-		<a onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" class="icons" data-toggle="tooltip" data-placement="bottom" title="aus Team entfernen" href="index.php?page={$currentPage}&action=deleteMember&teamID={$teamID}&personID={$person.personID}"><i style="color: red;" class="fa fa-trash-o"></i></a>
-	</td>
-</tr>
-{/foreach}
+
 </table>

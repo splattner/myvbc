@@ -85,47 +85,47 @@
 
 
 
-<table class="wide">
-<tr>
-	<th width="2%">&nbsp;</th>
-	<th width="25%">Person</th>
-	<th width="25%">Lizenz</th>
-	<th width="38%">Kommentar</th>
-	<th width="10%">&nbsp;</th>
-</tr>
-    <tr ng-repeat="orderItem in orderItems">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th width="2%">&nbsp;</th>
+            <th width="25%">Person</th>
+            <th width="25%">Lizenz</th>
+            <th width="38%">Kommentar</th>
+            <th width="10%">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="orderItem in orderItems">
+            <td>
+                <img src="{$templateDir}/images/icons/bullet_green.png">
+            </td>
+            <td>
+                <span ng-if="orderItem.orderitemid > 0">[[ orderItem.prename ]] [[ orderItem.name ]]</span>
 
+                <select chosen data-placeholder-text-single="'Bitte Person ausw&auml;hlen'" ng-if="orderItem.orderitemid == 0" ng-model="orderItem.personID" ng-options="person.prename + ' ' + person.name for person in persons track by person.id">
+                        <option value=""></option>
+                </select>
+            </td>
+            <td>
+                <span ng-if="orderItem.orderitemid > 0">[[ orderItem.licence ]]</span>
+            </td>
 
-        <td>
-            <img src="{$templateDir}/images/icons/bullet_green.png">
-        </td>
-        <td>
-            <span ng-if="orderItem.orderitemid > 0">[[ orderItem.prename ]] [[ orderItem.name ]]</span>
+            <td>
+                <span ng-if="orderItem.orderitemid > 0">[[ orderItem.comment ]]</span>
+            </td>
 
-            <select chosen data-placeholder-text-single="'Bitte Person ausw&auml;hlen'" ng-if="orderItem.orderitemid == 0" ng-model="orderItem.personID" ng-options="person.prename + ' ' + person.name for person in persons track by person.id">
-                    <option value=""></option>
-            </select>
-        </td>
-        <td>
-            <span ng-if="orderItem.orderitemid > 0">[[ orderItem.licence ]]</span>
-        </td>
-
-        <td>
-            <span ng-if="orderItem.orderitemid > 0">[[ orderItem.comment ]]</span>
-        </td>
-
-        <td align="right">
-            <a ng-if="orderItem.orderitemid > 0 && ((allowEdit && orderItem.status !=4) || (order.owner == uid && order.status == 1))" ng-click="removeOrderItem([[ orderItem.personID]])"
-               data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Diese Lizenz entfernen" href="#">
-                <i style="color: red;" class="fa fa-trash-o"></i>
-            </a>
-            <a ng-if="orderItem.orderitemid == 0" href="#" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Lizenz f&uuml;r diese Person zur Bestellung hinzuf&uuml;gen" ng-click="addLicence(orderItem.personID)">
-                <i class="fa fa-plus-square"></i>
-            </a>
-        </td>
-
-    </tr>
-
+            <td align="right">
+                <a ng-if="orderItem.orderitemid > 0 && ((allowEdit && orderItem.status !=4) || (order.owner == uid && order.status == 1))" ng-click="removeOrderItem([[ orderItem.personID]])"
+                   data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Diese Lizenz entfernen" href="#">
+                    <i style="color: red;" class="fa fa-trash-o"></i>
+                </a>
+                <a ng-if="orderItem.orderitemid == 0" href="#" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Lizenz f&uuml;r diese Person zur Bestellung hinzuf&uuml;gen" ng-click="addLicence(orderItem.personID)">
+                    <i class="fa fa-plus-square"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
 </table>
 </div>
 

@@ -7,8 +7,13 @@ myApp.controller('GameController', ['$scope', '$http', '$attrs', '$window', func
 
     $scope.selectedTeam = 0;
 
-    $scope.getGames = function (teamID) {
 
+    /**
+     * Get all Games for a Team
+     *
+     * @param teamID
+     */
+    $scope.getGames = function (teamID) {
         $http.get("index.php/api/game/getGames/" + teamID)
             .then(function (response) {
                 $scope.games = response.data;
@@ -17,8 +22,11 @@ myApp.controller('GameController', ['$scope', '$http', '$attrs', '$window', func
             });
     };
 
+    /**
+     * Get all Teams
+     */
     $scope.getTeams = function() {
-        $http.get("index.php/api/team/")
+        $http.get("index.php/api/game/getTeams/")
             .then(function (response) {
                 $scope.teams = response.data;
 
@@ -26,6 +34,9 @@ myApp.controller('GameController', ['$scope', '$http', '$attrs', '$window', func
 
     }
 
+    /**
+     * Call getGames on a change of team
+     */
     $scope.changeTeam = function(){
 
         $scope.getGames($scope.selectedTeam);

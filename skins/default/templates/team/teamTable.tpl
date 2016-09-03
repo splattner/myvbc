@@ -84,14 +84,17 @@
 </div>
 
 
-<table class="wide">
+<table class="table table-striped">
+    <thead>
+
     <tr>
         <th>Externer Namen</th>
         <th>Team</th>
         <th>Liga</th>
         <th>&nbsp;</th>
     </tr>
-
+    </thead>
+    <tbody>
     {foreach item=team from=$teams}
         <tr>
             <td>{$team.extname}</td>
@@ -110,4 +113,5 @@
             </td>
         </tr>
     {/foreach}
+    </tbody>
 </table>

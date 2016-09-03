@@ -28,65 +28,68 @@
 </tr>
 </table>
 
-<table class="wide">
-<tr>
-	<th></th>
-	<th></th>
-	<th>Name</th>
-	<th>Adresse</th>
-	<th>Kontakt-Daten</th>
-	<th>Geburtstag</th>
-	<th>E-Mail</th>
-	<th>&nbsp;</th>
-</tr>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+			<th>Name</th>
+			<th>Adresse</th>
+			<th>Kontakt-Daten</th>
+			<th>Geburtstag</th>
+			<th>E-Mail</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+    <tbody></tbody>
+        {foreach item=person from=$persons}
+        <tr>
+            <td>
+                {if $person.typ == 1}<img src="{$templateDir}/images/icons/bullet_green.png">{/if}
+                {if $person.typ == 2}<img src="{$templateDir}/images/icons/bullet_yellow.png">{/if}
+                {if $person.typ == 3}<img src="{$templateDir}/images/icons/bullet_red.png">{/if}
+                {if $person.typ == 4}<img src="{$templateDir}/images/icons/bullet_blue.png">{/if}
+            </td>
+            <td>
+                {if $person.signature == 1}
+                    <i class="fa fa-check-square-o"></i>
+                {else}
+                    <a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Beitrittsgesuch" class="icons"
+                       href="index.php?page={$currentPage}&action=requestForm&personID={$person.personID}">
+                        <i class="fa fa-file-pdf-o"></i>
+                    </a>
+                {/if}
+            </td>
+            <td>
+                {$person.prename} {$person.name}
+            </td>
+            <td>{$person.address}<br />
+                {$person.plz} {$person.ort} <br />
+            </td>
+            <td>
+                Telefon: {$person.phone} <br />
+                Mobile: {$person.mobile}
+            </td>
+            <td>{$person.birthday|date_format:"%d.%m.%Y"}</td>
+            <td>{if $person.email|count_characters > 0} {mailto address=$person.email}{else}Keine E-Mail Adresse{/if}</td>
+            <td align="right">
 
-{foreach item=person from=$persons}
-<tr>
-	<td>
-		{if $person.typ == 1}<img src="{$templateDir}/images/icons/bullet_green.png">{/if}
-		{if $person.typ == 2}<img src="{$templateDir}/images/icons/bullet_yellow.png">{/if}
-		{if $person.typ == 3}<img src="{$templateDir}/images/icons/bullet_red.png">{/if}
-		{if $person.typ == 4}<img src="{$templateDir}/images/icons/bullet_blue.png">{/if}
-	</td>
-	<td>
-		{if $person.signature == 1}
-			<i class="fa fa-check-square-o"></i>
-		{else}
-			<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Beitrittsgesuch" class="icons"
-			   href="index.php?page={$currentPage}&action=requestForm&personID={$person.personID}">
-				<i class="fa fa-file-pdf-o"></i>
-			</a>
-		{/if}
-	</td>
-	<td>
-		{$person.prename} {$person.name}
-	</td>
-	<td>{$person.address}<br />
-		{$person.plz} {$person.ort} <br />
-	</td>
-	<td>
-		Telefon: {$person.phone} <br />
-		Mobile: {$person.mobile}
-	</td>
-	<td>{$person.birthday|date_format:"%d.%m.%Y"}</td>
-	<td>{if $person.email|count_characters > 0} {mailto address=$person.email}{else}Keine E-Mail Adresse{/if}</td>
-	<td align="right">
+                {if $canEditMember}
+                    <a data-toggle="tooltip" data-placement="bottom" title="Daten dieser Person bearbeiten" class="icons"
+                       href="index.php?page={$currentPage}&action=edit&teamID={$person.teamID}&personID={$person.personID}">
+                        <i class="fa fa-pencil-square-o"></i>
+                    </a>
+                {/if}
+                {if $canDeleteMember}
+                    <a data-toggle="tooltip" data-placement="bottom" title="Diese Person aus dem Team entfernen" class="icons"
+                       onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
+                       href="index.php?page={$currentPage}&action=deleteMember&teamID={$person.teamID}&personID={$person.personID}">
+                        <i style="color: red;" class="fa fa-trash-o"></i>
+                    </a>
+                {/if}
 
-		{if $canEditMember}
-			<a data-toggle="tooltip" data-placement="bottom" title="Daten dieser Person bearbeiten" class="icons"
-			   href="index.php?page={$currentPage}&action=edit&teamID={$person.teamID}&personID={$person.personID}">
-				<i class="fa fa-pencil-square-o"></i>
-			</a>
-		{/if}
-		{if $canDeleteMember}
-			<a data-toggle="tooltip" data-placement="bottom" title="Diese Person aus dem Team entfernen" class="icons"
-			   onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
-			   href="index.php?page={$currentPage}&action=deleteMember&teamID={$person.teamID}&personID={$person.personID}">
-				<i style="color: red;" class="fa fa-trash-o"></i>
-			</a>
-		{/if}
-
-	</td>
-</tr>
-{/foreach}
+            </td>
+        </tr>
+        {/foreach}
+    </thead>
 </table>

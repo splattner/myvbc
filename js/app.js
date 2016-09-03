@@ -9,3 +9,11 @@ var myApp = angular.module('myvbc', ['angular.chosen'])
         $interpolateProvider.endSymbol(']]');
 
     }]);
+
+
+myApp.filter('dateToISO', function() {
+    return function(input) {
+        input = new Date(input).toISOString();
+        return input;
+    };
+});

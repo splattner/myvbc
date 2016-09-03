@@ -9,7 +9,10 @@ myApp.controller('GameImportController', ['$scope', '$http', '$attrs', '$window'
     $scope.selectedTeam = 0;
 
 
-    $scope.getTeams = function (teamID) {
+    /**
+     * Get all Teams
+     */
+    $scope.getTeams = function () {
 
         $http.get("index.php/api/game/getTeams/")
             .then(function (response) {
@@ -17,6 +20,9 @@ myApp.controller('GameImportController', ['$scope', '$http', '$attrs', '$window'
             });
     };
 
+    /**
+     * get all Games for a team from the external source
+     */
     $scope.getGames = function() {
 
         $http.get("index.php/api/game/getGamesFromExternal/" + $scope.selectedTeam.id)
@@ -25,6 +31,9 @@ myApp.controller('GameImportController', ['$scope', '$http', '$attrs', '$window'
             });
     }
 
+    /**
+     * Import all games for a team from the external source
+     */
     $scope.importGames = function() {
 
         $http.post("index.php/api/game/importGames/" + $scope.selectedTeam.id)

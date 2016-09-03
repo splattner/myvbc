@@ -58,7 +58,8 @@
     </tr>
 </table>
 
-<table class="wide">
+<table class="table table-striped">
+    <thead>
     <tr>
         <th width="2%"></th>
         <th width="20%">Datum</th>
@@ -67,7 +68,8 @@
         <th width="15%">Ausgel&ouml;st durch</th>
         <th width="5%">&nbsp;</th>
     </tr>
-
+    </thead>
+    <tbody>
     {foreach item=order from=$orders}
         <tr>
             <td>
@@ -104,6 +106,6 @@
             </td>
         </tr>
     {/foreach}
-
+    </tbody>
 
 </table>

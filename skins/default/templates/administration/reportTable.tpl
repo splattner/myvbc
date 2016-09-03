@@ -47,26 +47,27 @@
 	</div>
 </div>
 
-<table class="wide">
+<table class="table table-striped">
+	<thead>
 <tr>
-	<th>&nbsp;</th>
 	<th>Titel</th>
 	<th>&nbsp;</th>
 </tr>
+	</thead>
+	<tbody>
+		{foreach item=report from=$reports}
+		<tr>
+			<td>{$report.title}</td>
+			<td align="right">
+				<a class="icons" data-toggle="tooltip" data-placement="bottom" title="Report bearbeiten" href="index.php?page={$currentPage}&action=editReport&reportID={$report.id}">
+					<i class="fa fa-pencil-square-o"></i>
+				</a>
+				<a onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" data-toggle="tooltip" data-placement="bottom" title="Report l&ouml;schen" href="index.php?page={$currentPage}&action=deleteReport&reportID={$report.id}">
+					<i style="color: red;" class="fa fa-trash-o"></i>
+				</a>
 
-{foreach item=report from=$reports}
-<tr>
-	<td><img src="{$templateDir}/images/icons/bullet_green.png""></td>
-	<td>{$report.title}</td>
-	<td align="right">
-		<a class="icons" data-toggle="tooltip" data-placement="bottom" title="Report bearbeiten" href="index.php?page={$currentPage}&action=editReport&reportID={$report.id}">
-			<i class="fa fa-pencil-square-o"></i>
-		</a>
-		<a onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" data-toggle="tooltip" data-placement="bottom" title="Report l&ouml;schen" href="index.php?page={$currentPage}&action=deleteReport&reportID={$report.id}">
-			<i style="color: red;" class="fa fa-trash-o"></i>
-		</a>
-
-	</td>
-</tr>
-{/foreach}
+			</td>
+		</tr>
+		{/foreach}
+	</tbody>
 </table>

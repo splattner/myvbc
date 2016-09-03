@@ -6,9 +6,9 @@
 myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', function($scope, $http, $attrs, $window) {
 
 
-    $scope.uid = $window.uid
+    $scope.uid = $window.uid;
     $scope.allowEdit = $attrs.allowedit;
-    $scope.orderID = $attrs.orderid
+    $scope.orderID = $attrs.orderid;
 
     $scope.getStatusList = function () {
 
@@ -17,7 +17,7 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
                 $scope.statuslist = response.data;
 
             });
-    }
+    };
 
     $scope.getOrder = function(orderID) {
         $http.get("index.php/api/order/getOrder/" + orderID)
@@ -26,14 +26,14 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
                 $scope.order = response.data[0];
                 $scope.order.status = String($scope.order.status);
             });
-    }
+    };
 
     $scope.getAllPersons = function() {
         $http.get("index.php/api/order/getAllPersons")
             .then(function(response) {
                 $scope.persons = response.data;
             });
-    }
+    };
 
 
     $scope.getOrderItems = function(orderID) {
@@ -47,7 +47,6 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
 
         $http.delete("index.php/api/order/orderItem/" + $scope.orderID + "/" + removeLicence.personID)
             .then(function (response) {
-
                 $scope.getOrderItems($scope.orderID);
             });
     };
@@ -67,8 +66,6 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
             "comment" : ""
         };
 
-
-
         $scope.orderItems.push(licence);
 
     };
@@ -83,7 +80,6 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
 
         $http.post("index.php/api/order/orderItem/" + $scope.orderID, newLicence)
             .then(function (response) {
-
                 $scope.getOrderItems($scope.orderID);
             });
 
@@ -98,7 +94,6 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
 
         $http.post("index.php/api/order/updateStatus/" + $scope.orderID, data)
             .then(function (response) {
-
                 $scope.getOrder($scope.orderID);
             });
 
@@ -106,7 +101,6 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
 
     $scope.editOrder = function() {
 
-        console.log("Edit Order");
 
         data = {
             "id": $scope.order.id,

@@ -86,33 +86,6 @@ img {
 }
 
 
-table.wide {
-	
-	border-collapse:collapse;
-	width: 95%;
-	margin: auto;
-	
-	background-color: #BBBBBB;
-	
-}
-
-
-
-table.wide th {
-	background-color: #888888;
-	font-weight: bold;
-	border-bottom: 1px solid #CCCCCC;
-	text-align: left;
-}
-
-table.wide tr:hover {
-	background-color: #CCCCBB;
-}
-
-table.wide td {
-	padding: 2px;
-
-}
 
 table.report {
 	
@@ -143,7 +116,7 @@ table.report tr:hover {
 
 table.edit {
 	border-collapse: collapse;
-	width: 70%;
+	width: 90%;
 	margin: auto;
 	
 	background-color: #BBBBBB;

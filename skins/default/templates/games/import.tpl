@@ -22,7 +22,8 @@ Team ausw&auml;hlen:
 </tr>
 </table>
 
-<table class="wide">
+<table class="table table-striped">
+    <thead>
 	<tr>
 		<th>&nbsp;</th>
 		<th>Datum / Zeit</th>
@@ -30,6 +31,8 @@ Team ausw&auml;hlen:
 		<th>Ort</th>
 		<th>&nbsp;</th>
 	</tr>
+    </thead>
+    <tbody>
 		<tr ng-repeat="game in games">
 			<td>
                 <img ng-if="game.local == 1" src="{$templateDir}/images/icons/bullet_green.png">
@@ -45,5 +48,6 @@ Team ausw&auml;hlen:
 				[[ game.ort ]] / [[ game.halle ]]
 			</td>
 		</tr>
+    </tbody>
 </table>
 </div>

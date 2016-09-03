@@ -69,7 +69,8 @@
 </div>
 
 
-<table class="wide">
+<table class="table table-striped">
+    <thead>
     <tr>
         <th>Person</th>
         <th>Bezeichnung</th>
@@ -77,7 +78,8 @@
         <th>Datum</th>
         <th>&nbsp;</th>
     </tr>
-
+    </thead>
+    <tbody>
     {foreach item=key from=$keys}
         <tr>
             <td>{$key.person}</td>
@@ -92,6 +94,7 @@
             </td>
         </tr>
     {/foreach}
+    </tbody>
 </table>
 
 {literal}
