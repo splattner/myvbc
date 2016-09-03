@@ -44,26 +44,12 @@ abstract class MyPage {
 	public $smarty;
 	
 	/**
-	 * XAJAX Object
-	 * @access public
-	 * @var mixes
-	 */
-	public $xajax;
-	
-	
-	/**
 	 * Notification Object
 	 * @access public
 	 * @var mixes
 	 */
 	public $notification;
-	
-	/**
-	 * Is this a Ajax Called Function
-	 * @access public
-	 * @var boolean
-	 */
-	public $isAjaxCall;
+
 
 	
 	/**
@@ -94,20 +80,14 @@ abstract class MyPage {
 	 * @var string
 	 */
 	public $pagename;
-	
+
 	/**
 	 * Add some customer JavaScript Code for this Page
 	 * @access public
 	 * @var string
 	 */
-	public $customerJavaScript;
-	
-	/**
-	 * Add some customer JavaScript at the very End of the Page
-	 * To load Ajax Stuff
-	 * @var unknown_type
-	 */
-	public $loaderJavaScript;
+	public $envJavaScript;
+
 	
 	/**
 	 * All Actions defindet in this array don't need acl check!
@@ -141,7 +121,6 @@ abstract class MyPage {
 		$this->acl = MyApplication::getInstance("acl");
 		$this->acl_api = MyApplication::getInstance("acl_api");
 		$this->smarty = MyApplication::getInstance("smarty");
-		$this->xajax = MyApplication::getInstance("xajax");
 		$this->notification = MyApplication::getInstance("notification");
 		
 		/**
@@ -153,11 +132,7 @@ abstract class MyPage {
 		 * Initialize noACL Array
 		 */
 		$this->noACL = array();
-		
-		/**
-		 * 	Check if this is a Ajax Call
-		 */
-		$this->isAjaxCall = isset($_GET["ajax"]);
+
 
 
 		/**
@@ -167,7 +142,6 @@ abstract class MyPage {
 			$this->action = $_GET["action"];
 		} else {
 			$this->action = "main";
-			if (!$this->isAjaxCall) {$this->cleanup(); }
 		}
 
 		/**
@@ -227,19 +201,16 @@ abstract class MyPage {
 	 */
 	public function work() {
 
-		if (!$this->isAjaxCall) {
-			$actionFunction  = $this->action;
-			while ($actionFunction != NULL) {
-				if(isset($this->noACL[$actionFunction]) || $this->acl->acl_check($this->pagename, $actionFunction, 'user', $this->session->uid)) {
-					$actionFunction .= "Action";
-					$actionFunction = $this->$actionFunction();
-				} else {
-					$actionFunction = $this->notAllowed();
-				}
-			}
-		} else {
-			$this->xajax->processRequest();
-		}
+        $actionFunction  = $this->action;
+        while ($actionFunction != NULL) {
+            if(isset($this->noACL[$actionFunction]) || $this->acl->acl_check($this->pagename, $actionFunction, 'user', $this->session->uid)) {
+                $actionFunction .= "Action";
+                $actionFunction = $this->$actionFunction();
+            } else {
+                $actionFunction = $this->notAllowed();
+            }
+        }
+
 	}
 
 	/**
@@ -263,15 +234,22 @@ abstract class MyPage {
 	 * Render the master Page
 	 */
 	public function render() {
+
+        $this->envJavaScript .=
+            "
+            <script type=\"text/javascript\">
+                var uid = " . $this->session->uid . "
+            </script>
+            ";
+
+
 		
 		$this->smarty->assign("isAuth", $this->session->isAuth);
 		$this->smarty->assign("siteTitle", $this->config["system"]["name"]);
 		$this->smarty->assign("currentPage", $this->pagename);
 		$this->smarty->assign("currentAction", $this->action);
 		$this->smarty->assign("templateDir", $this->templateDir);
-		$this->smarty->assign("xajax_javascript",$this->xajax->getJavaScript() );
-		$this->smarty->assign("customer_javascript", $this->customerJavaScript);
-		$this->smarty->assign("loaderJavaScript", $this->loaderJavaScript);
+        $this->smarty->assign("env_javascript", $this->envJavaScript);
 		$this->smarty->assign("share", $this->session->share);
 		$this->smarty->assign("plugins", $this->plugins);
 		$this->smarty->assign("uid", $this->session->uid);
@@ -281,13 +259,8 @@ abstract class MyPage {
         $rs = $notification->getNotificationStatus($this->session->uid);
         $this->smarty->assign("numOfNotification", $rs->RecordCount());
 
-		
-		if (!$this->isAjaxCall) {
-			$this->smarty->display("master.tpl");
-		} else {
-            return utf8_encode($this->smarty->fetch("ajaxmaster.tpl"));
-            return utf8_encode($this->smarty->fetch("ajaxmaster.tpl"));
-		}
+        $this->smarty->display("master.tpl");
+
 	}
 	
 }

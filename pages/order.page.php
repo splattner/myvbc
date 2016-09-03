@@ -20,35 +20,7 @@ class PageOrder extends MyPage
 		parent::init();
 		$this->smarty->assign("content", $this->template);
 		
-		
-		$this->xajax->register(XAJAX_FUNCTION, array("getItemsEntry", $this, "getItemsEntry"));
-		$this->xajax->register(XAJAX_FUNCTION, array("showaddLicenceForm", $this, "showaddLicenceForm"));
-		$this->xajax->register(XAJAX_FUNCTION, array("addLicenceToOrder", $this, "addLicenceToOrder"));
-		$this->xajax->register(XAJAX_FUNCTION, array("removeLicenceFromOrder", $this, "removeLicenceFromOrder"));
-		
-				
-		$this->customerJavaScript  .= "
-			<script type=\"text/javascript\">
-				function getItemsEntry(orderID) {
-					xajax_getItemsEntry(orderID);
 
-				}
-				
-				function showaddLicenceForm(orderID) {
-					xajax_showaddLicenceForm(orderID);
-				}
-				
-				function addLicenceToOrder(orderID) {
-					var personID = document.getElementById('personID').options[document.getElementById('personID').selectedIndex].value;
-					xajax_addLicenceToOrder(personID, orderID);
-				}
-				function removeLicenceFromOrder(personID, orderID) {
-					xajax_removeLicenceFromOrder(personID, orderID);
-				}
-
-			</script>
-		";
-		
 	}
 	
 		
@@ -68,15 +40,7 @@ class PageOrder extends MyPage
 
 
 	}
-	
-	public function closeOrderAction() {
-		$orderID = $_GET["orderID"];
-		$order = new MOrder();
-		$order->updateStatus(2, $orderID);
-		
-		return "list";
-	}
-	
+
 	
 	public function deleteAction() {
 		
@@ -86,7 +50,7 @@ class PageOrder extends MyPage
 		
 		return "main";	
 	}
-	
+
 	public function newAction() {
 
 		if (isset($_POST["doNew"])) {
@@ -149,100 +113,12 @@ class PageOrder extends MyPage
 		
 		$orderID = $_GET["orderID"];
 		$this->smarty->assign("orderID", $orderID);
-		
-		$order = new MOrder();
-		$rs = $order->getOrder($orderID);
-		$this->smarty->assign("orders", $rs->getArray());
-		
-		$this->smarty->assign("allowedit", $this->acl->acl_check("order", "allowedit", "user", $this->session->uid));
-		
-		
-		$rs = $order->getStatusList();
-		$this->smarty->assign("statuslist", $rs->getArray());
-		
-		
-		$this->loaderJavaScript .= "
-			<script type=\"text/javascript\">
-				getItemsEntry(" . $orderID . ");
-			</script>
 
-		";
-		$this->smarty->assign("loaderJavaScript", $this->loaderJavaScript);
-		
-	}
-	
-	public function addLicenceToOrder($personID, $orderID) {
-		$this->smarty->assign("content", "order/orderItemEntrys.tpl");
-		
-		$order = new MOrder();
-		$order->addLicenceToOrder($personID, $orderID);
-		
-		$rs = $order->getOrderItems($orderID);
-		$this->smarty->assign("orderitems", $rs->getArray());
 		
 		$this->smarty->assign("allowedit", $this->acl->acl_check("order", "allowedit", "user", $this->session->uid));
-		$this->smarty->assign("orderID", $orderID);
 		
-		// Create AJAX Response
-		$objResponse = new xajaxResponse();
-		$objResponse->assign("orderitemsnew", "innerHTML", "");
-		$objResponse->assign("orderitems", "innerHTML", $this->render());
 
-		return $objResponse;
-	}
-	
-	public function removeLicenceFromOrder($personID, $orderID) {
-		$this->smarty->assign("content", "order/orderItemEntrys.tpl");
-		
-		$order = new MOrder();
-		$order->removeLicenceFromOrder($personID, $orderID);
-		
-		$rs = $order->getOrderItems($orderID);
-		$this->smarty->assign("orderitems", $rs->getArray());
-		
-		$this->smarty->assign("allowedit", $this->acl->acl_check("order", "allowedit", "user", $this->session->uid));
-		$this->smarty->assign("orderID", $orderID);
-		
-		// Create AJAX Response
-		$objResponse = new xajaxResponse();
-		$objResponse->assign("orderitems", "innerHTML", $this->render());
 
-		return $objResponse;
-	}
-	
-	
-	public function showaddLicenceForm($orderID) {
-		$this->smarty->assign("content", "order/addlicenceform.tpl");
-		$this->smarty->assign("orderID", $orderID);
-		
-		$person = new MPerson();
-		$rs = $person->getRS(array("active =" => "1", "signature =" => "1"),array("persons.name" => "ASC", "persons.prename" => "ASC"));
-		$this->smarty->assign("persons", $rs->getArray());
-		
-		// Create AJAX Response
-		$objResponse = new xajaxResponse();
-		$objResponse->assign("orderitemsnew", "innerHTML", $this->render());
-		return $objResponse;
-	}
-	
-	public function getItemsEntry($orderID) {
-		$this->smarty->assign("content", "order/orderItemEntrys.tpl");
-		
-		$this->smarty->assign("allowedit", $this->acl->acl_check("order", "allowedit", "user", $this->session->uid));
-		
-		
-		$order = new MOrder();
-		$rs = $order->getOrder($orderID);
-		$this->smarty->assign("order", $rs->getArray());
-		
-		$rs = $order->getOrderItems($orderID);
-		$this->smarty->assign("orderitems", $rs->getArray());
-		
-		
-		// Create AJAX Response
-		$objResponse = new xajaxResponse();
-		$objResponse->assign("orderitems", "innerHTML", $this->render());
-		return $objResponse;		
 	}
 }
 

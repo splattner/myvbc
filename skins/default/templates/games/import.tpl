@@ -3,19 +3,13 @@
 </p>
 
 <h3>Spiele importieren</h3>
+
+<div ng-controller="GameImportController">
 <p>
 Team ausw&auml;hlen:
-<select onchange="getGamesToImport(this.value);" name="teamid">
-	<option value="0">(Bitte ausw&auml;hlen)</option>
-	{foreach item=team from=$teams}
-		{if $share.teamID == $team.id}
-			<option selected="selected" value="{$team.id}">{$team.name}</option>
-		{else}
-			<option value="{$team.id}">{$team.name}</option>
-		{/if}
-	{/foreach}
+<select ng-change="getGames()" ng-model="selectedTeam" ng-options="team.name for team in teams track by team.id" >
 </select>
-<a data-toggle="tooltip" data-placement="bottom" title="Spiele importieren" href="#" onClick='importGames()'><i class="fa fa-plus-square"></i></a>
+<a data-toggle="tooltip" ng-click="importGames()" data-placement="bottom" title="Spiele importieren" href="#"><i class="fa fa-plus-square"></i></a>
 </p>
 
 <table class="legend">
@@ -28,15 +22,28 @@ Team ausw&auml;hlen:
 </tr>
 </table>
 
-<div id="importEntrys">
 <table class="wide">
-<tr>
-	<th>&nbsp;</th>
-	<th>Datum / Zeit</th>
-	<th>Team</th>
-	<th>Gegner</th>
-	<th>Ort</th>
-	<th>&nbsp;</th>
-</tr>
+	<tr>
+		<th>&nbsp;</th>
+		<th>Datum / Zeit</th>
+		<th>Begegnung</th>
+		<th>Ort</th>
+		<th>&nbsp;</th>
+	</tr>
+		<tr ng-repeat="game in games">
+			<td>
+                <img ng-if="game.local == 1" src="{$templateDir}/images/icons/bullet_green.png">
+                <img ng-if="game.local == 2" src="{$templateDir}/images/icons/bullet_orange.png">
+                <img ng-if="game.local != 1 && game.local != 2" src="{$templateDir}/images/icons/bullet_red.png">
+			<td>
+				[[ game.datum ]]
+			</td>
+			<td>
+				[[ game.heimteam ]] - [[ game.gastteam ]]
+			</td>
+			<td>
+				[[ game.ort ]] / [[ game.halle ]]
+			</td>
+		</tr>
 </table>
 </div>

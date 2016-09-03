@@ -84,9 +84,25 @@ class MyModel {
 		return $this->db->Insert_ID();
 	}
 	
-	public function getRS($where = array(), $orderby = array())
+	public function getRS($where = array(), $orderby = array(), $filter = array())
     {
-        $sql = "SELECT * FROM `" . $this->table . "`";
+
+
+        $sql = "SELECT ";
+
+
+        if (count($filter) > 0) {
+            foreach($filter as $f) {
+                $sql .= $f . ", ";
+
+            }
+            $sql = substr($sql, 0, -2); // Remove last AND
+        } else {
+            $sql .= "*";
+        }
+
+
+        $sql .= " FROM `" . $this->table . "`";
 
         $whereValues = array();
 
@@ -106,7 +122,6 @@ class MyModel {
             }
             $sql = substr($sql, 0, -1); // Remove last AND
         }
-
 
         $sql = $this->db->Prepare($sql);
 

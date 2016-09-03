@@ -7,7 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInit3fe6463f55d4def5dd29a87c7895e206
 {
     public static $files = array (
-        'b9d15055d6d173c07d18d01c487132a7' => __DIR__ . '/..' . '/xajax/xajax/xajax_core/xajax.inc.php',
         'bf9f5270ae66ac6fa0290b4bf47867b7' => __DIR__ . '/..' . '/adodb/adodb-php/adodb.inc.php',
     );
 
@@ -23,10 +22,6 @@ class ComposerStaticInit3fe6463f55d4def5dd29a87c7895e206
         array (
             0 => __DIR__ . '/..' . '/nadar/aspsms/src',
         ),
-    );
-
-    public static $fallbackDirsPsr0 = array (
-        0 => __DIR__ . '/..' . '/xajax/xajax/xajax_core',
     );
 
     public static $classMap = array (
@@ -212,7 +207,6 @@ class ComposerStaticInit3fe6463f55d4def5dd29a87c7895e206
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit3fe6463f55d4def5dd29a87c7895e206::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit3fe6463f55d4def5dd29a87c7895e206::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr0 = ComposerStaticInit3fe6463f55d4def5dd29a87c7895e206::$fallbackDirsPsr0;
             $loader->classMap = ComposerStaticInit3fe6463f55d4def5dd29a87c7895e206::$classMap;
 
         }, null, ClassLoader::class);

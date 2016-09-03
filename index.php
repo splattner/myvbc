@@ -102,14 +102,6 @@ if(isset($_GET["register"])) {
 $session = new MySession();
 MyApplication::setInstance("session",$session);
 
-/**
- * Initialize the XAJAX Object
- */
-$xajax = new xajax("index.php?ajax&page=" . $session->currentPage);
-$xajax->configure("javascript URI", "vendor/xajax/xajax");
-$xajax->configure('debug',$config["system"]["ajaxdebug"]);
-MyApplication::setInstance("xajax", $xajax);
-
 
 /**
  * Initialize the notification Stuff

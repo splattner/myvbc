@@ -15,23 +15,13 @@ class MGame extends MyModel {
 		$rs_game = $game->getRS(array($game->pk . " =" => $gameID));
 		$arr_game = $rs_game->getArray(); //All Datas for the current Game
 		$currentTeam = $arr_game[0]["team"]; // The team for the current Game
-		
-		$sql = "SELECT
-					*
-				FROM
-					persons
-				WHERE
-					persons.schreiber = 1
-					AND persons.active = 1
-				ORDER BY
-					persons.name, persons.prename";
-		$rs = $this->db->Execute($sql); //RS of all Persons who are allowed to write
-		
 
 
-		$person = new MPerson;
-		
-		while($row = $rs->fetchRow()) {
+		$person = new MPerson();
+		$rs_person = $person->getRS(array("schreiber =" => 1, "active =" => 1), array("name" => "ASC", "prename" => "ASC"), array("id", "name", "prename"));
+
+
+		while($row = $rs_person->fetchRow()) {
 
 			
 			$rs_teams = $person->getMyTeams($row["id"]);
@@ -104,6 +94,50 @@ class MGame extends MyModel {
 		$this->db->Execute($sql);
 		
 	}
+
+    public function getGamesFromSource($teamID) {
+
+        $games = array();
+
+        $team = new MTeam();
+        $rs = $team->getRS(array($team->pk ." =" => $teamID));
+        $teamData = $rs->getArray();
+
+
+        switch($teamData[0]["typ"]) {
+            case "1":
+                //Swissvolley
+                $source = new SourceSwissvolley();
+                break;
+
+            case "2":
+                //SVRS
+                $source = new SourceSVRS();
+                break;
+        }
+
+        $games = $source->getGamesbyTeamID($teamData[0]["extid"]);
+
+
+
+        for ($i = 0 ; $i < count($games); $i++) {
+
+            $localGame = new MGame();
+            $rs = $localGame->getRS(array("extid =" => $games[$i]["extid"]));
+            $localGames = $rs->getArray();
+            if (count($localGames) >= 1) {
+                if($games[$i]["datum"] != $localGames[0]["date"] || $games[$i]["ort"] != $localGames[0]["ort"] || $games[$i]["halle"] != $localGames[0]["halle"]){
+                    $games[$i]["local"] = 2;
+                } else {
+                    $games[$i]["local"] = 1;
+                }
+            } else {
+                $games[$i]["local"] = 0;
+            }
+        }
+
+        return $games;
+    }
 	
 }
 ?>

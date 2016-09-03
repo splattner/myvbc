@@ -66,10 +66,12 @@ class API
 
 
         // REST API for a Model
-        if(file_exists($modelFile)) {
+        if(file_exists($modelFile) && (!isset($this->request[2]) || is_numeric($this->request[2]))) {
             include_once $modelFile;
             $modelClass = "M" . $apiCall;
             $model =  new $modelClass();
+
+
 
             if (count($this->request) > 2) {
                 $id = $this->request[2];

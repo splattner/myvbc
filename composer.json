@@ -19,7 +19,6 @@
     "nadar/aspsms": "1.0.1",
     "adodb/adodb-php": "^5.20",
     "smarty/smarty": "^3.1",
-    "phpmailer/phpmailer": "^5.2",
-    "xajax/xajax": "dev-master"
+    "phpmailer/phpmailer": "^5.2"
   }
 }

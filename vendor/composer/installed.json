@@ -111,117 +111,6 @@
         "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
     },
     {
-        "name": "xajax/xajax",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Xajax/Xajax.git",
-            "reference": "49ea682f4dffbda7a2984e7d07450207d233ad7c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Xajax/Xajax/zipball/49ea682f4dffbda7a2984e7d07450207d233ad7c",
-            "reference": "49ea682f4dffbda7a2984e7d07450207d233ad7c",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2"
-        },
-        "time": "2014-10-22 16:40:16",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "": "xajax_core/"
-            },
-            "files": [
-                "xajax_core/xajax.inc.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-2-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Jared White"
-            },
-            {
-                "name": "J. Max Wilson"
-            },
-            {
-                "name": "Joseph Woolley"
-            },
-            {
-                "name": "Steffen Konerow"
-            }
-        ],
-        "description": "Xajax is an open source PHP class library for easily creating powerful PHP-driven, web-based Ajax Applications. Using Xajax, you can asynchronously call PHP functions and update the content of your your webpage without reloading the page.",
-        "homepage": "http://xajaxproject.org",
-        "keywords": [
-            "asynchronous",
-            "php",
-            "xajax"
-        ]
-    },
-    {
-        "name": "adodb/adodb-php",
-        "version": "v5.20.5",
-        "version_normalized": "5.20.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ADOdb/ADOdb.git",
-            "reference": "7ce997d4c5957a1a96e7ab483ad088b15f02b191"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ADOdb/ADOdb/zipball/7ce997d4c5957a1a96e7ab483ad088b15f02b191",
-            "reference": "7ce997d4c5957a1a96e7ab483ad088b15f02b191",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2"
-        },
-        "time": "2016-08-10 11:08:40",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "adodb.inc.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause",
-            "LGPL-2.1"
-        ],
-        "authors": [
-            {
-                "name": "John Lim",
-                "email": "jlim@natsoft.com",
-                "role": "Author"
-            },
-            {
-                "name": "Damien Regad",
-                "role": "Current maintainer"
-            },
-            {
-                "name": "Mark Newnham",
-                "role": "Developer"
-            }
-        ],
-        "description": "ADOdb is a PHP database abstraction layer library",
-        "homepage": "http://adodb.sourceforge.net/",
-        "keywords": [
-            "abstraction",
-            "database",
-            "layer",
-            "library",
-            "php"
-        ]
-    },
-    {
         "name": "smarty/smarty",
         "version": "v3.1.30",
         "version_normalized": "3.1.30.0",
@@ -276,6 +165,62 @@
         "homepage": "http://www.smarty.net",
         "keywords": [
             "templating"
+        ]
+    },
+    {
+        "name": "adodb/adodb-php",
+        "version": "v5.20.6",
+        "version_normalized": "5.20.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ADOdb/ADOdb.git",
+            "reference": "66b60ff95a969d7d79d385a25779e7d375a8040d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ADOdb/ADOdb/zipball/66b60ff95a969d7d79d385a25779e7d375a8040d",
+            "reference": "66b60ff95a969d7d79d385a25779e7d375a8040d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "time": "2016-08-31 14:21:42",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "adodb.inc.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "LGPL-2.1"
+        ],
+        "authors": [
+            {
+                "name": "John Lim",
+                "email": "jlim@natsoft.com",
+                "role": "Author"
+            },
+            {
+                "name": "Damien Regad",
+                "role": "Current maintainer"
+            },
+            {
+                "name": "Mark Newnham",
+                "role": "Developer"
+            }
+        ],
+        "description": "ADOdb is a PHP database abstraction layer library",
+        "homepage": "http://adodb.org/",
+        "keywords": [
+            "abstraction",
+            "database",
+            "layer",
+            "library",
+            "php"
         ]
     }
 ]

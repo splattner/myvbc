@@ -101,10 +101,10 @@ class MOrder extends MyModel {
 					order.id AS orderID,
 					orderitem.id as orderitemid,
 					persons.id AS personID,
-					order.status AS status,
 					persons.name AS name,
 					persons.prename AS prename,
 					licences.typ AS licence,
+					licences.id as licenceID,
 					orderitem.licence_comment AS comment
 				FROM
 					`orderitem`

@@ -17,12 +17,17 @@ class PublicAPI
     public $db;
 
 
+    protected $method;
+
+
     public function __construct()
     {
         header('Content-type: application/json');
 
         $this->db = MyApplication::getInstance("db");
         $this->db->setFetchMode(ADODB_FETCH_ASSOC);
+
+        $this->method = $_SERVER['REQUEST_METHOD'];
     }
 
 }
