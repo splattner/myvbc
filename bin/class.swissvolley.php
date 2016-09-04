@@ -1,7 +1,7 @@
 <?php
 /*
 
-PHP Klasse für die Abfrage von Spielplänen und Ranglisten von Swissvolley
+PHP Klasse fï¿½r die Abfrage von Spielplï¿½nen und Ranglisten von Swissvolley
 
 Script: Plattner Sebastian webmaster@vbclangenthal.ch
 
@@ -12,22 +12,22 @@ class swissvolley
 
 	//Variabeln
 	
-	private $soap_client; //Soap Client für die Verbindung mit Swissvolley
+	private $soap_client; //Soap Client fï¿½r die Verbindung mit Swissvolley
 	
 	
-	public function swissvolley() // Konstruktor
+	public function __construct() // Konstruktor
 	{
-		// Soap Verbindung öffnen
+		// Soap Verbindung ï¿½ffnen
 		$this->soap_client = new SoapClient("http://myvolley.volleyball.ch/SwissVolley.wsdl");
 	}
 	
 	// Funktionen
-	public function get_GamesbyTeamID($teamID) // Lädt alle Spiele des Team mit ID '$teamID' und gibt diese als Array zurück
+	public function get_GamesbyTeamID($teamID) // Lï¿½dt alle Spiele des Team mit ID '$teamID' und gibt diese als Array zurï¿½ck
 	{
 		return $this->soap_client->getGamesTeam($teamID);
 	}
 	
-	public function get_GameDetailed($gameID) // Gibt detailierte Informationen über das Spiel mit ID '$gameID'
+	public function get_GameDetailed($gameID) // Gibt detailierte Informationen ï¿½ber das Spiel mit ID '$gameID'
 	{
 		return $this->soap_client->getGameDetailed($gameID);
 	}

@@ -229,16 +229,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/splattner/framework.git",
-                "reference": "626047079eae003bd353dc00263b812807dac888"
+                "reference": "51db3872faf752d750603454b3cb2e956cadb270"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/splattner/framework/zipball/626047079eae003bd353dc00263b812807dac888",
-                "reference": "626047079eae003bd353dc00263b812807dac888",
+                "url": "https://api.github.com/repos/splattner/framework/zipball/51db3872faf752d750603454b3cb2e956cadb270",
+                "reference": "51db3872faf752d750603454b3cb2e956cadb270",
                 "shasum": ""
             },
             "require": {
                 "adodb/adodb-php": "^5.20",
+                "php": ">=5.3.0",
                 "smarty/smarty": "^3.1"
             },
             "type": "library",
@@ -256,6 +257,7 @@
                     "src/Session.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -266,11 +268,8 @@
                     "role": "Developer"
                 }
             ],
-            "support": {
-                "source": "https://github.com/splattner/framework/tree/master",
-                "issues": "https://github.com/splattner/framework/issues"
-            },
-            "time": "2016-09-04 16:06:31"
+            "description": "Simple PHP Framework used by splattner/myvbc",
+            "time": "2016-09-04 16:24:30"
         }
     ],
     "packages-dev": [],
