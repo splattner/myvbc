@@ -15,7 +15,7 @@
 			Person ausw&auml;hlen
 		</td>
 		<td width="70%">
-			<select style="width:80%;" class="person-select" name="person">
+			<select style="width:80%;" class="form-control person-select" name="person">
 				<option value="0" >(Bitte ausw&auml;hlen)</option>
 				{foreach item=user from=$users}
 					<option value="{$user.id}">{$user.name} {$user.prename}</option>
@@ -28,7 +28,7 @@
 			Funktion
 		</td>
 		<td width="70%">
-			<select name="typ">
+			<select class="form-control" name="typ">
 				<option value="1">Spieler</option>
 				<option value="2">Captain / Teamverantwortlicher</option>
 				<option value="3">Trainer</option>
