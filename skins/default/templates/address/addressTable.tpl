@@ -31,8 +31,8 @@
         <th width="20%">Adresse</th>
         <th width="15%">Telefon</th>
         <th width="15%">Mobile</th>
-        <th width="20%">E-Mail</th>
-        <th width="10%">&nbsp;</th>
+        <th width="15%">E-Mail</th>
+        <th width="15%">&nbsp;</th>
     </tr>
 
     </thead>
