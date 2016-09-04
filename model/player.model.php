@@ -1,8 +1,8 @@
 <?php
 
-namespace sebastianplattner\myvbc\models;
-use sebastianplattner\framework\Application;
-use sebastianplattner\framework\Model;
+namespace splattner\myvbc\models;
+use splattner\framework\Application;
+use splattner\framework\Model;
 
 
 // no direct access

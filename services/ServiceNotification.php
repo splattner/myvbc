@@ -1,11 +1,11 @@
 <?php
 
-namespace sebastianplattner\myvbc\service;
-use sebastianplattner\framework\Service;
-use sebastianplattner\myvbc\models\MNotification;
-use sebastianplattner\myvbc\models\MPerson;
-use sebastianplattner\myvbc\models\MLicence;
-use sebastianplattner\myvbc\models\MTeam;
+namespace splattner\myvbc\service;
+use splattner\framework\Service;
+use splattner\myvbc\models\MNotification;
+use splattner\myvbc\models\MPerson;
+use splattner\myvbc\models\MLicence;
+use splattner\myvbc\models\MTeam;
 
 
 

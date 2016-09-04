@@ -1,7 +1,7 @@
 <?php
 
-namespace sebastianplattner\myvbc;
-use sebastianplattner\framework\Application;
+namespace splattner\myvbc;
+use splattner\framework\Application;
 
 
 if($_SERVER["HTTPS"] != "on") {
@@ -30,17 +30,7 @@ require_once "etc/confic.inc.php";
  */
 require __DIR__ . '/vendor/autoload.php';
 
-/**
- * Include 3-Party libs
- */
-require_once "libs/phpgacl-3.3.7/gacl.class.php";
-require_once "libs/phpgacl-3.3.7/gacl_api.class.php";
 
-
-/**
- * Init Application
- */
-require "libs/framework/application.php";
 Application::init($config);
 
 

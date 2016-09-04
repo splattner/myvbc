@@ -1,14 +1,13 @@
 <?php
 
-namespace sebastianplattner\myvbc\pages;
-use sebastianplattner\framework\Page;
-use sebastianplattner\framework\Model;
-
-use sebastianplattner\myvbc\models\MNotification;
-
+namespace splattner\myvbc\pages;
+use splattner\framework\Page;
+use splattner\framework\Model;
+use splattner\myvbc\models\MNotification;
 
 
-class PageNotification extends Page
+
+class PageNotification extends MyVBCPage
 {
 	
 	public function __construct() {

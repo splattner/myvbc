@@ -1,20 +1,20 @@
 <?php
 
 
-namespace sebastianplattner\myvbc\pages;
-use sebastianplattner\framework\Page;
-use sebastianplattner\framework\Model;
+namespace splattner\myvbc\pages;
+use splattner\framework\Page;
+use splattner\framework\Model;
 
-use sebastianplattner\myvbc\models\MPerson;
-use sebastianplattner\myvbc\models\MArogroup;
-use sebastianplattner\myvbc\models\MReport;
-use sebastianplattner\myvbc\models\MPlayer;
-use sebastianplattner\myvbc\models\MGame;
-use sebastianplattner\myvbc\models\MNotification;
+use splattner\myvbc\models\MPerson;
+use splattner\myvbc\models\MArogroup;
+use splattner\myvbc\models\MReport;
+use splattner\myvbc\models\MPlayer;
+use splattner\myvbc\models\MGame;
+use splattner\myvbc\models\MNotification;
 
 
 
-class PageAdmin extends Page
+class PageAdmin extends MyVBCPage
 {
 	
 	public function __construct() {

@@ -7,11 +7,11 @@
  */
 
 
-namespace sebastianplattner\myvbc\api;
-use sebastianplattner\framework\PublicAPI;
-use sebastianplattner\framework\Model;
-use sebastianplattner\myvbc\models\MSchreiber;
-use sebastianplattner\myvbc\models\MGame;
+namespace splattner\myvbc\api;
+use splattner\framework\PublicAPI;
+use splattner\framework\Model;
+use splattner\myvbc\models\MSchreiber;
+use splattner\myvbc\models\MGame;
 
 class APISchreiber extends PublicAPI
 {

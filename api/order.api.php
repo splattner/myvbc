@@ -6,11 +6,11 @@
  * Time: 14:34
  */
 
-namespace sebastianplattner\myvbc\api;
-use sebastianplattner\framework\PublicAPI;
-use sebastianplattner\framework\Model;
-use sebastianplattner\myvbc\models\MOrder;
-use sebastianplattner\myvbc\models\MPerson;
+namespace splattner\myvbc\api;
+use splattner\framework\PublicAPI;
+use splattner\framework\Model;
+use splattner\myvbc\models\MOrder;
+use splattner\myvbc\models\MPerson;
 
 
 

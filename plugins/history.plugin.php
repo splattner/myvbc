@@ -1,9 +1,9 @@
 <?
-namespace sebastianplattner\myvbc\plugins;
-use sebastianplattner\framework\Plugin;
-use sebastianplattner\framework\Model;
-use sebastianplattner\myvbc\models\MOrder;
-use sebastianplattner\myvbc\models\MNotification;
+namespace splattner\myvbc\plugins;
+use splattner\framework\Plugin;
+use splattner\framework\Model;
+use splattner\myvbc\models\MOrder;
+use splattner\myvbc\models\MNotification;
 
 class PHistory extends Plugin {
 

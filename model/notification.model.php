@@ -1,7 +1,7 @@
 <?php
 
-namespace sebastianplattner\myvbc\models;
-use sebastianplattner\framework\Model;
+namespace splattner\myvbc\models;
+use splattner\framework\Model;
 
 // no direct access
 defined( '_MYVBC' ) or die( 'Restricted access' );

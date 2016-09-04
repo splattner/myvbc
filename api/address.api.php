@@ -6,10 +6,10 @@
  * Time: 13:33
  */
 
-namespace sebastianplattner\myvbc\api;
-use sebastianplattner\framework\PublicAPI;
-use sebastianplattner\framework\Model;
-use sebastianplattner\myvbc\models\MPerson;
+namespace splattner\myvbc\api;
+use splattner\framework\PublicAPI;
+use splattner\framework\Model;
+use splattner\myvbc\models\MPerson;
 
 
 

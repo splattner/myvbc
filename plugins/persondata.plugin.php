@@ -1,10 +1,10 @@
 <?
 
-namespace sebastianplattner\myvbc\plugins;
-use sebastianplattner\framework\Plugin;
-use sebastianplattner\framework\Model;
-use sebastianplattner\myvbc\models\MPerson;
-use sebastianplattner\myvbc\models\MLicence;
+namespace splattner\myvbc\plugins;
+use splattner\framework\Plugin;
+use splattner\framework\Model;
+use splattner\myvbc\models\MPerson;
+use splattner\myvbc\models\MLicence;
 
 
 class PPersondata extends Plugin {

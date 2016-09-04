@@ -1,7 +1,3 @@
-
-
-
-
 <div class="panel panel-default">
 	<div class="panel-heading">
 		Meine Teams

@@ -1,6 +1,3 @@
-<script src="libs/chosen/chosen.jquery.js"></script>
-<link rel="stylesheet" href="libs/chosen/chosen.css">
-
 <p>
     <a data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neue Schl&uuml;ssel erfassen" href="#">
         <i class="fa fa-plus-square"></i>

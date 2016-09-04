@@ -222,5 +222,56 @@
             "library",
             "php"
         ]
+    },
+    {
+        "name": "splattner/framework",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/splattner/framework.git",
+            "reference": "626047079eae003bd353dc00263b812807dac888"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/splattner/framework/zipball/626047079eae003bd353dc00263b812807dac888",
+            "reference": "626047079eae003bd353dc00263b812807dac888",
+            "shasum": ""
+        },
+        "require": {
+            "adodb/adodb-php": "^5.20",
+            "smarty/smarty": "^3.1"
+        },
+        "time": "2016-09-04 16:06:31",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "libs/phpgacl-3.3.7/gacl.class.php",
+                "libs/phpgacl-3.3.7/gacl_api.class.php",
+                "src/Application.php",
+                "src/API.php",
+                "src/Model.php",
+                "src/Page.php",
+                "src/Plugin.php",
+                "src/PublicAPI.php",
+                "src/Service.php",
+                "src/Session.php"
+            ]
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Plattner",
+                "email": "sebastian.plattner@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "support": {
+            "source": "https://github.com/splattner/framework/tree/master",
+            "issues": "https://github.com/splattner/framework/issues"
+        }
     }
 ]

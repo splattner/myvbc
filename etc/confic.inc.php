@@ -10,6 +10,7 @@ $config["db"]["password"] = "//PASSWORD";
 $config["db"]["database"] = "sebasti4_vbclmyvbc";
 
 $config["template"]["default"] = "default";
+$config["template"]["master"] = "master.tpl";
 
 $config["system"]["name"] = "VBC Langenthal - Web Administration";
 $config["system"]["debug"] = false;
@@ -26,7 +27,7 @@ $config["system"]["plugin-folder"] = "plugins";
 $config["system"]["service-folder"] = "services";
 $config["system"]["skins-folder"] = "skins";
 
-$config["system"]["namespace"] = "sebastianplattner\\myvbc";
+$config["system"]["namespace"] = "splattner\\myvbc";
 
 
 ?>

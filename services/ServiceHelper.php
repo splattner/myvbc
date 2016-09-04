@@ -1,11 +1,11 @@
 <?php
 
-namespace sebastianplattner\framework;
+namespace splattner\myvbc\service;
 use Aspsms\Aspsms;
+use splattner\framework\Service;
 
 
-class Helper {
-
+class ServiceHelper extends Service {
 
 
 	public static function to_utf8($in)

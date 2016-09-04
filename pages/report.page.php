@@ -1,13 +1,13 @@
 <?php
 
-namespace sebastianplattner\myvbc\pages;
-use sebastianplattner\framework\Page;
-use sebastianplattner\framework\Model;
+namespace splattner\myvbc\pages;
+use splattner\framework\Page;
+use splattner\framework\Model;
 
-use sebastianplattner\myvbc\models\MReport;
+use splattner\myvbc\models\MReport;
 
 
-class PageReport extends Page {
+class PageReport extends MyVBCPage {
 	
 	
 	private $publicReports;

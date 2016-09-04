@@ -1,13 +1,13 @@
 <?php
 
-namespace sebastianplattner\myvbc\pages;
-use sebastianplattner\framework\Page;
-use sebastianplattner\myvbc\models\MPerson;
-use sebastianplattner\myvbc\plugins\PHistory;
-use sebastianplattner\myvbc\plugins\PPersondata;
+namespace splattner\myvbc\pages;
+use splattner\framework\Page;
+use splattner\myvbc\models\MPerson;
+use splattner\myvbc\plugins\PHistory;
+use splattner\myvbc\plugins\PPersondata;
 
 
-class PageAddress extends Page
+class PageAddress extends MyVBCPage
 {
 	
 	public function __construct() {

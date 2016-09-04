@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c7d8070f8574b626368275370babc5c3",
-    "content-hash": "0700e855ba75ed2364a341ef7e0d04df",
+    "hash": "efcf9ab0fc02fb644a4214b3b7bd777c",
+    "content-hash": "64dff1ce0c70f7a933df86c8821bac7a",
     "packages": [
         {
             "name": "adodb/adodb-php",
@@ -222,13 +222,64 @@
                 "templating"
             ],
             "time": "2016-08-07 18:46:49"
+        },
+        {
+            "name": "splattner/framework",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/splattner/framework.git",
+                "reference": "626047079eae003bd353dc00263b812807dac888"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/splattner/framework/zipball/626047079eae003bd353dc00263b812807dac888",
+                "reference": "626047079eae003bd353dc00263b812807dac888",
+                "shasum": ""
+            },
+            "require": {
+                "adodb/adodb-php": "^5.20",
+                "smarty/smarty": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "libs/phpgacl-3.3.7/gacl.class.php",
+                    "libs/phpgacl-3.3.7/gacl_api.class.php",
+                    "src/Application.php",
+                    "src/API.php",
+                    "src/Model.php",
+                    "src/Page.php",
+                    "src/Plugin.php",
+                    "src/PublicAPI.php",
+                    "src/Service.php",
+                    "src/Session.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Plattner",
+                    "email": "sebastian.plattner@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/splattner/framework/tree/master",
+                "issues": "https://github.com/splattner/framework/issues"
+            },
+            "time": "2016-09-04 16:06:31"
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": [],
-    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "splattner/framework": 20
+    },
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": []

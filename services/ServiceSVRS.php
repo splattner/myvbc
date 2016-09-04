@@ -1,6 +1,6 @@
 <?php
 
-namespace sebastianplattner\myvbc\service;
+namespace splattner\myvbc\service;
 
 
 

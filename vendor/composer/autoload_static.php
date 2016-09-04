@@ -8,6 +8,16 @@ class ComposerStaticInit3fe6463f55d4def5dd29a87c7895e206
 {
     public static $files = array (
         'bf9f5270ae66ac6fa0290b4bf47867b7' => __DIR__ . '/..' . '/adodb/adodb-php/adodb.inc.php',
+        '5f1ee90ec6742d04d6477e245b9991e0' => __DIR__ . '/..' . '/splattner/framework/libs/phpgacl-3.3.7/gacl.class.php',
+        '7fab22df3ba8bf58db40622529031796' => __DIR__ . '/..' . '/splattner/framework/libs/phpgacl-3.3.7/gacl_api.class.php',
+        '5c57a4bab6bf8641cc5aa61dd5d22995' => __DIR__ . '/..' . '/splattner/framework/src/Application.php',
+        'bb71d012d3daf214af644aa82cb17435' => __DIR__ . '/..' . '/splattner/framework/src/API.php',
+        '85bb91e5885849eff925f342d997c9e5' => __DIR__ . '/..' . '/splattner/framework/src/Model.php',
+        'fb89f886de8856092236889270f88344' => __DIR__ . '/..' . '/splattner/framework/src/Page.php',
+        'cc28026640c6f7be1b9987c510a66a1b' => __DIR__ . '/..' . '/splattner/framework/src/Plugin.php',
+        '8b4549a48e6999bb5dc15e69ec11e3b8' => __DIR__ . '/..' . '/splattner/framework/src/PublicAPI.php',
+        'f91af093f09cf2be6ca39311ebfb35ee' => __DIR__ . '/..' . '/splattner/framework/src/Service.php',
+        '109f5786063b976ff50f893ed89e0c68' => __DIR__ . '/..' . '/splattner/framework/src/Session.php',
     );
 
     public static $prefixLengthsPsr4 = array (

@@ -1,15 +1,15 @@
 <?php
 
-namespace sebastianplattner\myvbc\pages;
-use sebastianplattner\framework\Application;
-use sebastianplattner\framework\Page;
-use sebastianplattner\framework\Model;
-use sebastianplattner\myvbc\models\MPerson;
-use sebastianplattner\myvbc\models\MKey;
+namespace splattner\myvbc\pages;
+use splattner\framework\Application;
+use splattner\framework\Page;
+use splattner\framework\Model;
+use splattner\myvbc\models\MPerson;
+use splattner\myvbc\models\MKey;
 
 
 
-class PageIndex extends Page
+class PageIndex extends MyVBCPage
 {
 	
 	public function __construct() {

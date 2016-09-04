@@ -1,9 +1,6 @@
-<script src="libs/chosen/chosen.jquery.js"></script>
-<link rel="stylesheet" href="libs/chosen/chosen.css">
-
 <form action="index.php?page={$currentPage}&action=createAccess&step2" method="POST">
 <table class="edit">
-	<tr>
+	<t
 		<th width="30%">
 			Zugang einrichten
 		</th>

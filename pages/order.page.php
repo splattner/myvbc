@@ -1,13 +1,13 @@
 <?php
-namespace sebastianplattner\myvbc\pages;
-use sebastianplattner\framework\Page;
-use sebastianplattner\framework\Model;
+namespace splattner\myvbc\pages;
+use splattner\framework\Page;
+use splattner\framework\Model;
 
-use sebastianplattner\myvbc\models\MOrder;
-use sebastianplattner\myvbc\models\MTeam;
+use splattner\myvbc\models\MOrder;
+use splattner\myvbc\models\MTeam;
 
 
-class PageOrder extends Page
+class PageOrder extends MyVBCPage
 {
 	
 	public function __construct() {

@@ -12,10 +12,16 @@
       "role": "Developer"
     }
   ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url":  "https://github.com/splattner/framework"
+    }
+  ],
   "require": {
+    "splattner/framework": "dev-master",
     "nadar/aspsms": "1.0.1",
-    "adodb/adodb-php": "^5.20",
-    "smarty/smarty": "^3.1",
     "phpmailer/phpmailer": "^5.2"
+
   }
 }

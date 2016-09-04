@@ -1,10 +1,10 @@
 <?php
-namespace sebastianplattner\myvbc\pages;
-use sebastianplattner\framework\Page;
-use sebastianplattner\framework\Model;
+namespace splattner\myvbc\pages;
+use splattner\framework\Page;
+use splattner\framework\Model;
 
 
-class PageGames extends Page
+class PageGames extends MyVBCPage
 {
 	
 	public function __construct() {

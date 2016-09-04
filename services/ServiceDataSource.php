@@ -1,7 +1,7 @@
 <?php
 
-namespace sebastianplattner\myvbc\service;
-use sebastianplattner\framework\Service;
+namespace splattner\myvbc\service;
+use splattner\framework\Service;
 
 abstract class ServiceDataSource extends Service {
 	

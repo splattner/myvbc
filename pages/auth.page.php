@@ -1,12 +1,12 @@
 <?php
 
-namespace sebastianplattner\myvbc\pages;
-use sebastianplattner\framework\Page;
-use sebastianplattner\framework\Model;
-use sebastianplattner\framework\Application;
+namespace splattner\myvbc\pages;
+use splattner\framework\Page;
+use splattner\framework\Model;
+use splattner\framework\Application;
 
 
-class PageAuth extends Page
+class PageAuth extends MyVBCPage
 {
 	
 	public function __construct() {
@@ -59,12 +59,12 @@ class PageAuth extends Page
 			$currentPerson = $rs->getArray();
 			$currentPerson = $currentPerson[0];
 			
-			$password = MyHelper::generatePW(8);
+			$password = Helper::generatePW(8);
 			
 			$content = "Zugangsdaten für myVBC\nE-Mail Adresse: " . $currentPerson["email"] . "\nPasswort: " . $password;
 			
 			if($currentPerson["mobile"] != "") {
-				MyHelper::sendSMS("myVBC",$currentPerson["mobile"], $content);
+                Helper::sendSMS("myVBC",$currentPerson["mobile"], $content);
 							
 				$this->smarty->assign("messages","Ihr Zugang wurde erstellt und das Passwort wurde Ihnen zugesandt");	
 			} else {

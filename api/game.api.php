@@ -6,11 +6,11 @@
  * Time: 21:23
  */
 
-namespace sebastianplattner\myvbc\api;
-use sebastianplattner\framework\PublicAPI;
-use sebastianplattner\framework\Model;
-use sebastianplattner\myvbc\models\MGame;
-use sebastianplattner\myvbc\models\MTeam;
+namespace splattner\myvbc\api;
+use splattner\framework\PublicAPI;
+use splattner\framework\Model;
+use splattner\myvbc\models\MGame;
+use splattner\myvbc\models\MTeam;
 
 
 
