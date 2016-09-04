@@ -19,5 +19,14 @@ $config["system"]["ajaxdebug"] = false;
 $config["aspsms"]["username"] = "USERNAME";
 $config["aspsms"]["password"] = "PASSWORDx";
 
+$config["system"]["models-folder"] = "model";
+$config["system"]["pages-folder"] = "pages";
+$config["system"]["api-folder"] = "api";
+$config["system"]["plugin-folder"] = "plugins";
+$config["system"]["service-folder"] = "services";
+$config["system"]["skins-folder"] = "skins";
+
+$config["system"]["namespace"] = "sebastianplattner\\myvbc";
+
 
 ?>

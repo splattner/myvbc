@@ -1,8 +1,14 @@
 <?php
-MyModel::loadModel("notification");
+
+namespace sebastianplattner\myvbc\pages;
+use sebastianplattner\framework\Page;
+use sebastianplattner\framework\Model;
+
+use sebastianplattner\myvbc\models\MNotification;
 
 
-class PageNotification extends MyPage
+
+class PageNotification extends Page
 {
 	
 	public function __construct() {

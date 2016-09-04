@@ -1,8 +1,13 @@
 <?php
+
+namespace sebastianplattner\myvbc\models;
+use sebastianplattner\framework\Model;
+
 // no direct access
 defined( '_MYVBC' ) or die( 'Restricted access' );
 
-class MReport extends MyModel {
+
+class MReport extends Model {
 	public $table = 'reports';
 	
 	

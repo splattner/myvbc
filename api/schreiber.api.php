@@ -1,12 +1,18 @@
 <?php
-MyModel::loadModel("schreiber");
-MyModel::loadModel("game");
 /**
  * Created by PhpStorm.
  * User: sebastianplattner
  * Date: 30.08.16
  * Time: 20:10
  */
+
+
+namespace sebastianplattner\myvbc\api;
+use sebastianplattner\framework\PublicAPI;
+use sebastianplattner\framework\Model;
+use sebastianplattner\myvbc\models\MSchreiber;
+use sebastianplattner\myvbc\models\MGame;
+
 class APISchreiber extends PublicAPI
 {
 

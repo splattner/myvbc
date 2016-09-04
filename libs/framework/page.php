@@ -1,5 +1,11 @@
 <?php
-abstract class MyPage {
+
+namespace sebastianplattner\framework;
+
+use sebastianplattner\myvbc\models\MNotification;
+
+
+abstract class Page {
 
 	/**
 	 * Contains all global config options defindet in /etc/confic.inc.php
@@ -29,12 +35,6 @@ abstract class MyPage {
 	 */
 	public $acl;
 
-	/**
-	 * Provides the PHPGACL API Functions
-	 * @access public
-	 * @var mixed
-	 */
-	public $acl_api;
 
 	/**
 	 * Provides the Smarty Functions
@@ -42,16 +42,7 @@ abstract class MyPage {
 	 * @var mixed
 	 */
 	public $smarty;
-	
-	/**
-	 * Notification Object
-	 * @access public
-	 * @var mixes
-	 */
-	public $notification;
 
-
-	
 	/**
 	 * Template Name
 	 * @access public
@@ -115,24 +106,21 @@ abstract class MyPage {
 	 * @param mixed $smarty
 	 */
 	public function __construct() {
-		$this->config = MyApplication::getInstance("config");
-		$this->db = MyApplication::getInstance("db");
-		$this->session = MyApplication::getInstance("session");
-		$this->acl = MyApplication::getInstance("acl");
-		$this->acl_api = MyApplication::getInstance("acl_api");
-		$this->smarty = MyApplication::getInstance("smarty");
-		$this->notification = MyApplication::getInstance("notification");
+		$this->config = Application::getConfig();
+		$this->db = Application::getInstance("db");
+		$this->session = Application::getInstance("session");
+		$this->acl = Application::getInstance("acl");
+		$this->smarty = Application::getInstance("smarty");
 		
 		/**
 		 * Set templatedir var
 		 */
-		$this->templateDir = "skins/" . $this->config["template"]["default"];
+		$this->templateDir = $this->config["system"]["skins-folder"] . "/" . $this->config["template"]["default"];
 		
 		/**
 		 * Initialize noACL Array
 		 */
 		$this->noACL = array();
-
 
 
 		/**
@@ -148,17 +136,9 @@ abstract class MyPage {
 		 * Init Plugin Array
 		 */
 		$this->plugins = array();
-
 	}
 
-	/**
-	 * Check if current user is allowed to perform the current action
-	 * @return boolean
-	 */
-	public function checkACL() {
-		return $this->acl->acl_check($this->pagename, $this->action, 'user', $this->session->uid);
-	}
-		
+
 	
 	/**
 	 * This is the main action and has to be defined
@@ -197,7 +177,6 @@ abstract class MyPage {
 	/**
 	 * Calls the corresponding Action Handler, and check ACL
 	 * Continue until no more action is required
-	 * or Process Ajax Requests
 	 */
 	public function work() {
 

@@ -1,13 +1,20 @@
 <?php
-MyModel::loadModel("person");
-MyModel::loadModel("arogroup");
-MyModel::loadModel("report");
-MyModel::loadModel("player");
-MyModel::loadModel("notification");
-MyModel::loadModel("game");
 
 
-class PageAdmin extends MyPage
+namespace sebastianplattner\myvbc\pages;
+use sebastianplattner\framework\Page;
+use sebastianplattner\framework\Model;
+
+use sebastianplattner\myvbc\models\MPerson;
+use sebastianplattner\myvbc\models\MArogroup;
+use sebastianplattner\myvbc\models\MReport;
+use sebastianplattner\myvbc\models\MPlayer;
+use sebastianplattner\myvbc\models\MGame;
+use sebastianplattner\myvbc\models\MNotification;
+
+
+
+class PageAdmin extends Page
 {
 	
 	public function __construct() {

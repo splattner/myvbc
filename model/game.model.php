@@ -1,10 +1,16 @@
 <?php
+
+namespace sebastianplattner\myvbc\models;
+use sebastianplattner\framework\Application;
+use sebastianplattner\framework\Model;
+
+
 // no direct access
 defined( '_MYVBC' ) or die( 'Restricted access' );
 
-MyModel::loadModel("person");
 
-class MGame extends MyModel {
+
+class MGame extends Model {
 	public $table = 'games';
 	
 	public function getValidSchreiber($gameID) {
@@ -107,12 +113,12 @@ class MGame extends MyModel {
         switch($teamData[0]["typ"]) {
             case "1":
                 //Swissvolley
-                $source = new SourceSwissvolley();
+                $source = Application::getService("ServiceSwissVolley");
                 break;
 
             case "2":
                 //SVRS
-                $source = new SourceSVRS();
+                $source = Application::getService("ServiceSVRS");
                 break;
         }
 

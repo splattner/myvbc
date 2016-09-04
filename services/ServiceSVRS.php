@@ -1,18 +1,21 @@
 <?php
-require_once ("libs/framework/dataSource.php");
 
-class SourceSVRS extends MyDatasource {
+namespace sebastianplattner\myvbc\service;
+
+
+
+class ServiceSVRS extends ServiceDataSource {
 
 
 	//Variabeln
-	private $xml_request; // Enthält den request String für das XML File
+	private $xml_request; // Enthï¿½lt den request String fï¿½r das XML File
 	private $xml_output; //XML Stream Output von SVRS
 	
 	
-	// Variabeln die angepasst werden können
-	private $xml_baseurl = 'http://www.svrs.ch/spiele_xml.php?'; // Base URL für das XML File
-	private $sl_tags; //Enthält die Tags welche von der Spielliste abgefragt werden sollen
-	private $rl_tags; //Enthält die Tags welche von der Rangliste abgefragt werden sollen
+	// Variabeln die angepasst werden kï¿½nnen
+	private $xml_baseurl = 'http://www.svrs.ch/spiele_xml.php?'; // Base URL fï¿½r das XML File
+	private $sl_tags; //Enthï¿½lt die Tags welche von der Spielliste abgefragt werden sollen
+	private $rl_tags; //Enthï¿½lt die Tags welche von der Rangliste abgefragt werden sollen
 	
 	
 	
@@ -20,11 +23,11 @@ class SourceSVRS extends MyDatasource {
 	{
 	
 		//die Ranglisten-Tags
-		//Mögliche Tags: "platz","name","spiele","punkte","satzgewonnen","satzverloren","kommentar"
+		//Mï¿½gliche Tags: "platz","name","spiele","punkte","satzgewonnen","satzverloren","kommentar"
 		$this->rl_tags = array("platz","name","spiele","punkte","satzgewonnen","satzverloren","kommentar");
 		
 		// die Spiellisten-Tags
-		// Mögliche Tags: "nummer","hdatum","isodatum","liga","ort","halle","heimteam","gastteam", 
+		// Mï¿½gliche Tags: "nummer","hdatum","isodatum","liga","ort","halle","heimteam","gastteam", 
 		//"satzheim","satzgast","punkteheim1","punktegast1","punkteheim2","punktegast2","punkteheim3","punktegast3","punkteheim4","punktegast4","punkteheim5","punktegast5",
 		// "schiri1","schiri2","schiri3","bemerkung"
 		$this->sl_tags = array("nummer","isodatum","liga","ort","halle","heimteam","gastteam","satzheim","satzgast","punkteheim1","punktegast1","punkteheim2","punktegast2","punkteheim3","punktegast3","punkteheim4","punktegast4","punkteheim5","punktegast5");
@@ -34,13 +37,13 @@ class SourceSVRS extends MyDatasource {
 	
 	public function getGamesbyTeamID($teamID)
 	{
-		//Lädt alle Spiele vom Team mit ID '$TeamID' (oder auch mehrere) und gibt ein Array mit allen Spielen zurück
+		//Lï¿½dt alle Spiele vom Team mit ID '$TeamID' (oder auch mehrere) und gibt ein Array mit allen Spielen zurï¿½ck
 		
 		//XML Request erstellen und XML File Laden
 		$this->xml_request = "teamID=" . $teamID;
 		$this->getXMLFile();
 
-		//Array mit Spielliste zurückgeben
+		//Array mit Spielliste zurï¿½ckgeben
 		$this->parseGamelist();
 		$this->parseRaw();
 		return $this->games;
@@ -48,19 +51,19 @@ class SourceSVRS extends MyDatasource {
 	
 //	public function getRanklistbyLiga($liga)
 //	{
-//		//Lädt die Rangliste einer Liga '$liga' (oder auch mehrere) und gibt ein Array mit allen Spielen zurück
+//		//Lï¿½dt die Rangliste einer Liga '$liga' (oder auch mehrere) und gibt ein Array mit allen Spielen zurï¿½ck
 //		
 //		//XML Request erstellen und XML File Laden
 //		$this->xml_request = "liga=" . $liga;
 //		$this->getXMLFile();
 //		
-//		//Array mit Ranglisten zurückgeben
+//		//Array mit Ranglisten zurï¿½ckgeben
 //		$this->parseRanklist();
 //	}
 	
 	public function getnextGamesbyVerein($vereinID, $days = 7)
 	{
-		//Lädt alle Spiele der nächsten $days (default = 7) Tagen vom Verein mit ID '$vereinID'
+		//Lï¿½dt alle Spiele der nï¿½chsten $days (default = 7) Tagen vom Verein mit ID '$vereinID'
 		
 		//Zeitspanne festlegen
 		$von = date("d.m.Y");
@@ -70,7 +73,7 @@ class SourceSVRS extends MyDatasource {
 		$this->xml_request = "vereinID=" . $vereinID . "&von=" . $von . "&bis=" . $bis;
 		$this->getXMLFile();
 		
-		//Array mit Spielliste zurückgeben
+		//Array mit Spielliste zurï¿½ckgeben
 		$this->parseGamelist();
 		$this->parseRaw();
 		return $this->games;
@@ -78,14 +81,14 @@ class SourceSVRS extends MyDatasource {
 	
 	public function getGamesbyVerein($vereinID)
 	{
-		//Lädt alle nächsten Spiele von Verein mit ID '$vereinID' und gibt sie in einem Array zurück
-		//Default ist aktuelle Woche, kann durch angeben von $week verändert werden
+		//Lï¿½dt alle nï¿½chsten Spiele von Verein mit ID '$vereinID' und gibt sie in einem Array zurï¿½ck
+		//Default ist aktuelle Woche, kann durch angeben von $week verï¿½ndert werden
 	
 		//XML Request erstellen und XML File Laden
 		$this->xml_request = "vereinID=" . $vereinID;
 		$this->getXMLFile();
 		
-		//Array mit Spielliste zurückgeben
+		//Array mit Spielliste zurï¿½ckgeben
 		$this->parseGamelist();
 		$this->parseRaw();
 		return $this->games;
@@ -96,7 +99,7 @@ class SourceSVRS extends MyDatasource {
 		$this->xml_request = "refID=" . $refID;
 		$this->getXMLFile();
 		
-		//Array mit Spielliste zurückgeben
+		//Array mit Spielliste zurï¿½ckgeben
 		$this->parseGamelist();
 		$this->parseRaw();
 		return $this->games;
@@ -104,7 +107,7 @@ class SourceSVRS extends MyDatasource {
 	
 	public function getlastGamesbyVerein($vereinID, $days = 7 )
 	{
-		//Lädt alle Spiele der letzten $days (default = 7) Tagen vom Verein mit ID '$vereinID'
+		//Lï¿½dt alle Spiele der letzten $days (default = 7) Tagen vom Verein mit ID '$vereinID'
 		
 		//Zeitspanne festlegen
 		$von = date('d.m.Y', strtotime('-' . $days . ' days'));
@@ -114,7 +117,7 @@ class SourceSVRS extends MyDatasource {
 		$this->xml_request = "vereinID=" . $vereinID . "&von=" . $von . "&bis=" . $bis;
 		$this->getXMLFile();
 		
-		//Array mit Spielliste zurückgeben
+		//Array mit Spielliste zurï¿½ckgeben
 		$this->parseGamelist();
 		$this->parseRaw();
 		return $this->games;
@@ -122,7 +125,7 @@ class SourceSVRS extends MyDatasource {
 	}
 	
 
-	private function parseGamelist() //Generiert ein Array mit den gewünschten Spielen
+	private function parseGamelist() //Generiert ein Array mit den gewï¿½nschten Spielen
 	{
 		// Die gesamte Spielliste in $spielliste laden
 		preg_match_all("/<spielliste>(.*?)<\/spielliste>/",$this->xml_output,$spielliste);
@@ -139,7 +142,7 @@ class SourceSVRS extends MyDatasource {
 		foreach ($spiele[1] as $spiel)
 		{
 			unset($buffer);
-			//Gewünschte Tags auslesen
+			//Gewï¿½nschte Tags auslesen
 			foreach ($this->sl_tags as $val)
 			{
 				preg_match("/<".$val.">(.*?)<\/".$val.">/",$spiel,$tag);
@@ -152,7 +155,7 @@ class SourceSVRS extends MyDatasource {
 		$this->games_raw = $spielliste;
 	}
 	
-	private function parseRanklist() //Generiert ein Array mit den gewünschten Ranglisten
+	private function parseRanklist() //Generiert ein Array mit den gewï¿½nschten Ranglisten
 	{
 		// Die gesamte Rangliste in $ranglisten laden
 		preg_match_all("/<rangliste>(.*?)<\/rangliste>/",$this->xml_output,$ranglisten);
@@ -176,7 +179,7 @@ class SourceSVRS extends MyDatasource {
 			{
 				unset($buffer);
 				
-				# Gewünschte Tags auslesen
+				# Gewï¿½nschte Tags auslesen
 				foreach ($this->rl_tags as $val)
 				{
 					preg_match("/<".$val.">(.*?)<\/".$val.">/",$team,$tag);
@@ -191,25 +194,25 @@ class SourceSVRS extends MyDatasource {
 	
 	private function getXMLFile()
 	{
-		//Lädt das XML File von www.volleyballvrs.ch
-		//Benötigt einen Gültigen Request
+		//Lï¿½dt das XML File von www.volleyballvrs.ch
+		//Benï¿½tigt einen Gï¿½ltigen Request
 		
 		/*
 		$request: Abfrage-String (Z.B.: 'liga=2d&teamID=84')
 		Moegliche Abfragen:
-		liga=Liga1[,Liga2,...] (generiert für jede Liga eine Ranglistentabelle)
-		teamID=id[,id,...] (rendert für ein oder mehrere Teams alle Spiele)
+		liga=Liga1[,Liga2,...] (generiert fï¿½r jede Liga eine Ranglistentabelle)
+		teamID=id[,id,...] (rendert fï¿½r ein oder mehrere Teams alle Spiele)
 		vereinID=id (rendert alle Spiele des Vereins mit der id
-		refID=id (rendert alle Spiele, für die der Schiedsrichter mit der id aufgeboten ist)
+		refID=id (rendert alle Spiele, fï¿½r die der Schiedsrichter mit der id aufgeboten ist)
 		suche=suchtext (rendert alle Spiele, in denen im Teamname der suchtext enthalten ist)
 		von=dd.mm.yyyy (rendert alle Spiele ab diesem Datum)
 		bis=dd.mm.yyyy (rendert alle Spiele bis diesem Datum)
-		woche=x (rendert alle Spiele in aktueller [x=0], vorheriger [x=-1], nächster [x=1] usw. Woche)
+		woche=x (rendert alle Spiele in aktueller [x=0], vorheriger [x=-1], nï¿½chster [x=1] usw. Woche)
 		*/
 		
 		
 		
-		//Lädt den XML Stream mit Curl
+		//Lï¿½dt den XML Stream mit Curl
 		$xml_file = curl_init($this->xml_baseurl.$this->xml_request);
 		curl_setopt($xml_file, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($xml_file, CURLOPT_TIMEOUT, 10);

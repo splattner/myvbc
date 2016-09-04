@@ -1,16 +1,18 @@
 <?php
 
+namespace sebastianplattner\framework;
 use Aspsms\Aspsms;
 
-require_once "etc/confic.inc.php";
 
-class MyHelper {
-	
+class Helper {
+
+
+
 	public static function to_utf8($in)
 	{
 	        if (is_array($in)) {
 	            foreach ($in as $key => $value) {
-	                $out[MyHelper::to_utf8($key)] = MyHelper::to_utf8($value);
+	                $out[Helper::to_utf8($key)] = Helper::to_utf8($value);
 	            }
 	        } elseif(is_string($in)) {
 	            if(mb_detect_encoding($in) != "UTF-8")
@@ -46,7 +48,7 @@ class MyHelper {
 	
 	public static function sendSMS($originator, $recipient, $content) {
 
-        global $config;
+        $config = Application::getConfig();
 
 		try {
 			$aspsms = new Aspsms($config["aspsms"]["username"], $config["aspsms"]["password"], array(

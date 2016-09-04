@@ -1,8 +1,13 @@
 <?php
-MyModel::loadModel("report");
+
+namespace sebastianplattner\myvbc\pages;
+use sebastianplattner\framework\Page;
+use sebastianplattner\framework\Model;
+
+use sebastianplattner\myvbc\models\MReport;
 
 
-class PageReport extends MyPage {
+class PageReport extends Page {
 	
 	
 	private $publicReports;

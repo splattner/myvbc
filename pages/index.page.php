@@ -1,11 +1,15 @@
 <?php
-MyModel::loadModel("person");
-MyModel::loadModel("key");
+
+namespace sebastianplattner\myvbc\pages;
+use sebastianplattner\framework\Application;
+use sebastianplattner\framework\Page;
+use sebastianplattner\framework\Model;
+use sebastianplattner\myvbc\models\MPerson;
+use sebastianplattner\myvbc\models\MKey;
 
 
-require_once("libs/framework/dataSources/svrs.datasource.php");
 
-class PageIndex extends MyPage
+class PageIndex extends Page
 {
 	
 	public function __construct() {
@@ -33,7 +37,8 @@ class PageIndex extends MyPage
 			 * Check if RefID is available
 			 */
 			if($currentUser[0]["refid"] > 0) {
-				$source = new SourceSVRS();	
+				$source = Application::getService("ServiceSVRS");
+
 				
 				$refGames = $source->getGamesbyRef($currentUser[0]["refid"]);
 				$this->smarty->assign("refGames", $refGames);	

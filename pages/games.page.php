@@ -1,13 +1,10 @@
 <?php
-MyModel::loadModel("game");
-MyModel::loadModel("team");
-MyModel::loadModel("schreiber");
-MyModel::loadModel("person");
+namespace sebastianplattner\myvbc\pages;
+use sebastianplattner\framework\Page;
+use sebastianplattner\framework\Model;
 
-require_once("libs/framework/dataSources/svrs.datasource.php");
-require_once("libs/framework/dataSources/swissvolley.datasource.php");
 
-class PageGames extends MyPage
+class PageGames extends Page
 {
 	
 	public function __construct() {

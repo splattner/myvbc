@@ -1,16 +1,14 @@
 <?php
-MyModel::loadModel("person");
-MyModel::loadModel("team");
-MyModel::loadModel("player");
-MyModel::loadModel("licence");
 
-
-MyPlugin::loadPlugin("persondata");
-MyPlugin::loadPlugin("history");
+namespace sebastianplattner\myvbc\pages;
+use sebastianplattner\framework\Page;
+use sebastianplattner\framework\Model;
+use sebastianplattner\myvbc\plugins\PHistory;
+use sebastianplattner\myvbc\plugins\PPersondata;
 
 
 
-class PageMyteam extends MyPage
+class PageMyteam extends Page
 {
 	
 	public function __construct() {

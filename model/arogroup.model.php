@@ -1,8 +1,13 @@
 <?php
+
+namespace sebastianplattner\myvbc\models;
+use  sebastianplattner\framework\Model;
+
+
 // no direct access
 defined( '_MYVBC' ) or die( 'Restricted access' );
 
-class MArogroup extends MyModel {
+class MArogroup extends Model {
 	public $table = 'aro_groups';
 	
 	public function getGroupList() {

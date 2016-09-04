@@ -1,3 +1,8 @@
+<p>
+    <a class="icons" data-toggle="tooltip" data-placement="bottom" title="Alle l&ouml;schen" href="index.php?page={$currentPage}&action=delete&notificationID=0">
+        <i style="color: red;" class="fa fa-trash-o"></i>
+    </a>
+</p>
 <table class="table table-striped">
 	<thead>
 		<tr>

@@ -12,9 +12,6 @@
       "role": "Developer"
     }
   ],
-
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "require": {
     "nadar/aspsms": "1.0.1",
     "adodb/adodb-php": "^5.20",

@@ -1,10 +1,13 @@
 <?php
+
+namespace sebastianplattner\myvbc\models;
+use sebastianplattner\framework\Application;
+use sebastianplattner\framework\Model;
+
 // no direct access
 defined( '_MYVBC' ) or die( 'Restricted access' );
 
-MyModel::loadModel("person");
-
-class MOrder extends MyModel {
+class MOrder extends Model {
 	public $table = 'order';
 	
 	
@@ -141,7 +144,7 @@ class MOrder extends MyModel {
 		/* Add Notifications if order is complete */
 		if ($statusID == 4) {
 
-			$notification = MyApplication::getInstance("notification");
+			$notification = Application::getService("ServiceNotification");
 			
 			$sql = "SELECT
 						personid
@@ -162,7 +165,7 @@ class MOrder extends MyModel {
 		}
 		
 		if($statusID == 2) {
-			$notification = MyApplication::getInstance("notification");
+			$notification = Application::getService("ServiceNotification");
 			$notification->addNewOrderNotification();
 		}
 		

@@ -1,16 +1,19 @@
 <?php
-
-MyModel::loadModel("game");
-MyModel::loadModel("team");
-MyModel::loadModel("schreiber");
-MyModel::loadModel("person");
-
 /**
  * Created by PhpStorm.
  * User: sebastianplattner
  * Date: 28.08.16
  * Time: 21:23
  */
+
+namespace sebastianplattner\myvbc\api;
+use sebastianplattner\framework\PublicAPI;
+use sebastianplattner\framework\Model;
+use sebastianplattner\myvbc\models\MGame;
+use sebastianplattner\myvbc\models\MTeam;
+
+
+
 class APIGame extends PublicAPI
 {
 

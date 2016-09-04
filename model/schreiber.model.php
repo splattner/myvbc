@@ -1,11 +1,13 @@
 <?php
 
+namespace sebastianplattner\myvbc\models;
+use sebastianplattner\framework\Model;
+
+
 // no direct access
 defined( '_MYVBC' ) or die( 'Restricted access' );
 
-require_once('model/game.model.php');
-
-class MSchreiber extends MyModel {
+class MSchreiber extends Model {
 	public $table = 'schreiber';
 	
 	public function addSchreiber($schreiberID, $gameID) {

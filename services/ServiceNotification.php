@@ -1,30 +1,17 @@
 <?php
 
-MyModel::loadModel("notification");
-MyModel::loadModel("person");
-MyModel::loadModel("licence");
-MyModel::loadModel("team");
+namespace sebastianplattner\myvbc\service;
+use sebastianplattner\framework\Service;
+use sebastianplattner\myvbc\models\MNotification;
+use sebastianplattner\myvbc\models\MPerson;
+use sebastianplattner\myvbc\models\MLicence;
+use sebastianplattner\myvbc\models\MTeam;
 
-class MyNotification {
+
+
+class ServiceNotification extends Service {
 	
-	/**
-	 * Manage the db connection
-	 * @access private
-	 * @var mixed
-	 */
-	private $db;
-	
-	/**
-	 * The Session object to manage all Session related stuff
-	 * @access public
-	 * @var mixed
-	 */
-	private $session;
-	
-	public function __construct() {
-		$this->db = MyApplication::getInstance("db");
-		$this->session = MyApplication::getInstance("session");
-	}
+
 	
 	
 	public function addNewNotification($type, $message, $objectID) {

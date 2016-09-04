@@ -1,21 +1,19 @@
 <?php
 
+
+namespace sebastianplattner\framework;
+
 /**
  * Created by PhpStorm.
  * User: sebastianplattner
  * Date: 25.08.16
  * Time: 16:56
  */
+
+
+
 class API
 {
-
-
-    /**
-     * Contains all global config options defindet in /etc/confic.inc.php
-     * @access public
-     * @var mixed
-     */
-    public $config;
 
     /**
      * Manage the db connection
@@ -40,15 +38,18 @@ class API
 
     public function __construct() {
 
-        $this->config = MyApplication::getInstance("config");
-        $this->db = MyApplication::getInstance("db");
-        $this->session = MyApplication::getInstance("session");
-
-
+        $this->db = Application::getInstance("db");
+        $this->session = Application::getInstance("session");
 
     }
 
+    /**
+     * Call either get,post,put,delete on a model
+     * or call a API function
+     */
     public function call() {
+
+        $config = Application::getConfig();
 
         header('Content-type: application/json');
 
@@ -60,18 +61,13 @@ class API
         $apiCall = $this->request[1];
 
 
-
-        $modelFile = "model/" . $apiCall . ".model.php";
-        $apiFile = "api/" . $apiCall . ".api.php";
-
+        $apiFile = $config["system"]["api-folder"] . "/" . $apiCall . ".api.php";
+        $modelClass = $config["system"]["namespace"] . "\\models\\M" . $apiCall;
 
         // REST API for a Model
-        if(file_exists($modelFile) && (!isset($this->request[2]) || is_numeric($this->request[2]))) {
-            include_once $modelFile;
-            $modelClass = "M" . $apiCall;
+        if(class_exists($modelClass) && (!isset($this->request[2]) || is_numeric($this->request[2]))) {
+
             $model =  new $modelClass();
-
-
 
             if (count($this->request) > 2) {
                 $id = $this->request[2];
@@ -96,7 +92,7 @@ class API
         } else { // REST API with specific functions
             if(file_exists($apiFile)) {
                 include_once $apiFile;
-                $APIClass = "API" . $apiCall;
+                $APIClass = $config["system"]["namespace"] . "\\api\\API" . $apiCall;
                 $api =  new $APIClass();
 
 

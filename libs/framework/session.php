@@ -1,5 +1,9 @@
 <?php
-class MySession {
+
+namespace sebastianplattner\framework;
+
+
+class Session {
 
 	/**
 	 * Current Session ID
@@ -60,8 +64,8 @@ class MySession {
 			$this->currentPage = "index";
 		}
 		
-		$this->db = MyApplication::getInstance("db");
-		$this->acl = MyApplication::getInstance("acl");
+		$this->db = Application::getInstance("db");
+		$this->acl = Application::getInstance("acl");
 		
 		$this->initSession();
 		$this->loadSessionFromDB();

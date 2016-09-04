@@ -1,11 +1,11 @@
 <?php
-MyModel::loadModel("person");
-MyModel::loadModel("licence");
+namespace sebastianplattner\myvbc\pages;
+use sebastianplattner\framework\Page;
+use sebastianplattner\framework\Model;
+use sebastianplattner\myvbc\plugins\PHistory;
+use sebastianplattner\myvbc\plugins\PPersondata;
 
-MyPlugin::loadPlugin("persondata");
-MyPlugin::loadPlugin("history");
-
-class PageMydata extends MyPage
+class PageMydata extends Page
 {
 	
 	public function __construct() {

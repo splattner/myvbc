@@ -1,11 +1,13 @@
 <?php
-MyModel::loadModel("person");
-MyModel::loadModel("order");
-MyModel::loadModel("team");
+namespace sebastianplattner\myvbc\pages;
+use sebastianplattner\framework\Page;
+use sebastianplattner\framework\Model;
+
+use sebastianplattner\myvbc\models\MOrder;
+use sebastianplattner\myvbc\models\MTeam;
 
 
-
-class PageOrder extends MyPage
+class PageOrder extends Page
 {
 	
 	public function __construct() {

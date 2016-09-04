@@ -1,7 +1,12 @@
 <?php
-MyModel::loadModel("person");
 
-class PageAuth extends MyPage
+namespace sebastianplattner\myvbc\pages;
+use sebastianplattner\framework\Page;
+use sebastianplattner\framework\Model;
+use sebastianplattner\framework\Application;
+
+
+class PageAuth extends Page
 {
 	
 	public function __construct() {
@@ -27,8 +32,8 @@ class PageAuth extends MyPage
 			
 			if($this->session->auth($email, $password)) {
 				$this->setTemplate("auth/success.tpl");
-				$notification = MyApplication::getInstance("notification");
-	                        $notification->addNewNotification(4, "Login", 0);
+				$notification = Application::getService("ServiceNotification");
+                $notification->addNewNotification(4, "Login", 0);
 			} else {
 				$this->setTemplate("auth/error.tpl");
 			}
@@ -85,7 +90,7 @@ class PageAuth extends MyPage
 			$person->changePassword($personID, $password);
 			$person->createAccess($personID);
 
-			$notification = MyApplication::getInstance("notification");
+			$notification =  Application::getService("ServiceNotification");
 			$notification->addNewAccessNotification($personID);
 				
 			return "main";

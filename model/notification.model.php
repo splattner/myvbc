@@ -1,9 +1,15 @@
 <?php
+
+namespace sebastianplattner\myvbc\models;
+use sebastianplattner\framework\Model;
+
 // no direct access
 defined( '_MYVBC' ) or die( 'Restricted access' );
 
 
-class MNotification extends MyModel {
+
+
+class MNotification extends Model {
 	public $table = 'notification';
 	
 	
@@ -64,10 +70,17 @@ class MNotification extends MyModel {
 	}
 	
 	public function deleteNotificationStatus($notificationID, $personID) {
-		
-		$sql = "DELETE FROM notificationstatus WHERE notificationid = ? AND personid = ?";
-		$sql = $this->db->Prepare($sql);
-		$this->db->Execute($sql, array($notificationID, $personID));
+
+        //Check if we should delete all Notifications
+		if($notificationID == 0) {
+            $sql = "DELETE FROM notificationstatus WHERE personid = ?";
+            $sql = $this->db->Prepare($sql);
+            $this->db->Execute($sql, array($personID));
+        } else {
+            $sql = "DELETE FROM notificationstatus WHERE notificationid = ? AND personid = ?";
+            $sql = $this->db->Prepare($sql);
+            $this->db->Execute($sql, array($notificationID, $personID));
+        }
 	}
 	
 	public function deleteSubscribtion($typeID, $personID) {

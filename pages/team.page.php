@@ -1,10 +1,15 @@
 <?php
-MyModel::loadModel("team");
-MyModel::loadModel("player");
-MyModel::loadModel("person");
+
+namespace sebastianplattner\myvbc\pages;
+use sebastianplattner\framework\Page;
+use sebastianplattner\framework\Model;
 
 
-class PageTeam extends MyPage
+use sebastianplattner\myvbc\models\MTeam;
+use sebastianplattner\myvbc\models\MPlayer;
+use sebastianplattner\myvbc\models\MPerson;
+
+class PageTeam extends Page
 {
 	
 	public function __construct() {

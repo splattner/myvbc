@@ -1,6 +1,8 @@
 <?php
 
-class MyModel {
+namespace sebastianplattner\framework;
+
+class Model {
 	
 	public $table;
     public $pk = "id";
@@ -8,24 +10,14 @@ class MyModel {
 	public $fields;
 
 	protected $db;
-	protected $session;
-	protected $acl;
-	protected $acl_api;
-	
+
 	public function __construct() {
-		$this->db = MyApplication::getInstance("db");
-		$this->session = MyApplication::getInstance("session");
-		$this->acl = MyApplication::getInstance("acl");
-		$this->acl_api = MyApplication::getInstance("acl_api");
+		$this->db = Application::getInstance("db");
+
 		$this->fields = array();
 
 	}
 
-	public static function loadModel($modelName) {
-
-		require_once "model/" . $modelName . ".model.php";
-	}
-	
 	public function update($where) {
 		
 		$sql = "UPDATE `" . $this->table . "` SET ";

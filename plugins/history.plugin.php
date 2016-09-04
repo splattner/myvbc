@@ -1,8 +1,11 @@
 <?
-MyModel::loadModel("notification");
-MyModel::loadModel("order");
+namespace sebastianplattner\myvbc\plugins;
+use sebastianplattner\framework\Plugin;
+use sebastianplattner\framework\Model;
+use sebastianplattner\myvbc\models\MOrder;
+use sebastianplattner\myvbc\models\MNotification;
 
-class PHistory extends MyPlugin {
+class PHistory extends Plugin {
 
 
 	private $notifications;
@@ -12,7 +15,7 @@ class PHistory extends MyPlugin {
 		$this->smarty->assign("notifications", $this->notifications);
 		$this->smarty->assign("myorders", $this->myorders);
 
-		return MyPlugin::__toString();
+		return Plugin::__toString();
 	}
 
 	public function run($action) {

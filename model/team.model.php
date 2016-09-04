@@ -1,8 +1,14 @@
 <?php
+
+namespace sebastianplattner\myvbc\models;
+use sebastianplattner\framework\Model;
+
+
 // no direct access
 defined( '_MYVBC' ) or die( 'Restricted access' );
 
-class MTeam extends MyModel {
+
+class MTeam extends Model {
 	public $table = 'teams';
 	
 	public function getAllMember($teamID) {

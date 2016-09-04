@@ -1,13 +1,20 @@
 <?php
-MyModel::loadModel("order");
-MyModel::loadModel("person");
-
 /**
  * Created by PhpStorm.
  * User: sebastianplattner
  * Date: 27.08.16
  * Time: 14:34
  */
+
+namespace sebastianplattner\myvbc\api;
+use sebastianplattner\framework\PublicAPI;
+use sebastianplattner\framework\Model;
+use sebastianplattner\myvbc\models\MOrder;
+use sebastianplattner\myvbc\models\MPerson;
+
+
+
+
 class APIOrder extends PublicAPI
 {
 

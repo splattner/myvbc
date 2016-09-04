@@ -1,6 +1,8 @@
 <?php
 
-abstract class MyPlugin {
+namespace sebastianplattner\framework;
+
+abstract class Plugin{
 
 
 	/**
@@ -10,12 +12,6 @@ abstract class MyPlugin {
 	 */
 	public $smarty;
 
-	/**
-	 * Notification Object
-	 * @access public
-	 * @var mixes
-	 */
-	public $notification;
 
 	/**
 	 * Manage the db connection
@@ -57,12 +53,6 @@ abstract class MyPlugin {
 	protected $data;
 
 
-	static public function loadPlugin($pluginName) {
-
-		require_once "plugins/" . $pluginName . ".plugin.php";
-
-	}
-
 	public function setData($data) {
 		$this->data = $data;
 	}
@@ -73,12 +63,11 @@ abstract class MyPlugin {
 
 	public function __construct($registerAs) {
 
-		$this->page = MyApplication::getInstance("page");
-		$this->smarty = MyApplication::getInstance("smarty");
-		$this->session = MyApplication::getInstance("session");
-		$this->db = MyApplication::getInstance("db");
-		$this->notification = MyApplication::getInstance("notification");
-		$this->acl = MyApplication::getInstance("acl");
+		$this->page = Application::getInstance("page");
+		$this->smarty = Application::getInstance("smarty");
+		$this->session = Application::getInstance("session");
+		$this->db = Application::getInstance("db");
+		$this->acl = Application::getInstance("acl");
 
 		$this->registerPlugin($registerAs);
 		

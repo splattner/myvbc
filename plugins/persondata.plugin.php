@@ -1,9 +1,13 @@
 <?
-MyModel::loadModel("person");
-MyModel::loadModel("licence");
-MyModel::loadModel("notification");
 
-class PPersondata extends MyPlugin {
+namespace sebastianplattner\myvbc\plugins;
+use sebastianplattner\framework\Plugin;
+use sebastianplattner\framework\Model;
+use sebastianplattner\myvbc\models\MPerson;
+use sebastianplattner\myvbc\models\MLicence;
+
+
+class PPersondata extends Plugin {
 
 
 	private $formURL;
@@ -11,7 +15,7 @@ class PPersondata extends MyPlugin {
 
 	public function __toString() {
 		$this->smarty->assign("formURL", $this->formURL);
-		return MyPlugin::__toString();
+		return Plugin::__toString();
 	}
 
 	public function run($action) {

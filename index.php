@@ -1,5 +1,8 @@
 <?php
 
+namespace sebastianplattner\myvbc;
+use sebastianplattner\framework\Application;
+
 
 if($_SERVER["HTTPS"] != "on") {
    header("HTTP/1.1 301 Moved Permanently");
@@ -16,6 +19,11 @@ header("Content-Type: text/html; charset=utf-8");
 // Set flag that this is a parent file
 define( '_MYVBC', 1 );
 
+/**
+ * Include Configuration file
+ */
+require_once "etc/confic.inc.php";
+
 
 /**
  * Composer
@@ -28,58 +36,12 @@ require __DIR__ . '/vendor/autoload.php';
 require_once "libs/phpgacl-3.3.7/gacl.class.php";
 require_once "libs/phpgacl-3.3.7/gacl_api.class.php";
 
-/**
- * Include my libs
- */
-require_once "libs/framework/helper.php";
-require_once "libs/framework/application.php";
-require_once "libs/framework/page.php";
-require_once "libs/framework/session.php";
-require_once "libs/framework/model.php";
-require_once "libs/framework/notification.php";
-require_once "libs/framework/plugin.php";
-require_once "libs/framework/API.php";
-require_once "libs/framework/PublicAPI.php";
-
 
 /**
- * Include Configuration file
+ * Init Application
  */
-require_once "etc/confic.inc.php";
-MyApplication::setInstance("config", $config);
-
-
-
-/**
- * Initialize the Database Connection
- */
-$dsn = "mysqli://"
-. $config["db"]["username"] . ":" 
-. $config["db"]["password"] . "@"
-. $config["db"]["server"] . "/"
-. $config["db"]["database"];
-$db = NewADOConnection($dsn);
-$db->debug = $config["system"]["debug"];
-$db->EXECUTE("set names 'utf8'");
-MyApplication::setInstance("db", $db);
-
-/**
- * Initialize the PHPGACL Object
- */
-$acl = new gacl(array("db" => $db, "debug" => $db->debug));
-$acl_api = new gacl_api(array("db" => $db, "debug" => $db->debug));
-MyApplication::setInstance("acl", $acl);
-MyApplication::setInstance("acl_api",$acl_api);
-
-/**
- * Initialize the Smarty Template Engine
- */
-$smarty = new Smarty();
-$smarty->template_dir = "skins/" . $config["template"]["default"] . "/templates";
-$smarty->compile_dir = "skins/" . $config["template"]["default"] . "/templates_c";
-$smarty->cache_dir = "tmp/smarty";
-$smarty->config_dir = "etc/smarty";
-MyApplication::setInstance("smarty", $smarty);
+require "libs/framework/application.php";
+Application::init($config);
 
 
 /**
@@ -96,23 +58,9 @@ if(isset($_GET["register"])) {
 	$_GET["action"] = "createAccess";
 }
 
-/**
- * Session Management
- */
-$session = new MySession();
-MyApplication::setInstance("session",$session);
 
-
-/**
- * Initialize the notification Stuff
- */
-$notification = new MyNotification();
-MyApplication::setInstance("notification",$notification);
-
-
-
-MyApplication::createPage();
-MyApplication::run();
-MyApplication::finish();
+Application::createPage();
+Application::run();
+Application::finish();
 ?>
 

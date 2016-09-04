@@ -1,5 +1,7 @@
 <?php
 
+namespace sebastianplattner\framework;
+
 /**
  * Created by PhpStorm.
  * User: sebastianplattner
@@ -24,7 +26,7 @@ class PublicAPI
     {
         header('Content-type: application/json');
 
-        $this->db = MyApplication::getInstance("db");
+        $this->db = Application::getInstance("db");
         $this->db->setFetchMode(ADODB_FETCH_ASSOC);
 
         $this->method = $_SERVER['REQUEST_METHOD'];

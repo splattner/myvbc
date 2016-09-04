@@ -1,8 +1,13 @@
 <?php
+
+namespace sebastianplattner\myvbc\models;
+use sebastianplattner\framework\Model;
+
 // no direct access
 defined( '_MYVBC' ) or die( 'Restricted access' );
 
-class MKey extends MyModel {
+
+class MKey extends Model {
     public $table = 'accesskeys';
 
 

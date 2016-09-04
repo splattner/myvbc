@@ -1,11 +1,26 @@
 <?php
+
+namespace sebastianplattner\myvbc\models;
+use sebastianplattner\framework\Model;
+
 // no direct access
 defined( '_MYVBC' ) or die( 'Restricted access' );
 
-class MPerson extends MyModel {
+
+class MPerson extends Model {
 	public $table = 'persons';
-	
-	public function getMyGames($personID) {
+
+    private $acl_api;
+
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->acl_api = new \gacl_api(array("db" => $this->db, "debug" => $this->db->debug));
+    }
+
+    public function getMyGames($personID) {
 		
 		$sql = "SELECT 
 					games.date as date,
@@ -211,7 +226,7 @@ class MPerson extends MyModel {
 		$personnewData = $personnewRS->getArray();
 		
 		/* Add Notification */
-		$notification = MyApplication::getInstance("notification");
+		$notification = Application::getService("notification");;
 		$notification->addChangeAddressNotification($personoldData, $personnewData);
 	
 	}
@@ -221,7 +236,7 @@ class MPerson extends MyModel {
 		
 		
 		/* Add Notification */
-		$notification = MyApplication::getInstance("notification");
+		$notification = Application::getService("notification");
 		$notification->addNewAdressNotifcation($personID);
 		
 	}
@@ -249,7 +264,7 @@ class MPerson extends MyModel {
 		$personnewData = $personnewRS->getArray();
 
 		/* Add Notification */
-		$notification = MyApplication::getInstance("notification");
+		$notification = Application::getService("notification");
 		$notification->addChangeAddressNotification($personoldData, $personnewData);
 	}
 }

@@ -1,10 +1,15 @@
 <?php
-MyModel::loadModel("person");
-MyModel::loadModel("key");
+
+namespace sebastianplattner\myvbc\pages;
+use sebastianplattner\framework\Page;
+use sebastianplattner\framework\Model;
+
+use sebastianplattner\myvbc\models\MPerson;
+use sebastianplattner\myvbc\models\MKey;
 
 
 
-class PageKey extends MyPage
+class PageKey extends Page
 {
 
     public function __construct() {

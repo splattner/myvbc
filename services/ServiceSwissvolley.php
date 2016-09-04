@@ -1,11 +1,14 @@
 <?php
+namespace sebastianplattner\myvbc\service;
 
-class SourceSwissvolley extends MyDatasource {
+
+
+class ServiceSwissvolley extends ServiceDataSource {
 	
 	private $soap_client;
 	
 	public function __construct() {
-		$this->soap_client = new SoapClient("http://myvolley.volleyball.ch/SwissVolley.wsdl");
+		$this->soap_client = new \SoapClient("http://myvolley.volleyball.ch/SwissVolley.wsdl");
 	}
 	
 	public function getGamesByTeamID($teamID) {
