@@ -38,7 +38,7 @@ class PageTeam extends MyVBCPage
 	public function editAction() {
 		$this->smarty->assign("subContent1", "team/edit.tpl");
 		
-		$teamID = $this->db->qstr($_GET["teamID"]);
+		$teamID = $_GET["teamID"];
 			
 		if (isset($_POST["doEdit"])) {
 			$team = new MTeam();
@@ -56,6 +56,7 @@ class PageTeam extends MyVBCPage
 		
 		$team = new MTeam();
 		$rs = $team->getRS(array($team->pk ." =" => $teamID));
+
 
 		$this->smarty->assign("teams", $rs->getArray());
 	}

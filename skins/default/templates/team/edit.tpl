@@ -32,7 +32,7 @@
 	<tr>
 		<td width="30%">Type</td>
 		<td width="70%">
-			<select name="typ">
+			<select class="form-control" name="typ">
 				{if $team.typ == 1}
 					<option value="1" selected="selected">SwissVolley (National)</option>
 					<option value="2">Swissvolley Region Solothurn</option>
