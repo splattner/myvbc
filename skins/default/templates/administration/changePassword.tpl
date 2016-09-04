@@ -12,7 +12,7 @@
 			Person ausw&auml;hlen
 		</td>
 		<td width="70%">
-			<select name="personID">
+			<select class="person-select" name="personID">
 				<option value="0" >(Bitte ausw&auml;hlen)</option>
 				{foreach item=user from=$users}
 					<option value="{$user.id}">{$user.prename} {$user.name}</option>
@@ -36,3 +36,7 @@
 
 </table>
 </form>
+
+<script type="text/javascript">
+	$('.person-select').chosen();
+</script>

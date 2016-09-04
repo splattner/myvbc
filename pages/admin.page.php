@@ -185,7 +185,7 @@ class PageAdmin extends MyVBCPage
 		$this->smarty->assign("subContent1", "administration/changePassword.tpl");
 
 		$persons = new MPerson();
-		$rs = $persons->getRS(array(),array("name" => "DESC", "prename" => "ASC"));
+		$rs = $persons->getRS(array(),array("name" => "ASC", "prename" => "ASC"), array("id","name","prename"));
 		$this->smarty->assign("users", $rs->getArray());
 
 
