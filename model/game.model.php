@@ -113,7 +113,7 @@ class MGame extends Model {
         switch($teamData[0]["typ"]) {
             case "1":
                 //Swissvolley
-                $source = Application::getService("ServiceSwissVolley");
+                $source = Application::getService("ServiceSwissvolley");
                 break;
 
             case "2":
@@ -121,6 +121,8 @@ class MGame extends Model {
                 $source = Application::getService("ServiceSVRS");
                 break;
         }
+
+
 
         $games = $source->getGamesbyTeamID($teamData[0]["extid"]);
 
