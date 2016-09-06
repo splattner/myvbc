@@ -7,6 +7,7 @@ use splattner\myvbc\plugins\PHistory;
 use splattner\myvbc\plugins\PPersondata;
 use splattner\myvbc\models\MTeam;
 use splattner\myvbc\models\MPerson;
+use splattner\myvbc\models\MPlayer;
 
 
 
