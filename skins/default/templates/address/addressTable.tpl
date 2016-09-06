@@ -59,11 +59,11 @@
                         "render" : function( data, type, row, meta) {
                             if(data == 1){
                                 return "<a class='icons' data-toggle='tooltip' data-placement='bottom' title='Person auf inaktiv setzen'" +
-                                        " href='index.php?page=adddress&action=setState&state=0&personID=" + row.id + "' }>" +
+                                        " href='index.php?page=address&action=setState&state=0&personID=" + row.id + "' }>" +
                                         "<i class='fa fa-user' style='color:green'></i></a>";
                             } else {
                                 return "<a class='icons' data-toggle='tooltip' data-placement='bottom' title='Person auf aktiv setzen'" +
-                                        " href='index.php?page=adddress&action=setState&state=1&personID=" + row.id + "' }>" +
+                                        " href='index.php?page=address&action=setState&state=1&personID=" + row.id + "' }>" +
                                         "<i class='fa fa-user' style='color:red'></i></a>";
                             }
                         }
