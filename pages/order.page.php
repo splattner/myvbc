@@ -1,7 +1,5 @@
 <?php
 namespace splattner\myvbc\pages;
-use splattner\framework\Page;
-use splattner\framework\Model;
 
 use splattner\myvbc\models\MOrder;
 use splattner\myvbc\models\MTeam;
