@@ -60,7 +60,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="birthday" class="col-sm-4 control-label">Geburtstag {$person[0].birthday}</label>
+        <label for="birthday" class="col-sm-4 control-label">Geburtstag</label>
         <div class="col-sm-8">
             <div class='input-group date' id='datetimepicker'>
                 <input type="text" class="form-control" id="birthday" name="birthday">
