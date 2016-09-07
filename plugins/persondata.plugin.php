@@ -45,7 +45,8 @@ class PPersondata extends Plugin {
 
 	private function newEntry() {
 		if (isset($_POST["doNew"])) {
-			
+
+
 			$person = new MPerson();
 			$person->name = $_POST["name"];
 			$person->prename = $_POST["prename"];
@@ -56,17 +57,29 @@ class PPersondata extends Plugin {
 			$person->mobile = $_POST["mobile"];
 			$person->email = $_POST["email"];
 			$person->email_parent = $_POST["email_parent"];
-			$person->birthday = 
-					$_POST["birthdayYear"] ."-" . 
-					$_POST["birthdayMonth"] . "-" . 
-					$_POST["birthdayDay"];
+			$person->birthday = $_POST["birthday"];
 			$person->gender = $_POST["gender"];
-			$person->signature = $_POST["signature"];
-			if ($person->signature == NULL) $person->signature = 0;
-			$person->schreiber = $_POST["schreiber"];
-			if ($person->schreiber == NULL) $person->schreiber = 0;
-			$person->sms = $_POST["sms"];
-            if ($person->sms == NULL) $person->sms = 0;
+
+
+			if (!isset($_POST["signature"])) {
+				$person->signature = 0;
+			} else {
+				$person->signature = $_POST["signature"];
+			}
+
+
+			if (!isset($_POST["schreiber"])) {
+				$person->schreiber = 0;
+			} else {
+				$person->schreiber = $_POST["schreiber"];
+			}
+
+            if (!isset($_POST["sms"])) {
+				$person->sms = 0;
+			} else {
+				$person->sms = $_POST["sms"];
+			}
+
 			$person->licence = $_POST["licence"];
 			$person->licence_comment = $_POST["licence_comment"];
 			$person->refid = $_POST["refid"];
@@ -101,15 +114,30 @@ class PPersondata extends Plugin {
 			$person->email_parent = $_POST["email_parent"];
 			$person->birthday = $_POST["birthday"];
 			$person->gender = $_POST["gender"];
-			$person->schreiber = $_POST["schreiber"];
-			if ($person->schreiber == NULL) $person->schreiber = 0;
 
-			if($this->acl->acl_check("address", "setSignature", "user", $this->session->uid)) {
-				$person->signature = $_POST["signature"];
-				if ($person->signature == NULL) $person->signature = 0;
+
+
+
+			if (!isset($_POST["schreiber"])) {
+				$person->schreiber = 0;
+			} else {
+				$person->schreiber = $_POST["schreiber"];
 			}
 
-			$person->sms = $_POST["sms"];
+			if (!isset($_POST["sms"])) {
+				$person->sms = 0;
+			} else {
+				$person->sms = $_POST["sms"];
+			}
+
+			if($this->acl->acl_check("address", "setSignature", "user", $this->session->uid)) {
+				if (!isset($_POST["signature"])) {
+					$person->signature = 0;
+				} else {
+					$person->signature = $_POST["signature"];
+				}
+			}
+
 			$person->licence = $_POST["licence"];
 			$person->licence_comment = $_POST["licence_comment"];
 			$person->refid = $_POST["refid"];

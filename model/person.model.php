@@ -1,6 +1,7 @@
 <?php
 
 namespace splattner\myvbc\models;
+use splattner\framework\Application;
 use splattner\framework\Model;
 
 // no direct access
@@ -226,7 +227,7 @@ class MPerson extends Model {
 		$personnewData = $personnewRS->getArray();
 		
 		/* Add Notification */
-		$notification = Application::getService("notification");;
+		$notification = Application::getService("ServiceNotification");;
 		$notification->addChangeAddressNotification($personoldData, $personnewData);
 	
 	}
@@ -236,7 +237,7 @@ class MPerson extends Model {
 		
 		
 		/* Add Notification */
-		$notification = Application::getService("notification");
+		$notification = Application::getService("ServiceNotification");
 		$notification->addNewAdressNotifcation($personID);
 		
 	}
@@ -264,7 +265,7 @@ class MPerson extends Model {
 		$personnewData = $personnewRS->getArray();
 
 		/* Add Notification */
-		$notification = Application::getService("notification");
+		$notification = Application::getService("ServiceNotification");
 		$notification->addChangeAddressNotification($personoldData, $personnewData);
 	}
 }

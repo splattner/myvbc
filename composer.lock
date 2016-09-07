@@ -229,12 +229,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/splattner/framework.git",
-                "reference": "f9c03880664817ee7292013a5585271415cb3d73"
+                "reference": "c880672e296e7917bb91acc15afa803cce461e07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/splattner/framework/zipball/f9c03880664817ee7292013a5585271415cb3d73",
-                "reference": "f9c03880664817ee7292013a5585271415cb3d73",
+                "url": "https://api.github.com/repos/splattner/framework/zipball/c880672e296e7917bb91acc15afa803cce461e07",
+                "reference": "c880672e296e7917bb91acc15afa803cce461e07",
                 "shasum": ""
             },
             "require": {
@@ -269,7 +269,7 @@
                 }
             ],
             "description": "Simple PHP Framework used by splattner/myvbc",
-            "time": "2016-09-04 17:06:25"
+            "time": "2016-09-06 17:05:50"
         }
     ],
     "packages-dev": [],

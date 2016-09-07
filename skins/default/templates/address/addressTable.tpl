@@ -106,7 +106,7 @@
                             html = html +
                                     " <a data-toggle='tooltip' data-placement='bottom' title='Person l&ouml;schen' class='icons'" +
                                     "onclick='return confirm(\"Willst du diesen Eintrag wirklich l&ouml;schen?\")'" +
-                                    "href='index.php?page=addressaction=delete&personID=" + row.id + "'>" +
+                                    "href='index.php?page=address&action=delete&personID=" + row.id + "'>" +
                                     "<i style='color: red;' class='fa fa-trash-o'></i></a>";
 
                             return html;
