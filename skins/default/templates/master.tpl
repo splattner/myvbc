@@ -29,7 +29,6 @@
     <link rel="image_src" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen-sprite.png">
 
 
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- Datatables -->
@@ -41,8 +40,7 @@
 
 
     <!-- AngularJS -->
-    <script type="text/javascript"
-            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
 
     <!-- include angular-chosen -->
     <script src="js/angular-chosen.js"></script>
