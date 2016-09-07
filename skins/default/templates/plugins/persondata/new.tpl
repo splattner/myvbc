@@ -62,7 +62,13 @@
 	<div class="form-group">
 		<label for="birthday" class="col-sm-4 control-label">Geburtstag</label>
 		<div class="col-sm-8">
-			<input type="date" class="form-control" id="birthday" name="birthday">
+            <div class='input-group date' id='datetimepicker'>
+                <input type="text" class="form-control" id="birthday" name="birthday">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar">
+                    </span>
+                </span>
+            </div>
 		</div>
 	</div>
 	<div class="form-group">
@@ -113,3 +119,15 @@
 
 
 </form>
+
+{literal}
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker').datetimepicker({
+                viewMode: 'years',
+                locale: 'de',
+                format: 'DD.MM.YYYY'
+            });
+        });
+    </script>
+{/literal}
