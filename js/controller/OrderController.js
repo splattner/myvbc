@@ -45,7 +45,7 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
 
     $scope.removeOrderItem = function(personID) {
 
-        $http.delete("index.php/api/order/orderItem/" + $scope.orderID + "/" + removeLicence.personID)
+        $http.delete("index.php/api/order/orderItem/" + $scope.orderID + "/" + personID)
             .then(function (response) {
                 $scope.getOrderItems($scope.orderID);
             });
