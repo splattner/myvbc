@@ -241,7 +241,7 @@ class PageAdmin extends MyVBCPage
 		$this->smarty->assign("subContent1", "administration/addSubsciption.tpl");
 		
 		$persons = new MPerson();
-		$rs = $persons->getRS(array("active =" => "1",array("name" => "DESC", "prename" => "ASC")));
+		$rs = $persons->getRS(array("active =" => 1),array("name" => "DESC", "prename" => "ASC"));
 		$this->smarty->assign("users", $rs->getArray());
 		
 		$notification = new MNotification();

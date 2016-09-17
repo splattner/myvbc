@@ -51,7 +51,7 @@ class MNotification extends Model {
 				$currentPerson = $rs_currentPerson->fetchRow();
 				
 				$content = "<p>Du hast eine neue Benachrichtigung auf myVBC erhalten:</p><p>" . $message . "</p>";
-				$mail = new PHPMailer();
+				$mail = new \PHPMailer();
 				$mail->IsSMTP();
 				$mail->Host       = "localhost"; // sets the SMTP server
 				$mail->Port       = 25;                    // set the SMTP port for the GMAIL server
