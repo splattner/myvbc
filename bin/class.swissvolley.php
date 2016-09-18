@@ -17,6 +17,9 @@ class swissvolley
 	
 	public function __construct() // Konstruktor
 	{
+
+        ini_set("soap.wsdl_cache_enabled", "0");
+
 		// Soap Verbindung �ffnen
 		$this->soap_client = new \SoapClient("http://myvolley.volleyball.ch/SwissVolley.wsdl");
 	}
