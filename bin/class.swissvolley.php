@@ -36,6 +36,10 @@ class swissvolley
 	{
 		return $this->soap_client->getTable($groupID);
 	}
+
+	public function getGamesByClub($clubID) {
+		return $this->soap_client->getGamesByClub($clubID);
+	}
 	
 }
 ?>

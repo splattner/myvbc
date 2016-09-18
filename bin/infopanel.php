@@ -2,9 +2,10 @@
 
 
 require "class.svrs.php";
-//require "class.swissvolley.php";
+require "class.swissvolley.php";
 
-$vereinID = 22;
+$clubID_regional = 22;
+$clubID_national = 908240;
 $days = 7;
 
 
@@ -16,20 +17,20 @@ if (isset($_GET["do"])) {
 
 if ($do == "buildTable") {
 	$svrs = new svrs();
-
-    /*
 	$sv = new swissvolley();
-	$teamid_d1 = 23111;
-
-    */
-	$nextGames = $svrs->get_nextGamesbyVerein($vereinID,$days);
-	$lastGames = $svrs->get_lastGamesbyVerein($vereinID,$days);
 
 
-    /*
-	$lastGames_National_raw = $sv->get_GamesbyTeamID($teamid_d1);
+	$nextGames_regional_raw = $svrs->get_nextGamesbyVerein($clubID_regional,$days);
+	$lastGames_regional_raw = $svrs->get_lastGamesbyVerein($clubID_regional,$days);
+	$games_national_raw = $sv->getGamesByClub($clubID_national);
 
-	foreach($lastGames_National_raw as $game) {
+    $lastGame_national = array();
+    $nextGame_national = array();
+
+    $body_nextGames_national = "";
+    $body_lastGames_national = "";
+
+	foreach($games_national_raw as $game) {
 
 		$today = new DateTime("now");
 		$playDate = DateTime::createFromFormat("Y-m-d H:i:s", $game->PlayDate);
@@ -37,7 +38,7 @@ if ($do == "buildTable") {
 		$diff = $today->diff($playDate);
 
 		if ($game->IsResultCommited == 1 && $diff->d <= $days && $diff->m == 0) {
-			$body_lastGames_national =
+			$body_lastGames_national .=
 				"<tr>"
 					."<td>" . $playDate->format("d.m.Y") . "</td>"
 					."<td>" . $game->LeagueCatCaption . "</td>"
@@ -46,11 +47,27 @@ if ($do == "buildTable") {
 					."<td>" . $game->NumberOfWinsHome . ":" . $game->NumberOfWinsAway . "</td>"
 
 				."</tr>";
-		}
-	}
-	*/
 
-	//print_r($lastGames_National);
+            $lastGame_national[] = $game;
+
+		} else {
+            if($diff->d <= $days && $diff->m == 0) {
+                $body_nextGames_national .=
+                    "<tr>"
+                    ."<td>" . $playDate->format("d.m.Y H:i") . "</td>"
+                    . "<td>" .$game->HallPlace . " " . $game->HallCaption . "</td>"
+                    ."<td>" . $game->LeagueCatCaption . "</td>"
+                    ."<td>" . $game->TeamHomeCaption . "</td>"
+                    ."<td> </td>"
+                    ."<td>" . $game->TeamAwayCaption . "</td>"
+                    ."</tr>";
+
+                $nextGame_national[] = $game;
+            }
+
+        }
+	}
+
 	
 	$header_lastGames = "<table class=\"results_small\">
 						<tr>
@@ -61,37 +78,34 @@ if ($do == "buildTable") {
 							<th width=\"20%\"></th>
 						</tr>";
 	
-        $header_nextGames = "<table class=\"results_small\">
-							<tr>
-								<th width=\"15%\">Datum / Zeit</th>
-								<th width=\"25%\">Ort</th>
-								<th width=\"10%\">Liga</th>
-								<th style=\"text-align: right;\" width=\"24%\">Heimteam</th>
-								<th width=\"2%\"></th>
-								<th tyle=\"text-align: left;\" width=\"24%\">Gastteam</th>
-					</tr>";
+    $header_nextGames = "<table class=\"results_small\">
+                        <tr>
+                            <th width=\"15%\">Datum / Zeit</th>
+                            <th width=\"25%\">Ort</th>
+                            <th width=\"10%\">Liga</th>
+                            <th style=\"text-align: right;\" width=\"24%\">Heimteam</th>
+                            <th width=\"2%\"></th>
+                            <th tyle=\"text-align: left;\" width=\"24%\">Gastteam</th>
+                </tr>";
 
 
 	$body_nextGames = "";
 	$body_lastGames = "";
 	
 	// Build Body of Game Table
-	if (count($nextGames) == 0) {
+	if (count($nextGames_regional_raw) == 0) {
 		$body_nextGames = "<tr><td align=\"center\" colspan=\"5\">Keine Spiele in den n&auml;chsten 7 Tagen</td></tr>";
 	} else {
-		foreach ($nextGames as $game) {
-		
-			
+		foreach ($nextGames_regional_raw as $game) {
+
 			list ($datum, $zeit) = explode(" ", $game["isodatum"]);
 			list ($stunde, $minute, $sekunde) = explode (":", $zeit);
 			list ($jahr, $monat, $tag) = explode("-", $datum);
 			$date = $tag . "." . $monat . "." . $jahr . " " . $stunde . ":" . $minute;
 			$datum = $tag . "." . $monat . "." . $jahr;
-			
-			//if ( strcmp(date("d.m.Y"),$datum) == 0) { echo "true"; }
-			
+
 			if (date("d.m.Y") == $datum  && (date("G") > $stunde || (date("G") == $stunde && date("m") >= $minute))) {
-			
+			    // Nothing
 			} else {
 	
 				$body_nextGames .= "<tr>
@@ -107,36 +121,49 @@ if ($do == "buildTable") {
 	}
 	
 	// Build Body of Game Table
-	if (count($lastGames) == 0) {
-        	$body_lastGames = "<tr><td align=\"center\" colspan=\"5\">Keine Resultate vorhanden</td></tr>";
+	if (count($lastGames_regional_raw) == 0) {
+        $body_lastGames = "<tr><td align=\"center\" colspan=\"5\">Keine Resultate vorhanden</td></tr>";
 	} else {
-        	foreach (array_reverse($lastGames) as $game) {
-				if ($game["satzheim"] != 0 || $game["satzgast"] != 0) {
+        foreach (array_reverse($lastGames_regional_raw) as $game) {
+            if ($game["satzheim"] != 0 || $game["satzgast"] != 0) {
 
-		                list ($datum, $zeit) = explode(" ", $game["isodatum"]);
-        	        	list ($stunde, $minute, $sekunde) = explode (":", $zeit);
-                		list ($jahr, $monat, $tag) = explode("-", $datum);
-		                $date = $tag . "." . $monat . "." . $jahr;
+                    list ($datum, $zeit) = explode(" ", $game["isodatum"]);
+                    list ($stunde, $minute, $sekunde) = explode (":", $zeit);
+                    list ($jahr, $monat, $tag) = explode("-", $datum);
+                    $date = $tag . "." . $monat . "." . $jahr;
 
-		                $body_lastGames .= "<tr>
-        	                	            	<td>" . $date . "</td>
-							<td>" . $game["liga"] . "</td>
-               	        		                <td>" . $game["heimteam"] . "</td>
-        	                                	<td>" . $game["gastteam"] . "</td>
-							<td>" . $game["satzheim"] . ":". $game["satzgast"] ."</td>";
-		                $last_games .= "</tr>";
-			}
-        	}
+                    $body_lastGames .= "<tr>
+                                        <td>" . $date . "</td>
+                                        <td>" . $game["liga"] . "</td>
+                                        <td>" . $game["heimteam"] . "</td>
+                                        <td>" . $game["gastteam"] . "</td>
+                                        <td>" . $game["satzheim"] . ":". $game["satzgast"] ."</td>
+                                        </tr>";
+            }
+        }
 	}
 
 	
 	$footer = "</table>";
-		
-	$output_nextGames = $header_nextGames . $body_nextGames . $footer;
 
-    //$output_lastGames = $header_lastGames . "<tr><td><b>Regional</b></td></tr>" . $body_lastGames;
-    $output_lastGames = $header_lastGames  . $body_lastGames;
-	//$output_lastGames .= <tr><td><b>National</b></td></tr>". $body_lastGames_national;
+    // Next Games
+	$output_nextGames = $header_nextGames;
+    if(count($nextGames_regional_raw > 0)) {
+        $output_nextGames .= "<tr><td><b>Regional</b></td></tr>" . $body_nextGames;
+    }
+    if (count($nextGame_national) > 0) {
+        $output_nextGames .= "<tr><td><b>National</b></td></tr>" . $body_nextGames_national;
+    }
+    $output_nextGames .= $footer;
+
+    // Last Games
+    $output_lastGames = $header_lastGames;
+    if(count($lastGames_regional_raw) > 0) {
+        $output_lastGames .= "<tr><td><b>Regional</b></td></tr>" . $body_lastGames;
+    }
+	if(count($lastGame_national) > 0) {
+        $output_lastGames .= "<tr><td><b>National</b></td></tr>". $body_lastGames_national;
+    }
     $output_lastGames .= $footer;
 	
 	
