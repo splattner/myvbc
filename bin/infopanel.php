@@ -51,7 +51,7 @@ if ($do == "buildTable") {
             $lastGame_national[] = $game;
 
 		} else {
-            if($diff->d <= $days && $diff->m == 0) {
+            if($diff->d <= $days && $diff->m == 0 && $diff->invert == 0) {
                 $body_nextGames_national .=
                     "<tr>"
                     ."<td>" . $playDate->format("d.m.Y H:i") . "</td>"
