@@ -34,10 +34,8 @@
     <!-- Datatables -->
     <link rel="stylesheet" type="text/css"
           href="https://cdn.datatables.net/r/bs/dt-1.10.9,fc-3.1.0,fh-3.0.0/datatables.min.css"/>
-
     <script type="text/javascript"
             src="https://cdn.datatables.net/r/bs/dt-1.10.9,fc-3.1.0,fh-3.0.0/datatables.min.js"></script>
-
 
     <!-- AngularJS -->
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
