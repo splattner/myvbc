@@ -200,6 +200,7 @@ class InitialDbSetup extends AbstractMigration
             ->addColumn('email_parent','string')
             ->addColumn('birthday','date')
             ->addColumn('gender','set', array('values' => 'm,w'))
+            ->addColumn('schreiber','boolean')
             ->addColumn('sms','boolean')
             ->addColumn('licence','integer')
             ->addColumn('licence_comment','text')
@@ -220,7 +221,7 @@ class InitialDbSetup extends AbstractMigration
                 ->create();
 
         $licences = $this->table('licences');
-        $licences->addColumn('type', 'string', array('default' => '0'))
+        $licences->addColumn('typ', 'string', array('default' => '0'))
                 ->create();
 
         $notificationtype = $this->table('notificationtype');
@@ -333,7 +334,7 @@ class InitialDbSetup extends AbstractMigration
         $session
             ->addColumn('uid','integer')
             ->addColumn('lastUpdate','timestamp')
-            ->addColumn('isAugth','boolean')
+            ->addColumn('isAuth','boolean')
             ->create();
 
         

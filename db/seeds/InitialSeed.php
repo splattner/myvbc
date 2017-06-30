@@ -20,7 +20,7 @@ class InitialSeed extends AbstractSeed
         // `myvbc`.`persons`
         $persons = array(
 
-          array('id' => '1','changed' => '0','name' => 'Administrator','email' => 'admin@myvbc.ch','active' => '1','password' => 'dc48fb00f34e4ac3ae330cf1f1055a9b')
+          array('id' => '1','changed' => '0','name' => 'Administrator','email' => 'admin@myvbc.ch','active' => '1','password' => '2b7e7b3d95551e5c1297f5e03d60be3a')
         );
 
         $table = $this->table('persons');
@@ -33,9 +33,9 @@ class InitialSeed extends AbstractSeed
           array('id' => '10','section_value' => 'user','allow' => '1','enabled' => '1','return_value' => '','note' => 'Policy for guest Users','updated_date' => '1255251204'),
           array('id' => '11','section_value' => 'user','allow' => '1','enabled' => '1','return_value' => '','note' => 'Policy for Registered Users','updated_date' => '1250426183'),
           array('id' => '20','section_value' => 'user','allow' => '1','enabled' => '1','return_value' => '','note' => 'Policy for Vorstand','updated_date' => '1460560918'),
-          array('id' => '15','section_value' => 'user','allow' => '1','enabled' => '1','return_value' => '','note' => '','updated_date' => '1460560933'),
+          array('id' => '15','section_value' => 'user','allow' => '1','enabled' => '1','return_value' => '','note' => 'Policy for Administrator','updated_date' => '1460560933'),
           array('id' => '16','section_value' => 'user','allow' => '1','enabled' => '1','return_value' => '','note' => 'Policy for Captain und Trainer','updated_date' => '1459882081'),
-          array('id' => '19','section_value' => 'user','allow' => '0','enabled' => '0','return_value' => '','note' => 'Policy for Registered Administrator','updated_date' => '1284471529')
+          array('id' => '19','section_value' => 'user','allow' => '0','enabled' => '0','return_value' => '','note' => '','updated_date' => '1284471529')
         );
 
         $table = $this->table('acl');
@@ -335,7 +335,7 @@ class InitialSeed extends AbstractSeed
         // `myvbc`.`aro`
         $aro = array(
           array('id' => '12','section_value' => 'user','value' => '0','order_value' => '0','name' => 'Gast','hidden' => '0'),
-          array('id' => '20','section_value' => 'user','value' => '63','order_value' => '1','name' => '1','hidden' => '0'),
+          array('id' => '20','section_value' => 'user','value' => '1','order_value' => '1','name' => '1','hidden' => '0'),
         );
 
         $table = $this->table('aro');
@@ -463,8 +463,8 @@ class InitialSeed extends AbstractSeed
           array('id' => '11','typ' => 'Kontingenz Lizenz')
         );
 
-        $table = $this->table('licence');
-        $table->insert($licence)
+        $table = $this->table('licences');
+        $table->insert($licences)
               ->save();
 
 
