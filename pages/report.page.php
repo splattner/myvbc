@@ -13,6 +13,8 @@ class PageReport extends MyVBCPage {
 		parent::__construct();
 		$this->pagename = "report";
 		$this->template = "report/report.tpl";
+
+		$this->acl->allow("vorstand",["main", "getReport"], ["view"]);
 	}
 	
 	public function init() {
@@ -30,7 +32,7 @@ class PageReport extends MyVBCPage {
 		
 		$rs = $reports->getRS();
 		
-		$this->smarty->assign("reports", $rs->getArray());
+		$this->smarty->assign("reports", $rs->fetchAll());
 		
 	}
 	
@@ -68,7 +70,7 @@ class PageReport extends MyVBCPage {
 		$reports = new MReport();
 		
 		$currentReport = $reports->getReport($reportID);
-		$values = $currentReport->GetArray();
+		$values = $currentReport->fetch();
 		
 		$header = array();
 		$content = array();

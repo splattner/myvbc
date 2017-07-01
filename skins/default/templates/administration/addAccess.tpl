@@ -29,7 +29,7 @@
 			<select name="group">
 				<option value="0" >(Bitte ausw&auml;hlen)</option>
 				{foreach item=group from=$groups}
-					<option value="{$group.id}">{$group.name}</option>
+					<option value="{$group}">{$group}</option>
 				{/foreach}
 			</select>
 		</td>

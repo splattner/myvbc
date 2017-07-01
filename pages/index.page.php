@@ -14,6 +14,9 @@ class PageIndex extends MyVBCPage
 		parent::__construct();
 		$this->pagename = "index";
 		$this->template = "index/index.tpl";
+
+		$this->acl->allow("guest",["main"], ["view"]);
+
 	}
 	
 	public function init() {
@@ -27,20 +30,20 @@ class PageIndex extends MyVBCPage
 			
 			$user = new MPerson();
 			$rs = $user->getRS(array($user->pk ." =" => $this->session->uid));
-			$currentUser = $rs->getArray();
+			$currentUser = $rs->fetch();
 
-			$this->smarty->assign("user", $currentUser[0]);
+			$this->smarty->assign("user", $currentUser);
 			
 			/*
 			 * Check if RefID is available
 			 */
-			if($currentUser[0]["refid"] > 0) {
+			if($currentUser["refid"] > 0) {
 				$source = Application::getService("ServiceSVRS");
 
 				
-				$refGames = $source->getGamesbyRef($currentUser[0]["refid"]);
+				$refGames = $source->getGamesbyRef($currentUser["refid"]);
 				$this->smarty->assign("refGames", $refGames);	
-				$this->smarty->assign("refID", $currentUser[0]["refid"]);
+				$this->smarty->assign("refID", $currentUser["refid"]);
 			}
 			
 			/*
@@ -48,7 +51,7 @@ class PageIndex extends MyVBCPage
 			 */
 			$currentGames = $user->getMyGames($this->session->uid);
 			$myGames = array();
-			while ($currentGame = $currentGames->FetchRow()) {
+			while ($currentGame = $currentGames->fetch()) {
             	$myGames[] = $currentGame;
 			}
 			$this->smarty->assign("myGames", $myGames);
@@ -58,7 +61,7 @@ class PageIndex extends MyVBCPage
 			 */
 			$currentTeams = $user->getMyTeams($this->session->uid);
 			$myTeams = array();
-			while ($currentTeam = $currentTeams->FetchRow()) {
+			while ($currentTeam = $currentTeams->fetch()) {
             	$myTeams[] = $currentTeam;
 			}
 			$this->smarty->assign("myTeams", $myTeams);
@@ -68,7 +71,7 @@ class PageIndex extends MyVBCPage
 			 */
 			$currentSchreibers= $user->getMySchreibers($this->session->uid);
 			$mySchreibers = array();
-			while ($currentSchreiber = $currentSchreibers->FetchRow()) {
+			while ($currentSchreiber = $currentSchreibers->fetch()) {
             	$mySchreibers[] = $currentSchreiber;
 			}
 			$this->smarty->assign("mySchreibers", $mySchreibers);

@@ -29,7 +29,7 @@
         </li>
     {/if}
 
-    {if $canKey}
+    {if $canGames}
         <li role="presentation">
             <a href="?page=games" data-toggle="tooltip" data-placement="bottom" title="Spiele"><i class="fa fa-2x fa-futbol-o"></i></a>
         </li>
@@ -89,10 +89,6 @@
                 <li role="presentation">
                     <a href="index.php?page=admin&action=clearGames">
                         Spiele entfernen</a>
-                </li>
-                <li role="presentation">
-                    <a href="index.php?page=admin&action=gacl">
-                        ACL Settings</a>
                 </li>
             </ul>
         </li>

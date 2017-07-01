@@ -35,7 +35,7 @@ class APIAddress extends PublicAPI
 
 
 
-        $result = $person->getAddressEntry($where, $orderby)->getArray();
+        $result = $person->getAddressEntry($where, $orderby)->fetchAll();
 
         // Extract temas (as Json) for proper JSON encode
         for ($i = 0 ; $i < count($result); $i++) {

@@ -14,6 +14,8 @@ class PageKey extends MyVBCPage
         parent::__construct();
         $this->pagename = "key";
         $this->template = "key/index.tpl";
+
+        $this->acl->allow("vorstand",["main", "new","delete"], ["view"]);
     }
 
     public function init() {
@@ -29,11 +31,11 @@ class PageKey extends MyVBCPage
         $keys = new MKey();
         $rs = $keys->getAllKeys();
 
-        $this->smarty->assign("keys", $rs->getArray());
+        $this->smarty->assign("keys", $rs->fetchAll());
 
         $persons = new MPerson();
         $rs = $persons->getRS(array(),array("name" => "ASC", "prename" => "ASC"));
-        $this->smarty->assign("users", $rs->getArray());
+        $this->smarty->assign("users", $rs->fetchAll());
 
     }
 

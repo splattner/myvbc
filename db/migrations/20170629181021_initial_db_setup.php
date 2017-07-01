@@ -34,137 +34,6 @@ class InitialDbSetup extends AbstractMigration
             ->addColumn('lastUpdate', 'timestamp')
             ->create();
 
-        $acl = $this->table('acl');
-        $acl->addColumn('section_value', 'string', array('default' => 'system'))
-            ->addColumn('allow', 'integer', array('default' => '0'))
-            ->addColumn('enabled','integer', array('default' => '0'))
-            ->addColumn('return_value','text')
-            ->addColumn('note','text')
-            ->addColumn('updated_date','integer', array('default' => '0'))
-            ->create();
-
-        $acl_sections = $this->table('acl_sections');
-        $acl_sections->addColumn('value', 'string')
-            ->addColumn('order_value', 'integer', array('default' => '0'))
-            ->addColumn('name','string')
-            ->addColumn('hidden','integer', array('default' => '0'))
-            ->addIndex(array('value'), array('unique' => true))
-            ->create();
-
-        $acl_seq = $this->table('acl_seq');
-        $acl_seq->create();
-
-        $aco = $this->table('aco');
-        $aco->addColumn('section_value', 'string', array('default' => '0'))
-            ->addColumn('value','string')
-            ->addColumn('order_value','integer', array('default' => '0'))
-            ->addColumn('name', 'string')
-            ->addColumn('hidden','integer', array('default' => '0'))
-            ->addIndex(array('value','section_value'), array('unique' => true))
-            ->create();
-
-        $aco_map = $this->table('aco_map');
-        $aco_map->addColumn('acl_id', 'integer', array('default' => '0'))
-                ->addColumn('section_value','string', array('default' => '0'))
-                ->addColumn('value', 'string')
-                ->create();
-
-        $aco_section = $this->table('aco_section');
-        $aco_section->addColumn('value', 'string')
-                    ->addColumn('order_value','integer', array('default' => '0'))
-                    ->addColumn('name','string')
-                    ->addColumn('hidden','integer', array('default' => '0'))
-                    ->addIndex(array('value'), array('unique' => true))
-                    ->create();
-
-        $aco_sections_seq = $this->table('aco_sections_seq');
-        $aco_sections_seq->create();
-
-        $aco_seq = $this->table('aco_seq');
-        $aco_seq->create();
-
-        $aro = $this->table('aro');
-        $aro->addColumn('section_value', 'string', array('default' => '0'))
-            ->addColumn('value','string')
-            ->addColumn('order_value','integer', array('default' => '0'))
-            ->addColumn('name','string')
-            ->addColumn('hidden', 'integer', array('default' => '0'))
-            ->addIndex(array('value','section_value'), array('unique' => true))
-            ->create();
-
-        $aro_groups = $this->table('aro_groups');
-        $aro_groups->addColumn('parent_id', 'integer', array('default' => '0'))
-                    ->addColumn('lft', 'integer', array('default' => '0'))
-                    ->addColumn('rgt','integer', array('default' => '0'))
-                    ->addColumn('name', 'string')
-                    ->addColumn('value','string')
-                    ->addIndex(array('value'), array('unique' => true))
-                    ->create();
-
-        $aro_groups_id_seq = $this->table('aro_groups_id_seq');
-        $aro_groups_id_seq->create();
-
-        $aro_groups_map = $this->table('aro_groups_map');
-        $aro_groups_map->addColumn('acl_id', 'integer', array('default' => '0'))
-            ->addColumn('group_id', 'integer', array('default' => '0'))
-            ->create();
-
-        $aro_map = $this->table('aro_map');
-        $aro_map->addColumn('acl_id', 'integer', array('default' => '0'))
-            ->addColumn('section_value', 'string', array('default' => '0'))
-            ->addColumn('value', 'string', array('default' => '0'))
-            ->create();
-
-        $aro_sections = $this->table('aro_sections');
-        $aro_sections->addColumn('value','string')
-            ->addColumn('order_value', 'integer', array('default' => '0'))
-            ->addColumn('name', 'string')
-            ->addColumn('hidden', 'integer', array('default' => '0'))
-            ->addIndex(array('value'), array('unique' => true))
-            ->create();
-
-        $aro_sections_seq = $this->table('aro_sections_seq');
-        $aro_sections_seq->create();
-
-        $aro_seq = $this->table('aro_seq');
-        $aro_seq->create();
-
-        $axo = $this->table('axo');
-        $axo->addColumn('section_value','string', array('default' => '0'))
-            ->addColumn('value', 'string')
-            ->addColumn('order_value', 'integer', array('default' => '0'))
-            ->addColumn('name', 'string')
-            ->addColumn('hidden','integer')
-            ->addIndex(array('section_value','value'), array('unique' => true))
-            ->create();
-
-        $axo_groups = $this->table('axo_groups');
-        $axo_groups->addColumn('parent_id', 'integer', array('default' => '0'))
-                    ->addColumn('lft', 'integer', array('default' => '0'))
-                    ->addColumn('rgt','integer', array('default' => '0'))
-                    ->addColumn('name', 'string')
-                    ->addColumn('value','string')
-                    ->addIndex(array('value'), array('unique' => true))
-                    ->create();
-
-        $axo_groups_map = $this->table('axo_groups_map');
-        $axo_groups_map->addColumn('acl_id', 'integer', array('default' => '0'))
-                ->addColumn('group_id','integer', array('default' => '0'))
-                ->create();
-
-        $axo_map = $this->table('axo_map');
-        $axo_map->addColumn('acl_id', 'integer', array('default' => '0'))
-                ->addColumn('section_value','string', array('default' => '0'))
-                ->addColumn('value', 'string')
-                ->create();
-
-        $axo_sections = $this->table('axo_sections');
-        $axo_sections->addColumn('value','string')
-            ->addColumn('order_value', 'integer', array('default' => '0'))
-            ->addColumn('name', 'string')
-            ->addColumn('hidden', 'integer', array('default' => '0'))
-            ->addIndex(array('value'), array('unique' => true))
-            ->create();
 
         $teams = $this->table('teams');
         $teams->addColumn('extid','integer')
@@ -208,17 +77,8 @@ class InitialDbSetup extends AbstractMigration
             ->addColumn('signature','boolean')
             ->addColumn('password','string')
             ->addColumn('refid', 'integer')
+            ->addColumn('role', 'string')
             ->create();
-
-        $groups_aro_map = $this->table('groups_aro_map');
-        $groups_aro_map->addColumn('group_id', 'integer', array('default' => '0'))
-                ->addColumn('aro_id','integer', array('default' => '0'))
-                ->create();
-
-        $groups_axo_map = $this->table('groups_axo_map');
-        $groups_axo_map->addColumn('group_id', 'integer', array('default' => '0'))
-                ->addColumn('axo_id','integer', array('default' => '0'))
-                ->create();
 
         $licences = $this->table('licences');
         $licences->addColumn('typ', 'string', array('default' => '0'))
@@ -293,14 +153,6 @@ class InitialDbSetup extends AbstractMigration
             ->addForeignKey('orderid', 'order', 'id', array('delete'=> 'CASCADE', 'update'=> 'CASCADE'))
             ->update();
 
-        
-        
-
-
-        $phpgacl = $this->table('phpgacl');
-        $phpgacl->addColumn('name','string')
-            ->addColumn('value','string')
-            ->create();
 
         $players = $this->table('players');
         $players->addColumn('team','integer')
@@ -332,9 +184,17 @@ class InitialDbSetup extends AbstractMigration
 
         $session = $this->table('session');
         $session
+            ->addColumn('sid','string')
             ->addColumn('uid','integer')
             ->addColumn('lastUpdate','timestamp')
             ->addColumn('isAuth','boolean')
+            ->addColumn('role','string')
+            ->create();
+
+        $config = $this->table('config', array('id' => false));
+        $config
+            ->addColumn('key','string')
+            ->addColumn('value','string')
             ->create();
 
         

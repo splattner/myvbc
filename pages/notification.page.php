@@ -12,6 +12,8 @@ class PageNotification extends MyVBCPage
 		parent::__construct();
 		$this->pagename = "notification";
 		$this->template = "notification/notification.tpl";
+
+		$this->acl->allow("manager",["main", "delete"], ["view"]);
 		
 
 	}
@@ -33,7 +35,7 @@ class PageNotification extends MyVBCPage
 		
 		$notification = new MNotification();
 		$rs = $notification->getNotificationStatus($this->session->uid);
-		$this->smarty->assign("notifications", $rs->getArray());
+		$this->smarty->assign("notifications", $rs->fetchAll());
 		
 	}
 	

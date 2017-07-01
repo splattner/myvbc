@@ -22,8 +22,6 @@ class ServiceNotification extends Service {
 	
 	public function addChangeAddressNotification($personOld, $personNew) {
 		
-		$personOld = $personOld[0];
-		$personNew = $personNew[0];
 		
 		$changedStatus = false;
 		$message = "";
@@ -125,8 +123,7 @@ class ServiceNotification extends Service {
 				
 		$person = new MPerson();
 		$rs = $person->getRS(array($person->pk . " =" => $personID));
-		$personNew = $rs->getArray();
-		$personNew = $personNew[0];
+		$personNew = $rs->fetch();
 		
 		$message .= "<p>" . $personNew["prename"] . " " . $personNew["name"] . " wurde neu Eingetragen</p>";
 
@@ -170,13 +167,11 @@ class ServiceNotification extends Service {
 		
 		$person = new MPerson();
 		$rs = $person->getRS(array($person->pk . " =" => $personID));
-		$personNew = $rs->getArray();
-		$personNew = $personNew[0];
+		$personNew = $rs->fetch();
 		
 		$licence = new MLicence();
 		$rs = $licence->getRS(array($person->pk . " =" => $personNew["licence"]));
-		$licenceData = $rs->getArray();
-		$licenceData = 	$licenceData[0];
+		$licenceData = $rs->fetch();
 		
 		$message .= "<p>Lizenzbestellung abgeschlossen. " . $personNew["prename"] . " " . $personNew["name"] . " hat neu die Lizenz:<br/><b> " . $licenceData["typ"] ."</b></p>";
 		
@@ -189,8 +184,7 @@ class ServiceNotification extends Service {
 
                 $person = new MPerson();
                 $rs = $person->getRS(array($person->pk . " =" => $personID));
-                $personNew = $rs->getArray();
-                $personNew = $personNew[0];
+                $personNew = $rs->fetch();
 
                 $message .= "<p>F&uuml;r <b>" . $personNew["prename"] . " " . $personNew["name"] . "</b> wurde ein Zugang erstellt!";
 
@@ -213,15 +207,13 @@ class ServiceNotification extends Service {
 		$person = new MPerson();
 		$rs = $person->getRS(array($person->pk . " =" => $personID));
 		
-		$personData = $rs->getArray();
-		$personData = $personData[0];
+		$personData = $rs->fetch();
 
 		
 		$team = new MTeam();
 		$rs = $team->getRS(array($team->pk . " =" => $teamID));
 
-		$teamData = $rs->getArray();
-		$teamData = $teamData[0];
+		$teamData = $rs->fetch();
 
 		$message = "<p>" . $personData["prename"] . " " . $personData["name"] . " wurde dem Team " . $teamData["name"] . " hinzugef&uuml;gt!</p>";
 
@@ -236,15 +228,13 @@ class ServiceNotification extends Service {
                 $person = new MPerson();
                 $rs = $person->getRS(array($person->pk . " =" => $personID));
 
-                $personData = $rs->getArray();
-                $personData = $personData[0];
+                $personData = $rs->fetch();
 
 
                 $team = new MTeam();
                 $rs = $team->getRS(array($team->pk . " =" => $teamID));
 
-                $teamData = $rs->getArray(); 
-                $teamData = $teamData[0];
+                $teamData = $rs->fetch(); 
 
                 $message = "<p>" . $personData["prename"]	. " " .	$personData["name"] . "	wurde aus dem  Team " . $teamData["name"] . " entfernt!</p>";
 

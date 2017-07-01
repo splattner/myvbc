@@ -38,8 +38,9 @@ class MTeam extends Model {
 					teams.id = ?
 				ORDER BY
 					players.typ ASC, persons.name ASC, persons.prename ASC";
-		$sql = $this->db->Prepare($sql);
-		return $this->db->Execute($sql, array($teamID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($teamID));
+		return $sql;
 	}
 	
 }

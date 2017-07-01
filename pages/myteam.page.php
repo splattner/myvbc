@@ -17,6 +17,12 @@ class PageMyteam extends MyVBCPage
 		parent::__construct();
 		$this->pagename = "myteam";
 		$this->template = "myTeam/myTeam.tpl";
+
+		$this->acl->allow("registered",["main",], ["view"]);
+		$this->acl->allow("manager",["addMember", "deleteMember", "edit", "new", "requestForm"], ["view"]);
+
+		$this->acl->addResource("setSignature");
+		$this->acl->allow("vorstand",["setSignature"], ["view"]);
 	}
 	
 	public function init() {
@@ -41,7 +47,7 @@ class PageMyteam extends MyVBCPage
 		$this->smarty->assign("persons", $rs->getArray());
 		
 		$rs_team = $team->getRS(array("id =" => $teamID));
-		$currentTeam = $rs_team->getArray();
+		$currentTeam = $rs_team->fetch();
 		
 		$this->smarty->assign("teamName", $currentTeam[0]["name"]);
 	}
@@ -75,7 +81,7 @@ class PageMyteam extends MyVBCPage
 		
 		$persons = new MPerson();
 		$rs = $persons->getRS(array(),array("name" => "ASC", "prename" => "ASC"));
-		$this->smarty->assign("users", $rs->getArray());
+		$this->smarty->assign("users", $rs->fetchAll());
 	}
 	
 	public function deleteMemberAction() {
@@ -144,7 +150,7 @@ class PageMyteam extends MyVBCPage
 
 		$user = new MPerson();
 		$rs = $user->getRS(array($user->pk ." =" => $personID));
-		$this->smarty->assign("person", $rs->getArray());
+		$this->smarty->assign("person", $rs->fetch());
 
 	}
 		

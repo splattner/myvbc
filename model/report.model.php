@@ -14,17 +14,17 @@ class MReport extends Model {
 	public function getReport($reportID) {
 		
 		$rs = $this->getRS(array("id =" => $reportID));
-		$currentReport = $rs->getArray();
+		$currentReport = $rs->fetch();
 		
-		$sql = $currentReport[0]["query"];
+		$sql = $currentReport["query"];
 		
-		return $this->db->Execute($sql);
+		return $this->pdo->query($sql);
 		
 	}
 	
 	public function getTitle($reportID) {
 		$rs = $this->getRS(array("id =" => $reportID));
-		$currentReport = $rs->getArray();
+		$currentReport = $rs->fetch();
 		
 		return $currentReport[0]["title"];
 		

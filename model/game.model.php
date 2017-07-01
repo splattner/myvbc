@@ -19,7 +19,7 @@ class MGame extends Model {
 		
 		$game = new MGame();
 		$rs_game = $game->getRS(array($game->pk . " =" => $gameID));
-		$arr_game = $rs_game->getArray(); //All Datas for the current Game
+		$arr_game = $rs_game->fetchAll(); //All Datas for the current Game
 		$currentTeam = $arr_game[0]["team"]; // The team for the current Game
 
 
@@ -27,11 +27,11 @@ class MGame extends Model {
 		$rs_person = $person->getRS(array("schreiber =" => 1, "active =" => 1), array("name" => "ASC", "prename" => "ASC"), array("id", "name", "prename"));
 
 
-		while($row = $rs_person->fetchRow()) {
+		while($row = $rs_person->fetch()) {
 
 			
 			$rs_teams = $person->getMyTeams($row["id"]);
-			$arr_teams = $rs_teams->getArray();
+			$arr_teams = $rs_teams->fetchAll();
 
 			$personTeams = array();
 			foreach ($arr_teams as $arr_team) {
@@ -61,8 +61,9 @@ class MGame extends Model {
 					games ON schreiber.game = games.id
 				WHERE
 					games.id = ? ";
-		$sql = $this->db->Prepare($sql);
-		return $this->db->Execute($sql, array($gameID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute($sql, array($gameID));
+		return $sql;
 	}
 	
 	public function getGamesFromPersonOnDate($personID, $date) {
@@ -89,16 +90,13 @@ class MGame extends Model {
 					AND games.date like ?
 				ORDER BY
 					games.date";
-		$sql = $this->db->Prepare($sql);
-		return $this->db->Execute($sql, array($personID, $date));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($personID, $date));
+		return $sql;
 	}
 
 	public function clearGames() {
-		$sql = "DELETE FROM games";
-
-
-		$this->db->Execute($sql);
-		
+		$this->pdo->query("DELETE FROM games");		
 	}
 
     public function getGamesFromSource($teamID) {
@@ -107,7 +105,7 @@ class MGame extends Model {
 
         $team = new MTeam();
         $rs = $team->getRS(array($team->pk ." =" => $teamID));
-        $teamData = $rs->getArray();
+        $teamData = $rs->fetchAll();
 
 
         switch($teamData[0]["typ"]) {

@@ -28,7 +28,7 @@ class MKey extends Model {
                   persons.name,
                   persons.prename";
 
-        return $this->db->Execute($sql);
+        return $this->pdo->query($sql);
     }
 
 	public function getMyKeys($personID) {
@@ -48,8 +48,9 @@ class MKey extends Model {
                   persons.name,
                   persons.prename";
 
-        $sql = $this->db->Prepare($sql);
-		return $this->db->Execute($sql, array($personID));
+        $sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($personID));
+		return $sql;
 
 	}
 

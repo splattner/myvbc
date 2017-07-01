@@ -15,6 +15,9 @@ class PageAddress extends MyVBCPage
 		$this->template = "address/address.tpl";
 		
 		$this->noACL["import"] = true;
+
+		$this->acl->allow("vorstand",["main","edit","new","delete","setState","setSignature","import","requestForm"], ["view"]);
+
 	}
 	
 	public function init() {
@@ -64,7 +67,6 @@ class PageAddress extends MyVBCPage
 		$personID = $_GET["personID"];
 		
 		$person = new MPerson();
-		$person->removeAccess($personID);
 		$person->delete(array("id" => $personID));
 		
 		$this->smarty->assign("messages","Person wurde aus Datenbank gel&ouml;scht!");
@@ -110,7 +112,7 @@ class PageAddress extends MyVBCPage
 
 		$user = new MPerson();
 		$rs = $user->getRS(array($user->pk ." =" => $personID));
-		$this->smarty->assign("person", $rs->getArray());
+		$this->smarty->assign("person", $rs->fetch());
 
 	}
 }

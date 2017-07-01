@@ -10,6 +10,11 @@ class PageMydata extends MyVBCPage
 		parent::__construct();
 		$this->pagename = "myData";
 		$this->template = "myData/myData.tpl";
+
+		$this->acl->addResource("setSignature");
+
+		$this->acl->allow("registered",["main", "edit","editPassword"], ["view"]);
+		$this->acl->allow("vorstand",["setSignature"], ["view"]);
 	}
 	
 	public function init() {

@@ -41,11 +41,11 @@ class APIGame extends PublicAPI
 						teams ON teams.id = games.team
 					WHERE
 						games.id = ?";
-        $sql_game = $this->db->Prepare($sql_game);
-        $rs = $this->db->Execute($sql_game, $gameID);
+        $sql_game = $this->pdo->Prepare($sql_game);
+        $sql_game->Execute($gameID);
 
 
-        echo json_encode($rs->getArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+        echo json_encode($sql_game->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
     }
 
 
@@ -77,15 +77,15 @@ class APIGame extends PublicAPI
         }
         $sql .= " ORDER BY games.date";
 
-        $sql = $this->db->Prepare($sql);
+        $sql = $this->pdo->Prepare($sql);
 
         if($teamID != 0) {
-            $rs = $this->db->Execute($sql, array($teamID));
+            $sql->Execute(array($teamID));
         } else {
-            $rs = $this->db->Execute($sql);
+            $sql->Execute();
         }
 
-        $games = $rs->getArray();
+        $games = $sql->fetchAll();
 
 
         $schreiber = new MGame();
@@ -94,7 +94,7 @@ class APIGame extends PublicAPI
 
             if($games[$i]["heimspiel"] == 1) {
                 $currentSchreiber = $schreiber->getSchreiber($games[$i]["id"]);
-                $arraySchreiber = $currentSchreiber->getArray();
+                $arraySchreiber = $currentSchreiber->fetch();
                 $games[$i]["schreiber"] = $arraySchreiber;
             } else { $games[$i]["schreiber"] = array(); }
         }
@@ -182,7 +182,7 @@ class APIGame extends PublicAPI
 
         $team = new MTeam();
         $rs = $team->getRS(array(), array("name" => "ASC"), array("id","name"));
-        $teams = $rs->getArray();
+        $teams = $rs->fetch();
 
         echo json_encode($teams, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
     }

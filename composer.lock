@@ -4,62 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a3ae8786ea7b30c7206a4ef21a237b83",
-    "content-hash": "fcb9287c647bd446231f24ad0a7fa56c",
+    "hash": "b5272fb02f6833139482afba11999d54",
+    "content-hash": "47271dfe70872dea928d1f174d7a9d0a",
     "packages": [
         {
-            "name": "adodb/adodb-php",
-            "version": "v5.20.9",
+            "name": "gburtini/acl",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ADOdb/ADOdb.git",
-                "reference": "f601748cca1ccb86dfd427620a1692a70e681075"
+                "url": "https://github.com/gburtini/PHP-ACL.git",
+                "reference": "1ee2591b0401dccd66cd97da1dee0f2c171a75cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ADOdb/ADOdb/zipball/f601748cca1ccb86dfd427620a1692a70e681075",
-                "reference": "f601748cca1ccb86dfd427620a1692a70e681075",
+                "url": "https://api.github.com/repos/gburtini/PHP-ACL/zipball/1ee2591b0401dccd66cd97da1dee0f2c171a75cd",
+                "reference": "1ee2591b0401dccd66cd97da1dee0f2c171a75cd",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
+                "php": ">=5.5.0"
             },
             "type": "library",
             "autoload": {
-                "files": [
-                    "adodb.inc.php"
-                ]
+                "psr-0": {
+                    "gburtini\\ACL": "src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause",
-                "LGPL-2.1"
+                "GPL"
             ],
             "authors": [
                 {
-                    "name": "John Lim",
-                    "email": "jlim@natsoft.com",
-                    "role": "Author"
-                },
-                {
-                    "name": "Damien Regad",
-                    "role": "Current maintainer"
-                },
-                {
-                    "name": "Mark Newnham",
+                    "name": "Giuseppe Burtini",
+                    "email": "joe@truephp.com",
+                    "homepage": "http://giuseppeburtini.com/",
                     "role": "Developer"
                 }
             ],
-            "description": "ADOdb is a PHP database abstraction layer library",
-            "homepage": "http://adodb.org/",
+            "description": "Dependency free, simple access control lists for PHP.",
+            "homepage": "http://github.com/gburtini/PHP-ACL",
             "keywords": [
-                "abstraction",
-                "database",
-                "layer",
-                "library",
-                "php"
+                "access",
+                "access control",
+                "acl",
+                "login",
+                "security",
+                "user"
             ],
-            "time": "2016-12-21 17:19:42"
+            "time": "2015-05-04 16:21:04"
         },
         {
             "name": "nadar/aspsms",
@@ -352,28 +345,26 @@
         },
         {
             "name": "splattner/framework",
-            "version": "1.0.7",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/splattner/framework.git",
-                "reference": "34bbde974282191682adaa9827429c25f1fda199"
+                "reference": "f0d061af23fa7bc343c3f4620a4fd858147a6167"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/splattner/framework/zipball/34bbde974282191682adaa9827429c25f1fda199",
-                "reference": "34bbde974282191682adaa9827429c25f1fda199",
+                "url": "https://api.github.com/repos/splattner/framework/zipball/f0d061af23fa7bc343c3f4620a4fd858147a6167",
+                "reference": "f0d061af23fa7bc343c3f4620a4fd858147a6167",
                 "shasum": ""
             },
             "require": {
-                "adodb/adodb-php": "^5.20",
+                "gburtini/acl": "^0.1.0",
                 "php": ">=5.3.0",
                 "smarty/smarty": "^3.1"
             },
             "type": "library",
             "autoload": {
                 "files": [
-                    "libs/phpgacl-3.3.7/gacl.class.php",
-                    "libs/phpgacl-3.3.7/gacl_api.class.php",
                     "src/Application.php",
                     "src/API.php",
                     "src/Model.php",
@@ -396,7 +387,7 @@
                 }
             ],
             "description": "Simple PHP Framework used by splattner/myvbc",
-            "time": "2017-06-30 08:55:47"
+            "time": "2017-07-01 16:08:48"
         },
         {
             "name": "symfony/config",
@@ -750,7 +741,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "splattner/framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

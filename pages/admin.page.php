@@ -4,7 +4,6 @@
 namespace splattner\myvbc\pages;
 
 use splattner\myvbc\models\MPerson;
-use splattner\myvbc\models\MArogroup;
 use splattner\myvbc\models\MReport;
 use splattner\myvbc\models\MPlayer;
 use splattner\myvbc\models\MGame;
@@ -19,6 +18,8 @@ class PageAdmin extends MyVBCPage
 		parent::__construct();
 		$this->pagename = "admin";
 		$this->template = "administration/administration.tpl";
+
+		$this->acl->allow("administrator",["main", "access", "addAccess", "removeAccess", "report","editReport","addReport","deleteReport","functions","updateStatus","clearGames","changePassword","notifications","deleteNote","deleteNoteSubscription","addNoteSubscription"], ["view"]);
 	}
 	
 	public function init() {
@@ -38,7 +39,7 @@ class PageAdmin extends MyVBCPage
 		$person = new MPerson();
 		$members = $person->getPersonsWithAccess();
 		
-		$this->smarty->assign("members", $members->getArray());
+		$this->smarty->assign("members", $members->fetchAll());
 		
 	}
 	
@@ -47,10 +48,10 @@ class PageAdmin extends MyVBCPage
 		
 		if (isset($_POST["doAdd"])) {
 			$personID = $_POST["person"];
-			$groupID = $_POST["group"];
+			$group = $_POST["group"];
 			
 			$person = new MPerson();
-			$person->createAccess($personID,$groupID);
+			$person->createAccess($personID,$group);
 			
 			$this->smarty->assign("messages","Zugang f&uuml;r Person wurde eingerichtet");
 			
@@ -59,11 +60,10 @@ class PageAdmin extends MyVBCPage
 		
 		$persons = new MPerson();
 		$rs = $persons->getRS(array(),array("name" => "DESC", "prename" => "ASC"));
-		$this->smarty->assign("users", $rs->getArray());
+		$this->smarty->assign("users", $rs->fetchAll());
 		
-		$arogroups = new MAroGroup();
-		$groups = $arogroups->getGroupList();
-		$this->smarty->assign("groups", $groups->getArray());
+		$groups = array("guest","manager","vorstand","administrator");
+		$this->smarty->assign("groups", $groups);
 	}
 	
 	public function removeAccessAction() {
@@ -85,7 +85,7 @@ class PageAdmin extends MyVBCPage
 		$reports = new MReport();
 		$rs = $reports->getRS();
 		
-		$this->smarty->assign("reports", $rs->getArray());
+		$this->smarty->assign("reports", $rs->fetchAll());
 		
 		
 	}
@@ -101,8 +101,8 @@ class PageAdmin extends MyVBCPage
 				query = ?
 				WHERE id = ?";
 
-			$sql = $this->db->Prepare($sql);
-			$this->db->Execute($sql, array($_POST["title"],$_POST["query"], $reportID ));
+			$sql = $this->pdo->Prepare($sql);
+			$sql->Execute(array($_POST["title"],$_POST["query"], $reportID ));
 			
 			$this->smarty->assign("messages","Die Daten wurden bearbeitet!");
 			
@@ -112,7 +112,7 @@ class PageAdmin extends MyVBCPage
 		
 		$report = new MReport();
 		$rs = $report->getRS(array($report->pk ." =" => $reportID));
-		$this->smarty->assign("report", $rs->getArray());	
+		$this->smarty->assign("report", $rs->fetch());	
 	}
 	
 	public function addReportAction() {
@@ -121,8 +121,8 @@ class PageAdmin extends MyVBCPage
 		
 			$sql ="INSERT INTO reports (title, query) VALUES (?,?)";
 
-            $sql = $this->db->Prepare($sql);
-            $this->db->Execute($sql, array($_POST["title"],$_POST["query"] ));
+            $sql = $this->pdo->Prepare($sql);
+            $sql->Execute(array($_POST["title"],$_POST["query"] ));
 			
 			$this->smarty->assign("messages","Neuer Bericht wurde eingetragen");
 			
@@ -184,23 +184,20 @@ class PageAdmin extends MyVBCPage
 
 		$persons = new MPerson();
 		$rs = $persons->getRS(array(),array("name" => "ASC", "prename" => "ASC"), array("id","name","prename"));
-		$this->smarty->assign("users", $rs->getArray());
+		$this->smarty->assign("users", $rs->fetchAll());
 
 
 	}
 	
-	public function gaclAction() {
-		$this->smarty->assign("subContent1", "administration/gacl.tpl");
-	}
 	
 	public function notificationsAction() {
 		$this->smarty->assign("subContent1", "administration/subscriptionTable.tpl");
 		$notification = new MNotification();
 		$rs = $notification->getAllSubscriptions();
-		$this->smarty->assign("subscriptions", $rs->getArray());
+		$this->smarty->assign("subscriptions", $rs->fetchAll());
 		
 		$rs = $notification->getAllNotifications();
-		$this->smarty->assign("allnotifications", $rs->getArray());
+		$this->smarty->assign("allnotifications", $rs->fetchAll());
 		
 	}
 	
@@ -242,11 +239,11 @@ class PageAdmin extends MyVBCPage
 		
 		$persons = new MPerson();
 		$rs = $persons->getRS(array("active =" => 1),array("name" => "DESC", "prename" => "ASC"));
-		$this->smarty->assign("users", $rs->getArray());
+		$this->smarty->assign("users", $rs->fetchAll());
 		
 		$notification = new MNotification();
 		$rs = $notification->getAllNotificationTypes();
-		$this->smarty->assign("types", $rs->getArray());
+		$this->smarty->assign("types", $rs->fetchAll());
 		
 		
 	}

@@ -15,12 +15,12 @@ class MPlayer extends Model {
 		
 		//Reset All Status
 		$sql = "UPDATE persons SET active = 0";
-		$this->db->Execute($sql);
+		$this->pdo->query($sql);
 		
 		//Set new Status
 		
 		$sql = "UPDATE persons RIGHT JOIN players ON persons.id = players.person SET active = 1";
-		$this->db->Execute($sql);
+		$this->pdo->query($sql);
 		
 	}
 
@@ -34,8 +34,8 @@ class MPlayer extends Model {
         
         // Update Active Status. After affing to a Team he is for sure active
         $sql = "UPDATE persons SET active = 1 WHERE id = ?";
-		$sql = $this->db->Prepare($sql);
-        $this->db->Execute($sql, array($this->person));
+		$sql = $this->pdo->Prepare($sql);
+        $sql->Execute(array($this->person));
 
 
 	}

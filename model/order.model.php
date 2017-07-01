@@ -16,8 +16,8 @@ class MOrder extends Model {
 		$sql = "INSERT INTO 
 					orderitem (orderid, personid) 
 				VALUES(?,?)";
-		$sql = $this->db->Prepare($sql);
-		$this->db->Execute($sql, array($orderID, $personID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($orderID, $personID));
 		
 		$sql = "UPDATE orderitem SET 
 					licence_id = (SELECT persons.licence FROM persons WHERE persons.id = ?),
@@ -26,8 +26,8 @@ class MOrder extends Model {
 					orderid = ?
 					AND personid = ?";
 
-		$sql = $this->db->Prepare($sql);
-		$this->db->Execute($sql, array($personID, $personID, $orderID, $personID));
+		$sql = $this->pdo>Prepare($sql);
+		$sql->Execute(array($personID, $personID, $orderID, $personID));
 	}
 	
 	public function removeLicenceFromOrder($personID, $orderID) {
@@ -37,8 +37,8 @@ class MOrder extends Model {
 				WHERE
 					orderid = ? AND
 					personid = ?";
-		$sql = $this->db->Prepare($sql);
-		$this->db->Execute($sql, array($orderID, $personID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($orderID, $personID));
 	}
 	
 	public function getOrder($orderID = "") {
@@ -68,13 +68,14 @@ class MOrder extends Model {
 		
 		$sql .= " ORDER BY order.status ASC, order.lastupdate DESC";
 
-		$sql = $this->db->Prepare($sql);
+		$sql = $this->pdo->Prepare($sql);
 
 		if ($orderID != "") {
-			return $this->db->Execute($sql, array($orderID));
+			$sql->Execute(array($orderID));
 		} else {
-			return $this->db->Execute($sql);
+			$sql->Execute();
 		}
+		return $sql;
 	}
 	
 	public function getPersonOrders($personID) {
@@ -94,8 +95,9 @@ class MOrder extends Model {
 			WHERE
 				orderitem.personid = ?";
 
-		$sql = $this->db->Prepare($sql);
-		return $this->db->Execute($sql, array($personID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($personID));
+		return $sql;
 	}
 
 	
@@ -121,8 +123,9 @@ class MOrder extends Model {
 					order.id = ?
 				ORDER BY persons.name ASC, persons.prename ASC";
 
-		$sql = $this->db->Prepare($sql);
-		return $this->db->Execute($sql, array($orderID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($orderID));
+		return $sql;
 	}
 	
 	public function getStatusList() {
@@ -131,15 +134,15 @@ class MOrder extends Model {
 				FROM
 					orderstatus";
 		
-		return $this->db->Execute($sql);
+		return $this->pdo->query($sql);
 	}
 	
 	public function updateStatus($statusID, $orderID) {
 		$sql = "UPDATE 
 					`order`
 				SET status = ?, lastupdate = NOW() WHERE id = ?";
-		$this->db->Prepare($sql);
-		$this->db->Execute($sql, array($statusID, $orderID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($statusID, $orderID));
 		
 		/* Add Notifications if order is complete */
 		if ($statusID == 4) {
@@ -152,9 +155,9 @@ class MOrder extends Model {
 						orderitem
 					WHERE
 						orderid = ?";
-			$sql = $this->db->Prepare($sql);
-			$rs = $this->db->Execute($sql, array($orderID));
-			$personids = $rs->getArray();
+			$sql = $this->pdo->Prepare($sql);
+			$sql->Execute($sql, array($orderID));
+			$personids = $sq->fetch();
 			
 			$mperson = new MPerson();
 			foreach($personids as $person) {
@@ -180,10 +183,10 @@ class MOrder extends Model {
 					1,
 					?,
 					" . $this->session->uid . ")";
-        $sql = $this->db->Prepare($sql);
-		$this->db->Execute($sql, array($this->comment));
+        $sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($this->comment));
 		
-		return $this->db->Insert_ID();
+		return $this->pdo->lastInsertId();
 		
 	}
 }

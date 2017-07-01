@@ -30,7 +30,7 @@ class APISchreiber extends PublicAPI
         $schreiber = new MSchreiber();
         $rs = $schreiber->getSchreiberProposal($gameID);
 
-        echo json_encode($rs->getArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+        echo json_encode($rs->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
     }
 
     public function getSchreiber($args = array(), $input = array()) {
@@ -46,7 +46,7 @@ class APISchreiber extends PublicAPI
         $game = new MGame();
         $rs = $game->getSchreiber($gameID);
 
-        echo json_encode($rs->getArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+        echo json_encode($rs->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
 
     }
@@ -128,12 +128,12 @@ class APISchreiber extends PublicAPI
 
         $game = new MGame();
         $rs_currentGame = $game->getRS(array($game->pk ." =" => $gameID));
-        $currentGame = $rs_currentGame->getArray();
+        $currentGame = $rs_currentGame->fetch();
 
         //the number of events this person already has
         $person = new MPerson();
         $rs_schreiber = $person->getMySchreibers($personID);
-        $schreiber = $rs_schreiber->getArray();
+        $schreiber = $rs_schreiber->fetchAll();
 
         $result = array();
         $result["count"] = count($schreiber);
@@ -142,7 +142,7 @@ class APISchreiber extends PublicAPI
         //Get Games on the Same day!
         list($datum, $zeit) = explode(" ", $currentGame[0]["date"]);
         $rs_games = $game->getGamesFromPersonOnDate($personID, $datum);
-        $games = $rs_games->getArray();
+        $games = $rs_games->fetchAll();
 
 
         $result["games"] = $games;

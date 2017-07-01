@@ -11,16 +11,6 @@ defined( '_MYVBC' ) or die( 'Restricted access' );
 class MPerson extends Model {
 	public $table = 'persons';
 
-    private $acl_api;
-
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->acl_api = new \gacl_api(array("db" => $this->db, "debug" => $this->db->debug));
-    }
-
     public function getMyGames($personID) {
 		
 		$sql = "SELECT 
@@ -42,8 +32,9 @@ class MPerson extends Model {
 					persons.id = ?
 				ORDER BY
 					games.date";
-		$sql = $this->db->Prepare($sql);
-		return $this->db->Execute($sql, array($personID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($personID));
+		return $sql;
 	}
 	
 	public function getMyTeams($personID) {
@@ -60,8 +51,9 @@ class MPerson extends Model {
 				WHERE
 					persons.id = ?";
 
-		$sql = $this->db->Prepare($sql);
-		return $this->db->Execute($sql, array($personID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($personID));
+		return $sql;
 	}
 
 
@@ -126,10 +118,13 @@ class MPerson extends Model {
         }
 
         if (count($where) > 0) {
-            return $this->db->Execute($sql, $whereValues);
+        	$sql = $this->pdo->Prepare($sql);
+            $sql->Execute($whereValues);
         } else {
-            return $this->db->Execute($sql);
+            $sql = $this->pdo->query($sql);
         }
+
+        return $sql;
     }
 
 	public function getMySchreibers($personID) {
@@ -150,15 +145,16 @@ class MPerson extends Model {
 				WHERE
 					persons.id = ?";
 
-		$sql = $this->db->Prepare($sql);
-		return $this->db->Execute($sql, array($personID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->execute(array($personID));
+		return $sql;
 	}
 	
 	public function changePassword($personID, $newPassword) {
 		$sql = "UPDATE persons SET password = MD5(?) WHERE id = ?";
 
-		$sql = $this->db->Prepare($sql);
-		$this->db->Execute($sql, array($newPassword,$personID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->execute(array($newPassword,$personID));
 	}
 	
 	public function getPersonsWithAccess() {
@@ -167,29 +163,29 @@ class MPerson extends Model {
 					persons.prename AS prename,
 					persons.id AS personID,
 					persons.email AS email,
-					aro.id AS aroID,
-					aro_groups.name AS groupName,
+					persons.role AS groupName,
 					persons.password AS password
 				FROM
-					aro
-				LEFT JOIN
-					persons ON aro.value = persons.id
-				LEFT JOIN
-					groups_aro_map ON aro.id = groups_aro_map.aro_id
-				LEFT JOIN
-					aro_groups ON groups_aro_map.group_id = aro_groups.id
+					persons
 				WHERE
-					aro_groups.id != 10
-				ORDER BY aro_groups.name";
-				
-		return $this->db->Execute($sql);
+					NOT persons.role LIKE '' AND NOT persons.role LIKE 'guest'
+				ORDER BY persons.role";
+		$sql = $this->pdo->Prepare($sql); 
+		$sql->execute();
+		return $sql;
 	}
 	
-	public function createAccess($personID, $groupID = "11") {
-		if ($this->acl_api->get_object_id("user", $personID, "ARO") == "") {
-			$aroID = $this->acl_api->add_object("user",$personID, $personID, 1, 0, "ARO");
-			$this->acl_api->add_group_object($groupID,"user",$personID,"ARO");
-		}
+	public function createAccess($personID, $group = "guest") {
+
+		$sql = "UPDATE 
+				`" . $this->table . "` 
+				SET 
+					role = ?
+				WHERE id = ?";
+
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($group, $personID));
+
 	}
 	
 	public function setChanged($personID, $value) {
@@ -199,13 +195,19 @@ class MPerson extends Model {
 					changed = ?
 				WHERE id = ?";
 
-		$this->db->Prepare($sql);
-		$this->db->Execute($sql, array($value, $personID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($value, $personID));
 	}
 	
 	public function removeAccess($personID) {
-		$aroID = $this->acl_api->get_object_id("user",$personID,"ARO");
-		$this->acl_api->del_object($aroID, "ARO", true);
+		$sql = "UPDATE 
+				`" . $this->table . "` 
+				SET 
+					role = 'guest'
+				WHERE id = ?";
+				
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($personID));
 	}
 	
 	
@@ -217,14 +219,14 @@ class MPerson extends Model {
 		/* Generate Notification befor */
 		$personold = new MPerson();
 		$personoldRS = $personold->getRS(array($personold->pk . " =" => $personID));
-		$personoldData = $personoldRS->getArray();
+		$personoldData = $personoldRS->fetch();
 		
 		parent::update($where);
 		
 		/* Generate Notification after */
 		$personnew = new MPerson();
 		$personnewRS = $personnew->getRS(array($personnew->pk . " =" => $personID));
-		$personnewData = $personnewRS->getArray();
+		$personnewData = $personnewRS->fetch();
 		
 		/* Add Notification */
 		$notification = Application::getService("ServiceNotification");;
@@ -245,8 +247,8 @@ class MPerson extends Model {
 	public function setState($personID, $newState) {
 		
 		$sql = "UPDATE persons SET active = ? WHERE id = ?";
-		$sql = $this->db->Prepare($sql);
-		$this->db->Execute($sql, array($newState, $personID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($newState, $personID));
 	}
 
 	public function setSignature($personID, $newState) {
@@ -254,7 +256,7 @@ class MPerson extends Model {
 		/* Generate Notification befor */
 		$personold = new MPerson();
 		$personoldRS = $personold->getRS(array($personold->pk ." =" => $personID));
-		$personoldData = $personoldRS->getArray();
+		$personoldData = $personoldRS->fethc();
 
 
 		$this->setState($personID,$newState);
@@ -262,7 +264,7 @@ class MPerson extends Model {
 		/* Generate Notification after */
 		$personnew = new MPerson();
 		$personnewRS = $personnew->getRS(array($personnew->pk ." =" => $personID));
-		$personnewData = $personnewRS->getArray();
+		$personnewData = $personnewRS->fetch();
 
 		/* Add Notification */
 		$notification = Application::getService("ServiceNotification");

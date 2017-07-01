@@ -32,7 +32,7 @@ class APIOrder extends PublicAPI
 
         $rs = $order->getOrderItems($orderID);
 
-        echo json_encode($rs->getArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+        echo json_encode($rs->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
     }
 
@@ -50,7 +50,7 @@ class APIOrder extends PublicAPI
 
         $rs = $order->getOrder($orderID);
 
-        echo json_encode($rs->getArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+        echo json_encode($rs->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
     }
 
@@ -59,7 +59,7 @@ class APIOrder extends PublicAPI
         $order = new MOrder();
         $rs = $order->getStatusList();
 
-        echo json_encode($rs->getArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        echo json_encode($rs->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
     }
 
@@ -67,7 +67,7 @@ class APIOrder extends PublicAPI
         $person = new MPerson();
         $rs = $person->getRS(array("active =" => "1", "signature =" => "1"),array("persons.name" => "ASC", "persons.prename" => "ASC"), array("id","name","prename"));
 
-        echo json_encode($rs->getArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+        echo json_encode($rs->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
     }
 
@@ -122,7 +122,7 @@ class APIOrder extends PublicAPI
 
         $rs = $order->getOrder($orderID);
 
-        echo json_encode($rs->getArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+        echo json_encode($rs->fetch(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
 
     }
@@ -143,7 +143,7 @@ class APIOrder extends PublicAPI
 
         $order->update(array($order->pk => $orderID));
 
-        $orderdetail = $order->getRS(array($order->pk ." =" => $orderID))->getArray();
+        $orderdetail = $order->getRS(array($order->pk ." =" => $orderID))->fetch();
 
 
 
@@ -151,7 +151,7 @@ class APIOrder extends PublicAPI
             $order->updateStatus($input["status"], $orderID);
         }
 
-        $orderdetail = $order->getRS(array($order->pk ." =" => $orderID))->getArray();
+        $orderdetail = $order->getRS(array($order->pk ." =" => $orderID))->fetch();
 
         echo json_encode($orderdetail[0], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
     }

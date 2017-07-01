@@ -95,7 +95,7 @@ class PPersondata extends Plugin {
 		
 		$licences = new MLicence();
 		$rs = $licences->getLicenceList();
-		$this->smarty->assign("licences", $rs->getArray());
+		$this->smarty->assign("licences", $rs->fetchAll());
 	}
 
 
@@ -157,12 +157,12 @@ class PPersondata extends Plugin {
 		
 		$person = new MPerson();
 		$rs = $person->getAddressEntry(array("persons.id =" => $this->data["personID"]));
-		$this->smarty->assign("person", $rs->getArray());
+		$this->smarty->assign("person", $rs->fetch());
 		
 		$licences = new MLicence();
 		$rs = $licences->getLicenceList();
-		$this->smarty->assign("licences", $rs->getArray());
+		$this->smarty->assign("licences", $rs->fetchAll());
 
-        $this->smarty->assign("allowSignature", $this->acl->acl_check("address", "setSignature", "user", $this->session->uid));
+        $this->smarty->assign("allowSignature", $this->acl->isAllowed($this->session->role, "setSignature", "view"));
 	}
 }

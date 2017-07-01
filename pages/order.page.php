@@ -12,6 +12,9 @@ class PageOrder extends MyVBCPage
 		parent::__construct();
 		$this->pagename = "order";
 		$this->template = "order/order.tpl";
+
+		$this->acl->allow("manager",["main", "new","editOrder", "list"], ["view"]);
+		$this->acl->allow("vorstand",["delete"], ["view"]);
 		
 
 	}
@@ -27,16 +30,16 @@ class PageOrder extends MyVBCPage
 	public function mainAction() {
 		$this->smarty->assign("subContent1", "order/orderTable.tpl");
 		
-		$this->smarty->assign("allowedit", $this->acl->acl_check("order", "allowedit", "user", $this->session->uid));
+		$this->smarty->assign("allowedit", $this->acl->isAllowed($this->session->role, "editOrder", "view"));
 		
 		$order = new MOrder();
 		$rs = $order->getOrder();
-		$this->smarty->assign("orders", $rs->getArray());
+		$this->smarty->assign("orders", $rs->fetchAll());
 
 		$teams = new MTeam();
 		$rs = $teams->getRS(array(),array("teams.name" => "ASC"));
 
-		$this->smarty->assign("teams", $rs->getArray());
+		$this->smarty->assign("teams", $rs->fetchAll());
 
 
 	}
@@ -63,7 +66,7 @@ class PageOrder extends MyVBCPage
 			// Add all members of the selected team to this order
 			if ($order->teamid > 0) {
 				$team = new MTeam();
-				$members = $team->getAllMember($order->teamid)->getArray();
+				$members = $team->getAllMember($order->teamid)->fetch();
 				
 				$order = new MOrder();
 				
@@ -93,7 +96,7 @@ class PageOrder extends MyVBCPage
 			$order->update("id=" . $this->db->qstr($orderID));
 			
 			$rs = $order->getRS(array($order->pk ." =" => $orderID));
-			$orderdetail = $rs->getArray();
+			$orderdetail = $rs->fetch();
 			
 		
 			if (isset($_POST["statusID"]) && $orderdetail[0][status] != $_POST["statusID"]) {
@@ -115,7 +118,7 @@ class PageOrder extends MyVBCPage
 		$this->smarty->assign("orderID", $orderID);
 
 		
-		$this->smarty->assign("allowedit", $this->acl->acl_check("order", "allowedit", "user", $this->session->uid));
+		$this->smarty->assign("allowedit", $this->acl->isAllowed($this->session->role, "editOrder", "view"));
 		
 
 

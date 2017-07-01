@@ -9,6 +9,8 @@ class PageGames extends MyVBCPage
 		parent::__construct();
 		$this->pagename = "games";
 		$this->template = "games/games.tpl";
+
+		$this->acl->allow("vorstand",["main", "import","editSchreiber"], ["view"]);
 	}
 	
 	public function init() {

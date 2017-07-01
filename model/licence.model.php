@@ -17,7 +17,7 @@ class MLicence extends Model {
 					" . $this->table . "
 				ORDER BY
 					typ";
-		return $this->db->Execute($sql);
+		return $this->pdo->query($sql);
 	}
 	
 }

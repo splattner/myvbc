@@ -11,6 +11,10 @@ class PageAuth extends MyVBCPage
 		parent::__construct();
 		$this->pagename = "auth";
 		$this->template = "auth/auth.tpl";
+
+		$this->acl->allow("guest",["main","login","logout"], ["view"]);
+		$this->acl->allow("registered",["main","login","logout"], ["view"]);
+		$this->acl->allow("administrator",["createAccess","login","logout"], ["view"]);
 	}
 	
 	public function init() {
@@ -54,7 +58,7 @@ class PageAuth extends MyVBCPage
 			$person = new MPerson();
 			
 			$rs = $person->getRS(array($person->pk ." =" => $personID));
-			$currentPerson = $rs->getArray();
+			$currentPerson = $rs->fetch();
 			$currentPerson = $currentPerson[0];
 			
 			$password = Helper::generatePW(8);
@@ -100,13 +104,13 @@ class PageAuth extends MyVBCPage
 			
 			$person = new MPerson();
 			$rs = $person->getRS(array($person->pk ." =" => $personID));
-			$this->smarty->assign("persons", $rs->getArray());
+			$this->smarty->assign("persons", $rs->fetchAll());
 			
 		} else {
 			$this->setTemplate("auth/choosePerson.tpl");
 			$persons = new MPerson();
 			$rs = $persons->getRS(array("password IS" => "NULL", "active =" => "1"),array("name" => "ASC", "prename" =>  "ASC"));
-			$this->smarty->assign("users", $rs->getArray());
+			$this->smarty->assign("users", $rs->fetchAll());
 		}
 		
 	}

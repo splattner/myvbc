@@ -23,16 +23,17 @@ class MSchreiber extends Model {
 							game = ? AND
 							person = ?";
 
-			$sql_check = $this->db->Prepare($sql_check);
-			$rs = $this->db->Execute($sql_check, array($gameID, $schreiberID));
+			$sql_check = $this->pdo->Prepare($sql_check);
+			$sql_check->Execute(array($gameID, $schreiberID));
+			$rs = $sql->fetch();
 			
 			if ($rs->RecordCount() == 0) {
 				$sql = "INSERT INTO schreiber (game, person) 
 					VALUES(?,?)
 				";
 
-				$sql = $this->db->Prepare($sql);
-				$this->db->Execute($sql, array($gameID, $schreiberID));
+				$sql = $this->pdo->Prepare($sql);
+				$sql->Execute(array($gameID, $schreiberID));
 			}
 		}
 	}
@@ -42,8 +43,8 @@ class MSchreiber extends Model {
 					schreiber 
 				WHERE 
 				game = ? AND person = ?";
-		$sql = $this->db->Prepare($sql);
-		$this->db->Execute($sql, array($gameID, $schreiberID));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($gameID, $schreiberID));
 	}
 	
 	public function getSchreiberProposal($gameID) {
@@ -85,8 +86,9 @@ class MSchreiber extends Model {
 				ORDER BY
 					anzahl
 				";
-		$sql = $this->db->Prepare($sql);
-		return $this->db->Execute($sql, array($datum, $game[0]["date"]));
+		$sql = $this->pdo->Prepare($sql);
+		$sql->Execute(array($datum, $game[0]["date"]));
+		return $sql;
 	}
 	
 }
