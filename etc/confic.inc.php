@@ -16,7 +16,7 @@ if (getenv('MYSQL_DB_HOST') != "") {
 	$config["db"]["host"] = getenv('MYSQL_DB_HOST');
 }
 if (getenv('MYSQL_DB_PORT') != "") {
-	$config["db"]["post"] = getenv('MYSQL_DB_PORT');
+	$config["db"]["port"] = getenv('MYSQL_DB_PORT');
 }
 if (getenv('MYSQL_DB_USERNAME') != "") {
 	$config["db"]["username"] = getenv('MYSQL_DB_USERNAME');
