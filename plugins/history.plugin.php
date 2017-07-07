@@ -1,4 +1,4 @@
-<?
+<?php
 namespace splattner\myvbc\plugins;
 use splattner\framework\Plugin;
 use splattner\framework\Model;
