@@ -4,21 +4,32 @@ defined( '_MYVBC' ) or die( 'Restricted access' );
 
 $config = array();
 
-$config["db"]["server"] = "127.0.0.1";
+$config["db"]["host"] = "127.0.0.1";
+$config["db"]["port"] = "8889";
 $config["db"]["username"] = "root";
 $config["db"]["password"] = "root";
-$config["db"]["database"] = "myvbc";
-$config["db"]["url"] = $config["db"]["url"] = "mysql:host=" .  $config["db"]["server"] . ";dbname=" . $config["db"]["database"];
+$config["db"]["database"] = "myvbc-new";
 
-if (getenv('OPENSHIFT_MYSQL_DB_USERNAME') != "") {
-	$config["db"]["username"] = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+
+
+if (getenv('MYSQL_DB_HOST') != "") {
+	$config["db"]["host"] = getenv('MYSQL_DB_HOST');
 }
-if (getenv('OPENSHIFT_MYSQL_DB_PASSWORD') != "") {
-	$config["db"]["password"] = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+if (getenv('MYSQL_DB_PORT') != "") {
+	$config["db"]["post"] = getenv('MYSQL_DB_PORT');
 }
-if (getenv('OPENSHIFT_MYSQL_DB_URL') != "") {
-	$config["db"]["url"] = getenv('OPENSHIFT_MYSQL_DB_URL');
-} 
+if (getenv('MYSQL_DB_USERNAME') != "") {
+	$config["db"]["username"] = getenv('MYSQL_DB_USERNAME');
+}
+if (getenv('MYSQL_DB_NAME') != "") {
+	$config["db"]["database"] = getenv('MYSQL_DB_NAME');
+}
+if (getenv('MYSQL_DB_PASSWORD') != "") {
+	$config["db"]["password"] = getenv('MYSQL_DB_PASSWORD');
+}
+
+$config["db"]["url"] = $config["db"]["url"] = "mysql:host=" .  $config["db"]["server"] . ":" . $config["db"]["port"] . ";dbname=" . $config["db"]["database"];
+
 
 $config["db"]["version"] = 20170629181021;
 
