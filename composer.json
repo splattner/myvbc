@@ -13,16 +13,6 @@
     }
   ],
 
-
-  "scripts" : {
-    "post-install-cmd" : [
-      "php -f install.php"
-    ],
-    "post-update-cmd" : [
-      "php -f install.php"
-    ]
-  },
-
   "require": {
     "nadar/aspsms": "1.0.1",
     "phpmailer/phpmailer": "^5.2",
