@@ -21,11 +21,7 @@ require_once "etc/confic.inc.php";
 echo "Check if Database upgrade is needed...";
 
 
-$pdo = new PDO(
-    "mysql:host=" .  $config["db"]["server"] . ";dbname=" . $config["db"]["database"], 
-    $config["db"]["username"], 
-    $config["db"]["password"]
-    );
+$pdo = new \PDO($config["db"]["url"], $config["db"]["username"], $config["db"]["password"]);
 $pdo->query("set names 'utf8'");
 
 

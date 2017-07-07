@@ -4,10 +4,21 @@ defined( '_MYVBC' ) or die( 'Restricted access' );
 
 $config = array();
 
-$config["db"]["server"] = "localhost";
+$config["db"]["server"] = "127.0.0.1";
 $config["db"]["username"] = "root";
-$config["db"]["password"] = "";
+$config["db"]["password"] = "root";
 $config["db"]["database"] = "myvbc";
+$config["db"]["url"] = $config["db"]["url"] = "mysql:host=" .  $config["db"]["server"] . ";dbname=" . $config["db"]["database"];
+
+if (getenv('OPENSHIFT_MYSQL_DB_PASSWORD') != "") {
+	$config["db"]["username"] = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+}
+if (getenv('OPENSHIFT_MYSQL_DB_PASSWORD') != "") {
+	$config["db"]["password"] = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+}
+if (getenv('OPENSHIFT_MYSQL_DB_URL') != "") {
+	$config["db"]["url"] = getenv('OPENSHIFT_MYSQL_DB_URL');
+} 
 
 $config["db"]["version"] = 20170629181021;
 
