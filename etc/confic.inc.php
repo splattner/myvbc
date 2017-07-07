@@ -28,7 +28,7 @@ if (getenv('MYSQL_DB_PASSWORD') != "") {
 	$config["db"]["password"] = getenv('MYSQL_DB_PASSWORD');
 }
 
-$config["db"]["url"] = $config["db"]["url"] = "mysql:host=" .  $config["db"]["server"] . ":" . $config["db"]["port"] . ";dbname=" . $config["db"]["database"];
+$config["db"]["url"] = $config["db"]["url"] = "mysql:host=" .  $config["db"]["host"] . ":" . $config["db"]["port"] . ";dbname=" . $config["db"]["database"];
 
 
 $config["db"]["version"] = 20170629181021;
