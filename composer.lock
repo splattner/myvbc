@@ -349,12 +349,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/splattner/framework.git",
-                "reference": "f0d061af23fa7bc343c3f4620a4fd858147a6167"
+                "reference": "21726fb3e36f99e6f1197ce77c4a668fa7f3a4e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/splattner/framework/zipball/f0d061af23fa7bc343c3f4620a4fd858147a6167",
-                "reference": "f0d061af23fa7bc343c3f4620a4fd858147a6167",
+                "url": "https://api.github.com/repos/splattner/framework/zipball/21726fb3e36f99e6f1197ce77c4a668fa7f3a4e5",
+                "reference": "21726fb3e36f99e6f1197ce77c4a668fa7f3a4e5",
                 "shasum": ""
             },
             "require": {
@@ -387,7 +387,7 @@
                 }
             ],
             "description": "Simple PHP Framework used by splattner/myvbc",
-            "time": "2017-07-01 16:08:48"
+            "time": "2017-07-07 15:59:47"
         },
         {
             "name": "symfony/config",

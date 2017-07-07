@@ -10,8 +10,8 @@ $config["db"]["password"] = "root";
 $config["db"]["database"] = "myvbc";
 $config["db"]["url"] = $config["db"]["url"] = "mysql:host=" .  $config["db"]["server"] . ";dbname=" . $config["db"]["database"];
 
-if (getenv('OPENSHIFT_MYSQL_DB_PASSWORD') != "") {
-	$config["db"]["username"] = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+if (getenv('OPENSHIFT_MYSQL_DB_USERNAME') != "") {
+	$config["db"]["username"] = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
 }
 if (getenv('OPENSHIFT_MYSQL_DB_PASSWORD') != "") {
 	$config["db"]["password"] = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
