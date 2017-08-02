@@ -122,7 +122,7 @@ class MGame extends Model {
 
 
 
-        $games = $source->getGamesbyTeamID($teamData[0]["extid"]);
+        $games = $source->getGamesbyTeamID($teamData["extid"]);
 
 
 
@@ -132,7 +132,7 @@ class MGame extends Model {
             $rs = $localGame->getRS(array("extid =" => $games[$i]["extid"]));
             $localGames = $rs->fetchAll();
             if (count($localGames) >= 1) {
-                if($games[$i]["datum"] != $localGames[0]["date"] || $games[$i]["ort"] != $localGames[0]["ort"] || $games[$i]["halle"] != $localGames[0]["halle"]){
+                if($games[$i]["datum"] != $localGames["date"] || $games[$i]["ort"] != $localGames["ort"] || $games[$i]["halle"] != $localGames["halle"]){
                     $games[$i]["local"] = 2;
                 } else {
                     $games[$i]["local"] = 1;
