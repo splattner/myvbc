@@ -105,10 +105,10 @@ class MGame extends Model {
 
         $team = new MTeam();
         $rs = $team->getRS(array($team->pk ." =" => $teamID));
-        $teamData = $rs->fetchAll();
+        $teamData = $rs->fetch();
 
 
-        switch($teamData[0]["typ"]) {
+        switch($teamData["typ"]) {
             case "1":
                 //Swissvolley
                 $source = Application::getService("ServiceSwissvolley");
