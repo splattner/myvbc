@@ -31,6 +31,11 @@
     <a data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
         <i class="fa fa-print"></i>
     </a>
+    -
+    <a data-toggle="tooltip" data-placement="bottom" title="Infoblatt" href="docs/Beilage_Infoblatt.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+    <a data-toggle="tooltip" data-placement="bottom" title="Finanz- und Bussenreglement" href="docs/Finanz- und Bussenreglement.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+    <a data-toggle="tooltip" data-placement="bottom" title="Statuten" href="docs/Statuten.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+
 </p>
 
 <img src="skins/default/images/logo_vbcl.gif" />
@@ -108,7 +113,7 @@
 </p>
 
 <p style="clear: left; margin: 40px; font-size: 10pt;">
-    *	(bei minderjährigen Neumitgliedern bedarf es der Unterschrift eines Elternteils bzw. des gesetzlichen Vormunds) <br />
+    *   (bei minderjährigen Neumitgliedern bedarf es der Unterschrift eines Elternteils bzw. des gesetzlichen Vormunds) <br />
 </p>
 <p style="margin: 40px; font-size: 12pt;">
     Bitte Angaben prüfen (ggfs. korrigieren) und Formular per Post zurücksenden an: <br />
@@ -117,11 +122,20 @@
     4901 Langenthal
 </p>
 
+
+
+
 {literal}
+
 <script language="javascript" type="text/javascript">
-    <!--
-    setTimeout(function () { window.print(); }, 500);
-    window.onfocus = function () { setTimeout(function () { window.close(); }, 500); }
-    -->
+
+
+    setTimeout(function () { 
+        window.print();
+
+    }, 500);
+
+    //window.onfocus = function () { setTimeout(function () { window.close(); }, 500); }
+
 </script>
 {/literal}
