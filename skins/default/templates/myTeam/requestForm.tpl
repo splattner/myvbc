@@ -41,32 +41,32 @@
 <table class="requestForm">
     <tr>
         <td width="30%"><b>Vorname / Name</b></td>
-        <td>{$person[0].prename} / {$person[0].name}</td>
+        <td>{$person.prename} / {$person.name}</td>
     </tr>
 
     <tr>
         <td width="30%"><b>Strasse, Nr.</b></td>
-        <td>{$person[0].address}</td>
+        <td>{$person.address}</td>
     </tr>
 
     <tr>
         <td width="30%"><b>PLZ, Ort</b></td>
-        <td>{$person[0].plz} {$person[0].ort}</td>
+        <td>{$person.plz} {$person.ort}</td>
     </tr>
 
     <tr>
         <td width="30%"><b>Telefonnummer</b></td>
-        <td>{$person[0].phone}</td>
+        <td>{$person.phone}</td>
     </tr>
 
     <tr>
         <td width="30%"><b>Mobiltelefonnummer</b></td>
-        <td>{$person[0].mobile}</td>
+        <td>{$person.mobile}</td>
     </tr>
 
     <tr>
         <td width="30%"><b>E-Mail Adresse</b></td>
-        <td>{$person[0].email}</td>
+        <td>{$person.email}</td>
     </tr>
 
     <tr>
@@ -74,12 +74,12 @@
             <b>E-Mail Adresse <br />
             Eltern / gesetzlicher Vormund (wenn Minderj&auml;rig)</b>
         </td>
-        <td>{$person[0].email_parent}</td>
+        <td>{$person.email_parent}</td>
     </tr>
 
     <tr>
         <td width="30%"><b>Geburtsdatum</b></td>
-        <td>{$person[0].birthday|date_format:"%d.%m.%Y"}</td>
+        <td>{$person.birthday|date_format:"%d.%m.%Y"}</td>
     </tr>
 </table>
 
