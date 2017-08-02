@@ -153,7 +153,7 @@ class APIGame extends PublicAPI
                     $localgame->halle = $game["halle"];
                     $localgame->team = $teamID;
 
-                    if ($game["heimteam"] == $team[0]["extname"]) {
+                    if ($game["heimteam"] == $team["extname"]) {
                         $localgame->heimspiel = 1;
                         $localgame->gegner = $game["gastteam"];
                     } else {
