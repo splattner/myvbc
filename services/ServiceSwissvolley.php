@@ -29,10 +29,10 @@ class ServiceSwissvolley extends ServiceDataSource {
 				$temp = array();
 				$temp["extid"] = $game->ID_game;
 				$temp["datum"] = $game->PlayDate;
-				$temp["heimteam"] = utf8_decode($game->TeamHomeCaption);
-				$temp["gastteam"] = utf8_decode($game->TeamAwayCaption);
-				$temp["ort"] = utf8_decode($game->HallPlace);
-				$temp["halle"] = utf8_decode($game->HallCaption);		
+				$temp["heimteam"] = utf8_encode($game->TeamHomeCaption);
+				$temp["gastteam"] = utf8_encode($game->TeamAwayCaption);
+				$temp["ort"] = utf8_encode($game->HallPlace);
+				$temp["halle"] = utf8_encode($game->HallCaption);		
 				
 				$this->games[] = $temp;
 				unset($temp);
