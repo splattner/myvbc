@@ -73,7 +73,7 @@ class PageTeam extends MyVBCPage
 		
 		$rs = $team->getRS(array($team->pk ." =" => $teamID));
 		$currentTeam = $rs->fetch();
-		$teamName = $currentTeam[0]["name"];
+		$teamName = $currentTeam["name"];
 		$this->smarty->assign("teamName", $teamName);
 	}
 	
