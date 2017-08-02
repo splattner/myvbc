@@ -182,7 +182,7 @@ class APIGame extends PublicAPI
 
         $team = new MTeam();
         $rs = $team->getRS(array(), array("name" => "ASC"), array("id","name"));
-        $teams = $rs->fetch();
+        $teams = $rs->fetchAll();
 
         echo json_encode($teams, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
     }
