@@ -130,7 +130,7 @@ class MGame extends Model {
 
             $localGame = new MGame();
             $rs = $localGame->getRS(array("extid =" => $games[$i]["extid"]));
-            $localGames = $rs->getArray();
+            $localGames = $rs->fetchAll();
             if (count($localGames) >= 1) {
                 if($games[$i]["datum"] != $localGames[0]["date"] || $games[$i]["ort"] != $localGames[0]["ort"] || $games[$i]["halle"] != $localGames[0]["halle"]){
                     $games[$i]["local"] = 2;
