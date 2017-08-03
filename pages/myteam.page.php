@@ -44,12 +44,12 @@ class PageMyteam extends MyVBCPage
 		$team = new MTeam();
 		$rs = $team->getAllMember($teamID);
 				
-		$this->smarty->assign("persons", $rs->getArray());
+		$this->smarty->assign("persons", $rs->fetchAll());
 		
 		$rs_team = $team->getRS(array("id =" => $teamID));
 		$currentTeam = $rs_team->fetch();
 		
-		$this->smarty->assign("teamName", $currentTeam[0]["name"]);
+		$this->smarty->assign("teamName", $currentTeam["name"]);
 	}
 	
 	public function addMemberAction() {
