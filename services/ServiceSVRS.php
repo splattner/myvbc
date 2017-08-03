@@ -236,10 +236,10 @@ class ServiceSVRS extends ServiceDataSource {
 				$temp = array();
 				$temp["extid"] = $game["nummer"];
 				$temp["datum"] = $game["isodatum"];
-				$temp["heimteam"] = utf8_encode($game["heimteam"]);
-				$temp["gastteam"] = utf8_encode($game["gastteam"]);
-				$temp["ort"] = utf8_encode($game["ort"]);
-				$temp["halle"] = utf8_encode($game["halle"]);	
+				$temp["heimteam"] = $game["heimteam"];
+				$temp["gastteam"] = $game["gastteam"];
+				$temp["ort"] = $game["ort"];
+				$temp["halle"] = $game["halle"];	
 				$temp["gameID"] = $game["id"];	
 				
 				$this->games[] = $temp;
