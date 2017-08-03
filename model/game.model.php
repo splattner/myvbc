@@ -62,7 +62,7 @@ class MGame extends Model {
 				WHERE
 					games.id = ? ";
 		$sql = $this->pdo->Prepare($sql);
-		$sql->Execute($sql, array($gameID));
+		$sql->Execute(array($gameID));
 		return $sql;
 	}
 	
@@ -120,18 +120,15 @@ class MGame extends Model {
                 break;
         }
 
-
-
         $games = $source->getGamesbyTeamID($teamData["extid"]);
-
-
 
         for ($i = 0 ; $i < count($games); $i++) {
 
             $localGame = new MGame();
             $rs = $localGame->getRS(array("extid =" => $games[$i]["extid"]));
-            $localGames = $rs->fetchAll();
+            $localGames = $rs->fetch();
             if (count($localGames) >= 1) {
+            	
                 if($games[$i]["datum"] != $localGames["date"] || $games[$i]["ort"] != $localGames["ort"] || $games[$i]["halle"] != $localGames["halle"]){
                     $games[$i]["local"] = 2;
                 } else {

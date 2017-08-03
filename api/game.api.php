@@ -141,7 +141,7 @@ class APIGame extends PublicAPI
 
                 $team = new MTeam();
                 $rs = $team->getRS(array($team->pk ." =" => $teamID));
-                $team = $rs->fetchAll();
+                $team = $rs->fetch();
 
                 foreach ($games as $game) {
 
