@@ -66,7 +66,7 @@ class PageOrder extends MyVBCPage
 			// Add all members of the selected team to this order
 			if ($order->teamid > 0) {
 				$team = new MTeam();
-				$members = $team->getAllMember($order->teamid)->fetch();
+				$members = $team->getAllMember($order->teamid)->fetchAll();
 				
 				$order = new MOrder();
 				

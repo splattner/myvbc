@@ -133,7 +133,7 @@ class PPersondata extends Plugin {
 				$person->sms = $_POST["sms"];
 			}
 
-			if($this->acl->acl_check("address", "setSignature", "user", $this->session->uid)) {
+			if($this->acl->isAllowed($this->session->role, "setSignature", "view")) {
 				if (!isset($_POST["signature"])) {
 					$person->signature = 0;
 				} else {

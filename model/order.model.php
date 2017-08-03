@@ -13,20 +13,20 @@ class MOrder extends Model {
 	
 	public function addLicenceToOrder($personID, $orderID) {
 		
-		$sql = "INSERT INTO 
+		$sql_query = "INSERT INTO 
 					orderitem (orderid, personid) 
 				VALUES(?,?)";
-		$sql = $this->pdo->Prepare($sql);
+		$sql = $this->pdo->Prepare($sql_query);
 		$sql->Execute(array($orderID, $personID));
 		
-		$sql = "UPDATE orderitem SET 
+		$sql_query = "UPDATE orderitem SET 
 					licence_id = (SELECT persons.licence FROM persons WHERE persons.id = ?),
 					licence_comment = (SELECT persons.licence_comment FROM persons WHERE persons.id = ?)
 				WHERE
 					orderid = ?
 					AND personid = ?";
 
-		$sql = $this->pdo>Prepare($sql);
+		$sql = $this->pdo->Prepare($sql_query);
 		$sql->Execute(array($personID, $personID, $orderID, $personID));
 	}
 	
