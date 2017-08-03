@@ -127,9 +127,9 @@ class MGame extends Model {
             $localGame = new MGame();
             $rs = $localGame->getRS(array("extid =" => $games[$i]["extid"]));
             $localGames = $rs->fetch();
-            if (count($localGames) >= 1) {
+            if ($rs->rowCount() >= 1) {
             	
-                if($games[$i]["datum"] != $localGames["date"] || $games[$i]["ort"] != $localGames["ort"] || $games[$i]["halle"] != $localGames["halle"]){
+                if(strcmp($games[$i]["datum"], $localGames["date"]) !== 0 || strcmp($games[$i]["ort"],$localGames["ort"]) !== 0 || strcmp($games[$i]["halle"],$localGames["halle"]) !== 0) {
                     $games[$i]["local"] = 2;
                 } else {
                     $games[$i]["local"] = 1;
