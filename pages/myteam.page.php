@@ -28,9 +28,9 @@ class PageMyteam extends MyVBCPage
 	public function init() {
 		parent::init();
 		$this->smarty->assign("content", $this->template);
-		$this->smarty->assign("canAddMember", $this->acl->acl_check($this->pagename, "addMember", "user", $this->session->uid));
-		$this->smarty->assign("canDeleteMember", $this->acl->acl_check($this->pagename, "deleteMember", "user", $this->session->uid));
-		$this->smarty->assign("canEditMember", $this->acl->acl_check($this->pagename, "edit", "user", $this->session->uid));
+		$this->smarty->assign("canAddMember", $this->acl->isAllowed($this->session->role, "addMember", "view"));
+		$this->smarty->assign("canDeleteMember", $this->acl->isAllowed($this->session->role, "deleteMember", "view"));
+		$this->smarty->assign("canEditMember", $this->acl->isAllowed($this->session->role, "edit", "view"));
 	}
 
 	
