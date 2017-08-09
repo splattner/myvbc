@@ -70,30 +70,31 @@ class PageReport extends MyVBCPage {
 		$reports = new MReport();
 		
 		$currentReport = $reports->getReport($reportID);
-		$values = $currentReport->fetch();
+		$values = $currentReport->fetchAll();
+
+
 		
 		$header = array();
 		$content = array();
 		
 		if (count($values) > 0) {
-		
-		//Build Table Header
-		foreach($values[0] as $title => $value) {
-			if(!is_numeric($title))
-				$header[] = $title;
-		}
-		$this->smarty->assign("tableHeader", $header);
-		
-		//Build Table Content
-		foreach($values as $value) {
-			$line = array();
-			foreach ($value as $title => $item) {
+			//Build Table Header
+			foreach($values[0] as $title => $value) {
 				if(!is_numeric($title))
-					$line[$title] = $item;
+					$header[] = $title;
 			}
-			$content[] = $line;
-		}
-		$this->smarty->assign("tableContent", $content);
+			$this->smarty->assign("tableHeader", $header);
+			
+			//Build Table Content
+			foreach($values as $value) {
+				$line = array();
+				foreach ($value as $title => $item) {
+					if(!is_numeric($title))
+						$line[$title] = $item;
+				}
+				$content[] = $line;
+			}
+			$this->smarty->assign("tableContent", $content);
 		}
 	}
 }
