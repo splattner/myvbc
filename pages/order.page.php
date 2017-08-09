@@ -93,7 +93,7 @@ class PageOrder extends MyVBCPage
 			$order = new MOrder();
 			$order->comment = $_POST["comment"];
 			
-			$order->update("id=" . $this->db->qstr($orderID));
+			$order->update(array($order->pk => $orderID));
 			
 			$rs = $order->getRS(array($order->pk ." =" => $orderID));
 			$orderdetail = $rs->fetch();

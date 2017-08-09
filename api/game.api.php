@@ -162,7 +162,8 @@ class APIGame extends PublicAPI
                     }
 
                     if ($game["local"] == 1 || $game["local"] == 2) {
-                        $localgame->update("extid=" . $game["extid"]);
+                        $localgame->update(array("extid" => $game["extid"]));
+                        
                     } else {
                         $localgame->insert();
                     }

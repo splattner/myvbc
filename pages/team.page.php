@@ -49,7 +49,7 @@ class PageTeam extends MyVBCPage
 			$team->extliga = $_POST["extliga"];
 			$team->typ = $_POST["typ"];
 
-			$team->update(array("id" => $teamID));
+			$team->update(array($team->pk => $teamID));
 			
 			return "main";
 		}
