@@ -26,7 +26,7 @@ class MReport extends Model {
 		$rs = $this->getRS(array("id =" => $reportID));
 		$currentReport = $rs->fetch();
 		
-		return $currentReport[0]["title"];
+		return $currentReport["title"];
 		
 	}
 	
