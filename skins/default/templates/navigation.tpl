@@ -1,6 +1,6 @@
 <div class="navbar-header">
     <a class="navbar-brand" href="#">
-        myvbc
+        myVBC
     </a>
 </div>
 
@@ -88,7 +88,7 @@
                 </li>
                 <li role="presentation">
                     <a href="index.php?page=admin&action=clearGames">
-                        Spiele entfernen</a>
+                        <i class="fa fa-exclamation-triangle" style="color:red" aria-hidden="true"></i> Spiele entfernen</a>
                 </li>
             </ul>
         </li>

@@ -1,12 +1,14 @@
 <div class="panel panel-default">
 	<div class="panel-heading">
+		<h3 class="panel-title">
 		Meine Daten
 		<a  data-toggle="tooltip" data-placement="bottom" title="Meine Daten bearbeiten" href="index.php?page=mydata&action=edit">
 			<i class="fa fa-pencil-square-o"></i>
 		</a>
-		<a  data-toggle="modal" data-target="#myModal" title="Meine Password &auml;ndern" href="#">
+		<a data-toggle="modal" data-target="#myModal" title="Meine Password &auml;ndern" href="#">
 			<i class="fa fa-key"></i>
 		</a>
+		</h3>
 
 	</div>
 	<div class="panel-body">
