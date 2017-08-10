@@ -12,31 +12,32 @@ class MPerson extends Model {
 	public $table = 'persons';
 
     public function getMyGames($personID) {
-		
-		$sql = "SELECT 
+
+		$sql = "SELECT
 					games.date as date,
 					games.gegner as gegner,
 					games.ort as ort,
 					games.halle as halle,
 					games.heimspiel as heimspiel,
 					teams.name as name
-					
+
 				FROM games
-				LEFT JOIN 
+				LEFT JOIN
 					players ON games.team = players.team
-				LEFT JOIN 
+				LEFT JOIN
 					persons ON players.person = persons.id
 				LEFT JOIN
 					teams ON games.team = teams.id
 				WHERE
 					persons.id = ?
 				ORDER BY
+					teams.id, 
 					games.date";
 		$sql = $this->pdo->Prepare($sql);
 		$sql->Execute(array($personID));
 		return $sql;
 	}
-	
+
 	public function getMyTeams($personID) {
 		$sql = "SELECT
 					teams.name AS name,
@@ -149,16 +150,16 @@ class MPerson extends Model {
 		$sql->execute(array($personID));
 		return $sql;
 	}
-	
+
 	public function changePassword($personID, $newPassword) {
 		$sql = "UPDATE persons SET password = MD5(?) WHERE id = ?";
 
 		$sql = $this->pdo->Prepare($sql);
 		$sql->execute(array($newPassword,$personID));
 	}
-	
+
 	public function getPersonsWithAccess() {
-		$sql = "SELECT 
+		$sql = "SELECT
 					persons.name AS name,
 					persons.prename AS prename,
 					persons.id AS personID,
@@ -170,16 +171,16 @@ class MPerson extends Model {
 				WHERE
 					NOT persons.role LIKE '' AND NOT persons.role LIKE 'guest'
 				ORDER BY persons.role";
-		$sql = $this->pdo->Prepare($sql); 
+		$sql = $this->pdo->Prepare($sql);
 		$sql->execute();
 		return $sql;
 	}
-	
+
 	public function createAccess($personID, $group = "guest") {
 
-		$sql = "UPDATE 
-				`" . $this->table . "` 
-				SET 
+		$sql = "UPDATE
+				`" . $this->table . "`
+				SET
 					role = ?
 				WHERE id = ?";
 
@@ -187,65 +188,65 @@ class MPerson extends Model {
 		$sql->Execute(array($group, $personID));
 
 	}
-	
+
 	public function setChanged($personID, $value) {
-		$sql = "UPDATE 
-				`" . $this->table . "` 
-				SET 
+		$sql = "UPDATE
+				`" . $this->table . "`
+				SET
 					changed = ?
 				WHERE id = ?";
 
 		$sql = $this->pdo->Prepare($sql);
 		$sql->Execute(array($value, $personID));
 	}
-	
+
 	public function removeAccess($personID) {
-		$sql = "UPDATE 
-				`" . $this->table . "` 
-				SET 
+		$sql = "UPDATE
+				`" . $this->table . "`
+				SET
 					role = 'guest'
 				WHERE id = ?";
-				
+
 		$sql = $this->pdo->Prepare($sql);
 		$sql->Execute(array($personID));
 	}
-	
-	
+
+
 	/* Override the update Function to create Notification Messages */
 	public function update($where) {
 
 		$personID = $where[$this->pk];
-			
+
 		/* Generate Notification befor */
 		$personold = new MPerson();
 		$personoldRS = $personold->getRS(array($personold->pk . " =" => $personID));
 		$personoldData = $personoldRS->fetch();
-		
+
 		parent::update($where);
-		
+
 		/* Generate Notification after */
 		$personnew = new MPerson();
 		$personnewRS = $personnew->getRS(array($personnew->pk . " =" => $personID));
 		$personnewData = $personnewRS->fetch();
-		
+
 		/* Add Notification */
 		$notification = Application::getService("ServiceNotification");;
 		$notification->addChangeAddressNotification($personoldData, $personnewData);
-	
+
 	}
-	
+
 	public function insert() {
 		$personID = parent::insert();
-		
-		
+
+
 		/* Add Notification */
 		$notification = Application::getService("ServiceNotification");
 		$notification->addNewAdressNotifcation($personID);
-		
+
 	}
-	
+
 	public function setState($personID, $newState) {
-		
+
 		$sql = "UPDATE persons SET active = ? WHERE id = ?";
 		$sql = $this->pdo->Prepare($sql);
 		$sql->Execute(array($newState, $personID));
