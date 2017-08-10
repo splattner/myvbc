@@ -2,6 +2,7 @@
 namespace splattner\myvbc\pages;
 use splattner\myvbc\plugins\PHistory;
 use splattner\myvbc\plugins\PPersondata;
+use splattner\myvbc\models\MPerson;
 
 class PageMydata extends MyVBCPage
 {
