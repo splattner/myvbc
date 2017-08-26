@@ -11,6 +11,7 @@ use splattner\framework\PublicAPI;
 use splattner\framework\Model;
 use splattner\myvbc\models\MGame;
 use splattner\myvbc\models\MTeam;
+use splattner\myvbc\models\MPerson;
 
 
 
@@ -42,7 +43,7 @@ class APIGame extends PublicAPI
 					WHERE
 						games.id = ?";
         $sql_game = $this->pdo->Prepare($sql_game);
-        $sql_game->Execute($gameID);
+        $sql_game->Execute(array($gameID));
 
 
         echo json_encode($sql_game->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
@@ -94,7 +95,7 @@ class APIGame extends PublicAPI
 
             if($games[$i]["heimspiel"] == 1) {
                 $currentSchreiber = $schreiber->getSchreiber($games[$i]["id"]);
-                $arraySchreiber = $currentSchreiber->fetch();
+                $arraySchreiber = $currentSchreiber->fetchAll();
                 $games[$i]["schreiber"] = $arraySchreiber;
             } else { $games[$i]["schreiber"] = array(); }
         }

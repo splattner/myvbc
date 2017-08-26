@@ -12,6 +12,7 @@ use splattner\framework\PublicAPI;
 use splattner\framework\Model;
 use splattner\myvbc\models\MSchreiber;
 use splattner\myvbc\models\MGame;
+use splattner\myvbc\models\MPerson;
 
 class APISchreiber extends PublicAPI
 {
@@ -140,7 +141,7 @@ class APISchreiber extends PublicAPI
 
 
         //Get Games on the Same day!
-        list($datum, $zeit) = explode(" ", $currentGame[0]["date"]);
+        list($datum, $zeit) = explode(" ", $currentGame["date"]);
         $rs_games = $game->getGamesFromPersonOnDate($personID, $datum);
         $games = $rs_games->fetchAll();
 

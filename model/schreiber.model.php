@@ -25,12 +25,10 @@ class MSchreiber extends Model {
 
 			$sql_check = $this->pdo->Prepare($sql_check);
 			$sql_check->Execute(array($gameID, $schreiberID));
-			$rs = $sql->fetch();
 			
-			if ($rs->RecordCount() == 0) {
+			if ($sql_check->rowCount() == 0) {
 				$sql = "INSERT INTO schreiber (game, person) 
-					VALUES(?,?)
-				";
+					VALUES(?,?)";
 
 				$sql = $this->pdo->Prepare($sql);
 				$sql->Execute(array($gameID, $schreiberID));
@@ -51,9 +49,9 @@ class MSchreiber extends Model {
 		
 		$mgame = new MGame();
 		$rs_game = $mgame->getRS(array($mgame->pk ." =" =>$gameID));
-		$game = $rs_game->getArray();
+		$game = $rs_game->fetch();
 		
-		list($datum, $zeit) = explode(" ", $game[0]["date"]);
+		list($datum, $zeit) = explode(" ", $game["date"]);
 
         $datum = $datum . "%";
 		
@@ -87,7 +85,7 @@ class MSchreiber extends Model {
 					anzahl
 				";
 		$sql = $this->pdo->Prepare($sql);
-		$sql->Execute(array($datum, $game[0]["date"]));
+		$sql->Execute(array($datum, $game["date"]));
 		return $sql;
 	}
 	
