@@ -50,7 +50,7 @@ switch($type) {
 				if ($team == $rank->team_ID) {
 					$body_ranking .=
 					"<tr>
-										<td class='td_hightligh'>" . $rank->Rank . "</td>
+										<td class='td_hightligh'>" . str_replace("&amp;nbsp;","",$rank->Rank) . "</td>
 										<td class='td_hightligh'>" . $rank->Caption . "</td>
 										<td class='td_hightligh'>" . $rank->NumberOfGames ."</td>
 										<td class='td_hightligh'><b>" . $rank->Points . "</b></td>
@@ -60,7 +60,7 @@ switch($type) {
 				} else {
 					$body_ranking .=
 					"<tr>
-										<td>" . $rank->Rank . "</td>
+										<td>" . str_replace("&amp;nbsp;","",$rank->Rank) . "</td>
 										<td>" . $rank->Caption . "</td>
 										<td>" . $rank->NumberOfGames ."</td>
 										<td><b>" . $rank->Points . "</b></td>
