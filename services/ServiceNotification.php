@@ -1,6 +1,6 @@
 <?php
 
-namespace splattner\myvbc\service;
+namespace splattner\myvbc\services;
 use splattner\framework\Service;
 use splattner\myvbc\models\MNotification;
 use splattner\myvbc\models\MPerson;

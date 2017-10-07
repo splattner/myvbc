@@ -1,10 +1,8 @@
 <?php
+namespace splattner\myvbc\services;
+use splattner\framework\Service;
 
-namespace splattner\myvbc\service;
-
-
-
-class ServiceSVRS extends ServiceDataSource {
+class ServiceSVRS extends Service {
 
 
 	//Variabeln

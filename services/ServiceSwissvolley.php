@@ -1,9 +1,8 @@
 <?php
-namespace splattner\myvbc\service;
+namespace splattner\myvbc\services;
+use splattner\framework\Service;
 
-
-
-class ServiceSwissvolley extends ServiceDataSource {
+class ServiceSwissvolley extends Service {
 	
 	private $soap_client;
 	

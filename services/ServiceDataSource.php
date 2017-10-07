@@ -1,6 +1,6 @@
 <?php
 
-namespace splattner\myvbc\service;
+namespace splattner\myvbc\services;
 use splattner\framework\Service;
 
 abstract class ServiceDataSource extends Service {

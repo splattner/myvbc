@@ -1,6 +1,6 @@
 <?php
 
-namespace splattner\myvbc\service;
+namespace splattner\myvbc\services;
 use Aspsms\Aspsms;
 use splattner\framework\Service;
 
