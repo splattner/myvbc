@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "47271dfe70872dea928d1f174d7a9d0a",
+    "content-hash": "e32504b41812765bb2a821a32c95112b",
     "packages": [
         {
             "name": "gburtini/acl",
@@ -345,16 +345,16 @@
         },
         {
             "name": "splattner/framework",
-            "version": "dev-master",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/splattner/framework.git",
-                "reference": "6e9644141a5b80e89b9e044099c67eb719a19347"
+                "reference": "c951fa09f6a24cac44689827606ca6ca57f5ca8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/splattner/framework/zipball/6e9644141a5b80e89b9e044099c67eb719a19347",
-                "reference": "6e9644141a5b80e89b9e044099c67eb719a19347",
+                "url": "https://api.github.com/repos/splattner/framework/zipball/c951fa09f6a24cac44689827606ca6ca57f5ca8f",
+                "reference": "c951fa09f6a24cac44689827606ca6ca57f5ca8f",
                 "shasum": ""
             },
             "require": {
@@ -387,7 +387,7 @@
                 }
             ],
             "description": "Simple PHP Framework used by splattner/myvbc",
-            "time": "2017-10-07T14:35:33+00:00"
+            "time": "2017-10-08T11:15:22+00:00"
         },
         {
             "name": "symfony/config",
@@ -742,9 +742,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "splattner/framework": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

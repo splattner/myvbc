@@ -81,5 +81,9 @@
         {include file=$content}
     </div>
 </div>
+<div id="footer">
+    <a href="https://github.com/splattner/myvbc" target="_blank" >v{$appVersion} <i class="fa fa-github" aria-hidden="true"></i></a>
+</div>
+
 </body>
 </html>

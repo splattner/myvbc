@@ -54,6 +54,22 @@ div#myvbc {
 	text-align: left;
 }
 
+div#footer {
+
+	margin: auto;
+	padding: 0px;
+	width: 970px;
+
+	text-align: right;
+	font-size: 8pt;
+
+	background-color: #666666;
+}
+
+div#footer a {
+	color: #FFFFFF;
+}
+
 div#header {
 	padding: 0px;
 
