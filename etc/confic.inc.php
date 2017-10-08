@@ -4,31 +4,16 @@ defined( '_MYVBC' ) or die( 'Restricted access' );
 
 $config = array();
 
-$config["db"]["host"] = "127.0.0.1";
-$config["db"]["port"] = "3306";
-$config["db"]["username"] = "myvbc";
-$config["db"]["password"] = "root";
-$config["db"]["database"] = "myvbc";
+
+$config["db"]["host"] = getenv('MYSQL_DB_HOST') ? getenv('MYSQL_DB_HOST') : "127.0.0.1";
+$config["db"]["port"] = getenv('MYSQL_DB_PORT') ? getenv('MYSQL_DB_PORT') : "3306";
+$config["db"]["username"] = getenv('MYSQL_DB_USERNAME') ? getenv('MYSQL_DB_USERNAME') : "myvbc";
+$config["db"]["password"] = getenv('MYSQL_DB_PASSWORD') ? getenv('MYSQL_DB_PASSWORD') : "myvbc";
+$config["db"]["database"] = getenv('MYSQL_DB_NAME') ? getenv('MYSQL_DB_NAME') :  "myvbc";
 
 
 
-if (getenv('MYSQL_DB_HOST') != "") {
-	$config["db"]["host"] = getenv('MYSQL_DB_HOST');
-}
-if (getenv('MYSQL_DB_PORT') != "") {
-	$config["db"]["port"] = getenv('MYSQL_DB_PORT');
-}
-if (getenv('MYSQL_DB_USERNAME') != "") {
-	$config["db"]["username"] = getenv('MYSQL_DB_USERNAME');
-}
-if (getenv('MYSQL_DB_NAME') != "") {
-	$config["db"]["database"] = getenv('MYSQL_DB_NAME');
-}
-if (getenv('MYSQL_DB_PASSWORD') != "") {
-	$config["db"]["password"] = getenv('MYSQL_DB_PASSWORD');
-}
-
-$config["db"]["url"] = $config["db"]["url"] = "mysql:host=" .  $config["db"]["host"] . ":" . $config["db"]["port"] . ";dbname=" . $config["db"]["database"];
+$config["db"]["url"] = "mysql:host=" .  $config["db"]["host"] . ":" . $config["db"]["port"] . ";dbname=" . $config["db"]["database"];
 
 
 $config["db"]["version"] = 20170629181021;
