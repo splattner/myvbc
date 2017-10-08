@@ -5,10 +5,10 @@ defined( '_MYVBC' ) or die( 'Restricted access' );
 $config = array();
 
 $config["db"]["host"] = "127.0.0.1";
-$config["db"]["port"] = "8889";
-$config["db"]["username"] = "root";
+$config["db"]["port"] = "3306";
+$config["db"]["username"] = "myvbc";
 $config["db"]["password"] = "root";
-$config["db"]["database"] = "myvbc-new";
+$config["db"]["database"] = "myvbc";
 
 
 
