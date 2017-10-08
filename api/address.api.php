@@ -42,11 +42,7 @@ class APIAddress extends PublicAPI
             $result[$i]["teams"] = json_decode($result[$i]["teams"], true);
         }
 
-        if (isset($args[3]) && $args[3] == "dt") {
-            $dataTables = true;
-        }
-
-        if ($dataTables){
+        if (isset($args[3]) && $args[3] == "dt"){
             $dt = array();
 
             $dt["recordsTotal"] = count($result);
@@ -55,14 +51,9 @@ class APIAddress extends PublicAPI
             $dt["data"] = $result;
             echo json_encode($dt, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
-
-
-        } else {
-            echo json_encode($result, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
-
+            return;
         }
 
-
-
+        echo json_encode($result, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
     }
 }

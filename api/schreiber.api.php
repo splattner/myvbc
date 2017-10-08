@@ -19,19 +19,16 @@ class APISchreiber extends PublicAPI
 
     public function getSchreiberProposal($args = array(), $input = array()) {
 
-
         // Get ID
         if (isset($args[3]) ) {
             $gameID = $args[3];
-        } else {
-            http_response_code(400);
+            $schreiber = new MSchreiber();
+
+            echo json_encode($schreiber->getSchreiberProposal($gameID)->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
             return;
         }
 
-        $schreiber = new MSchreiber();
-        $rs = $schreiber->getSchreiberProposal($gameID);
-
-        echo json_encode($rs->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+        http_response_code(400);
     }
 
     public function getSchreiber($args = array(), $input = array()) {
@@ -39,17 +36,14 @@ class APISchreiber extends PublicAPI
         // Get ID
         if (isset($args[3]) ) {
             $gameID = $args[3];
-        } else {
-            http_response_code(400);
+
+            $game = new MGame();
+            echo json_encode($game->getSchreiber($gameID)->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+
             return;
-        }
+        } 
 
-        $game = new MGame();
-        $rs = $game->getSchreiber($gameID);
-
-        echo json_encode($rs->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
-
-
+        http_response_code(400);
     }
 
     public function getValidSchreiber($args = array(), $input = array()) {
@@ -57,16 +51,13 @@ class APISchreiber extends PublicAPI
         // Get ID
         if (isset($args[3]) ) {
             $gameID = $args[3];
-        } else {
-            http_response_code(400);
+
+            $game = new MGame();
+            echo json_encode($game->getValidSchreiber($gameID), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+
             return;
         }
-
-        $game = new MGame();
-        $schreiber = $game->getValidSchreiber($gameID);
-
-        echo json_encode($schreiber, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
-
+        http_response_code(400);
 
     }
 
@@ -83,10 +74,7 @@ class APISchreiber extends PublicAPI
 
         switch($this->method) {
             case "POST":
-
                 $schreiber->addSchreiber($input["personID"], $gameID);
-
-
                 break;
             case "DELETE":
 
@@ -124,17 +112,12 @@ class APISchreiber extends PublicAPI
             return;
         }
 
-
-
-
         $game = new MGame();
-        $rs_currentGame = $game->getRS(array($game->pk ." =" => $gameID));
-        $currentGame = $rs_currentGame->fetch();
+        $currentGame = $game->getRS(array($game->pk ." =" => $gameID))->fetch();
 
         //the number of events this person already has
         $person = new MPerson();
-        $rs_schreiber = $person->getMySchreibers($personID);
-        $schreiber = $rs_schreiber->fetchAll();
+        $schreiber = $person->getMySchreibers($personID)->fetchAll();
 
         $result = array();
         $result["count"] = count($schreiber);
@@ -144,7 +127,6 @@ class APISchreiber extends PublicAPI
         list($datum, $zeit) = explode(" ", $currentGame["date"]);
         $rs_games = $game->getGamesFromPersonOnDate($personID, $datum);
         $games = $rs_games->fetchAll();
-
 
         $result["games"] = $games;
 

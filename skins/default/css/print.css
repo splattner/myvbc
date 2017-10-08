@@ -1,18 +1,18 @@
 @CHARSET "ISO-8859-1";
 
-div#header {
+#header {
 	display: none;
 }
 
-p.alphabet {
+.alphabet {
 	display: none;
 }
 
-p.submenu {
+.submenu {
 	display: none;
 }
 
-a.icons {
+.icons {
 	display: none;
 }
 
@@ -21,7 +21,7 @@ h1 {
 	padding-bottom: 25px;
 }
 
-table.legend {
+.legend {
 	display: none;
 }
 

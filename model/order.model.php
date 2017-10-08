@@ -157,10 +157,10 @@ class MOrder extends Model {
 						orderid = ?";
 			$sql = $this->pdo->Prepare($sql);
 			$sql->Execute($sql, array($orderID));
-			$personids = $sq->fetch();
+			$persons = $sql->fetchAll();
 			
 			$mperson = new MPerson();
-			foreach($personids as $person) {
+			foreach($persons as $person) {
 				
 				$mperson->setChanged($person["personid"], 0); // Reset Change Status
 				$notification->addNewLicenceNotification($person["personid"]);
