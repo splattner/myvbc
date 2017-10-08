@@ -12,6 +12,9 @@ use splattner\myvbc\models\MNotification;
 
 abstract class MyVBCPage extends Page
 {
+
+    private $AppVersion;
+
     public function init() {
         
         parent::init();
@@ -28,6 +31,11 @@ abstract class MyVBCPage extends Page
         $this->acl->allow("vorstand",["addressPage","teamPage","gamesPage","reportPage","keyPage"], ["view"]);
         $this->acl->allow("administrator",["adminPage"], ["view"]);
 
+        $composerJSON = json_decode(file_get_contents('composer.json'),true);
+        $this->appVersion = $composerJSON["version"];
+        $this->smarty->assign("appVersion", $this->appVersion);
+
+
         // TODO: Should be done in a other way! This is too static
         $this->smarty->assign("canOrder", $this->acl->isAllowed($this->session->role, "orderPage", "view"));
         $this->smarty->assign("canAddress", $this->acl->isAllowed($this->session->role, "addressPage", "view"));
@@ -37,6 +45,8 @@ abstract class MyVBCPage extends Page
         $this->smarty->assign("canReport", $this->acl->isAllowed($this->session->role, "reportPage", "view"));
         $this->smarty->assign("canNotification", $this->acl->isAllowed($this->session->role, "notificationPage", "view"));
         $this->smarty->assign("canKey", $this->acl->isAllowed($this->session->role, "keyPage", "view"));
+
+        
 
 
     }
