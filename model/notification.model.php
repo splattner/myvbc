@@ -122,23 +122,30 @@ class MNotification extends Model {
 		return $sql;
 	}
 	
-	public function getAllNotifications($from = 0, $to = 200) {
-				$sql = "SELECT 
-					notification.id AS notificationID,
-					notificationtype.name AS type,
-					notification.message AS message,
-					notification.date AS date,
-					persons.prename AS prename,
-					persons.name AS name
-				FROM
-					notification
-				LEFT JOIN
-					notificationtype ON notificationtype.id = notification.type
-				LEFT JOIN
-					persons ON notification.personid = persons.id
-				ORDER BY
-					notification.date DESC
-				LIMIT " . $from ." ," . $to;
+	public function getAllNotifications($from = NULL, $to = NULL) {
+
+		$sql = "SELECT 
+			notification.id AS notificationID,
+			notificationtype.name AS type,
+			notification.message AS message,
+			notification.date AS date,
+			persons.prename AS prename,
+			persons.name AS name
+		FROM
+			notification
+		LEFT JOIN
+			notificationtype ON notificationtype.id = notification.type
+		LEFT JOIN
+			persons ON notification.personid = persons.id
+		ORDER BY
+			notification.date DESC";
+
+		if (!is_Null($from)) {
+			$sql .= "LIMIT " . $from;
+		}
+		if (!is_Null($to)) {
+			$sql .=", " . $to;
+		}
 
 		return $this->pdo->query($sql);
 	}

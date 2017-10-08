@@ -42,6 +42,7 @@ class APIAddress extends PublicAPI
             $result[$i]["teams"] = json_decode($result[$i]["teams"], true);
         }
 
+        // Check if this is a DataTable
         if (isset($args[3]) && $args[3] == "dt"){
             $dt = array();
 

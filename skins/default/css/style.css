@@ -1,8 +1,8 @@
 @CHARSET "ISO-8859-1";
 
 body {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 
 	padding-bottom: 50px;
 	
@@ -47,7 +47,7 @@ input {
 
 #myvbc {
 	margin: auto;
-	padding: 0px;
+	padding: 0;
 	width: 970px;
 	
 	background-color: #CCCCCC;
@@ -57,7 +57,7 @@ input {
 #footer {
 
 	margin: auto;
-	padding: 0px;
+	padding: 0;
 	width: 970px;
 
 	text-align: right;
@@ -71,7 +71,7 @@ input {
 }
 
 #header {
-	padding: 0px;
+	padding: 0;
 
 }
 

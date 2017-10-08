@@ -35,7 +35,7 @@
 </table>
 
 <h3>Alle Benachrichtigungen</h3>
-<table class="table table-striped">
+<table id="notificationTable" class="table table-striped">
     <thead>
         <tr>
             <th>Nachrichten-Typ</th>
@@ -45,28 +45,52 @@
             <th>&nbsp</th>
         </tr>
     </thead>
-    <tbody>
-        {foreach item=allnotification from=$allnotifications}
-        <tr>
-            <td>{$allnotification.type}</td>
-            <td>{$allnotification.message}</td>
-            <td>{$allnotification.date|date_format:"%d.%m.%Y - %H:%M"}</td>
-            <td>{$allnotification.prename} {$allnotification.name}</td>
-                <td align="right">
-                    <a data-toggle="tooltip" data-placement="bottom" title="Diese Benachrichtigung global l&ouml;schen. " class="icons"
-                       onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
-                       href="index.php?page={$currentPage}&action=deleteNote&notificationID={$allnotification.notificationID}">
-                        <i style="color: red;" class="fa fa-trash-o"></i>
-                    </a>
-                </td>
-        </tr>
-        {/foreach}
-        {if empty($allnotifications)}
-        <tr>
-            <td colspan="4">
-                <i>Keine Benachrichtigungen vorhanden</i>
-            </td>
-        </tr>
-        {/if}
-    </tbody>
 </table>
+
+{literal}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#notificationTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/505bef35b56/i18n/German.json"
+                },
+                "order": [[2, "desc"]],
+                "columnDefs": [
+                    {"targets": 0, "data": "type"},
+                    {"targets": 1, "data": "message"},
+                    {"targets": 2, "data": "date"},
+                    {"targets": 3, "data": function ( row, type, val, meta ) {
+                            return row.prename + " " + row.name;
+                        }
+                    },
+                    {
+                        "targets": 4,
+                        "data": function ( row, type, val, meta ) { return "" },
+                        "orderable": false,
+                        "className": "text-right",
+                        "render": function( data, type, row, meta) {
+                            html = " <a data-toggle='tooltip' data-placement='bottom' title='Person l&ouml;schen' class='icons'" +
+                                    "onclick='return confirm(\"Willst du diesen Eintrag wirklich l&ouml;schen?\")'" +
+                                    "href='index.php?page={$currentPage}&action=deleteNote&notificationID=" + row.notificationID + "'>" +
+                                    "<i style='color: red;' class='fa fa-trash-o'></i></a>";
+
+                            return html;
+
+
+                        }
+                    }
+                ],
+
+                "ajax" : {
+                    //"serverSide": true,
+                    "processing": true,
+                    "url" : "index.php/api/notification/getAllNotifications/dt"
+                },
+                "drawCallback": function(settings) {
+                    $('[data-toggle="tooltip"]').tooltip()
+
+                }
+            });
+        });
+    </script>
+{/literal}

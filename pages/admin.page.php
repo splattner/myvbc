@@ -195,10 +195,7 @@ class PageAdmin extends MyVBCPage
 		$notification = new MNotification();
 		$rs = $notification->getAllSubscriptions();
 		$this->smarty->assign("subscriptions", $rs->fetchAll());
-		
-		$rs = $notification->getAllNotifications();
-		$this->smarty->assign("allnotifications", $rs->fetchAll());
-		
+				
 	}
 	
 	public function deleteNoteAction(){
