@@ -29,13 +29,11 @@ class PageKey extends MyVBCPage
         $this->smarty->assign("subContent1", "key/keyTable.tpl");
 
         $keys = new MKey();
-        $rs = $keys->getAllKeys();
 
-        $this->smarty->assign("keys", $rs->fetchAll());
+        $this->smarty->assign("keys", $keys->getAllKeys());
 
         $persons = new MPerson();
-        $rs = $persons->getRS(array(),array("name" => "ASC", "prename" => "ASC"));
-        $this->smarty->assign("users", $rs->fetchAll());
+        $this->smarty->assign("users", $persons->getRS(array(),array("name" => "ASC", "prename" => "ASC"))->fetchAll());
 
     }
 
@@ -47,7 +45,6 @@ class PageKey extends MyVBCPage
             $key->person = $_POST["person"];
             $key->label = $_POST["label"];
             $key->nr = $_POST["nr"];
-
 
             $key->insert();
 
@@ -65,7 +62,6 @@ class PageKey extends MyVBCPage
 
         $key = new MKey();
         $key->delete(array("id" => $keyID));
-
 
         $this->smarty->assign("messages","Schl&uuml;ssel wurde gel&ouml;scht");
 

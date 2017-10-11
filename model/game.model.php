@@ -102,10 +102,8 @@ class MGame extends Model {
     public function getGamesFromSource($teamID) {
 
         $games = array();
-
         $team = new MTeam();
-        $rs = $team->getRS(array($team->pk ." =" => $teamID));
-        $teamData = $rs->fetch();
+        $teamData = $team->getRS(array($team->pk ." =" => $teamID))->fetch();
 
 
         switch($teamData["typ"]) {
@@ -125,8 +123,7 @@ class MGame extends Model {
         for ($i = 0 ; $i < count($games); $i++) {
 
             $localGame = new MGame();
-            $rs = $localGame->getRS(array("extid =" => $games[$i]["extid"]));
-            $localGames = $rs->fetch();
+            $localGames = $localGame->getRS(array("extid =" => $games[$i]["extid"]))->fetch();
             if ($rs->rowCount() >= 1) {
             	
                 if(strcmp($games[$i]["datum"], $localGames["date"]) !== 0 || strcmp($games[$i]["ort"],$localGames["ort"]) !== 0 || strcmp($games[$i]["halle"],$localGames["halle"]) !== 0) {

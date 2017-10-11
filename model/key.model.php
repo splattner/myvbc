@@ -28,7 +28,7 @@ class MKey extends Model {
                   persons.name,
                   persons.prename";
 
-        return $this->pdo->query($sql);
+        return $this->pdo->query($sql)->fetchAll();
     }
 
 	public function getMyKeys($personID) {

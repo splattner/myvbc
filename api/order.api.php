@@ -18,7 +18,7 @@ use splattner\myvbc\models\MPerson;
 class APIOrder extends PublicAPI
 {
 
-    public function getItemsEntry($args = array(), $input = array()) {
+    public function getItemsEntry($args = array()) {
 
         // Get ID
         if (isset($args[3]) ) {
@@ -33,7 +33,7 @@ class APIOrder extends PublicAPI
 
     }
 
-    public function getOrder($args = array(), $input = array()) {
+    public function getOrder($args = array()) {
 
         // Get ID
         if (isset($args[3]) ) {
@@ -48,14 +48,14 @@ class APIOrder extends PublicAPI
 
     }
 
-    public function getStatusList($args = array(), $input = array()) {
+    public function getStatusList($args = array()) {
 
         $order = new MOrder();
          echo json_encode($order->getStatusList()->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
     }
 
-    public function getAllPersons($args = array(), $input = array()) {
+    public function getAllPersons($args = array()) {
         $person = new MPerson();
         $recordSet = $person->getRS(array("active =" => "1", "signature =" => "1"),array("persons.name" => "ASC", "persons.prename" => "ASC"), array("id","name","prename"));
 
@@ -63,7 +63,7 @@ class APIOrder extends PublicAPI
 
     }
 
-    public function orderItem($args = array(), $input = array()) {
+    public function orderItem($args = array()) {
 
 
         $order = new MOrder();
@@ -77,24 +77,16 @@ class APIOrder extends PublicAPI
             case "DELETE":
 
                 // Get ID
-                if (isset($args[3]) ) {
+                if (isset($args[3]) && isset($args[4]) ) {
                     $orderID = $args[3];
-                } else {
-                    http_response_code(400);
-                    return;
-                }
-
-                // Get PersonID
-                if (isset($args[4]) ) {
                     $personID = $args[4];
-                } else {
-                    http_response_code(400);
-                    return;
-                }
 
-                $order->removeLicenceFromOrder($personID, $orderID);
-
-                break;
+                    $order->removeLicenceFromOrder($personID, $orderID);
+                    break;
+                } 
+                
+                http_response_code(400);
+                break:
         }
     }
 
@@ -103,18 +95,16 @@ class APIOrder extends PublicAPI
         // Get ID
         if (isset($args[3]) && isset($input["status"]) ) {
             $orderID = $args[3];
-        } else {
-            http_response_code(400);
+
+            $order = new MOrder();
+            $order->updateStatus(intval($input["status"]), $orderID);
+
+            echo json_encode($order->getOrder($orderID)->fetch(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+
             return;
         }
 
-
-        $order = new MOrder();
-        $order->updateStatus(intval($input["status"]), $orderID);
-
-        echo json_encode($order->getOrder($orderID)->fetch(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
-
-
+        http_response_code(400);
     }
 
     public function updateOrder($args = array(), $input = array()) {
@@ -122,27 +112,26 @@ class APIOrder extends PublicAPI
         // Get ID
         if (isset($args[3])) {
             $orderID = $args[3];
-        } else {
-            http_response_code(400);
+
+            $order = new MOrder();
+            $order->comment = $input["comment"];
+
+            $order->update(array($order->pk => $orderID));
+            $orderdetail = $order->getRS(array($order->pk ." =" => $orderID))->fetch();
+
+
+            if ($orderdetail["status"] != $input["status"]) {
+                $order->updateStatus($input["status"], $orderID);
+            }
+
+            $orderdetail = $order->getRS(array($order->pk ." =" => $orderID))->fetch();
+
+            echo json_encode($orderdetail[0], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK)
+
             return;
-        }
 
+        } 
 
-        $order = new MOrder();
-        $order->comment = $input["comment"];
-
-        $order->update(array($order->pk => $orderID));
-        $orderdetail = $order->getRS(array($order->pk ." =" => $orderID))->fetch();
-
-
-        if ($orderdetail["status"] != $input["status"]) {
-            $order->updateStatus($input["status"], $orderID);
-        }
-
-        $orderdetail = $order->getRS(array($order->pk ." =" => $orderID))->fetch();
-
-        echo json_encode($orderdetail[0], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+        http_response_code(400);
     }
-
-
 }

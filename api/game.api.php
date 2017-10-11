@@ -18,7 +18,7 @@ use splattner\myvbc\models\MPerson;
 class APIGame extends PublicAPI
 {
 
-    public function getGame($args = array(), $input = array()) {
+    public function getGame($args = array()) {
 
         // Get ID
         if (isset($args[3]) ) {
@@ -50,7 +50,7 @@ class APIGame extends PublicAPI
     }
 
 
-    public function getGames($args = array(), $input = array()) {
+    public function getGames($args = array())) {
 
 
         // Get ID
@@ -106,7 +106,7 @@ class APIGame extends PublicAPI
 
     }
 
-    public function getGamesFromExternal($args = array(), $input = array()) {
+    public function getGamesFromExternal($args = array()) {
 
         // Get ID
         if (isset($args[3]) ) {
@@ -123,7 +123,7 @@ class APIGame extends PublicAPI
         echo json_encode($games, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
     }
 
-    public function importGames($args = array(), $input = array()) {
+    public function importGames($args = array()) {
 
         // Get ID
         if (isset($args[3]) ) {
@@ -179,7 +179,7 @@ class APIGame extends PublicAPI
 
     }
 
-    public function getTeams($args = array(), $input = array()) {
+    public function getTeams($args = array()) {
 
 
         $team = new MTeam();
