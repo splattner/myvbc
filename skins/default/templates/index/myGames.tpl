@@ -1,10 +1,8 @@
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			Meine Spiele
-		</h3>
+<div class="card">
+	<div class="card-header">
+		Meine Spiele
 	</div>
-	<div class="panel-body">
+	<div class="card-body">
 		<table class="table table-striped">
 			{foreach item=myGame from=$myGames}
 				<tr>

@@ -19,8 +19,8 @@ class MGame extends Model {
 		
 		$game = new MGame();
 		$rs_game = $game->getRS(array($game->pk . " =" => $gameID));
-		$arr_game = $rs_game->fetchAll(); //All Datas for the current Game
-		$currentTeam = $arr_game[0]["team"]; // The team for the current Game
+		$arr_game = $rs_game->fetch(); //All Datas for the current Game
+		$currentTeam = $arr_game["team"]; // The team for the current Game
 
 
 		$person = new MPerson();
@@ -123,8 +123,9 @@ class MGame extends Model {
         for ($i = 0 ; $i < count($games); $i++) {
 
             $localGame = new MGame();
-            $localGames = $localGame->getRS(array("extid =" => $games[$i]["extid"]))->fetch();
-            if ($rs->rowCount() >= 1) {
+            $localGames_rs = $localGame->getRS(array("extid =" => $games[$i]["extid"]));
+            $localGames = $localGames_rs->fetch();
+            if ($localGames_rs->rowCount() >= 1) {
             	
                 if(strcmp($games[$i]["datum"], $localGames["date"]) !== 0 || strcmp($games[$i]["ort"],$localGames["ort"]) !== 0 || strcmp($games[$i]["halle"],$localGames["halle"]) !== 0) {
                     $games[$i]["local"] = 2;

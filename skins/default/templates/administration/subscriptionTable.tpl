@@ -1,7 +1,7 @@
 <h3>Benachrichtigungs Verwaltung</h3>
 
 <p>
-	<a data-toggle="tooltip" data-placement="bottom" title="Person auf einen Nachrichtentype einschreiben" href="index.php?page={$currentPage}&action=addNoteSubscription">
+	<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Person auf einen Nachrichtentype einschreiben" href="index.php?page={$currentPage}&action=addNoteSubscription">
 		<i class="fa fa-plus-square"></i>
 	</a>
 </p>
@@ -9,7 +9,7 @@
 {include file='messages/info.tpl'}
 
 <table class="table table-striped">
-	<thead>
+	<thead class="thead-inverse">
 		<tr>
 			<th>Benachrichtigungstype</th>
 			<th>Person</th>
@@ -23,7 +23,7 @@
 			<td>{$subscription.prename} {$subscription.name}</td>
 			<td align="right">
 				{if $subscription.email == 1}<i class="fa fa-envelope-o"></i>{/if}
-				<a data-toggle="tooltip" data-placement="bottom" title="Subscription entfernen." class="icons"
+				<a class="btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Subscription entfernen." class="icons"
 				   onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
 				   href="index.php?page={$currentPage}&action=deleteNoteSubscription&typeID={$subscription.typeid}&personID={$subscription.personid}">
 					<i style="color: red;" class="fa fa-trash-o"></i>
@@ -36,7 +36,7 @@
 
 <h3>Alle Benachrichtigungen</h3>
 <table id="notificationTable" class="table table-striped">
-    <thead>
+    <thead class="thead-inverse">
         <tr>
             <th>Nachrichten-Typ</th>
             <th>Inhalt</th>
@@ -69,10 +69,10 @@
                         "orderable": false,
                         "className": "text-right",
                         "render": function( data, type, row, meta) {
-                            html = " <a data-toggle='tooltip' data-placement='bottom' title='Person l&ouml;schen' class='icons'" +
+                            html = " <a class='btn btn-outline-danger' data-toggle='tooltip' data-placement='bottom' title='Person l&ouml;schen' class='icons'" +
                                     "onclick='return confirm(\"Willst du diesen Eintrag wirklich l&ouml;schen?\")'" +
-                                    "href='index.php?page={$currentPage}&action=deleteNote&notificationID=" + row.notificationID + "'>" +
-                                    "<i style='color: red;' class='fa fa-trash-o'></i></a>";
+                                    "href='index.php?page=admin&action=deleteNote&notificationID=" + row.notificationID + "'>" +
+                                    "<i class='fa fa-trash-o'></i></a>";
 
                             return html;
 

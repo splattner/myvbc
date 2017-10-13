@@ -16,6 +16,7 @@
 
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/popper.js/dist/umd/popper.min.js"></script>    
     <script type="text/javascript" src="bower_components/moment/min/moment-with-locales.min.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
@@ -32,10 +33,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- Datatables -->
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.datatables.net/r/bs/dt-1.10.9,fc-3.1.0,fh-3.0.0/datatables.min.css"/>
-    <script type="text/javascript"
-            src="https://cdn.datatables.net/r/bs/dt-1.10.9,fc-3.1.0,fh-3.0.0/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/fc-3.2.3/fh-3.1.3/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/fc-3.2.3/fh-3.1.3/datatables.min.js"></script>
+
 
 
     <!-- AngularJS -->
@@ -64,25 +65,30 @@
 
         </script>
     {/literal}
-
+    
 
 </head>
 <body>
 
-<div id="myvbc">
-    <div id="header">
-        <div class="navbar navbar-default">
-            <div class="container-fluid">
-                {include file='navigation.tpl'}
-            </div>
+<div class="container">
+    <div class="row" >
+        <div class="col">
+            {include file='navigation.tpl'}
         </div>
     </div>
-    <div id="content">
-        {include file=$content}
+    <div class="row" >
+        <div class="col">
+            {include file=$content}
+        </div>
     </div>
-</div>
-<div id="footer">
-    <a href="https://github.com/splattner/myvbc" target="_blank" >v{$appVersion} <i class="fa fa-github" aria-hidden="true"></i></a>
+
+    <div class="row">
+        <div class="col">
+            <nav class="navbar fixed-bottom navbar-dark bg-dark">
+                <a class="navbar-brand" href="https://github.com/splattner/myvbc" target="_blank" >v{$appVersion} <i class="fa fa-github" aria-hidden="true"></i></a>
+            </nav>
+        </div>
+    </div>
 </div>
 
 </body>

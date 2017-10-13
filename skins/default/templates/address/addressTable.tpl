@@ -1,10 +1,10 @@
 <p class="submenu">
-    <a data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Neue Person erfassen"
+    <a class="btn btn-outline-dark" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Neue Person erfassen"
        href="index.php?page={$currentPage}&action=new">
         <i class="fa fa-plus-square"></i>
     </a>
 
-    <a data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
+    <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
         <i class="fa fa-print"></i>
     </a>
 </p>
@@ -12,18 +12,8 @@
 {include file='messages/info.tpl'}
 
 
-<table class="legend">
-    <tr>
-        <td>
-            <i class="fa fa-user" style="color:green"></i> Aktiv in einem Team <br/>
-            <i class="fa fa-user" style="color: red"></i> Inaktiv (keinem Team zugeordnet) <br/>
-        </td>
-    </tr>
-</table>
-
-
-<table id="addressTable" class="table table-striped table-condensed">
-    <thead>
+<table id="addressTable" class="table table-striped table-sm">
+    <thead class="thead-inverse">
     <tr>
         <th width="2%">&nbsp;</th>
         <th width="10%">Vorname</th>
@@ -86,28 +76,28 @@
                             html = "";
                             if(row.signature == 0) {
                                 html = html +
-                                        "<a data-toggle='tooltip' data-placement='bottom' target='_blank' title='Beitrittsgesuch' class='icons'" +
+                                        "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' target='_blank' title='Beitrittsgesuch' class='icons'" +
                                         " href='index.php?page=address&action=requestForm&personID=" + row.id + "'>" +
                                         " <i class='fa fa-file-pdf-o'></i></a>";
                             }
 
-                            if (row.active == 1 && row.liga != "") {
+                            if (row.active == 1 && row.liga != null) {
                                 html = html +
-                                        " <a class='icons' data-toggle='tooltip' data-placement='bottom' title='" + row.liga +"'>" +
+                                        " <a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='" + row.liga +"'>" +
                                         "<i class='fa fa-users'></i></a>";
                             }
 
 
                             html = html +
-                                    " <a data-toggle='tooltip' data-placement='bottom' title='Person bearbeiten' class='icons'" +
+                                    " <a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person bearbeiten' class='icons'" +
                                     " href='index.php?page=address&action=edit&personID=" + row.id +"'>" +
                                     "<i class='fa fa-pencil-square-o'></i></a>";
 
                             html = html +
-                                    " <a data-toggle='tooltip' data-placement='bottom' title='Person l&ouml;schen' class='icons'" +
+                                    " <a class='btn btn-outline-danger' data-toggle='tooltip' data-placement='bottom' title='Person l&ouml;schen' class='icons'" +
                                     "onclick='return confirm(\"Willst du diesen Eintrag wirklich l&ouml;schen?\")'" +
                                     "href='index.php?page=address&action=delete&personID=" + row.id + "'>" +
-                                    "<i style='color: red;' class='fa fa-trash-o'></i></a>";
+                                    "<i class='fa fa-trash-o'></i></a>";
 
                             return html;
 

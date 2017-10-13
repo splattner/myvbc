@@ -1,15 +1,15 @@
-<div class="panel panel-danger">
-    <div class="panel-heading">
-        <h3 class="panel-title">Keine Berechtigung</h3>
+<div class="card text-white bg-danger mb-3">
+    <div class="card-header">
+        Keine Berechtigung
     </div>
-    <div class="panel-body">
+    <div class="card-body">
 		<p>
 			<b>Achtung:</b> {$msg}
 		</p>
 		{if not $isAuth}
             <p>
                 Sie m&uuml;ssen sich zuerst anmelden.<br/>
-                <a href="?page=auth"><i class="fa fa-caret-square-o-right"></i> Mit E-Mail Adresse und Passwort anmelden
+                <a class="btn btn-dark" href="index.php"><i class="fa fa-caret-square-o-right"></i> Login</a>
             </p>
         {else}
             <p>

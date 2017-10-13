@@ -1,10 +1,8 @@
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
+	<div class="card">
+	<div class="card-header">
 			Meine Teams
-		</h3>
 	</div>
-	<div class="panel-body">
+	<div class="card-body		"	>
 		<table class="table">
 			{foreach item=myTeam from=$myTeams}
 				<tr>

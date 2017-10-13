@@ -86,7 +86,7 @@
 
 
 <table class="table table-striped">
-    <thead>
+    <thead class="thead-inverse">
         <tr>
             <th width="2%">&nbsp;</th>
             <th width="25%">Person</th>

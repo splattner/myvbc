@@ -1,13 +1,13 @@
 <h2>History</h2>
 
-<table class="table table-striped">
-	<thead>
-<tr>
-	<th width="20%">Nachricht Typ</th>
-	<th width="50%">Inhalt</th>
-	<th width="20%">Datum</th>
-	<th width="30%">Ausl&ouml;ser</th>
-</tr>
+<table class="table table-striped table-sm">
+	<thead class="thead-inverse">
+		<tr>
+			<th width="20%">Nachricht Typ</th>
+			<th width="50%">Inhalt</th>
+			<th width="20%">Datum</th>
+			<th width="30%">Ausl&ouml;ser</th>
+		</tr>
 	</thead>
 	<tbody>
 		{foreach item=notification from=$notifications}
@@ -34,16 +34,16 @@
 <table class="legend">
 	<tr>
 		<td>
-			<img src="{$templateDir}/images/icons/bullet_green.png">Erfassen<br/>
-			<img src="{$templateDir}/images/icons/bullet_yellow.png">Bestellung ausgel&ouml;st<br/>
-			<img src="{$templateDir}/images/icons/bullet_blue.png">In Bearbeitung<br/>
-			<img src="{$templateDir}/images/icons/bullet_red.png">Abgeschlossen<br/>
+			<i class="fa fa-dot-circle-o" style="color: green" aria-hidden="true"></i> Erfassen<br/>
+			<i class="fa fa-dot-circle-o" style="color: yellow" aria-hidden="true"></i> Bestellung ausgel&ouml;st<br/>
+			<i class="fa fa-dot-circle-o" style="color: blue" aria-hidden="true"></i> In Bearbeitung<br/>
+			<i class="fa fa-dot-circle-o" style="color: red" aria-hidden="true"></i> Abgeschlossen<br/>
 		</td>
 	</tr>
 </table>
 
-<table class="table table-striped">
-    <thead>
+<table class="table table-striped table-sm">
+    <thead class="thead-inverse">
         <tr>
             <th width="2%"</th>
             <th width="20%">Bestelldatum</th>
@@ -55,10 +55,10 @@
         {foreach item=myorder from=$myorders}
         <tr>
             <td>
-                {if $myorder.status == 1}<img src="{$templateDir}/images/icons/bullet_green.png">{/if}
-                {if $myorder.status == 2}<img src="{$templateDir}/images/icons/bullet_yellow.png">{/if}
-                {if $myorder.status == 3}<img src="{$templateDir}/images/icons/bullet_blue.png">{/if}
-                {if $myorder.status == 4}<img src="{$templateDir}/images/icons/bullet_red.png">{/if}
+                {if $myorder.status == 1}<i class="fa fa-dot-circle-o" style="color: green" aria-hidden="true"></i> {/if}
+                {if $myorder.status == 2}<i class="fa fa-dot-circle-o" style="color: yellow" aria-hidden="true"></i><{/if}
+                {if $myorder.status == 3}<i class="fa fa-dot-circle-o" style="color: blue" aria-hidden="true"></i><{/if}
+                {if $myorder.status == 4}<i class="fa fa-dot-circle-o" style="color: red" aria-hidden="true">{/if}
             </td>
             <td>{$myorder.date}</td>
             <td>{$myorder.licence}</td>

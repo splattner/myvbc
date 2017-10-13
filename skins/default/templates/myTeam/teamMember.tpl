@@ -29,7 +29,7 @@
 </table>
 
 <table class="table table-striped">
-	<thead>
+	<thead class="thead-inverse">
 		<tr>
 			<th></th>
 			<th></th>
@@ -41,7 +41,7 @@
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
-    <tbody></tbody>
+    <tbody>
         {foreach item=person from=$persons}
         <tr>
             <td>
@@ -91,5 +91,5 @@
             </td>
         </tr>
         {/foreach}
-    </thead>
+    </tbody>
 </table>

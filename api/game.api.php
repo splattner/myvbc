@@ -50,7 +50,7 @@ class APIGame extends PublicAPI
     }
 
 
-    public function getGames($args = array())) {
+    public function getGames($args = array()) {
 
 
         // Get ID

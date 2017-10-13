@@ -1,10 +1,8 @@
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			Meine Schiedsrichtereins&auml;tze
-		</h3>
+<div class="card">
+	<div class="card-header">
+		Meine Schiedsrichtereins&auml;tze
 	</div>
-	<div class="panel-body">
+	<div class="card-body">
 		<table class="table table-striped">
 
 			{foreach item=refGame from=$refGames}

@@ -1,7 +1,7 @@
-<p class="submenu">
-	<a data-toggle="tooltip" data-placement="bottom" title="neue Person hinzuf&uuml;gen" href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}"><i class="fa fa-plus-square"></i></a>
-	<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fa fa-caret-square-o-left"></i></a>
-	<a href="#" onClick='window.print()' data-toggle="tooltip" data-placement="bottom" title="Drucken"><i class="fa fa-print"></i></a>
+<p	>
+	<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="neue Person hinzuf&uuml;gen" href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}"><i class="fa fa-plus-square"></i></a>
+	<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fa fa-caret-square-o-left"></i></a>
+	<a class="btn btn-outline-dark" href="#" onClick='window.print()' data-toggle="tooltip" data-placement="bottom" title="Drucken"><i class="fa fa-print"></i></a>
 </p>
 
 <h3>
@@ -22,7 +22,7 @@
 </table>
 
 <table class="table table-striped">
-	<thead>
+	<thead class="thead-inverse">
 	<tr>
 		<th>&nbsp;</th>
 		<th>Name</th>

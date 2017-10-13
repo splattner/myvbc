@@ -1,5 +1,5 @@
 <p class="submenu">
-    <a href="#" data-toggle="modal" data-tooltip="true" data-target="#myModal" title="Neue Lizenzbestelung">
+    <a class="btn btn-outline-dark" href="#" data-toggle="modal" data-tooltip="true" data-target="#myModal" title="Neue Lizenzbestelung">
         <i class="fa fa-plus-square"></i>
     </a>
 </p>
@@ -59,7 +59,7 @@
 </table>
 
 <table class="table table-striped">
-    <thead>
+    <thead class="thead-inverse">
     <tr>
         <th width="2%"></th>
         <th width="20%">Datum</th>

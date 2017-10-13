@@ -1,6 +1,6 @@
 <div ng-controller="GameController">
 <p>
-	<a data-toggle="tooltip" data-placement="bottom" title="Spiele importieren" href="index.php?page={$currentPage}&action=import"><i class="fa fa-cloud-download"></i></a>
+	<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Spiele importieren" href="index.php?page={$currentPage}&action=import"><i class="fa fa-cloud-download"></i></a>
 </p>
 
 <p>
@@ -12,7 +12,7 @@ Team ausw&auml;hlen:
 
 
 <table class="table table-striped">
-    <thead>
+    <thead class="thead-inverse">
         <tr>
             <th width="20%">Datum / Zeit</th>
             <th width="15%">Team</th>
@@ -40,7 +40,7 @@ Team ausw&auml;hlen:
 
             </td>
             <td align="right">
-                <a ng-if="game.heimspiel == 1" data-toggle="tooltip" data-placement="bottom" title="Schreiber verwalten"
+                <a class="btn btn-outline-dark" ng-if="game.heimspiel == 1" data-toggle="tooltip" data-placement="bottom" title="Schreiber verwalten"
                    href="index.php?page=games&action=editSchreiber&gameID=[[game.id]]">
                     <i class="fa fa-users"></i>
                 </a>

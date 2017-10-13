@@ -1,11 +1,9 @@
 {if !empty($mySchreibers)}
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			Meine Schreibereinsätze
-		</h3>
+<div class="card">
+	<div class="card-header">
+		Meine Schreibereinsätze
 	</div>
-	<div class="panel-body">
+	<div class="card-body">
 		<table class="table table-striped">
 		{foreach item=mySchreiber from=$mySchreibers}
 			<tr>
