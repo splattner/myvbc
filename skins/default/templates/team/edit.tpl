@@ -1,7 +1,7 @@
 
 <div class="card">
 	<div class="card-header">
-		<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main">
+		<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main">
 			<i class="fa fa-times"></i>
 		</a>
 		Team bearbeiten
@@ -68,7 +68,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-offset-2 col-sm-8">
-                        <button type="submit" class="btn btn-primary" name="doEdit" >bearbeiten</button>
+                        <button type="submit" class="btn btn-dark" name="doEdit" >bearbeiten</button>
                     </div>
                 </div>
         	</form>

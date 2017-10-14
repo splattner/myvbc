@@ -63,7 +63,7 @@ class APIOrder extends PublicAPI
 
     }
 
-    public function orderItem($args = array()) {
+    public function orderItem($args = array(), $input = array()) {
 
 
         $order = new MOrder();
@@ -86,7 +86,7 @@ class APIOrder extends PublicAPI
                 } 
                 
                 http_response_code(400);
-                break:
+                break;  
         }
     }
 
@@ -126,7 +126,7 @@ class APIOrder extends PublicAPI
 
             $orderdetail = $order->getRS(array($order->pk ." =" => $orderID))->fetch();
 
-            echo json_encode($orderdetail[0], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK)
+            echo json_encode($orderdetail[0], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);    
 
             return;
 

@@ -72,7 +72,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
-				<button type="submit" class="btn btn-primary" name="doEdit" form="teamform">&auml;ndern</button>
+				<button type="submit" class="btn btn-dark" name="doEdit" form="teamform">&auml;ndern</button>
 
 			</div>
 		</div>

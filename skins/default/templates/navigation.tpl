@@ -56,7 +56,7 @@
             {/if}
 
             {if $canKey}
-                {if $currentPage == "key"}
+                {if $currentPage == "key        "}
                 <li class="nav-item active">
                 {else}
                 <li class="nav-item">

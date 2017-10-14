@@ -8,16 +8,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">neue Lizenzbestellung</h4>
             </div>
             <div class="modal-body">
-                <form id="licenceform" class="form-horizontal" action="index.php?page={$currentPage}&action=new" method="POST">
+                <form id="licenceform" action="index.php?page={$currentPage}&action=new" method="POST">
                     <input type="hidden" name="doNew" value="true" />
 
-                    <div class="form-group">
-                        <label for="teamid" class="col-sm-2 control-label">Bestellung f&uuml;r Team</label>
+                    <div class="form-group row">
+                        <label for="teamid" class="col-sm-2 col-form-label">Bestellung f&uuml;r Team</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="teamid">
                                 <option value="0">(Team ausw&auml;hlen)</option>
@@ -28,8 +26,8 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="bemerkung" class="col-sm-2 control-label">Bestellung f&uuml;r Team</label>
+                    <div class="form-group row">
+                        <label for="bemerkung" class="col-sm-2 col-form-label">Bemerkung</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" name="comment" id="bemerkung"></textarea>
                         </div>
@@ -64,9 +62,9 @@
         <th width="2%"></th>
         <th width="20%">Datum</th>
         <th width="20%">letzte &Auml;nderung</th>
-        <th width="38%">Kommentar</th>
+        <th width="32%">Kommentar</th>
         <th width="15%">Ausgel&ouml;st durch</th>
-        <th width="5%">&nbsp;</th>
+        <th width="50%">&nbsp;</th>
     </tr>
     </thead>
     <tbody>
@@ -92,15 +90,15 @@
                 {$order.ownername}
             </td>
             <td align="right">
-                <a data-toggle="tooltip" data-placement="bottom" title="anzeigen &amp; bearbeiten"
+                <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="anzeigen &amp; bearbeiten"
                    href="index.php?page={$currentPage}&action=list&orderID={$order.id}">
                     <i class="fa fa-pencil-square-o"></i>
                 </a>
                 {if (($allowedit && $order.status != 4 )|| ($order.owner == $uid && $order.status == 1))}
-                    <a ata-toggle="tooltip" data-placement="bottom" title="l&ouml;schen"
+                    <a class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="l&ouml;schen"
                        onclick="return confirm('Willst du diesen Bestellung wirklich l&ouml;schen?')"
                        href="index.php?page={$currentPage}&action=delete&orderID={$order.id}">
-                        <i style="color: red;" class="fa fa-trash-o"></i>
+                        <i class="fa fa-trash-o"></i>
                     </a>
                 {/if}
             </td>

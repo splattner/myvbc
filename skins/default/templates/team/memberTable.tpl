@@ -10,17 +10,6 @@
 
 {include file='messages/info.tpl'}
 
-<table class="legend">
-<tr>
-	<td>
-		<img src="{$templateDir}/images/icons/bullet_green.png"> Spieler <br />
-		<img src="{$templateDir}/images/icons/bullet_yellow.png"> Captain / Teamverantwortlicher <br />
-		<img src="{$templateDir}/images/icons/bullet_red.png"> Trainer <br />
-		<img src="{$templateDir}/images/icons/bullet_blue.png"> Sonstige Funktion <br />
-	</td>
-</tr>
-</table>
-
 <table class="table table-striped">
 	<thead class="thead-inverse">
 	<tr>
@@ -37,10 +26,10 @@
 	{foreach item=person from=$persons}
 		<tr>
 			<td>
-				{if $person.typ == 1}<img src="{$templateDir}/images/icons/bullet_green.png">{/if}
-				{if $person.typ == 2}<img src="{$templateDir}/images/icons/bullet_yellow.png">{/if}
-				{if $person.typ == 3}<img src="{$templateDir}/images/icons/bullet_red.png">{/if}
-				{if $person.typ == 4}<img src="{$templateDir}/images/icons/bullet_blue.png">{/if}
+				{if $person.typ == 1}{/if}
+				{if $person.typ == 2}Teamverantwortlicher{/if}
+				{if $person.typ == 3}Trainer{/if}
+				{if $person.typ == 4}Sonstige Funktion{/if}
 			</td>
 			<td>
 				{$person.prename} {$person.name}
@@ -60,7 +49,7 @@
 				{/if}
 			</td>
 			<td style="text-align: right;">
-				<a onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" class="icons" data-toggle="tooltip" data-placement="bottom" title="aus Team entfernen" href="index.php?page={$currentPage}&action=deleteMember&teamID={$teamID}&personID={$person.personID}"><i style="color: red;" class="fa fa-trash-o"></i></a>
+				<a class="btn btn-danger" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" class="icons" data-toggle="tooltip" data-placement="bottom" title="aus Team entfernen" href="index.php?page={$currentPage}&action=deleteMember&teamID={$teamID}&personID={$person.personID}"><i class="fa fa-trash-o"></i></a>
 			</td>
 		</tr>
 	{/foreach}

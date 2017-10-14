@@ -20,9 +20,8 @@
         <th width="10%">Name</th>
         <th width="20%">Adresse</th>
         <th width="15%">Telefon</th>
-        <th width="15%">Mobile</th>
-        <th width="15%">E-Mail</th>
-        <th width="15%">&nbsp;</th>
+        <th width="23%">E-Mail</th>
+        <th width="32%">&nbsp;</th>
     </tr>
 
     </thead>
@@ -48,11 +47,11 @@
                         "orderable": false,
                         "render" : function( data, type, row, meta) {
                             if(data == 1){
-                                return "<a class='icons' data-toggle='tooltip' data-placement='bottom' title='Person auf inaktiv setzen'" +
+                                return "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person auf inaktiv setzen'" +
                                         " href='index.php?page=address&action=setState&state=0&personID=" + row.id + "' }>" +
                                         "<i class='fa fa-user' style='color:green'></i></a>";
                             } else {
-                                return "<a class='icons' data-toggle='tooltip' data-placement='bottom' title='Person auf aktiv setzen'" +
+                                return "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person auf aktiv setzen'" +
                                         " href='index.php?page=address&action=setState&state=1&personID=" + row.id + "' }>" +
                                         "<i class='fa fa-user' style='color:red'></i></a>";
                             }
@@ -64,11 +63,13 @@
                             return row.address + "<br />" + row.plz + " " + row.ort;
                         }
                     },
-                    {"targets": 4, "data": "phone"},
-                    {"targets": 5, "data": "mobile"},
-                    {"targets": 6, "data": "email"},
+                    {"targets": 4, "data": function ( row, type, val, meta ) {
+                            return "<i class='fa fa-phone'></i> " + row.phone + "<br /><i class='fa fa-mobile' ></i> " + row.mobile;
+                        }
+                    },
+                    {"targets": 5, "data": "email"},
                     {
-                        "targets": 7,
+                        "targets": 6,
                         "data": function ( row, type, val, meta ) { return "" },
                         "orderable": false,
                         "className": "text-right",

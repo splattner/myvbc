@@ -149,7 +149,7 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-offset-2 col-sm-8">
-                <button type="submit" class="btn btn-primary" name="doEdit" >bearbeiten</button>
+                <button type="submit" class="btn btn-dark" name="doEdit" >bearbeiten</button>
             </div>
         </div>
 
