@@ -70,7 +70,9 @@
 </head>
 <body>
 
-<div class="container">
+<div class="bg-white container">
+
+    </nav>
     <div class="row" >
         <div class="col">
             {include file='navigation.tpl'}
@@ -79,17 +81,15 @@
     <div class="row" >
         <div class="col">
             {include file=$content}
+            <p>&nbsp;</p>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col">
-            <nav class="navbar fixed-bottom navbar-dark bg-dark">
-                <a class="navbar-brand" href="https://github.com/splattner/myvbc" target="_blank" >v{$appVersion} <i class="fa fa-github" aria-hidden="true"></i></a>
-            </nav>
-        </div>
-    </div>
+    <nav class="navbar fixed-bottom navbar-dark bg-dark">
+        <a class="navbar-brand" href="https://github.com/splattner/myvbc" target="_blank" >v{$appVersion} <i class="fa fa-github" aria-hidden="true"></i></a>
+    </nav>
 </div>
+
+
 
 </body>
 </html>

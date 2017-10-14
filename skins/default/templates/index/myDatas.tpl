@@ -9,13 +9,10 @@
 		</a>
 	</div>
 	<div class="card-body">
-		<p class="hightlight">
+		<p>
 			{$user.prename} {$user.name}<br />
 			{$user.address}<br />
 			{$user.plz} {$user.ort}
-		</p>
-
-		<p class="hightlight">
 			Telephon: {$user.phone}<br />
 			Mobile: {$user.mobile}<br />
 			E-Mail: {$user.email}<br />
@@ -24,13 +21,13 @@
 		<p>
 			Die folgenden Schl&uuml;ssel sind mir zugeordnet:
 		</p>
-		<ul>
 
-		{foreach item=key from=$keys}
+		<ul>
+			{foreach item=key from=$keys}
 			<li>
 				 {$key.label} Schl&uuml;ssel seit {$key.lastUpdate|date_format:"%d.%m.%y"}
 			</li>
-		{/foreach}
+			{/foreach}
 		</ul>
 
 		<p>
