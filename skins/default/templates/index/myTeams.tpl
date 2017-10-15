@@ -1,22 +1,17 @@
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
+	<div class="card">
+	<h4 class="card-header">
 			Meine Teams
-		</h3>
-	</div>
-	<div class="panel-body">
+	</h4>
+	<div class="card-body		"	>
 		<table class="table">
 			{foreach item=myTeam from=$myTeams}
 				<tr>
-					<td style="width: 20px";>
-						<img src="{$templateDir}/images/icons/bullet_green.png">
-					</td>
 					<td style="text-align: left;">
 						{$myTeam.name}
 						als {$myTeam.typ|replace:"1":"Spieler"|replace:"2":"Captain / Teamverantwortlicher"|replace:"3":"Trainer"|replace:"4":"Sonstige Funktion"}
 					</td>
 					<td style="text-align: right;">
-						<a data-toggle="tooltip" data-placement="bottom" title="Teamliste mit Kontaktdaten " href="index.php?page=myteam&action=main&teamID={$myTeam.id}">
+						<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Teamliste mit Kontaktdaten " href="index.php?page=myteam&action=main&teamID={$myTeam.id}">
 							<i class="fa fa-users"></i>
 						</a>
 					</td>

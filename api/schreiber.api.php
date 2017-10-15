@@ -17,7 +17,7 @@ use splattner\myvbc\models\MPerson;
 class APISchreiber extends PublicAPI
 {
 
-    public function getSchreiberProposal($args = array(), $input = array()) {
+    public function getSchreiberProposal($args = array()) {
 
         // Get ID
         if (isset($args[3]) ) {
@@ -31,7 +31,7 @@ class APISchreiber extends PublicAPI
         http_response_code(400);
     }
 
-    public function getSchreiber($args = array(), $input = array()) {
+    public function getSchreiber($args = array()) {
 
         // Get ID
         if (isset($args[3]) ) {
@@ -46,7 +46,7 @@ class APISchreiber extends PublicAPI
         http_response_code(400);
     }
 
-    public function getValidSchreiber($args = array(), $input = array()) {
+    public function getValidSchreiber($args = array()) {
 
         // Get ID
         if (isset($args[3]) ) {
@@ -93,7 +93,7 @@ class APISchreiber extends PublicAPI
 
     }
 
-    public function getSchreiberInfo($args = array(), $input = array()) {
+    public function getSchreiberInfo($args = array()) {
 
 
         // Get ID

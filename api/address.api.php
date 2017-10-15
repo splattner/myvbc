@@ -17,7 +17,7 @@ class APIAddress extends PublicAPI
 {
 
 
-    public function getAddresses($args = array(), $input = array()) {
+    public function getAddresses($args = array()) {
 
         $person = new MPerson();
         $where = array();

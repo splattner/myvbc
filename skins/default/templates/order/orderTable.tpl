@@ -1,23 +1,19 @@
-<p class="submenu">
-    <a href="#" data-toggle="modal" data-tooltip="true" data-target="#myModal" title="Neue Lizenzbestelung">
-        <i class="fa fa-plus-square"></i>
-    </a>
-</p>
+<a class="btn btn-outline-dark" href="#" data-toggle="modal" data-tooltip="true" data-target="#myModal" title="Neue Lizenzbestelung">
+    <i class="fa fa-plus-square"></i>
+</a>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">neue Lizenzbestellung</h4>
             </div>
             <div class="modal-body">
-                <form id="licenceform" class="form-horizontal" action="index.php?page={$currentPage}&action=new" method="POST">
+                <form id="licenceform" action="index.php?page={$currentPage}&action=new" method="POST">
                     <input type="hidden" name="doNew" value="true" />
 
-                    <div class="form-group">
-                        <label for="teamid" class="col-sm-2 control-label">Bestellung f&uuml;r Team</label>
+                    <div class="form-group row">
+                        <label for="teamid" class="col-sm-2 col-form-label">Bestellung f&uuml;r Team</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="teamid">
                                 <option value="0">(Team ausw&auml;hlen)</option>
@@ -28,8 +24,8 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="bemerkung" class="col-sm-2 control-label">Bestellung f&uuml;r Team</label>
+                    <div class="form-group row">
+                        <label for="bemerkung" class="col-sm-2 col-form-label">Bemerkung</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" name="comment" id="bemerkung"></textarea>
                         </div>
@@ -47,36 +43,25 @@
 
 {include file='messages/info.tpl'}
 
-<table class="legend">
-    <tr>
-        <td>
-            <img src="{$templateDir}/images/icons/bullet_green.png"> Status: Erfassen<br/>
-            <img src="{$templateDir}/images/icons/bullet_yellow.png"> Status: Bestellung ausgel&ouml;st<br/>
-            <img src="{$templateDir}/images/icons/bullet_blue.png"> Status: In Bearbeitung<br/>
-            <img src="{$templateDir}/images/icons/bullet_red.png"> Status: Abgeschlossen<br/>
-        </td>
-    </tr>
-</table>
-
 <table class="table table-striped">
-    <thead>
+    <thead class="thead-inverse">
     <tr>
         <th width="2%"></th>
         <th width="20%">Datum</th>
         <th width="20%">letzte &Auml;nderung</th>
-        <th width="38%">Kommentar</th>
+        <th width="32%">Kommentar</th>
         <th width="15%">Ausgel&ouml;st durch</th>
-        <th width="5%">&nbsp;</th>
+        <th width="50%">&nbsp;</th>
     </tr>
     </thead>
     <tbody>
     {foreach item=order from=$orders}
         <tr>
             <td>
-                {if $order.status == 1}<img src="{$templateDir}/images/icons/bullet_green.png">{/if}
-                {if $order.status == 2}<img src="{$templateDir}/images/icons/bullet_yellow.png">{/if}
-                {if $order.status == 3}<img src="{$templateDir}/images/icons/bullet_blue.png">{/if}
-                {if $order.status == 4}<img src="{$templateDir}/images/icons/bullet_red.png">{/if}
+                {if $order.status == 1}<a data-tooltip="true" title="Neu" class="btn btn-dark"><i style="color: green" class="fa fa-battery-empty" aria-hidden="true"></i></a>{/if}
+                {if $order.status == 2}<a data-tooltip="true" title="Bestellung ausgel&ouml;st" class="btn btn-dark"><i style="color: yellow" class="fa fa-battery-half" aria-hidden="true"></i></a>{/if}
+                {if $order.status == 3}<a data-tooltip="true" title="In Bearbeitung" class="btn btn-dark"><i style="color: yellow" class="fa fa-battery-three-quarters" aria-hidden="true"></i></a>{/if}
+                {if $order.status == 4}<a data-tooltip="true" title="Abgeschlossen" class="btn btn-dark"><i style="color: white" class="fa fa-battery-full" aria-hidden="true"></i></a>{/if}
             </td>
             <td>
                 {$order.createdate|date_format:"%a, %d %B %y - %H:%M"}
@@ -92,15 +77,15 @@
                 {$order.ownername}
             </td>
             <td align="right">
-                <a data-toggle="tooltip" data-placement="bottom" title="anzeigen &amp; bearbeiten"
+                <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="anzeigen &amp; bearbeiten"
                    href="index.php?page={$currentPage}&action=list&orderID={$order.id}">
                     <i class="fa fa-pencil-square-o"></i>
                 </a>
                 {if (($allowedit && $order.status != 4 )|| ($order.owner == $uid && $order.status == 1))}
-                    <a ata-toggle="tooltip" data-placement="bottom" title="l&ouml;schen"
+                    <a class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="l&ouml;schen"
                        onclick="return confirm('Willst du diesen Bestellung wirklich l&ouml;schen?')"
                        href="index.php?page={$currentPage}&action=delete&orderID={$order.id}">
-                        <i style="color: red;" class="fa fa-trash-o"></i>
+                        <i class="fa fa-trash-o"></i>
                     </a>
                 {/if}
             </td>

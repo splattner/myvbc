@@ -8,7 +8,7 @@ use splattner\framework\Service;
 class ServiceHelper extends Service {
 
 
-	public static function to_utf8($in)
+	public function to_utf8($in)
 	{
 	        if (is_array($in)) {
 	            foreach ($in as $key => $value) {
@@ -25,7 +25,7 @@ class ServiceHelper extends Service {
 	        return $out;
 	}
 	
-	public static function generatePW($length=8) {
+	public function generatePW($length=8) {
 		  
 		$dummy = array_merge(range('0', '9'), range('a', 'z'), range('A', 'Z'));
 		  
@@ -46,7 +46,7 @@ class ServiceHelper extends Service {
 		return substr(implode('',$dummy),0,$length);  
 	}
 	
-	public static function sendSMS($originator, $recipient, $content) {
+	public function sendSMS($originator, $recipient, $content) {
 
         $config = Application::getConfig();
 
@@ -68,7 +68,7 @@ class ServiceHelper extends Service {
 		unset($aspsms);
 	}
 	
-	public static function sendEMail($originator_email, $originator_name, $recipient_email, $recipient_name, $subject, $content) {
+	public function sendEMail($originator_email, $originator_name, $recipient_email, $recipient_name, $subject, $content) {
 		$mail = new PHPMailer();
 				
 		$mail->IsSMTP();

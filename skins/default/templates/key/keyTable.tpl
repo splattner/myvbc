@@ -1,64 +1,54 @@
-<p>
-    <a data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neue Schl&uuml;ssel erfassen" href="#">
-        <i class="fa fa-plus-square"></i>
-    </a>
-</p>
-
-
+<a class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neue Schl&uuml;ssel erfassen" href="#">
+    <i class="fa fa-plus-square"></i>
+</a>
 
 {include file='messages/info.tpl'}
-
-
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">neuer Schl&uuml;ssel</h4>
             </div>
             <div class="modal-body">
-                <form id="keyform" class="form-horizontal" action="index.php?page={$currentPage}&action=new"
-                      method="POST">
+                <div class="container">
+                    <form id="keyform" class="form-horizontal" action="index.php?page={$currentPage}&action=new"
+                          method="POST">
 
-                    <div class="form-group">
-                        <label for="extid" class="col-sm-3 control-label">Person</label>
+                        <div class="form-group row">
+                            <label for="extid" class="col-sm-3 col-form-label">Person</label>
 
-                        <div class="col-sm-9">
-                            <select class="person-select" name="person">
-                                <option value="0" >(Bitte ausw&auml;hlen)</option>
-                                {foreach item=user from=$users}
-                                    <option value="{$user.id}">{$user.name} {$user.prename} </option>
-                                {/foreach}
-                            </select>
+                            <div class="col-sm-9">
+                                <select class="person-select" name="person">
+                                    <option value="0" >(Bitte ausw&auml;hlen)</option>
+                                    {foreach item=user from=$users}
+                                        <option value="{$user.id}">{$user.name} {$user.prename} </option>
+                                    {/foreach}
+                                </select>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="name" class="col-sm-3 control-label">Bezeichnung</label>
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-3 col-form-label">Bezeichnung</label>
 
-                        <div class="col-sm-9">
-                            <input class="form-control" type="text" id="label" name="label">
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" id="label" name="label">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="extname" class="col-sm-3 control-label">Nr</label>
+                        <div class="form-group row">
+                            <label for="extname" class="col-sm-3 col-form-label">Nr</label>
 
-                        <div class="col-sm-9">
-                            <input class="form-control" type="text" id="nr" name="nr">
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" id="nr" name="nr">
+                            </div>
                         </div>
-                    </div>
-
-
-
-
-                </form>
+                    </form>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
-                <button type="submit" class="btn btn-primary" name="doNew" form="keyform">weiter</button>
+                <button type="submit" class="btn btn-dark" name="doNew" form="keyform">weiter</button>
 
             </div>
         </div>
@@ -67,14 +57,14 @@
 
 
 <table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Person</th>
-        <th>Bezeichnung</th>
-        <th>Nummer</th>
-        <th>Datum</th>
-        <th>&nbsp;</th>
-    </tr>
+    <thead class="thead-inverse">
+        <tr>
+            <th>Person</th>
+            <th>Bezeichnung</th>
+            <th>Nummer</th>
+            <th>Datum</th>
+            <th>&nbsp;</th>
+        </tr>
     </thead>
     <tbody>
     {foreach item=key from=$keys}

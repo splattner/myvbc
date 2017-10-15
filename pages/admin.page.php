@@ -29,8 +29,7 @@ class PageAdmin extends MyVBCPage
 
 	
 	public function mainAction() {
-		$this->smarty->assign("subContent1", "administration/overview.tpl");
-		
+	
 	}
 	
 	public function accessAction() {
@@ -92,7 +91,7 @@ class PageAdmin extends MyVBCPage
 	
 	
 	public function editReportAction() {
-		$reportID = $this->db->qstr($_GET["reportID"]);
+		$reportID = $_GET["reportID"];
 		
 		if (isset($_POST["doEdit"])) {
 			

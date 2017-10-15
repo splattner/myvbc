@@ -26,17 +26,15 @@
 
 </style>
 
-<p class="submenu">
-    <a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=address"><i class="fa fa-caret-square-o-left"></i></a>
-    <a data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
-        <i class="fa fa-print"></i>
-    </a>
-    -
-    <a data-toggle="tooltip" data-placement="bottom" title="Infoblatt" href="docs/Beilage_Infoblatt.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
-    <a data-toggle="tooltip" data-placement="bottom" title="Finanz- und Bussenreglement" href="docs/Finanz- und Bussenreglement.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
-    <a data-toggle="tooltip" data-placement="bottom" title="Statuten" href="docs/Statuten.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=address"><i class="fa fa-caret-square-o-left"></i></a>
+<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
+    <i class="fa fa-print"></i>
+</a>
+-
+<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Infoblatt" href="docs/Beilage_Infoblatt.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Finanz- und Bussenreglement" href="docs/Finanz- und Bussenreglement.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Statuten" href="docs/Statuten.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
 
-</p>
 
 <img src="skins/default/images/logo_vbcl.gif" />
 

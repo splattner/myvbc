@@ -1,16 +1,14 @@
-<table class="edit">
-	<tr>
-		<th width="30%">
-			Mitglied bearbeiten
-		</th>
-		<th width="70%" style="text-align: right;">
-			<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i style="color: red" class="fa fa-times"></i></a>
-		</th>
-	</tr>
-	<tr>
-		<td colspan="2">{$plugins.persondata}</td>
-	</tr>
-</table>
+<div class="card">
+	<h4 class="card-header">
+		<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main">
+			<i class="fa fa-times"></i>
+		</a>
+		Mitglied bearbeiten
+	</h4>
+	<div class="card-body">
+		{$plugins.persondata}
+		{$plugins.history}
+	</div>
+</div>
 
-{$plugins.history}
 

@@ -1,6 +1,5 @@
-<p>
-	<a data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fa fa-caret-square-o-left"></i></a>
-</p>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fa fa-caret-square-o-left"></i></a>
+
 
 <h3>Spiele importieren</h3>
 
@@ -9,7 +8,7 @@
 Team ausw&auml;hlen:
 <select ng-change="getGames()" ng-model="selectedTeam" ng-options="team.name for team in teams track by team.id" >
 </select>
-<a data-toggle="tooltip" ng-click="importGames()" data-placement="bottom" title="Spiele importieren" href="#"><i class="fa fa-plus-square"></i></a>
+<a class="btn btn-outline-dark" data-toggle="tooltip" ng-click="importGames()" data-placement="bottom" title="Spiele importieren" href="#"><i class="fa fa-plus-square"></i></a>
 </p>
 
 <table class="legend">
@@ -23,7 +22,7 @@ Team ausw&auml;hlen:
 </table>
 
 <table class="table table-striped">
-    <thead>
+    <thead class="thead-inverse">
 	<tr>
 		<th>&nbsp;</th>
 		<th>Datum / Zeit</th>

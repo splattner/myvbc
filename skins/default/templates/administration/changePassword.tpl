@@ -1,41 +1,31 @@
-<form action="index.php?page={$currentPage}&action=changePassword" method="POST">
-<table class="edit">
-	<tr>
-		<th width="30%">
-			Passwort &auml;ndern
-		</th>
-		<th width="70%" style="text-align: right;">
-		</th>
-	</tr>
-	<tr>
-		<td width="30%">
-			Person ausw&auml;hlen
-		</td>
-		<td width="70%">
-			<select class="person-select" name="personID">
-				<option value="0" >(Bitte ausw&auml;hlen)</option>
-				{foreach item=user from=$users}
-					<option value="{$user.id}">{$user.prename} {$user.name}</option>
-				{/foreach}
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td width="30%">
-			Passwort
-		</td>
-		<td width="70%">
-			<input type="password" name="password" />
-		</td>
-	</tr>
-	<td>
-		<td colspan="2">
-			<input class="btn btn-primary" type="submit" name="changePassword" value="&auml;ndern">
-		</td>
-	</tr>
+<div class="card">
+	<h4 class="card-header">
+		Passwort &auml;ndern
+	</h4>
+	<div class="card-body">
+		<form action="index.php?page={$currentPage}&action=changePassword" method="POST">
+			<div class="form-group row">
+				<div class="col-sm-2">Person ausw&auml;hlen</div>
+				<div class="col-sm-10">
+					<select class="form-control person-select" name="personID">
+						<option value="0" >(Bitte ausw&auml;hlen)</option>
+						{foreach item=user from=$users}
+							<option value="{$user.id}">{$user.prename} {$user.name}</option>
+						{/foreach}
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-2">Passwort</div>
+				<div class="col-sm-10">
+					<input class="form-controltype="password" name="password" />
+				</div>
+			</div>
 
-</table>
-</form>
+			<input class="btn btn-dark" type="submit" name="changePassword" value="&auml;ndern">
+		</form>
+	</div>
+</div>
 
 <script type="text/javascript">
 	$('.person-select').chosen();

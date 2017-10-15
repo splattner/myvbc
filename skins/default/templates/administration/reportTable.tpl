@@ -1,10 +1,9 @@
 <h3>Berichte Verwaltung</h3>
 
-<p>
-	<a data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neuer Bericht erfassen" href="#">
-		<i class="fa fa-plus-square"></i>
-	</a>
-</p>
+<a class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neuer Bericht erfassen" href="#">
+	<i class="fa fa-plus-square"></i>
+</a>
+
 
 {include file='messages/info.tpl'}
 
@@ -12,27 +11,25 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title" id="myModalLabel">neuer Report</h4>
 			</div>
 			<div class="modal-body">
-				<form id="reportform" class="form-horizontal" action="index.php?page={$currentPage}&action=addReport"
+				<form id="reportform" action="index.php?page={$currentPage}&action=addReport"
 					  method="POST">
 
-					<div class="form-group">
-						<label for="title" class="col-sm-3 control-label">Titel</label>
+					<div class="form-group row">
+						<label for="title" class="col-sm-3 col-form-label">Titel</label>
 
 						<div class="col-sm-9">
 							<input class="form-control" type="text" id="title" name="title">
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label for="query" class="col-sm-3 control-label">Query</label>
+					<div class="form-group row">
+						<label for="query" class="col-sm-3 col-form-label">Query</label>
 
 						<div class="col-sm-9">
-							<textarea lass="form-control" id="query" name="query" rows="20" cols="40"></textarea>
+							<textarea cass="form-control" id="query" name="query" rows="20" cols="40"></textarea>
 						</div>
 					</div>
 
@@ -47,22 +44,22 @@
 	</div>
 </div>
 
-<table class="table table-striped">
-	<thead>
-<tr>
-	<th>Titel</th>
-	<th>&nbsp;</th>
-</tr>
+<table class="table table-striped table-sm">
+	<thead class="thead-inverse">
+		<tr>
+			<th>Titel</th>
+			<th>&nbsp;</th>
+		</tr>
 	</thead>
 	<tbody>
 		{foreach item=report from=$reports}
 		<tr>
 			<td>{$report.title}</td>
 			<td align="right">
-				<a class="icons" data-toggle="tooltip" data-placement="bottom" title="Report bearbeiten" href="index.php?page={$currentPage}&action=editReport&reportID={$report.id}">
+				<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Report bearbeiten" href="index.php?page={$currentPage}&action=editReport&reportID={$report.id}">
 					<i class="fa fa-pencil-square-o"></i>
 				</a>
-				<a onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" data-toggle="tooltip" data-placement="bottom" title="Report l&ouml;schen" href="index.php?page={$currentPage}&action=deleteReport&reportID={$report.id}">
+				<a class="btn btn-outline-danger" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" data-toggle="tooltip" data-placement="bottom" title="Report l&ouml;schen" href="index.php?page={$currentPage}&action=deleteReport&reportID={$report.id}">
 					<i style="color: red;" class="fa fa-trash-o"></i>
 				</a>
 

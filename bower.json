@@ -16,9 +16,9 @@
   ],
   "dependencies": {
     "angular": "1.5.8",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "4.0.0-beta",
     "eonasdan-bootstrap-datetimepicker": "^4.17.42",
     "jquery": "^3.1.0",
-    "moment": "^2.14.1"
+    "moment": "^2.14.1" 
   }
 }

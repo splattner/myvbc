@@ -10,7 +10,7 @@ class APINotification extends PublicAPI
 {
 
 
-    public function getAllNotifications($args = array(), $input = array()) {
+    public function getAllNotifications($args = array()) {
 
         $notification = new MNotification();
         $result = $notification->getAllNotifications()->fetchAll();

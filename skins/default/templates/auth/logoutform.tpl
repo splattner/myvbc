@@ -1,8 +1,8 @@
-<div style="width:70%; margin: auto;" class="panel panel-warning">
-    <div class="panel-heading">
-        <h3 class="panel-title">Logout</h3>
+<div class="card card-warning">
+    <div class="card-header">
+        Logout
     </div>
-    <div class="panel-body">
+    <div class="card-body">
 
         <form action="?page=auth&action=logout" method="post">
             <p>

@@ -1,24 +1,18 @@
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
+<div class="card">
+	<h4 class="card-header">
 		Meine Daten
-		<a  data-toggle="tooltip" data-placement="bottom" title="Meine Daten bearbeiten" href="index.php?page=mydata&action=edit">
+		<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Meine Daten bearbeiten" href="index.php?page=mydata&action=edit">
 			<i class="fa fa-pencil-square-o"></i>
 		</a>
-		<a data-toggle="modal" data-target="#myModal" title="Meine Password &auml;ndern" href="#">
+		<a class="btn btn-outline-dark		" data-tooltip="true" data-placement="bottom" data-toggle="modal" data-target="#myModal" title="Mein Password &auml;ndern" href="#">
 			<i class="fa fa-key"></i>
 		</a>
-		</h3>
-
-	</div>
-	<div class="panel-body">
-		<p class="hightlight">
+	</h4>
+	<div class="card-body">
+		<p>
 			{$user.prename} {$user.name}<br />
 			{$user.address}<br />
 			{$user.plz} {$user.ort}
-		</p>
-
-		<p class="hightlight">
 			Telephon: {$user.phone}<br />
 			Mobile: {$user.mobile}<br />
 			E-Mail: {$user.email}<br />
@@ -27,13 +21,13 @@
 		<p>
 			Die folgenden Schl&uuml;ssel sind mir zugeordnet:
 		</p>
-		<ul>
 
-		{foreach item=key from=$keys}
+		<ul>
+			{foreach item=key from=$keys}
 			<li>
 				 {$key.label} Schl&uuml;ssel seit {$key.lastUpdate|date_format:"%d.%m.%y"}
 			</li>
-		{/foreach}
+			{/foreach}
 		</ul>
 
 		<p>
@@ -48,35 +42,34 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title" id="myModalLabel">Passwort &auml;ndern</h4>
 			</div>
 			<div class="modal-body">
-				<form id="teamform" class="form-horizontal" action="index.php?page=mydata&action=editPassword"
-					  method="POST">
+				<div class="container">
+					<form id="teamform" action="index.php?page=mydata&action=editPassword" method="POST">
 
-					<div class="form-group">
-						<label for="password" class="col-sm-3 control-label">Password</label>
+						<div class="form-group row">
+							<label for="password" class="col-sm-3 col-form-label">Password</label>
 
-						<div class="col-sm-9">
-							<input class="form-control" type="password" id="password" name="password">
+							<div class="col-sm-9">
+								<input class="form-control" type="password" id="password" name="password">
+							</div>
 						</div>
-					</div>
 
-					<div class="form-group">
-						<label for="confirm" class="col-sm-3 control-label">Passwort best&auml;tigen</label>
+						<div class="form-group row">
+							<label for="confirm" class="col-sm-3 col-form-label">Passwort best&auml;tigen</label>
 
-						<div class="col-sm-9">
-							<input class="form-control" type="password" id="confirm" name="confirm">
+							<div class="col-sm-9">
+								<input class="form-control" type="password" id="confirm" name="confirm">
+							</div>
 						</div>
-					</div>
 
-				</form>
+					</form>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
-				<button type="submit" class="btn btn-primary" name="doEdit" form="teamform">&auml;ndern</button>
+				<button type="submit" class="btn btn-dark" name="doEdit" form="teamform">&auml;ndern</button>
 
 			</div>
 		</div>

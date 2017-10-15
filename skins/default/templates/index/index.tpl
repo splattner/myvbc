@@ -1,4 +1,4 @@
-{if $isAuth}
+	{if $isAuth}
 
     {include file='messages/info.tpl'}
 
@@ -8,29 +8,38 @@
 	{include file='index/mySchreiber.tpl'}
 	{include file='index/myRefGames.tpl'}
 {else}
-<table class="overview">
-<tr>
-	<td style="text-align: center;width: 200px; height: 200px;">
-		<img src="{$templateDir}/images/logo_vbcl.gif">
-	</td>
-	<td style="">
-		<h3>
+<div class="card">
+	<div class="card-body">
+		<h4 class="card-title">
 			Willkommen in der VBC Langenthal Web-Verwaltung
-		</h3>
+		</h4>
 		<p>
 			Um die Funktionen dieser Web-Verwaltung zu benutzen, m&uuml;ssen Sie sich zuerst authentifizieren.
 		</p>
 
-		<p class="indented">
-			<a href="?page=auth"><i class="fa fa-sign-in"></i>&nbsp;Mit E-Mail Adresse und Passwort anmelden</a>
-		</p>
-		
-				
-		<p> <i class="fa fa-exclamation-circle"></i> Wenn Sie noch keinen Zugang haben, schreiben Sie bitte eine E-Mail an <a href="mailto:myVBC@vbclangenthal.ch" >myVBC@vbclangenthal.ch</a> um einen
+
+		<div class="card card-primary">
+
+			<div class="card-body">
+		        <form action="?page=auth&action=login" method="post">
+		            <div class="form-group input-group">
+		                <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+		                <input type="email" class="form-control" id="email" placeholder="E-Mail Adresse" name="email">
+		            </div>
+		            <div class="form-group input-group">
+		                <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+		                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+		            </div>
+
+		            <button type="submit" class="btn btn-dark" value="Login" name="doLogin"><i class="fa fa-sign-in"></i> Login</button>
+		        </form>
+			</div>
+			<div class="card-footer">
+				<i class="fa fa-exclamation-circle"></i> Wenn Sie noch keinen Zugang haben, schreiben Sie bitte eine E-Mail an <a href="mailto:myVBC@vbclangenthal.ch" >myVBC@vbclangenthal.ch</a> um einen
 			Zugang einzurichten!
-		</p>
-	</td>
-</tr>
-</table>
+			<div>
+		</div>
+	</div>
+</div>
 
 {/if}
