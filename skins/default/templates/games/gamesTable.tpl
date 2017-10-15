@@ -1,7 +1,6 @@
 <div ng-controller="GameController">
-<p>
-	<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Spiele importieren" href="index.php?page={$currentPage}&action=import"><i class="fa fa-cloud-download"></i></a>
-</p>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Spiele importieren" href="index.php?page={$currentPage}&action=import"><i class="fa fa-cloud-download"></i></a>
+
 
 <p>
 Team ausw&auml;hlen:

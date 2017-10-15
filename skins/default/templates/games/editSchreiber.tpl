@@ -1,9 +1,9 @@
 <div data-gameID="{$gameID}" ng-controller="SchreiberController">
 	<div class="card">
-		<div class="card-header">
+		<h4 class="card-header">
 			<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fa fa-times"></i></a>
 			Schreiber zu Spiel hinzuf&uuml;gen
-		</div>
+		</h4>
 		<div class="card-body">
 			<div class="form-group row">
 				<div class="col-sm-2">Spiel</div>

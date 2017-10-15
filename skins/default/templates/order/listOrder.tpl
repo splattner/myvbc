@@ -1,9 +1,9 @@
 {include file='messages/info.tpl'}
 <div data-allowEdit="{$allowedit}" data-orderID="{$orderID}" ng-controller="OrderController">
     <div class="card">
-        <div class="card-header">
+        <h4 class="card-header">
             <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=order&action=main"><i class="fa fa-times"></i></a> Bestellung bearbeiten
-        </div>
+        </h4>
         <div class="card-body">
             <form action="index.php?page=order&action=editorder&orderID=" method="POST">
                 <div class="row">

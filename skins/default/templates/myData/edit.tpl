@@ -1,10 +1,10 @@
 <div class="card">
-	<div class="card-header">
+	<h4 class="card-header">
 		<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index&&action=main">
 			<i class="fa fa-times"></i>
 		</a>
 		Meine Daten bearbeiten
-	</div>
+	</h4>
 	<div class="card-body">
 		{$plugins.persondata}
 		{$plugins.history}

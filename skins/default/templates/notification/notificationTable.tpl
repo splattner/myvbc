@@ -1,8 +1,6 @@
-<p>
-    <a class="btn btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Alle l&ouml;schen" href="index.php?page={$currentPage}&action=delete&notificationID=0">
-        <i class="fa fa-trash-o"></i>
-    </a>
-</p>
+<a class="btn btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Alle l&ouml;schen" href="index.php?page={$currentPage}&action=delete&notificationID=0">
+    <i class="fa fa-trash-o"></i>
+</a>
 <table class="table table-striped">
 	<thead  class="thead-inverse">
 		<tr>

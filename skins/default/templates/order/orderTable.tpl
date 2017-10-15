@@ -1,8 +1,6 @@
-<p class="submenu">
-    <a class="btn btn-outline-dark" href="#" data-toggle="modal" data-tooltip="true" data-target="#myModal" title="Neue Lizenzbestelung">
-        <i class="fa fa-plus-square"></i>
-    </a>
-</p>
+<a class="btn btn-outline-dark" href="#" data-toggle="modal" data-tooltip="true" data-target="#myModal" title="Neue Lizenzbestelung">
+    <i class="fa fa-plus-square"></i>
+</a>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">

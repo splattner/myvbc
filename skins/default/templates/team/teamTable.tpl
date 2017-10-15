@@ -1,9 +1,7 @@
-<p>
-    <a class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neue Team erfassen" href="#">
-        <i class="fa fa-plus-square"></i>
-    </a>
-</p>
 
+<a class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neue Team erfassen" href="#">
+    <i class="fa fa-plus-square"></i>
+</a>
 {include file='messages/info.tpl'}
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
