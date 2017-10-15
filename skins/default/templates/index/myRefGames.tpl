@@ -1,7 +1,7 @@
 <div class="card">
-	<div class="card-header">
+	<h4 class="card-header">
 		Meine Schiedsrichtereins&auml;tze
-	</div>
+	</h4>
 	<div class="card-body">
 		<table class="table table-striped">
 

@@ -1,7 +1,7 @@
 <div class="card">
-	<div class="card-header">
+	<h4 class="card-header">
 		Passwort &auml;ndern
-	</div>
+	</h4>
 	<div class="card-body">
 		<form action="index.php?page={$currentPage}&action=changePassword" method="POST">
 			<div class="form-group row">

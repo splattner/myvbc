@@ -2,6 +2,7 @@
 
 namespace splattner\myvbc\pages;
 use splattner\framework\Application;
+use splattner\myvbc\models\MPerson;
 
 
 class PageAuth extends MyVBCPage
@@ -12,9 +13,9 @@ class PageAuth extends MyVBCPage
 		$this->pagename = "auth";
 		$this->template = "auth/auth.tpl";
 
-		$this->acl->allow("guest",["main","login","logout"], ["view"]);
-		$this->acl->allow("registered",["main","login","logout"], ["view"]);
-		$this->acl->allow("administrator",["createAccess","login","logout"], ["view"]);
+		$this->acl->allow("guest",["main","createAccess", "login","logout"], ["view"]);
+		//$this->acl->allow("registered",["main","login","logout"], ["view"]);
+		//$this->acl->allow("administrator",["createAccess","login","logout"], ["view"]);
 	}
 	
 	public function init() {
@@ -53,15 +54,17 @@ class PageAuth extends MyVBCPage
 	public function createAccessAction() {
 		
 		$personID = $_POST["personID"];
-		
+
+
 		if (isset($_POST["doAdd"])) {
-			$person = new MPerson();
+			$person = new MPerson();	
 			
 			$rs = $person->getRS(array($person->pk ." =" => $personID));
 			$currentPerson = $rs->fetch();
-			$currentPerson = $currentPerson[0];
+
+			$helper = Application::getService("ServiceHelper");
 			
-			$password = Helper::generatePW(8);
+			$password = $helper->generatePW(8);
 			
 			$content = "Zugangsdaten für myVBC\nE-Mail Adresse: " . $currentPerson["email"] . "\nPasswort: " . $password;
 			
@@ -70,7 +73,7 @@ class PageAuth extends MyVBCPage
 							
 				$this->smarty->assign("messages","Ihr Zugang wurde erstellt und das Passwort wurde Ihnen zugesandt");	
 			} else {
-				$mail = new PHPMailer();
+				$mail = new \PHPMailer();
 				
 				$mail->IsSMTP();
 
@@ -104,12 +107,12 @@ class PageAuth extends MyVBCPage
 			
 			$person = new MPerson();
 			$rs = $person->getRS(array($person->pk ." =" => $personID));
-			$this->smarty->assign("persons", $rs->fetchAll());
+			$this->smarty->assign("persons", $rs->fetch());
 			
 		} else {
 			$this->setTemplate("auth/choosePerson.tpl");
 			$persons = new MPerson();
-			$rs = $persons->getRS(array("password IS" => "NULL", "active =" => "1"),array("name" => "ASC", "prename" =>  "ASC"));
+			$rs = $persons->getRS(array("password =" => "", "active =" => "1"),array("name" => "ASC", "prename" =>  "ASC"));
 			$this->smarty->assign("users", $rs->fetchAll());
 		}
 		

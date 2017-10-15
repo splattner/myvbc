@@ -1,13 +1,11 @@
-<p class="submenu">
-    <a class="btn btn-outline-dark" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Neue Person erfassen"
-       href="index.php?page={$currentPage}&action=new">
-        <i class="fa fa-plus-square"></i>
-    </a>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Neue Person erfassen"
+   href="index.php?page={$currentPage}&action=new">
+    <i class="fa fa-plus-square"></i>
+</a>
 
-    <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
-        <i class="fa fa-print"></i>
-    </a>
-</p>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
+    <i class="fa fa-print"></i>
+</a>
 
 {include file='messages/info.tpl'}
 

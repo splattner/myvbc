@@ -1,10 +1,9 @@
 <h3>Zugangsverwaltung Verwaltung</h3>
 
-<p>
-	<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Neue Zugangsberechtigung zum System hinzuf&uuml;gen" href="index.php?page={$currentPage}&action=addAccess">
-		<i class="fa fa-plus-square"></i>
-	</a>
-</p>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Neue Zugangsberechtigung zum System hinzuf&uuml;gen" href="index.php?page={$currentPage}&action=addAccess">
+	<i class="fa fa-plus-square"></i>
+</a>
+
 
 {include file='messages/info.tpl'}
 

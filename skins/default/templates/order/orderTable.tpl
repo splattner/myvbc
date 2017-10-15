@@ -45,17 +45,6 @@
 
 {include file='messages/info.tpl'}
 
-<table class="legend">
-    <tr>
-        <td>
-            <img src="{$templateDir}/images/icons/bullet_green.png"> Status: Erfassen<br/>
-            <img src="{$templateDir}/images/icons/bullet_yellow.png"> Status: Bestellung ausgel&ouml;st<br/>
-            <img src="{$templateDir}/images/icons/bullet_blue.png"> Status: In Bearbeitung<br/>
-            <img src="{$templateDir}/images/icons/bullet_red.png"> Status: Abgeschlossen<br/>
-        </td>
-    </tr>
-</table>
-
 <table class="table table-striped">
     <thead class="thead-inverse">
     <tr>
@@ -71,10 +60,10 @@
     {foreach item=order from=$orders}
         <tr>
             <td>
-                {if $order.status == 1}<img src="{$templateDir}/images/icons/bullet_green.png">{/if}
-                {if $order.status == 2}<img src="{$templateDir}/images/icons/bullet_yellow.png">{/if}
-                {if $order.status == 3}<img src="{$templateDir}/images/icons/bullet_blue.png">{/if}
-                {if $order.status == 4}<img src="{$templateDir}/images/icons/bullet_red.png">{/if}
+                {if $order.status == 1}<a data-tooltip="true" title="Neu" class="btn btn-dark"><i style="color: green" class="fa fa-battery-empty" aria-hidden="true"></i></a>{/if}
+                {if $order.status == 2}<a data-tooltip="true" title="Bestellung ausgel&ouml;st" class="btn btn-dark"><i style="color: yellow" class="fa fa-battery-half" aria-hidden="true"></i></a>{/if}
+                {if $order.status == 3}<a data-tooltip="true" title="In Bearbeitung" class="btn btn-dark"><i style="color: yellow" class="fa fa-battery-three-quarters" aria-hidden="true"></i></a>{/if}
+                {if $order.status == 4}<a data-tooltip="true" title="Abgeschlossen" class="btn btn-dark"><i style="color: white" class="fa fa-battery-full" aria-hidden="true"></i></a>{/if}
             </td>
             <td>
                 {$order.createdate|date_format:"%a, %d %B %y - %H:%M"}

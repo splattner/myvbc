@@ -1,10 +1,8 @@
 <h3>Benachrichtigungs Verwaltung</h3>
 
-<p>
-	<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Person auf einen Nachrichtentype einschreiben" href="index.php?page={$currentPage}&action=addNoteSubscription">
-		<i class="fa fa-plus-square"></i>
-	</a>
-</p>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Person auf einen Nachrichtentype einschreiben" href="index.php?page={$currentPage}&action=addNoteSubscription">
+	<i class="fa fa-plus-square"></i>
+</a>
 
 {include file='messages/info.tpl'}
 

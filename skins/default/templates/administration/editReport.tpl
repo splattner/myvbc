@@ -1,7 +1,7 @@
 <div class="card">
-	<div class="card-header">
+	<h4 class="card-header">
 		<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck" href="index.php?page={$currentPage}&action=report"><i class="fa fa-times"></i></a> Bericht bearbeiten
-	</div>
+	</h4>
 	<div class="card-body">
 		<form action="index.php?page={$currentPage}&action=editReport&reportID={$report[0].id}" method="POST">
 			<div class="form-group row">

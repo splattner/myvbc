@@ -1,8 +1,8 @@
 {if !empty($mySchreibers)}
 <div class="card">
-	<div class="card-header">
+	<h4 class="card-header">
 		Meine Schreibereinsätze
-	</div>
+	</h4>
 	<div class="card-body">
 		<table class="table table-striped">
 		{foreach item=mySchreiber from=$mySchreibers}

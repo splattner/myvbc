@@ -1,7 +1,7 @@
 <div class="card">
-	<div class="card-header">
+	<h4 class="card-header">
 		<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=access"><i class="fa fa-times"></i></a> Zugang hinzuf&uuml;gen
-	</div>
+	</h4>
 	<div class="card-body">
 		<form action="index.php?page={$currentPage}&action=addAccess" method="POST">
 		<div class="form-group row">

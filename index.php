@@ -36,21 +36,6 @@ require_once "etc/confic.inc.php";
 Application::init($config);
 
 
-/**
- * SEO Stuff
- */
-if (isset($_GET["schreiberplan"])) {
-	$_GET["page"] = "report";
-	$_GET["action"] = "getReport";
-	$_GET["reportID"] = "5";
-}
-
-if(isset($_GET["register"])) {
-	$_GET["page"] = "auth";
-	$_GET["action"] = "createAccess";
-}
-
-
 Application::createPage();
 Application::run();
 Application::finish();

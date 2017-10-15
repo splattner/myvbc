@@ -1,9 +1,9 @@
 <h3>Berichte Verwaltung</h3>
-<p>
-	<a class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neuer Bericht erfassen" href="#">
-		<i class="fa fa-plus-square"></i>
-	</a>
-</p>
+
+<a class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neuer Bericht erfassen" href="#">
+	<i class="fa fa-plus-square"></i>
+</a>
+
 
 {include file='messages/info.tpl'}
 

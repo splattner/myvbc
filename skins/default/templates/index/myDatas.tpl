@@ -1,5 +1,5 @@
 <div class="card">
-	<div class="card-header">
+	<h4 class="card-header">
 		Meine Daten
 		<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Meine Daten bearbeiten" href="index.php?page=mydata&action=edit">
 			<i class="fa fa-pencil-square-o"></i>
@@ -7,7 +7,7 @@
 		<a class="btn btn-outline-dark		" data-tooltip="true" data-placement="bottom" data-toggle="modal" data-target="#myModal" title="Mein Password &auml;ndern" href="#">
 			<i class="fa fa-key"></i>
 		</a>
-	</div>
+	</h4>
 	<div class="card-body">
 		<p>
 			{$user.prename} {$user.name}<br />

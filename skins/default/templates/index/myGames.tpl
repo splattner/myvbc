@@ -1,7 +1,7 @@
 <div class="card">
-	<div class="card-header">
+	<h4 class="card-header">
 		Meine Spiele
-	</div>
+	</h4>
 	<div class="card-body">
 		<table class="table table-striped">
 			{foreach item=myGame from=$myGames}
