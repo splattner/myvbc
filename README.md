@@ -15,13 +15,13 @@ MyVBC - Online Administration for a Volleyball Club
 
 ## Screenshots
 
-<img src="/docs/images/myvbc.png" width="30%"></img>
-<img src="/docs/images/login.png" width="30%"></img>
-<img src="/docs/images/adressen" width="30%"></img>
-<img src="/docs/images/teams"></img>
-<img src="/docs/images/teammitglieder.png" width="30%"></img>
-<img src="/docs/images/lizenzen.png" width="30%"></img>
-<img src="/docs/images/spiele_schreiber.png" width="30%"></img> 
+<img src="/doc/images/myvbc.png" width="30%"></img>
+<img src="/doc/images/login.png" width="30%"></img>
+<img src="/doc/images/adressen" width="30%"></img>
+<img src="/doc/images/teams"></img>
+<img src="/doc/images/teammitglieder.png" width="30%"></img>
+<img src="/doc/images/lizenzen.png" width="30%"></img>
+<img src="/doc/images/spiele_schreiber.png" width="30%"></img> 
 
 # Installation
 
