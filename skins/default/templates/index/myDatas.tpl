@@ -12,7 +12,7 @@
 		<p>
 			{$user.prename} {$user.name}<br />
 			{$user.address}<br />
-			{$user.plz} {$user.ort}
+			{$user.plz} {$user.ort} <br />
 			Telephon: {$user.phone}<br />
 			Mobile: {$user.mobile}<br />
 			E-Mail: {$user.email}<br />

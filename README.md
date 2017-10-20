@@ -3,7 +3,34 @@ MyVBC - Online Administration for a Volleyball Club
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4c276e5990f140168513b17530eefd62)](https://www.codacy.com/app/splattner/myvbc?utm_source=github.com&utm_medium=referral&utm_content=splattner/myvbc&utm_campaign=badger)
 
+# Features
+
+* Membermanagement, for Addresses of the Members
+* Teammanagement, which Teams do we have and which Member is part of the Team
+* Licence Ordering, for easy licence Ordering for the Team-Responsible
+* Gamemanagement, All Games directly imported from SwissVoller or Swissvolley Region Solothurn
+* Game-Writer Management, easy assign Writer to a Game
+* Keymanagement, all (Physical)-Keys from the Club, 
+* Reports, some preconfigured Reports
+
+## Screenshots
+
+<img src="/docs/images/myvbc.png" width="30%"></img>
+<img src="/docs/images/login.png" width="30%"></img>
+<img src="/docs/images/adressen" width="30%"></img>
+<img src="/docs/images/teams"></img>
+<img src="/docs/images/teammitglieder.png" width="30%"></img>
+<img src="/docs/images/lizenzen.png" width="30%"></img>
+<img src="/docs/images/spiele_schreiber.png" width="30%"></img> 
+
 # Installation
+
+## Requirements
+
+* A webserver with PHP 7.0
+* MySQL Database
+* Composer
+
 ## Checkout or download
 
 Checkout Project from Github:
@@ -19,7 +46,7 @@ Download Release from: https://github.com/splattner/myvbc/releases
 ## Run Composer for Dependencies
 
 ```
-composer install // Change this to suit your composer environment.
+composer install
 ```
 
 
@@ -50,7 +77,7 @@ MYSQL_DB_NAME
 
 ## Deploy database shema
 
-Run ```install.php```to deploy Database
+Run ```install.php```to deploy Database. This script does install the DB Schema or makes an update to a current Database.
 
 ## Login
 
