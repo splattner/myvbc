@@ -82,7 +82,7 @@
 </div>
 
 
-<table class="table table-striped">
+<table class="table table-striped table-sm">
     <thead class="thead-inverse">
         <tr>
             <th>Externer Namen</th>

@@ -9,7 +9,7 @@
 
 {include file='messages/info.tpl'}
 
-<table class="table table-striped">
+<table class="table table-striped table-sm">
 	<thead class="thead-inverse">
 	<tr>
 		<th>&nbsp;</th>

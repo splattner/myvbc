@@ -56,7 +56,7 @@
 </div>
 
 
-<table class="table table-striped">
+<table class="table table-striped table-sm">
     <thead class="thead-inverse">
         <tr>
             <th>Person</th>
@@ -75,7 +75,7 @@
             <td>{$key.lastUpdate|date_format:"%d.%m.%y"}</td>
             <td align="right">
                 </a>
-                <a onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" data-toggle="tooltip" data-placement="bottom" title="Schl&uuml;ssel löschen" href="index.php?page={$currentPage}&action=delete&keyID={$key.id}">
+                <a class="btn btn-outline-dark" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" data-toggle="tooltip" data-placement="bottom" title="Schl&uuml;ssel löschen" href="index.php?page={$currentPage}&action=delete&keyID={$key.id}">
                     <i style="color: red;" class="fa fa-trash-o"></i>
                 </a>
             </td>
