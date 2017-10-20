@@ -47,5 +47,8 @@ $config["system"]["acl"] = $acl;
 $config["aspsms"]["username"] = "";
 $config["aspsms"]["password"] = "";
 
+$config["mailman"]["baseurl"] = "";
+$config["mailman"]["adminpw"] = "";
+
 
 ?>

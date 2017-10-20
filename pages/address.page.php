@@ -67,7 +67,7 @@ class PageAddress extends MyVBCPage
 		$personID = $_GET["personID"];
 		
 		$person = new MPerson();
-		$person->delete(array("id" => $personID));
+		$person->delete(array($person->pk => $personID));
 		
 		$this->smarty->assign("messages","Person wurde aus Datenbank gel&ouml;scht!");
 		

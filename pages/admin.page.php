@@ -8,6 +8,7 @@ use splattner\myvbc\models\MReport;
 use splattner\myvbc\models\MPlayer;
 use splattner\myvbc\models\MGame;
 use splattner\myvbc\models\MNotification;
+use splattner\mailmanapi\MailmanAPI;
 
 
 
@@ -19,7 +20,7 @@ class PageAdmin extends MyVBCPage
 		$this->pagename = "admin";
 		$this->template = "administration/administration.tpl";
 
-		$this->acl->allow("administrator",["main", "access", "addAccess", "removeAccess", "report","editReport","addReport","deleteReport","functions","updateStatus","clearGames","changePassword","notifications","deleteNote","deleteNoteSubscription","addNoteSubscription"], ["view"]);
+		$this->acl->allow("administrator",["main", "access", "addAccess", "removeAccess", "report","editReport","addReport","deleteReport","functions","updateStatus","clearGames","changePassword","notifications","deleteNote","deleteNoteSubscription","addNoteSubscription","syncMailMan"], ["view"]);
 	}
 	
 	public function init() {
@@ -154,6 +155,24 @@ class PageAdmin extends MyVBCPage
 		
 		
 		$this->smarty->assign("messages","Status wurde aktualisiert");
+		
+		return "functions";
+	}
+
+	public function syncMailManAction() {
+		
+		$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+
+		// Remove all Members
+		$allMembers = $mailman->getMemberlist();
+		$mailman->removeMembers($allMembers);
+
+		// Add new Members
+		$person = new MPerson();
+		$allMembers = $person->getEMailActive();
+		$mailman->addMembers($allMembers);
+		
+		$this->smarty->assign("messages","Mailman synced");
 		
 		return "functions";
 	}
