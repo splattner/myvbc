@@ -10,7 +10,7 @@ MyVBC - Online Administration for a Volleyball Club
 * Licence Ordering, for easy licence Ordering for the Team-Responsible
 * Gamemanagement, All Games directly imported from SwissVoller or Swissvolley Region Solothurn
 * Game-Writer Management, easy assign Writer to a Game
-* Keymanagement, all (Physical)-Keys from the Club, 
+* Keymanagement, all (Physical)-Keys from the Club,
 * Reports, some preconfigured Reports
 
 ## Screenshots
@@ -21,7 +21,7 @@ MyVBC - Online Administration for a Volleyball Club
 <img src="/doc/images/teams"></img>
 <img src="/doc/images/teammitglieder.png" width="30%"></img>
 <img src="/doc/images/lizenzen.png" width="30%"></img>
-<img src="/doc/images/spiele_schreiber.png" width="30%"></img> 
+<img src="/doc/images/spiele_schreiber.png" width="30%"></img>
 
 # Installation
 
@@ -48,7 +48,6 @@ Download Release from: https://github.com/splattner/myvbc/releases
 ```
 composer install
 ```
-
 
 
 # First Run
@@ -90,7 +89,45 @@ Username: admin@myvbc.ch
 Password: myvbc
 ```
 
+# Docker
+
+## Docker images
+
+MyVBC is available as Docker Image: https://hub.docker.com/r/splattner/myvbc/
+Run
+
+```
+docker pull splattner/myvbc
+```
+
+to get the latest Version.
+
+Start with (using default credentials, see etc/config.inc.php):
+
+```
+docker run -d -P -link mydb:mysql splattner/myvbc
+```
+
+or with Environment Variables for the DB Connection:
+
+```
+docker run -d -P -link mydbserver:mysql -e MYSQL_DB_NAME=mydbname -e MYSQL_DB_PASSWORD=mypassword -e MYSQL_DB_USERNAME=myusername splattner/myvbc
+```
+
+replace mydbserver, mydbname, mypassword, myusername to suit your Environment.
 
 
 
 
+## Run with Docker-Compose
+
+You can run MyVBC using Docker-Compose. Just run:
+
+```
+docker-compose up
+```
+
+and you shoud have a running instance (with MariaDB and PHPmyAdmin).
+Open http://localhost:8080 for MyVBC and http://localhost:8081 for PHPmyAdmin
+
+On first run (or Upgrade), you should open http://localhost:8080/install.php.
