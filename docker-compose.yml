@@ -1,7 +1,5 @@
 version: "3"
 services:
-
-
   db:
     image: mariadb
     volumes:
@@ -11,8 +9,6 @@ services:
       - MYSQL_DATABASE=myvbc
       - MYSQL_USER=myvbc
       - MYSQL_PASSWORD=myvbc
-
-
   web:
     build: .
     links:
@@ -21,15 +17,12 @@ services:
       - "8080:80"
     environment:
       - MYSQL_DB_HOST=db
-
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
       - db:db
     ports:
       - "8081:80"
-
-
 
 volumes:
   db-data:

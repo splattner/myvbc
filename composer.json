@@ -1,10 +1,10 @@
 {
 
   "name" : "splattner/myvbc",
-  "version" : "1.2.2",
+  "version" : "1.2.3",
   "type" : "project",
   "license": "MIT",
-  
+
   "authors": [
     {
       "name": "Sebastian Plattner",
