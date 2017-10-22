@@ -36,47 +36,47 @@ class InitialDbSetup extends AbstractMigration
 
 
         $teams = $this->table('teams');
-        $teams->addColumn('extid','integer')
-            ->addColumn('name','string')
-            ->addColumn('extname','string')
-            ->addColumn('liga','string')
-            ->addColumn('extliga','string')
-            ->addColumn('typ','integer')
+        $teams->addColumn('extid', 'integer')
+            ->addColumn('name', 'string')
+            ->addColumn('extname', 'string')
+            ->addColumn('liga', 'string')
+            ->addColumn('extliga', 'string')
+            ->addColumn('typ', 'integer')
             ->create();
 
         $games = $this->table('games');
         $games->addColumn('extid', 'integer')
             ->addColumn('date', 'datetime')
-            ->addColumn('team','integer')
-            ->addColumn('gegner','string')
-            ->addColumn('ort','string')
-            ->addColumn('halle','string')
+            ->addColumn('team', 'integer')
+            ->addColumn('gegner', 'string')
+            ->addColumn('ort', 'string')
+            ->addColumn('halle', 'string')
             ->addColumn('heimspiel', 'boolean')
             ->create();
 
         $games->addForeignKey('team', 'teams', 'id', array('delete'=> 'CASCADE', 'update'=> 'CASCADE'))->update();
 
         $persons = $this->table('persons');
-        $persons->addColumn('changed','boolean')
-            ->addColumn('name','string')
-            ->addColumn('prename','string')
-            ->addColumn('address','string')
-            ->addColumn('plz','string')
-            ->addColumn('ort','string')
-            ->addColumn('phone','string')
-            ->addColumn('mobile','string')
-            ->addColumn('email','string')
-            ->addColumn('email_parent','string')
-            ->addColumn('birthday','date')
-            ->addColumn('gender','set', array('values' => 'm,w'))
-            ->addColumn('schreiber','boolean')
-            ->addColumn('sms','boolean')
-            ->addColumn('licence','integer')
-            ->addColumn('licence_comment','text')
-            ->addColumn('active','boolean')
-            ->addColumn('signature','boolean')
-            ->addColumn('password','string')
-            ->addColumn('refid', 'integer')
+        $persons->addColumn('changed', 'boolean', ['default' => false])
+            ->addColumn('name', 'string', ['default' => ""])
+            ->addColumn('prename', 'string', ['default' => ""])
+            ->addColumn('address', 'string', ['default' => ""])
+            ->addColumn('plz', 'string', ['default' => ""])
+            ->addColumn('ort', 'string', ['default' => ""])
+            ->addColumn('phone', 'string', ['null' => true])
+            ->addColumn('mobile', 'string', ['null' => true])
+            ->addColumn('email', 'string')
+            ->addColumn('email_parent', 'string', ['null' => true])
+            ->addColumn('birthday', 'date', ['null' => true])
+            ->addColumn('gender', 'set', array('values' => 'm,w'))
+            ->addColumn('schreiber', 'boolean', ['default' => false])
+            ->addColumn('sms', 'boolean', ['default' => false])
+            ->addColumn('licence', 'integer', ['default' => 1])
+            ->addColumn('licence_comment', 'text', ['default' => ""])
+            ->addColumn('active', 'boolean', ['default' => false])
+            ->addColumn('signature', 'boolean', ['default' => false])
+            ->addColumn('password', 'string')
+            ->addColumn('refid', 'integer', ['default' => 0])
             ->addColumn('role', 'string')
             ->create();
 
@@ -85,22 +85,22 @@ class InitialDbSetup extends AbstractMigration
                 ->create();
 
         $notificationtype = $this->table('notificationtype');
-        $notificationtype->addColumn('name','string')
+        $notificationtype->addColumn('name', 'string')
             ->create();
 
         $notification = $this->table('notification');
-        $notification->addColumn('type','integer')
-            ->addColumn('message','text')
-            ->addColumn('objectid','integer')
-            ->addColumn('date','datetime')
+        $notification->addColumn('type', 'integer')
+            ->addColumn('message', 'text')
+            ->addColumn('objectid', 'integer')
+            ->addColumn('date', 'datetime')
             ->addColumn('personid', 'integer')
             ->create();
         $notification->addForeignKey('type', 'notificationtype', 'id', array('delete'=> 'CASCADE', 'update'=> 'CASCADE'))->update();
 
         $notificationstatus = $this->table('notificationstatus');
         $notificationstatus
-            ->addColumn('notificationid','integer')
-            ->addColumn('personid','integer')
+            ->addColumn('notificationid', 'integer')
+            ->addColumn('personid', 'integer')
             ->create();
 
         $notificationstatus
@@ -110,8 +110,8 @@ class InitialDbSetup extends AbstractMigration
 
         $notificationsubscription = $this->table('notificationsubscription');
         $notificationsubscription
-            ->addColumn('typeid','integer')
-            ->addColumn('email','boolean')
+            ->addColumn('typeid', 'integer')
+            ->addColumn('email', 'boolean')
             ->addColumn('personid', 'integer')
             ->create();
 
@@ -122,16 +122,16 @@ class InitialDbSetup extends AbstractMigration
 
 
         $orderstatus = $this->table('orderstatus');
-        $orderstatus->addColumn('description','text')
+        $orderstatus->addColumn('description', 'text')
             ->create();
 
-        
+
 
         $order = $this->table('order');
-        $order->addColumn('createdate','datetime')
-            ->addColumn('lastupdate','datetime')
-            ->addColumn('status','integer')
-            ->addColumn('comment','text')
+        $order->addColumn('createdate', 'datetime')
+            ->addColumn('lastupdate', 'datetime')
+            ->addColumn('status', 'integer')
+            ->addColumn('comment', 'text')
             ->addColumn('owner', 'integer')
             ->addColumn('teamid', 'integer')
             ->create();
@@ -142,10 +142,10 @@ class InitialDbSetup extends AbstractMigration
             ->update();
 
         $orderitem = $this->table('orderitem');
-        $orderitem->addColumn('orderid','integer')
-            ->addColumn('personid','integer')
-            ->addColumn('licence_id','integer')
-            ->addColumn('licence_comment','text')
+        $orderitem->addColumn('orderid', 'integer')
+            ->addColumn('personid', 'integer')
+            ->addColumn('licence_id', 'integer')
+            ->addColumn('licence_comment', 'text')
             ->create();
 
         $orderitem
@@ -155,9 +155,9 @@ class InitialDbSetup extends AbstractMigration
 
 
         $players = $this->table('players');
-        $players->addColumn('team','integer')
-            ->addColumn('person','integer')
-            ->addColumn('typ','integer')
+        $players->addColumn('team', 'integer')
+            ->addColumn('person', 'integer')
+            ->addColumn('typ', 'integer')
             ->create();
         $players
             ->addForeignKey('person', 'persons', 'id', array('delete'=> 'CASCADE', 'update'=> 'CASCADE'))
@@ -166,14 +166,14 @@ class InitialDbSetup extends AbstractMigration
 
         $reports = $this->table('reports');
         $reports
-            ->addColumn('title','string')
-            ->addColumn('query','text')
+            ->addColumn('title', 'string')
+            ->addColumn('query', 'text')
             ->create();
 
         $schreiber = $this->table('schreiber');
         $schreiber
-            ->addColumn('game','integer')
-            ->addColumn('person','integer')
+            ->addColumn('game', 'integer')
+            ->addColumn('person', 'integer')
             ->create();
 
         $schreiber
@@ -184,22 +184,17 @@ class InitialDbSetup extends AbstractMigration
 
         $session = $this->table('session');
         $session
-            ->addColumn('sid','string')
-            ->addColumn('uid','integer')
-            ->addColumn('lastUpdate','timestamp')
-            ->addColumn('isAuth','boolean')
-            ->addColumn('role','string')
+            ->addColumn('sid', 'string')
+            ->addColumn('uid', 'integer')
+            ->addColumn('lastUpdate', 'timestamp')
+            ->addColumn('isAuth', 'boolean', array('default' => 0))
+            ->addColumn('role', 'string', array('default' => ''))
             ->create();
 
         $config = $this->table('config', array('id' => false));
         $config
-            ->addColumn('key','string')
-            ->addColumn('value','string')
+            ->addColumn('key', 'string')
+            ->addColumn('value', 'string')
             ->create();
-
-        
-
-        
-
     }
 }

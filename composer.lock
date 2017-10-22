@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "981323aa2d8a71c4cb38d106520e7f47",
+    "content-hash": "6a020b7764bebfe621b59bffcb4eca85",
     "packages": [
         {
             "name": "gburtini/acl",
@@ -586,16 +586,16 @@
         },
         {
             "name": "splattner/mailmanapi",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/splattner/mailmanAPI.git",
-                "reference": "cd97ded4a04da23b05150a6d0caa4a2c1048451e"
+                "reference": "d3596aa8a2e2c0ec14d6a439e9e4d392f53a04a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/splattner/mailmanAPI/zipball/cd97ded4a04da23b05150a6d0caa4a2c1048451e",
-                "reference": "cd97ded4a04da23b05150a6d0caa4a2c1048451e",
+                "url": "https://api.github.com/repos/splattner/mailmanAPI/zipball/d3596aa8a2e2c0ec14d6a439e9e4d392f53a04a9",
+                "reference": "d3596aa8a2e2c0ec14d6a439e9e4d392f53a04a9",
                 "shasum": ""
             },
             "require": {
@@ -621,7 +621,7 @@
             ],
             "description": "A simple API to work with Mailman 2.x Mailing Lists",
             "homepage": "https://github.com/splattner/mailmanAPI",
-            "time": "2017-10-19T21:22:00+00:00"
+            "time": "2017-10-20T07:59:14+00:00"
         },
         {
             "name": "symfony/config",

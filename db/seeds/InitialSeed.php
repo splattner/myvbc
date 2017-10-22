@@ -16,19 +16,6 @@ class InitialSeed extends AbstractSeed
     public function run()
     {
 
-
-        // `myvbc`.`persons`
-        $persons = array(
-
-          array('id' => '1','changed' => '0','name' => 'Administrator','email' => 'admin@myvbc.ch','active' => '1','password' => '2b7e7b3d95551e5c1297f5e03d60be3a', 'role' => 'administrator')
-        );
-
-        $table = $this->table('persons');
-        $table->insert($persons)
-              ->save();
-
-
-      
         // `myvbc`.`licences`
         $licences = array(
           array('id' => '1','typ' => 'keine Lizenz'),
@@ -86,15 +73,15 @@ class InitialSeed extends AbstractSeed
           persons
         LEFT JOIN
           players ON persons.id = players.person
-        LEFT JOIN 
+        LEFT JOIN
           teams on players.team = teams.id
         WHERE
           schreiber = 1 AND active = 1 AND refid = 0
-        GROUP BY 
+        GROUP BY
           persons.id
         ORDER BY
           persons.name ASC, persons.prename ASC'),
-          array('id' => '5','title' => 'Schreibereinsätze (public)','query' => 'SELECT 
+          array('id' => '5','title' => 'Schreibereinsätze (public)','query' => 'SELECT
           DATE_FORMAT(games.date,\'%d.%m.%Y - %H:%i\') as "Datum",
           teams.name as "Team",
           CONCAT(games.ort, \' \', games.halle) as "Ort / Halle",
@@ -127,9 +114,9 @@ class InitialSeed extends AbstractSeed
           persons.schreiber = 1
           AND persons.active = 1
           AND persons.refid = 0
-        GROUP BY 
+        GROUP BY
           persons.id
-        ORDER BY 
+        ORDER BY
           Einsätze DESC,
           persons.name,
           persons.prename'),
@@ -162,7 +149,7 @@ class InitialSeed extends AbstractSeed
         FROM games
         LEFT JOIN
           teams on games.team = teams.id
-        WHERE 
+        WHERE
           games.heimspiel = 1
         ORDER BY
           teams.name,
@@ -175,7 +162,7 @@ class InitialSeed extends AbstractSeed
         FROM games
         LEFT JOIN
           teams on games.team = teams.id
-        WHERE 
+        WHERE
           games.heimspiel = 1
         ORDER BY
           games.date'),
@@ -199,7 +186,7 @@ class InitialSeed extends AbstractSeed
           persons
         LEFT JOIN
           players ON persons.id = players.person
-        LEFT JOIN 
+        LEFT JOIN
           teams on players.team = teams.id
         WHERE
           persons.active = 1 AND (persons.schreiber = 0 OR persons.schreiber IS NULL) AND refid = 0
@@ -246,7 +233,7 @@ class InitialSeed extends AbstractSeed
           players.typ = 2 OR players.typ = 3
         ORDER BY
           teams.name'),
-          array('id' => '18','title' => 'letzte abgeschlossene Lizenzbestellungen','query' => 'SELECT 
+          array('id' => '18','title' => 'letzte abgeschlossene Lizenzbestellungen','query' => 'SELECT
           fullname AS "Name",
           address AS "Adesse",
           lizenz AS "Lizenz",
@@ -260,7 +247,7 @@ class InitialSeed extends AbstractSeed
           CONCAT(persons.address, \'<br/>\', persons.plz, \' \', persons.ort) AS address,
           CONCAT(licences.typ, \'<br />\',  persons.licence_comment) AS lizenz,
           DATE_FORMAT(order.lastupdate,\'%d.%m.%Y - %H:%i\') AS date
-        FROM 
+        FROM
           persons
         LEFT JOIN
           licences ON persons.licence = licences.id
@@ -273,7 +260,7 @@ class InitialSeed extends AbstractSeed
         WHERE
           order.status = 4 AND
           YEAR(order.lastupdate) = YEAR(NOW())
-        ORDER BY 
+        ORDER BY
           order.lastupdate DESC
         ) AS tmp
         GROUP BY
@@ -281,7 +268,7 @@ class InitialSeed extends AbstractSeed
         ORDER BY
           lastname ASC, prename ASC
         '),
-          array('id' => '19','title' => 'Schreibereinsätze','query' => 'SELECT 
+          array('id' => '19','title' => 'Schreibereinsätze','query' => 'SELECT
           DATE_FORMAT(games.date,\'%d.%m.%Y - %H:%i\') as "Datum",
           teams.name as "Team",
           CONCAT(games.ort, \' \', games.halle) as "Ort / Halle",
@@ -354,11 +341,11 @@ class InitialSeed extends AbstractSeed
           persons
         LEFT JOIN
           players ON persons.id = players.person
-        LEFT JOIN 
+        LEFT JOIN
           teams on players.team = teams.id
         WHERE
           signature = 0
-        GROUP BY 
+        GROUP BY
           persons.id
         ORDER BY
           persons.name ASC, persons.prename ASC'),
@@ -371,11 +358,11 @@ class InitialSeed extends AbstractSeed
           persons
         LEFT JOIN
           players ON persons.id = players.person
-        LEFT JOIN 
+        LEFT JOIN
           teams on players.team = teams.id
         WHERE
           signature = 0 AND active = 1
-        GROUP BY 
+        GROUP BY
           persons.id
         ORDER BY
           persons.name ASC, persons.prename ASC')
@@ -394,6 +381,13 @@ class InitialSeed extends AbstractSeed
         $table->insert($configTable)
               ->save();
 
+        // `myvbc`.`persons`
+        $persons = array(
+          array('id' => '1','name' => 'Administrator','email' => 'admin@myvbc.ch','active' => true,'password' => '2b7e7b3d95551e5c1297f5e03d60be3a', 'gender' => 'm', 'role' => 'administrator')
+        );
 
+        $table = $this->table('persons');
+        $table->insert($persons)
+              ->save();
     }
 }
