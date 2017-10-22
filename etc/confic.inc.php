@@ -5,7 +5,7 @@ defined( '_MYVBC' ) or die( 'Restricted access' );
 $config = array();
 
 
-$config["db"]["host"] = getenv('MYSQL_DB_HOST') ? getenv('MYSQL_DB_HOST') : "127.0.0.1";
+$config["db"]["host"] = getenv('MYSQL_DB_HOST') ? getenv('MYSQL_DB_HOST') : "mysql";
 $config["db"]["port"] = getenv('MYSQL_DB_PORT') ? getenv('MYSQL_DB_PORT') : "3306";
 $config["db"]["username"] = getenv('MYSQL_DB_USERNAME') ? getenv('MYSQL_DB_USERNAME') : "myvbc";
 $config["db"]["password"] = getenv('MYSQL_DB_PASSWORD') ? getenv('MYSQL_DB_PASSWORD') : "myvbc";
