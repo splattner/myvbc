@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a020b7764bebfe621b59bffcb4eca85",
+    "content-hash": "6a84b9714eec0d1c92d2b19049816244",
     "packages": [
         {
             "name": "gburtini/acl",
