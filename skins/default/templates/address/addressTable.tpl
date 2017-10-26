@@ -62,7 +62,20 @@
                         }
                     },
                     {"targets": 4, "data": function ( row, type, val, meta ) {
-                            return "<i class='fa fa-phone'></i> " + row.phone + "<br /><i class='fa fa-mobile' ></i> " + row.mobile;
+                            var output = "";
+                            var newLine = false;
+                            if (row.phone != null && row.phone != "") {
+                              output = output + "<i class='fa fa-phone'></i>&nbsp;" + row.phone;
+                              newLine = true;
+                            }
+                            if (row.mobile != null && row.mobile != "") {
+                              if (newLine) {
+                                output = output + "<br />";
+                              }
+                              output = output + "<i class='fa fa-mobile'></i>&nbsp;&nbsp;" + row.mobile;
+                            }
+
+                            return output;
                         }
                     },
                     {"targets": 5, "data": "email"},
