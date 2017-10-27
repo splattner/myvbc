@@ -32,7 +32,7 @@ class MPerson extends Model {
 				WHERE
 					persons.id = ?
 				ORDER BY
-					teams.id, 
+					teams.id,
 					games.date";
 		$sql = $this->pdo->Prepare($sql);
 		$sql->Execute(array($personID));
@@ -238,39 +238,42 @@ class MPerson extends Model {
 		$changedMailParent = false;
 
 
-		// Case: New Address
-		if ($personoldData["email"] == "" && $personnewData["email"] != "" && $personnewData["active"] == 1) {
-			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-			$mailman->addMembers([$personnewData["email"]]);
-			$changed = true;
-		}
-		if ($personoldData["email_parent"] == "" && $personnewData["email_parent"] != ""  && $personnewData["active"] == 1) {
-			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-			$mailman->addMembers([$personnewData["email_parent"]]);
-			$changedMailParent = true;
-		}
+		// Send changes to Mailman (if enabled)
+		if ($this->config["mailman"]["enable"]) {
+			// Case: New Address
+			if ($personoldData["email"] == "" && $personnewData["email"] != "" && $personnewData["active"] == 1) {
+				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+				$mailman->addMembers([$personnewData["email"]]);
+				$changed = true;
+			}
+			if ($personoldData["email_parent"] == "" && $personnewData["email_parent"] != ""  && $personnewData["active"] == 1) {
+				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+				$mailman->addMembers([$personnewData["email_parent"]]);
+				$changedMailParent = true;
+			}
 
-		// Case: Remove Address
-		if (($personoldData["email"] != "" && $personnewData["email"] == "") ||  $personnewData["active"] == 0) {
-			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-			$mailman->removeMembers([$personoldData["email"]]);
-			$changed = true;
-		}
-		if (($personoldData["email_parent"] != "" && $personnewData["email_parent"] == "") ||  $personnewData["active"] == 0) {
-			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-			$mailman->removeMembers([$personoldData["email_parent"]]);
-			$changedMailParent = true;
-		}
+			// Case: Remove Address
+			if (($personoldData["email"] != "" && $personnewData["email"] == "") ||  $personnewData["active"] == 0) {
+				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+				$mailman->removeMembers([$personoldData["email"]]);
+				$changed = true;
+			}
+			if (($personoldData["email_parent"] != "" && $personnewData["email_parent"] == "") ||  $personnewData["active"] == 0) {
+				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+				$mailman->removeMembers([$personoldData["email_parent"]]);
+				$changedMailParent = true;
+			}
 
-		// Case: Change Address{
-		if (!$changedMail && $personoldData["email"] != $personnewData["email"] && $personnewData["active"] == 1) {
-			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-			$mailman->changeMember($personoldData["email"], $personnewData["email"]);
+			// Case: Change Address{
+			if (!$changedMail && $personoldData["email"] != $personnewData["email"] && $personnewData["active"] == 1) {
+				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+				$mailman->changeMember($personoldData["email"], $personnewData["email"]);
+			}
+			if (!$changedMailParent && $personoldData["email_parent"] != $personnewData["email_parent"] && $personnewData["active"] == 1) {
+				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+				$mailman->changeMember($personoldData["email_parent"], $personnewData["email_parent"]);
+			}
 		}
-		if (!$changedMailParent && $personoldData["email_parent"] != $personnewData["email_parent"] && $personnewData["active"] == 1) {
-			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-			$mailman->changeMember($personoldData["email_parent"], $personnewData["email_parent"]);
-		}	
 
 
 	}
@@ -307,14 +310,19 @@ class MPerson extends Model {
 		$personRS = $person->getRS(array($person->pk . " =" => $where[$person->pk]));
 		$personData = $personRS->fetch();
 
-		if ($personData["email"] != "") {
-			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-			$mailman->removeMembers([$personData["email"]]);
-		}
 
-		if ($personData["email_parent"] != "") {
-			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-			$mailman->removeMembers([$personData["email_parent"]]);
+		// Send changes to Mailman (if enabled)
+		if ($this->config["mailman"]["enable"]) {
+
+			if ($personData["email"] != "") {
+				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+				$mailman->removeMembers([$personData["email"]]);
+			}
+
+			if ($personData["email_parent"] != "") {
+				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+				$mailman->removeMembers([$personData["email_parent"]]);
+			}
 		}
 
 
@@ -328,17 +336,20 @@ class MPerson extends Model {
 		$sql->Execute(array($newState, $personID));
 
 
-		$person = new MPerson();
-		$personData = $person->getRS(array($person->pk . " =" => $personID))->fetch();
+		// Send changes to Mailman (if enabled)
+		if ($this->config["mailman"]["enable"]) {
+			$person = new MPerson();
+			$personData = $person->getRS(array($person->pk . " =" => $personID))->fetch();
 
-		$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
 
-		if ($newState == 0) {
-			$mailman->removeMembers([$personData["email"]]);
-			$mailman->removeMembers([$personData["email_parent"]]);
-		} else {
-			$mailman->addMembers([$personData["email"]]);
-			$mailman->addMembers([$personData["email_parent"]]);
+			if ($newState == 0) {
+				$mailman->removeMembers([$personData["email"]]);
+				$mailman->removeMembers([$personData["email_parent"]]);
+			} else {
+				$mailman->addMembers([$personData["email"]]);
+				$mailman->addMembers([$personData["email_parent"]]);
+			}
 		}
 	}
 
@@ -364,9 +375,9 @@ class MPerson extends Model {
 
 	public function getEMailActive() {
 
-		
 
-        $sql = "SELECT persons.email, persons.email_parent FROM persons WHERE persons.active = 1 ";
+
+    $sql = "SELECT persons.email, persons.email_parent FROM persons WHERE persons.active = 1 ";
 		$persons = $this->pdo->query($sql)->fetchAll();
 
 		$addresses = array();
@@ -384,7 +395,7 @@ class MPerson extends Model {
 		}
 
 		return $addresses;
-		
+
 	}
 }
 ?>
