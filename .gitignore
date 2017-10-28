@@ -1,2 +1,3 @@
 vendor
 skins/default/templates_c/
+.env
