@@ -1,20 +1,22 @@
 <?php
 
 namespace splattner\myvbc\models;
+
 use splattner\framework\Application;
 use splattner\framework\Model;
 use splattner\mailmanapi\MailmanAPI;
 
 // no direct access
-defined( '_MYVBC' ) or die( 'Restricted access' );
+defined('_MYVBC') or die('Restricted access');
 
 
-class MPerson extends Model {
-	public $table = 'persons';
+class MPerson extends Model
+{
+    public $table = 'persons';
 
-    public function getMyGames($personID) {
-
-		$sql = "SELECT
+    public function getMyGames($personID)
+    {
+        $sql = "SELECT
 					games.date as date,
 					games.gegner as gegner,
 					games.ort as ort,
@@ -34,13 +36,14 @@ class MPerson extends Model {
 				ORDER BY
 					teams.id,
 					games.date";
-		$sql = $this->pdo->Prepare($sql);
-		$sql->Execute(array($personID));
-		return $sql;
-	}
+        $sql = $this->pdo->Prepare($sql);
+        $sql->Execute(array($personID));
+        return $sql;
+    }
 
-	public function getMyTeams($personID) {
-		$sql = "SELECT
+    public function getMyTeams($personID)
+    {
+        $sql = "SELECT
 					teams.name AS name,
 					players.typ AS typ,
 					teams.id AS id
@@ -53,18 +56,18 @@ class MPerson extends Model {
 				WHERE
 					persons.id = ?";
 
-		$sql = $this->pdo->Prepare($sql);
-		$sql->Execute(array($personID));
-		return $sql;
-	}
+        $sql = $this->pdo->Prepare($sql);
+        $sql->Execute(array($personID));
+        return $sql;
+    }
 
 
-	public function getAddressEntry($where = array(), $orderby = array()) {
-
+    public function getAddressEntry($where = array(), $orderby = array())
+    {
         $whereValues = array();
 
 
-		$sql = "SELECT
+        $sql = "SELECT
 				persons.id,
 				persons.name,
 				persons.prename,
@@ -105,7 +108,6 @@ class MPerson extends Model {
                 if (count($where) > 1 && $i < count($where)) {
                     $sql .= " AND ";
                 }
-
             }
         }
 
@@ -120,7 +122,7 @@ class MPerson extends Model {
         }
 
         if (count($where) > 0) {
-        	$sql = $this->pdo->Prepare($sql);
+            $sql = $this->pdo->Prepare($sql);
             $sql->Execute($whereValues);
         } else {
             $sql = $this->pdo->query($sql);
@@ -129,8 +131,9 @@ class MPerson extends Model {
         return $sql;
     }
 
-	public function getMySchreibers($personID) {
-		$sql = "SELECT
+    public function getMySchreibers($personID)
+    {
+        $sql = "SELECT
 					games.date AS date,
 					teams.name AS name,
 					games.gegner AS gegner,
@@ -147,20 +150,22 @@ class MPerson extends Model {
 				WHERE
 					persons.id = ?";
 
-		$sql = $this->pdo->Prepare($sql);
-		$sql->execute(array($personID));
-		return $sql;
-	}
+        $sql = $this->pdo->Prepare($sql);
+        $sql->execute(array($personID));
+        return $sql;
+    }
 
-	public function changePassword($personID, $newPassword) {
-		$sql = "UPDATE persons SET password = MD5(?) WHERE id = ?";
+    public function changePassword($personID, $newPassword)
+    {
+        $sql = "UPDATE persons SET password = MD5(?) WHERE id = ?";
 
-		$sql = $this->pdo->Prepare($sql);
-		$sql->execute(array($newPassword,$personID));
-	}
+        $sql = $this->pdo->Prepare($sql);
+        $sql->execute(array($newPassword,$personID));
+    }
 
-	public function getPersonsWithAccess() {
-		$sql = "SELECT
+    public function getPersonsWithAccess()
+    {
+        $sql = "SELECT
 					persons.name AS name,
 					persons.prename AS prename,
 					persons.id AS personID,
@@ -172,230 +177,223 @@ class MPerson extends Model {
 				WHERE
 					NOT persons.role LIKE '' AND NOT persons.role LIKE 'guest'
 				ORDER BY persons.role";
-		$sql = $this->pdo->Prepare($sql);
-		$sql->execute();
-		return $sql;
-	}
+        $sql = $this->pdo->Prepare($sql);
+        $sql->execute();
+        return $sql;
+    }
 
-	public function createAccess($personID, $group = "guest") {
-
-		$sql = "UPDATE
+    public function createAccess($personID, $group = "guest")
+    {
+        $sql = "UPDATE
 				`" . $this->table . "`
 				SET
 					role = ?
 				WHERE id = ?";
 
-		$sql = $this->pdo->Prepare($sql);
-		$sql->Execute(array($group, $personID));
+        $sql = $this->pdo->Prepare($sql);
+        $sql->Execute(array($group, $personID));
+    }
 
-	}
-
-	public function setChanged($personID, $value) {
-		$sql = "UPDATE
+    public function setChanged($personID, $value)
+    {
+        $sql = "UPDATE
 				`" . $this->table . "`
 				SET
 					changed = ?
 				WHERE id = ?";
 
-		$sql = $this->pdo->Prepare($sql);
-		$sql->Execute(array($value, $personID));
-	}
+        $sql = $this->pdo->Prepare($sql);
+        $sql->Execute(array($value, $personID));
+    }
 
-	public function removeAccess($personID) {
-		$sql = "UPDATE
+    public function removeAccess($personID)
+    {
+        $sql = "UPDATE
 				`" . $this->table . "`
 				SET
 					role = 'guest'
 				WHERE id = ?";
 
-		$sql = $this->pdo->Prepare($sql);
-		$sql->Execute(array($personID));
-	}
+        $sql = $this->pdo->Prepare($sql);
+        $sql->Execute(array($personID));
+    }
 
 
-	/* Override the update Function to create Notification Messages */
-	public function update($where) {
+    /* Override the update Function to create Notification Messages */
+    public function update($where)
+    {
+        $personID = $where[$this->pk];
 
-		$personID = $where[$this->pk];
+        /* Generate Notification befor */
+        $personold = new MPerson();
+        $personoldData = $personold->getRS(array($personold->pk . " =" => $personID))->fetch();
 
-		/* Generate Notification befor */
-		$personold = new MPerson();
-		$personoldData = $personold->getRS(array($personold->pk . " =" => $personID))->fetch();
+        parent::update($where);
 
-		parent::update($where);
+        /* Generate Notification after */
+        $personnew = new MPerson();
+        $personnewData = $personnew->getRS(array($personnew->pk . " =" => $personID))->fetch();
 
-		/* Generate Notification after */
-		$personnew = new MPerson();
-		$personnewData = $personnew->getRS(array($personnew->pk . " =" => $personID))->fetch();
-
-		/* Add Notification */
-		$notification = Application::getService("ServiceNotification");;
-		$notification->addChangeAddressNotification($personoldData, $personnewData);
-
-
-		// Change Mail Address in Mailman
-		$changedMail = false;
-		$changedMailParent = false;
+        /* Add Notification */
+        $notification = Application::getService("ServiceNotification");
+        ;
+        $notification->addChangeAddressNotification($personoldData, $personnewData);
 
 
-		// Send changes to Mailman (if enabled)
-		if ($this->config["mailman"]["enable"]) {
-			// Case: New Address
-			if ($personoldData["email"] == "" && $personnewData["email"] != "" && $personnewData["active"] == 1) {
-				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-				$mailman->addMembers([$personnewData["email"]]);
-				$changed = true;
-			}
-			if ($personoldData["email_parent"] == "" && $personnewData["email_parent"] != ""  && $personnewData["active"] == 1) {
-				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-				$mailman->addMembers([$personnewData["email_parent"]]);
-				$changedMailParent = true;
-			}
-
-			// Case: Remove Address
-			if (($personoldData["email"] != "" && $personnewData["email"] == "") ||  $personnewData["active"] == 0) {
-				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-				$mailman->removeMembers([$personoldData["email"]]);
-				$changed = true;
-			}
-			if (($personoldData["email_parent"] != "" && $personnewData["email_parent"] == "") ||  $personnewData["active"] == 0) {
-				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-				$mailman->removeMembers([$personoldData["email_parent"]]);
-				$changedMailParent = true;
-			}
-
-			// Case: Change Address{
-			if (!$changedMail && $personoldData["email"] != $personnewData["email"] && $personnewData["active"] == 1) {
-				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-				$mailman->changeMember($personoldData["email"], $personnewData["email"]);
-			}
-			if (!$changedMailParent && $personoldData["email_parent"] != $personnewData["email_parent"] && $personnewData["active"] == 1) {
-				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-				$mailman->changeMember($personoldData["email_parent"], $personnewData["email_parent"]);
-			}
-		}
+        // Change Mail Address in Mailman
+        $changedMail = false;
+        $changedMailParent = false;
 
 
-	}
+        // Send changes to Mailman (if enabled)
+        if ($this->config["mailman"]["enable"]) {
+            // Case: New Address
+            if ($personoldData["email"] == "" && $personnewData["email"] != "" && $personnewData["active"] == 1) {
+                $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
+                $mailman->addMembers([$personnewData["email"]]);
+                $changed = true;
+            }
+            if ($personoldData["email_parent"] == "" && $personnewData["email_parent"] != ""  && $personnewData["active"] == 1) {
+                $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
+                $mailman->addMembers([$personnewData["email_parent"]]);
+                $changedMailParent = true;
+            }
 
-	public function insert() {
-		$personID = parent::insert();
+            // Case: Remove Address
+            if (($personoldData["email"] != "" && $personnewData["email"] == "") ||  $personnewData["active"] == 0) {
+                $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
+                $mailman->removeMembers([$personoldData["email"]]);
+                $changed = true;
+            }
+            if (($personoldData["email_parent"] != "" && $personnewData["email_parent"] == "") ||  $personnewData["active"] == 0) {
+                $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
+                $mailman->removeMembers([$personoldData["email_parent"]]);
+                $changedMailParent = true;
+            }
 
-		/* Do not add to Mailman, only after state has changed to active
-		$personnew = new MPerson();
-		$personnewData = $personnew->getRS(array($personnew->pk . " =" => $personID))->fetch();
+            // Case: Change Address{
+            if (!$changedMail && $personoldData["email"] != $personnewData["email"] && $personnewData["active"] == 1) {
+                $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
+                $mailman->changeMember($personoldData["email"], $personnewData["email"]);
+            }
+            if (!$changedMailParent && $personoldData["email_parent"] != $personnewData["email_parent"] && $personnewData["active"] == 1) {
+                $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
+                $mailman->changeMember($personoldData["email_parent"], $personnewData["email_parent"]);
+            }
+        }
+    }
 
-		// Insert E-Mails to Mailman
-		if ($personnewData["email"] != "") {
-			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-			$mailman->addMembers([$personnewData["email"]]);
-		}
+    public function insert()
+    {
+        $personID = parent::insert();
 
-		if ($personnewData["email_parent"] != "") {
-			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-			$mailman->addMembers([$personnewData["email_parent"]]);
-		}
-		*/
+        /* Do not add to Mailman, only after state has changed to active
+        $personnew = new MPerson();
+        $personnewData = $personnew->getRS(array($personnew->pk . " =" => $personID))->fetch();
 
-		/* Add Notification */
-		$notification = Application::getService("ServiceNotification");
-		$notification->addNewAdressNotifcation($personID);
+        // Insert E-Mails to Mailman
+        if ($personnewData["email"] != "") {
+            $mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+            $mailman->addMembers([$personnewData["email"]]);
+        }
 
-	}
+        if ($personnewData["email_parent"] != "") {
+            $mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
+            $mailman->addMembers([$personnewData["email_parent"]]);
+        }
+        */
 
-	public function delete($where) {
+        /* Add Notification */
+        $notification = Application::getService("ServiceNotification");
+        $notification->addNewAdressNotifcation($personID);
+    }
 
-
-		$person = new MPerson();
-		$personRS = $person->getRS(array($person->pk . " =" => $where[$person->pk]));
-		$personData = $personRS->fetch();
-
-
-		// Send changes to Mailman (if enabled)
-		if ($this->config["mailman"]["enable"]) {
-
-			if ($personData["email"] != "") {
-				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-				$mailman->removeMembers([$personData["email"]]);
-			}
-
-			if ($personData["email_parent"] != "") {
-				$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-				$mailman->removeMembers([$personData["email_parent"]]);
-			}
-		}
-
-
-		parent::delete($where);
-	}
-
-	public function setState($personID, $newState) {
-
-		$sql = "UPDATE persons SET active = ? WHERE id = ?";
-		$sql = $this->pdo->Prepare($sql);
-		$sql->Execute(array($newState, $personID));
-
-
-		// Send changes to Mailman (if enabled)
-		if ($this->config["mailman"]["enable"]) {
-			$person = new MPerson();
-			$personData = $person->getRS(array($person->pk . " =" => $personID))->fetch();
-
-			$mailman = new MailmanAPI($this->config["mailman"]["baseurl"],$this->config["mailman"]["adminpw"]);
-
-			if ($newState == 0) {
-				$mailman->removeMembers([$personData["email"]]);
-				$mailman->removeMembers([$personData["email_parent"]]);
-			} else {
-				$mailman->addMembers([$personData["email"]]);
-				$mailman->addMembers([$personData["email_parent"]]);
-			}
-		}
-	}
-
-	public function setSignature($personID, $newState) {
-
-		/* Generate Notification befor */
-		$personold = new MPerson();
-		$personoldRS = $personold->getRS(array($personold->pk ." =" => $personID));
-		$personoldData = $personoldRS->fethc();
+    public function delete($where)
+    {
+        $person = new MPerson();
+        $personRS = $person->getRS(array($person->pk . " =" => $where[$person->pk]));
+        $personData = $personRS->fetch();
 
 
-		$this->setState($personID,$newState);
+        // Send changes to Mailman (if enabled)
+        if ($this->config["mailman"]["enable"]) {
+            if ($personData["email"] != "") {
+                $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
+                $mailman->removeMembers([$personData["email"]]);
+            }
 
-		/* Generate Notification after */
-		$personnew = new MPerson();
-		$personnewRS = $personnew->getRS(array($personnew->pk ." =" => $personID));
-		$personnewData = $personnewRS->fetch();
-
-		/* Add Notification */
-		$notification = Application::getService("ServiceNotification");
-		$notification->addChangeAddressNotification($personoldData, $personnewData);
-	}
-
-	public function getEMailActive() {
-
+            if ($personData["email_parent"] != "") {
+                $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
+                $mailman->removeMembers([$personData["email_parent"]]);
+            }
+        }
 
 
-    $sql = "SELECT persons.email, persons.email_parent FROM persons WHERE persons.active = 1 ";
-		$persons = $this->pdo->query($sql)->fetchAll();
+        parent::delete($where);
+    }
 
-		$addresses = array();
+    public function setState($personID, $newState)
+    {
+        $sql = "UPDATE persons SET active = ? WHERE id = ?";
+        $sql = $this->pdo->Prepare($sql);
+        $sql->Execute(array($newState, $personID));
 
-		foreach($persons as $person) {
 
-			if($person["email"] != "") {
-				$addresses[] = $person["email"];
-			}
+        // Send changes to Mailman (if enabled)
+        if ($this->config["mailman"]["enable"]) {
+            $person = new MPerson();
+            $personData = $person->getRS(array($person->pk . " =" => $personID))->fetch();
 
-			if($person["email_parent"] != "") {
-				$addresses[] = $person["email_parent"];
-			}
+            $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
 
-		}
+            if ($newState == 0) {
+                $mailman->removeMembers([$personData["email"]]);
+                $mailman->removeMembers([$personData["email_parent"]]);
+            } else {
+                $mailman->addMembers([$personData["email"]]);
+                $mailman->addMembers([$personData["email_parent"]]);
+            }
+        }
+    }
 
-		return $addresses;
+    public function setSignature($personID, $newState)
+    {
 
-	}
+        /* Generate Notification befor */
+        $personold = new MPerson();
+        $personoldRS = $personold->getRS(array($personold->pk ." =" => $personID));
+        $personoldData = $personoldRS->fethc();
+
+
+        $this->setState($personID, $newState);
+
+        /* Generate Notification after */
+        $personnew = new MPerson();
+        $personnewRS = $personnew->getRS(array($personnew->pk ." =" => $personID));
+        $personnewData = $personnewRS->fetch();
+
+        /* Add Notification */
+        $notification = Application::getService("ServiceNotification");
+        $notification->addChangeAddressNotification($personoldData, $personnewData);
+    }
+
+    public function getEMailActive()
+    {
+        $sql = "SELECT persons.email, persons.email_parent FROM persons WHERE persons.active = 1 ";
+        $persons = $this->pdo->query($sql)->fetchAll();
+
+        $addresses = array();
+
+        foreach ($persons as $person) {
+            if ($person["email"] != "") {
+                $addresses[] = $person["email"];
+            }
+
+            if ($person["email_parent"] != "") {
+                $addresses[] = $person["email_parent"];
+            }
+        }
+
+        return $addresses;
+    }
 }
-?>
