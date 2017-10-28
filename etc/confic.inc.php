@@ -43,12 +43,13 @@ $acl->addRole("vorstand", ["manager"]);
 $acl->addRole("administrator", ["vorstand"]);
 $config["system"]["acl"] = $acl;
 
+$config["aspsms"]["enable"] = getenv('ASPSMS_ENABLED') ? filter_var(getenv('ASPSMS_ENABLED'), FILTER_VALIDATE_BOOLEAN) : false;
+$config["aspsms"]["username"] = getenv('ASPSMS_USERNAME') ? getenv('ASPSMS_USERNAME') : "";
+$config["aspsms"]["password"] = getenv('ASPSMS_PASSWORD') ? getenv('ASPSMS_PASSWORD') : "";
 
-$config["aspsms"]["username"] = "";
-$config["aspsms"]["password"] = "";
-
-$config["mailman"]["baseurl"] = "";
-$config["mailman"]["adminpw"] = "";
+$config["mailman"]["enable"] = getenv('MAILMAN_ENABLED') ? filter_var(getenv('MAILMAN_ENABLED'), FILTER_VALIDATE_BOOLEAN) : false;
+$config["mailman"]["baseurl"] = getenv('MAILMAN_BASEURL') ? getenv('MAILMAN_BASEURL') : "";
+$config["mailman"]["adminpw"] = getenv('MAILMAN_ADMINPW') ? getenv('MAILMAN_ADMINPW') : "";
 
 
 ?>

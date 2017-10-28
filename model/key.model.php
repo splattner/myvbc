@@ -1,19 +1,21 @@
 <?php
 
 namespace splattner\myvbc\models;
+
 use splattner\framework\Model;
 
 // no direct access
-defined( '_MYVBC' ) or die( 'Restricted access' );
+defined('_MYVBC') or die('Restricted access');
 
 
-class MKey extends Model {
+class MKey extends Model
+{
     public $table = 'accesskeys';
 
 
 
-    public function getAllKeys() {
-
+    public function getAllKeys()
+    {
         $sql = "SELECT
 					accesskeys.id AS id,
 					accesskeys.label AS label,
@@ -31,8 +33,9 @@ class MKey extends Model {
         return $this->pdo->query($sql)->fetchAll();
     }
 
-	public function getMyKeys($personID) {
-		$sql = "SELECT
+    public function getMyKeys($personID)
+    {
+        $sql = "SELECT
 					accesskeys.id AS id,
 					accesskeys.label AS label,
 					accesskeys.nr as nr,
@@ -49,12 +52,7 @@ class MKey extends Model {
                   persons.prename";
 
         $sql = $this->pdo->Prepare($sql);
-		$sql->Execute(array($personID));
-		return $sql;
-
-	}
-
-
+        $sql->Execute(array($personID));
+        return $sql;
+    }
 }
-
-?>

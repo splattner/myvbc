@@ -1,18 +1,20 @@
 <?php
 
 namespace splattner\myvbc\models;
+
 use splattner\framework\Model;
 
-
 // no direct access
-defined( '_MYVBC' ) or die( 'Restricted access' );
+defined('_MYVBC') or die('Restricted access');
 
 
-class MTeam extends Model {
-	public $table = 'teams';
-	
-	public function getAllMember($teamID) {
-		$sql = "Select
+class MTeam extends Model
+{
+    public $table = 'teams';
+    
+    public function getAllMember($teamID)
+    {
+        $sql = "Select
 					persons.id AS personID,
 					persons.name AS name,
 					persons.prename AS prename,
@@ -38,10 +40,8 @@ class MTeam extends Model {
 					teams.id = ?
 				ORDER BY
 					players.typ ASC, persons.name ASC, persons.prename ASC";
-		$sql = $this->pdo->Prepare($sql);
-		$sql->Execute(array($teamID));
-		return $sql;
-	}
-	
+        $sql = $this->pdo->Prepare($sql);
+        $sql->Execute(array($teamID));
+        return $sql;
+    }
 }
-?>

@@ -1,120 +1,114 @@
 <?php
 
 namespace splattner\myvbc\pages;
+
 use splattner\myvbc\models\MPerson;
 use splattner\myvbc\plugins\PHistory;
 use splattner\myvbc\plugins\PPersondata;
 
-
 class PageAddress extends MyVBCPage
 {
-	
-	public function __construct() {
-		parent::__construct();
-		$this->pagename = "address";
-		$this->template = "address/address.tpl";
-		
-		$this->noACL["import"] = true;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->pagename = "address";
+        $this->template = "address/address.tpl";
+        
+        $this->noACL["import"] = true;
 
-		$this->acl->allow("vorstand",["main","edit","new","delete","setState","setSignature","import","requestForm"], ["view"]);
+        $this->acl->allow("vorstand", ["main","edit","new","delete","setState","setSignature","import","requestForm"], ["view"]);
+    }
+    
+    public function init()
+    {
+        parent::init();
+        $this->smarty->assign("content", $this->template);
+    }
 
-	}
-	
-	public function init() {
-		parent::init();
-		$this->smarty->assign("content", $this->template);
+    
+    public function mainAction()
+    {
+        $this->smarty->assign("subContent1", "address/addressTable.tpl");
+    }
+    
+    public function editAction()
+    {
+        $this->smarty->assign("subContent1", "address/edit.tpl");
+        
+        $data["personID"] = $_GET["personID"];
+        $this->smarty->assign("personID", $data["personID"]);
 
-		
-	}
+        $plugin_personData = new PPersondata("persondata");
+        $plugin_personData->setData($data);
+        $plugin_personData->setFormURL("index.php?page={\$currentPage}&action=edit&personID={\$personID}");
+        
+        // History Plugin
+        $plugin_history = new PHistory("history");
+        $plugin_history->setData($data);
+        $plugin_history->run(null);
+        
 
-	
-	public function mainAction() {
-		$this->smarty->assign("subContent1", "address/addressTable.tpl");
+        return $plugin_personData->run("editEntry");
+    }
+    
+    public function newAction()
+    {
+        $this->smarty->assign("subContent1", "address/new.tpl");
 
-	}
-	
-	public function editAction() {
-		$this->smarty->assign("subContent1", "address/edit.tpl");
-		
-		$data["personID"] = $_GET["personID"];
-		$this->smarty->assign("personID", $data["personID"]);
+        $plugin_personData = new PPersondata("persondata");
+        $plugin_personData->setFormURL("index.php?page={\$currentPage}&action=new");
 
-		$plugin_personData = new PPersondata("persondata");
-		$plugin_personData->setData($data);
-		$plugin_personData->setFormURL("index.php?page={\$currentPage}&action=edit&personID={\$personID}");
-		
-		// History Plugin
-		$plugin_history = new PHistory("history");
-		$plugin_history->setData($data);
-		$plugin_history->run(NULL);
-		
+        return $plugin_personData->run("newEntry");
+    }
+    
+    public function deleteAction()
+    {
+        $personID = $_GET["personID"];
+        
+        $person = new MPerson();
+        $person->delete(array($person->pk => $personID));
+        
+        $this->smarty->assign("messages", "Person wurde aus Datenbank gel&ouml;scht!");
+        
+        return "main";
+    }
+    
+    
+    public function setStateAction()
+    {
+        $personID = $_GET["personID"];
+        $state = $_GET["state"];
+        
+        $person = new MPerson();
+        $person->setState($personID, $state);
+        
+        return "main";
+    }
 
-		return $plugin_personData->run("editEntry");
-	}
-	
-	public function newAction() {
-		$this->smarty->assign("subContent1", "address/new.tpl");
+    public function setSignatureAction()
+    {
+        $personID = $_GET["personID"];
+        $state = $_GET["state"];
 
-		$plugin_personData = new PPersondata("persondata");
-		$plugin_personData->setFormURL("index.php?page={\$currentPage}&action=new");
+        $person = new MPerson();
+        $person->setSignature($personID, $state);
 
-		return $plugin_personData->run("newEntry");
-		
-	}
-	
-	public function deleteAction() {
-		
-		$personID = $_GET["personID"];
-		
-		$person = new MPerson();
-		$person->delete(array($person->pk => $personID));
-		
-		$this->smarty->assign("messages","Person wurde aus Datenbank gel&ouml;scht!");
-		
-		return "main";
-	}
-	
-	
-	public function setStateAction() {
-		
-		$personID = $_GET["personID"];
-		$state = $_GET["state"];
-		
-		$person = new MPerson();
-		$person->setState($personID, $state);
-		
-		return "main";
-	
-	}
+        return "main";
+    }
+    
+    public function importAction()
+    {
+    }
 
-	public function setSignatureAction() {
-
-		$personID = $_GET["personID"];
-		$state = $_GET["state"];
-
-		$person = new MPerson();
-		$person->setSignature($personID, $state);
-
-		return "main";
-
-	}
-	
-	public function importAction() {
-		
-	}
-
-	public function requestFormAction() {
-
-		$this->smarty->assign("subContent1", "address/requestForm.tpl");
+    public function requestFormAction()
+    {
+        $this->smarty->assign("subContent1", "address/requestForm.tpl");
 
 
-		$personID = $_GET["personID"];
+        $personID = $_GET["personID"];
 
-		$user = new MPerson();
-		$rs = $user->getRS(array($user->pk ." =" => $personID));
-		$this->smarty->assign("person", $rs->fetch());
-
-	}
+        $user = new MPerson();
+        $rs = $user->getRS(array($user->pk ." =" => $personID));
+        $this->smarty->assign("person", $rs->fetch());
+    }
 }
-
-?>
