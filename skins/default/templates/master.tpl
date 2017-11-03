@@ -16,7 +16,7 @@
 
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/popper.js/dist/umd/popper.min.js"></script>    
+    <script type="text/javascript" src="bower_components/popper.js/dist/umd/popper.min.js"></script>
     <script type="text/javascript" src="bower_components/moment/min/moment-with-locales.min.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
@@ -34,7 +34,7 @@
 
     <!-- Datatables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/fc-3.2.3/fh-3.1.3/datatables.min.css"/>
- 
+
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/fc-3.2.3/fh-3.1.3/datatables.min.js"></script>
 
 
@@ -65,7 +65,7 @@
 
         </script>
     {/literal}
-    
+
 
 </head>
 <body>
@@ -73,7 +73,7 @@
 <div class="bg-white container">
 
     </nav>
-    <div class="row" >
+    <div class="row d-print-none" >
         <div class="col">
             {include file='navigation.tpl'}
         </div>
@@ -84,7 +84,7 @@
             <p>&nbsp;</p>
         </div>
     </div>
-    <nav class="navbar fixed-bottom navbar-dark bg-dark">
+    <nav class="navbar fixed-bottom navbar-dark bg-dark d-print-none">
         <a class="navbar-brand" href="https://github.com/splattner/myvbc" target="_blank" >v{$appVersion} <i class="fa fa-github" aria-hidden="true"></i></a>
     </nav>
 </div>

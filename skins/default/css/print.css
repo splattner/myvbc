@@ -1,35 +1,5 @@
 @CHARSET "ISO-8859-1";
 
-#header {
-	display: none;
-}
-
-.alphabet {
-	display: none;
-}
-
-.submenu {
-	display: none;
-}
-
-.icons {
-	display: none;
-}
-
-h1 {
-	border: none;
-	padding-bottom: 25px;
-}
-
-.legend {
-	display: none;
-}
-
-#overDiv {
-	display: none;
-}
-
-
 a[href]:after {
 	content: none !important;
 }
