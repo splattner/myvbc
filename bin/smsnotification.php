@@ -4,33 +4,37 @@
 // Set flag that this is a parent file
 define( '_MYVBC', 1 );
 
-require_once "../etc/confic.inc.php";
 
 /**
  * Composer
  */
-require __DIR__ . '..//vendor/autoload.php';
+require '/home/sebasti4/public_html/vbcl/myvbc-git/vendor/autoload.php';
 
 
+// Load Environment from .env File
+$dotenv = new \Dotenv\Dotenv(__DIR__);
+$dotenv->safeLoad();
+
+
+/**
+ * Config
+ */
+require_once "/home/sebasti4/public_html/vbcl/myvbc-git/etc/confic.inc.php";
+
+
+use Aspsms\Aspsms;
 
 /**
  * Initialize the Database Connection
  */
-$dsn = "mysqli://"
-. $config["db"]["username"] . ":" 
-. $config["db"]["password"] . "@"
-. $config["db"]["server"] . "/"
-. $config["db"]["database"];
-$db = NewADOConnection($dsn);
+$pdo = new \PDO($config["db"]["url"], $config["db"]["username"], $config["db"]["password"]);
 
 $days = 2;
 $send = "send";
 
 
-
-
 $day = date('Y-m-d', strtotime('+' . $days . ' days'));
-$sql = "SELECT
+$sqlquery = "SELECT
 			games.date AS date,
 			games.ort AS ort,
 			games.halle AS halle,
@@ -51,12 +55,20 @@ $sql = "SELECT
 		WHERE
 			date LIKE '" . $day . "%'
 			AND heimspiel = 1
-			AND schreiber.game IS NOT NULL
-			 ";
+			AND schreiber.game IS NOT NULL";
 
-$rs = $db->Execute($sql);
+$pdoStatement = $pdo->Prepare($sqlquery);
+$pdoStatement->Execute();
+
 
 $mail = new PHPMailer();
+$mail->SMTPOptions = array(
+    'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+    )
+);
 $mail->IsSMTP();
 $mail->Host = "localhost";
 $mail->SetFrom("myVBC@vbclangenthal.ch", "myVBC");
@@ -64,9 +76,9 @@ $mail->AddAddress("sebastian@vbclangenthal.ch","Sebastian Plattner");
 $mail->Subject = "myVBC SMS Notification Report";
 $mail->IsHTML(false);
 
-$mailcontent = "Report for Today: \n\n";
+$mailcontent = "Report for Today, Games on " . $day . ": \n\n";
 
-while ($row = $rs->FetchRow()) {
+while ($row = $pdoStatement->fetch()) {
 		list($datum, $zeit) = explode(" ", $row["date"]);
 		list($jahr, $monat, $tag) = explode ("-", $datum);
 		list($stunden, $minuten, $sekunden) = explode(":", $zeit);
@@ -86,7 +98,7 @@ Datum: " . $tag . "." . $monat . "." . $jahr .
 		list($stunden, $minuten, $sekunden) = explode(":", $zeit);
 		
 		if ($send == "send") {
-
+			
 			
 			$aspsms = new Aspsms($config["aspsms"]["username"], $config["aspsms"]["password"], array(
 					'Originator' => 'myVBC'
@@ -109,7 +121,7 @@ Datum: " . $tag . "." . $monat . "." . $jahr .
 }
 
 if($send != "send") {
-	$mailcontent .= "<p>Test mode without send Command</p>";
+	$mailcontent .= "\n\nTest mode without send Command";
 }
 
 echo $mailcontent . "\n";
