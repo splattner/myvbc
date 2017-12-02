@@ -1,7 +1,7 @@
 {if !empty($mySchreibers)}
 <div class="card">
 	<h4 class="card-header">
-		Meine Schreibereinsätze
+		Meine Schreibereins&auml;tze
 	</h4>
 	<div class="card-body">
 		<table class="table table-striped">
@@ -17,4 +17,3 @@
 	</div>
 </div>
 {/if}
-
