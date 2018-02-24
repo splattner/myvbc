@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "94f83055a16ac557463ed2f904dce0cc",
+    "content-hash": "51cdd17960cacae2b5fa3a23d7802311",
     "packages": [
         {
             "name": "gburtini/acl",
@@ -629,16 +629,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v3.4.1",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "1de51a6c76359897ab32c309934b93d036bccb60"
+                "reference": "72689b934d6c6ecf73eca874e98933bf055313c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/1de51a6c76359897ab32c309934b93d036bccb60",
-                "reference": "1de51a6c76359897ab32c309934b93d036bccb60",
+                "url": "https://api.github.com/repos/symfony/config/zipball/72689b934d6c6ecf73eca874e98933bf055313c9",
+                "reference": "72689b934d6c6ecf73eca874e98933bf055313c9",
                 "shasum": ""
             },
             "require": {
@@ -687,20 +687,20 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2017-11-19T20:09:36+00:00"
+            "time": "2018-01-21T19:05:02+00:00"
         },
         {
             "name": "symfony/console",
-            "version": "v3.4.1",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "2cdef78de8f54f68ff16a857e710e7302b47d4c7"
+                "reference": "26b6f419edda16c19775211987651cb27baea7f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/2cdef78de8f54f68ff16a857e710e7302b47d4c7",
-                "reference": "2cdef78de8f54f68ff16a857e710e7302b47d4c7",
+                "url": "https://api.github.com/repos/symfony/console/zipball/26b6f419edda16c19775211987651cb27baea7f1",
+                "reference": "26b6f419edda16c19775211987651cb27baea7f1",
                 "shasum": ""
             },
             "require": {
@@ -756,20 +756,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-12-02T18:20:11+00:00"
+            "time": "2018-01-29T09:03:43+00:00"
         },
         {
             "name": "symfony/debug",
-            "version": "v4.0.1",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "26a15dab86c3820473716be4f846eac774ad4ad9"
+                "reference": "c77bb31d0f6310a2ac11e657475d396a92e5dc54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/26a15dab86c3820473716be4f846eac774ad4ad9",
-                "reference": "26a15dab86c3820473716be4f846eac774ad4ad9",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/c77bb31d0f6310a2ac11e657475d396a92e5dc54",
+                "reference": "c77bb31d0f6310a2ac11e657475d396a92e5dc54",
                 "shasum": ""
             },
             "require": {
@@ -812,20 +812,20 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-11-21T09:27:49+00:00"
+            "time": "2018-01-18T22:19:33+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.0.1",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "c9d4a26759ff75a077e4e334315cb632739b661a"
+                "reference": "760e47a4ee64b4c48f4b30017011e09d4c0f05ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/c9d4a26759ff75a077e4e334315cb632739b661a",
-                "reference": "c9d4a26759ff75a077e4e334315cb632739b661a",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/760e47a4ee64b4c48f4b30017011e09d4c0f05ed",
+                "reference": "760e47a4ee64b4c48f4b30017011e09d4c0f05ed",
                 "shasum": ""
             },
             "require": {
@@ -861,20 +861,20 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2017-11-21T14:14:53+00:00"
+            "time": "2018-01-03T07:38:00+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.6.0",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296"
+                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
-                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/78be803ce01e55d3491c1397cf1c64beb9c1b63b",
+                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b",
                 "shasum": ""
             },
             "require": {
@@ -886,7 +886,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -920,20 +920,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-10-11T12:05:26+00:00"
+            "time": "2018-01-30T19:27:44+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.1",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "f6a99b95b338799645fe9f7880d7d4ca1bf79cc1"
+                "reference": "eab73b6c21d27ae4cd037c417618dfd4befb0bfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/f6a99b95b338799645fe9f7880d7d4ca1bf79cc1",
-                "reference": "f6a99b95b338799645fe9f7880d7d4ca1bf79cc1",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/eab73b6c21d27ae4cd037c417618dfd4befb0bfe",
+                "reference": "eab73b6c21d27ae4cd037c417618dfd4befb0bfe",
                 "shasum": ""
             },
             "require": {
@@ -978,7 +978,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-12-04T18:15:22+00:00"
+            "time": "2018-01-21T19:05:02+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
