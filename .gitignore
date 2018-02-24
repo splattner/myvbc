@@ -1,3 +1,4 @@
 vendor
 skins/default/templates_c/
 .env
+node_modules
