@@ -127,8 +127,9 @@
         $(function () {
 
 						$('#birthday').datepicker({
-							format: 'dd.mm.yyyy',
-							language: 'de'
+							format: 'yyyy-mm-dd',
+							language: 'de',
+              autoclose: true,
 						});
         });
     </script>

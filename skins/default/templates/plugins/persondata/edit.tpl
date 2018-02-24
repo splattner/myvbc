@@ -63,8 +63,8 @@
         <div class="form-group row">
             <label for="birthday" class="col-sm-4 col-form-label">Geburtstag</label>
             <div class="col-sm-8">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="birthday" name="birthday">
+                <div class="input-group" id="birthday_group">
+                    <input type="text" class="form-control" id="birthday" name="birthday" value="{$person.birthday}">
                     <div class="input-group-append">
                       <span class="input-group-text">
                           <i class="fa fa-calendar-plus-o"></i>
@@ -163,8 +163,9 @@
     <script type="text/javascript">
         $(function () {
             $('#birthday').datepicker({
-							format: 'dd.mm.yyyy',
-							language: 'de'
+							format: 'yyyy-mm-dd',
+							language: 'de',
+              autoclose: true,
 						});
         });
     </script>
