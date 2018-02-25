@@ -4,12 +4,14 @@
 <h3>Spiele importieren</h3>
 
 <div ng-controller="GameImportController">
-<p>
-Team ausw&auml;hlen:
-<select ng-change="getGames()" ng-model="selectedTeam" ng-options="team.name for team in teams track by team.id" >
-</select>
-<a class="btn btn-outline-dark" data-toggle="tooltip" ng-click="importGames()" data-placement="bottom" title="Spiele importieren" href="#"><i class="fa fa-plus-square"></i></a>
-</p>
+<div class="form-row">
+	<div class="form-group col-md-3">
+		<label for="team">Team ausw&auml;hlen:</label>
+		<select id="team" class="form-control" ng-change="getGames()" ng-model="selectedTeam" ng-options="team.name for team in teams track by team.id" >
+		</select>
+		<a class="btn btn-outline-dark" data-toggle="tooltip" ng-click="importGames()" data-placement="bottom" title="Spiele importieren" href="#"><i class="fa fa-plus-square"></i></a>
+	</div>
+</div>
 
 <table class="legend">
 <tr>
