@@ -86,13 +86,13 @@
 		<div class="form-group row">
 			<label for="schreiber" class="col-sm-4 col-form-label">Schreiber</label>
 			<div class="col-sm-8">
-				<input type='checkbox' name='schreiber' id='schreiber' value='1'>
+				<input type="checkbox" name="schreiber" id="schreiber" value="1">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="sms" class="col-sm-4 col-form-label">SMS-Benachrichtigung <br />bei Schreibereinsatz</label>
 			<div class="col-sm-8">
-				<input type='checkbox' name='sms' id='sms' value='1'>
+				<input type="checkbox" name="sms" id="sms" value="1">
 			</div>
 		</div>
 

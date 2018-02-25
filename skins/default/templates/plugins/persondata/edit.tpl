@@ -113,9 +113,9 @@
             <label for="sms" class="col-sm-4 col-form-label">SMS-Benachrichtigung <br />bei Schreibereinsatz</label>
             <div class="col-sm-8">
                 {if $person.sms == 1}
-                    <input type='checkbox' name='sms' id='sms' value='1' checked="checked">
+                    <input type="checkbox" name="sms" id="sms" value="1" checked="checked">
                 {else}
-                    <input type='checkbox' name='sms' id='sms' value='1'>
+                    <input type="checkbox" name="sms" id="sms" value="1">
                 {/if}
             </div>
         </div>
