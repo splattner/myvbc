@@ -63,12 +63,13 @@
 		<div class="form-group row">
 			<label for="birthday" class="col-sm-4 col-form-label">Geburtstag</label>
 			<div class="col-sm-8">
-	            <div class='input-group date' id='datetimepicker'>
+	            <div class="input-group" >
 	                <input type="text" class="form-control" id="birthday" name="birthday">
-	                <span class="input-group-addon">
-	                    <span class="glyphicon glyphicon-calendar">
-	                    </span>
-	                </span>
+									<div class="input-group-append">
+										<span class="input-group-text">
+												<i class="fa fa-calendar-plus-o"></i>
+										</span>
+									</div>
 	            </div>
 			</div>
 		</div>
@@ -85,13 +86,13 @@
 		<div class="form-group row">
 			<label for="schreiber" class="col-sm-4 col-form-label">Schreiber</label>
 			<div class="col-sm-8">
-				<input type='checkbox' name='schreiber' id='schreiber' value='1'>
+				<input type="checkbox" name="schreiber" id="schreiber" value="1">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="sms" class="col-sm-4 col-form-label">SMS-Benachrichtigung <br />bei Schreibereinsatz</label>
 			<div class="col-sm-8">
-				<input type='checkbox' name='sms' id='sms' value='1'>
+				<input type="checkbox" name="sms" id="sms" value="1">
 			</div>
 		</div>
 
@@ -124,11 +125,12 @@
 {literal}
     <script type="text/javascript">
         $(function () {
-            $('#datetimepicker').datetimepicker({
-                viewMode: 'years',
-                locale: 'de',
-                format: 'DD.MM.YYYY'
-            });
+
+						$('#birthday').datepicker({
+							format: 'yyyy-mm-dd',
+							language: 'de',
+              autoclose: true,
+						});
         });
     </script>
 {/literal}

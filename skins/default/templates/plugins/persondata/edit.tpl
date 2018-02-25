@@ -63,11 +63,13 @@
         <div class="form-group row">
             <label for="birthday" class="col-sm-4 col-form-label">Geburtstag</label>
             <div class="col-sm-8">
-                <div class='input-group date' id='datetimepicker'>
-                    <input type="text" class="form-control" id="birthday" name="birthday">
-                    <span class="input-group-addon">
-                        <i class="fa fa-calendar-plus-o"></i>
-                    </span>
+                <div class="input-group" id="birthday_group">
+                    <input type="text" class="form-control" id="birthday" name="birthday" value="{$person.birthday}">
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                          <i class="fa fa-calendar-plus-o"></i>
+                      </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,9 +92,9 @@
             <label for="signature" class="col-sm-4 col-form-label">Vereinsbeitritt unterzeichnet</label>
             <div class="col-sm-8">
                 {if $person.signature == 1}
-                    <input type='checkbox' name='signature' id='signature' value='1' checked="checked">
+                    <input type="checkbox" name="signature" id="signature" value="1" checked="checked">
                 {else}
-                    <input type='checkbox' name='signature' id='signature' value='1'>
+                    <input type="checkbox" name="signature" id="signature" value="1">
                 {/if}
             </div>
         </div>
@@ -111,9 +113,9 @@
             <label for="sms" class="col-sm-4 col-form-label">SMS-Benachrichtigung <br />bei Schreibereinsatz</label>
             <div class="col-sm-8">
                 {if $person.sms == 1}
-                    <input type='checkbox' name='sms' id='sms' value='1' checked="checked">
+                    <input type="checkbox" name="sms" id="sms" value="1" checked="checked">
                 {else}
-                    <input type='checkbox' name='sms' id='sms' value='1'>
+                    <input type="checkbox" name="sms" id="sms" value="1">
                 {/if}
             </div>
         </div>
@@ -160,12 +162,11 @@
 {literal}
     <script type="text/javascript">
         $(function () {
-            $('#datetimepicker').datetimepicker({
-                viewMode: 'years',
-                locale: 'de',
-                format: 'DD.MM.YYYY',
-                defaultDate: moment('{/literal}{$person.birthday}{literal}')
-            });
+            $('#birthday').datepicker({
+							format: 'yyyy-mm-dd',
+							language: 'de',
+              autoclose: true,
+						});
         });
     </script>
 {/literal}

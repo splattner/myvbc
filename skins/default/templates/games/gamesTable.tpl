@@ -2,12 +2,14 @@
 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Spiele importieren" href="index.php?page={$currentPage}&action=import"><i class="fa fa-cloud-download"></i></a>
 
 
-<p>
-Team ausw&auml;hlen:
-<select ng-model="selectedTeam" ng-Change="changeTeam()">
-    <option ng-repeat="team in teams" value="[[ team.id ]]">[[ team.name ]]</option>
-</select>
-</p>
+<div class="form-row">
+  <div class="form-group col-md-3">
+    <label for="team">Team ausw&auml;hlen:</label>
+    <select id="team" class="form-control" ng-model="selectedTeam" ng-Change="changeTeam()">
+      <option ng-repeat="team in teams" value="[[ team.id ]]">[[ team.name ]]</option>
+    </select>
+  </div>
+</div>
 
 
 <table class="table table-striped">

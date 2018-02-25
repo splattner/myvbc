@@ -13,8 +13,8 @@
 			{$user.prename} {$user.name}<br />
 			{$user.address}<br />
 			{$user.plz} {$user.ort} <br />
-			<i class="fa fa-phone"></i>  {$user.phone}<br />
-			<i class="fa fa-mobile" ></i> {$user.mobile}<br />
+			{if $user.phone != ""}<i class="fa fa-phone"></i>  {$user.phone}<br />{/if}
+			{if $user.mobile != ""}<i class="fa fa-mobile" ></i> {$user.mobile}<br />{/if}
 			E-Mail: {$user.email}<br />
 		</p>
 
@@ -28,6 +28,11 @@
 				 {$key.label} Schl&uuml;ssel seit {$key.lastUpdate|date_format:"%d.%m.%y"}
 			</li>
 			{/foreach}
+			{if empty($keys)}
+			<li>
+				Keine Schlüssel
+			</li>
+			{/if}
 		</ul>
 
 		<p>
