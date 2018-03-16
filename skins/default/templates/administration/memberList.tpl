@@ -23,7 +23,7 @@
             <td>{$member.prename}</td>
             <td>{$member.name}</td>
             <td>{$member.email}</td>
-            <td>{$member.groupName}</td>
+            <td><span class="badge badge-pill badge-secondary">{$member.groupName}</span></td>
             <td align="right">
                 <a class="btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Zugangsberechtigung entfernen" class="icons"
                    onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
