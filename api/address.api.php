@@ -44,13 +44,13 @@ class APIAddress extends PublicAPI
 
         // Check if this is a DataTable
         if (isset($args[3]) && $args[3] == "dt"){
-            $dt = array();
+            $dataTables = array();
 
-            $dt["recordsTotal"] = count($result);
-            $dt["recordsFiltered"] = count($result);
-            $dt["draw"] = 0;
-            $dt["data"] = $result;
-            echo json_encode($dt, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+            $dataTables["recordsTotal"] = count($result);
+            $dataTables["recordsFiltered"] = count($result);
+            $dataTables["draw"] = 0;
+            $dataTables["data"] = $result;
+            echo json_encode($dataTables, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
             return;
         }

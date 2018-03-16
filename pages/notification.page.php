@@ -14,36 +14,36 @@ class PageNotification extends MyVBCPage
 
         $this->acl->allow("manager", ["main", "delete"], ["view"]);
     }
-    
+
     public function init()
     {
         parent::init();
         $this->smarty->assign("content", $this->template);
     }
-    
+
     public function cleanup()
     {
         parent::cleanup();
     }
-    
 
-    
+
+
     public function mainAction()
     {
         $this->smarty->assign("subContent1", "notification/notificationTable.tpl");
-        
+
         $notification = new MNotification();
-        $rs = $notification->getNotificationStatus($this->session->uid);
-        $this->smarty->assign("notifications", $rs->fetchAll());
+        $recordSet = $notification->getNotificationStatus($this->session->uid);
+        $this->smarty->assign("notifications", $recordSet->fetchAll());
     }
-    
+
     public function deleteAction()
     {
         $notificationID = $_GET["notificationID"];
-        
+
         $notification = new MNotification();
         $notification->deleteNotificationStatus($notificationID, $this->session->uid);
-        
+
         return "main";
     }
 }

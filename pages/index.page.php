@@ -16,35 +16,35 @@ class PageIndex extends MyVBCPage
 
         $this->acl->allow("guest", ["main"], ["view"]);
     }
-    
+
     public function init()
     {
         parent::init();
         $this->smarty->assign("content", $this->template);
     }
 
-    
+
     public function mainAction()
     {
         if ($this->session->isAuth) {
             $user = new MPerson();
-            $rs = $user->getRS(array($user->pk ." =" => $this->session->uid));
-            $currentUser = $rs->fetch();
+            $recordSet = $user->getRS(array($user->pk ." =" => $this->session->uid));
+            $currentUser = $recordSet->fetch();
 
             $this->smarty->assign("user", $currentUser);
-            
+
             /*
              * Check if RefID is available
              */
             if ($currentUser["refid"] > 0) {
                 $source = Application::getService("ServiceSVRS");
 
-                
+
                 $refGames = $source->getGamesbyRef($currentUser["refid"]);
                 $this->smarty->assign("refGames", $refGames);
                 $this->smarty->assign("refID", $currentUser["refid"]);
             }
-            
+
             /*
              * Get myGames
              */
@@ -54,7 +54,7 @@ class PageIndex extends MyVBCPage
                 $myGames[] = $currentGame;
             }
             $this->smarty->assign("myGames", $myGames);
-            
+
             /*
              * Get myTeams
              */
@@ -64,7 +64,7 @@ class PageIndex extends MyVBCPage
                 $myTeams[] = $currentTeam;
             }
             $this->smarty->assign("myTeams", $myTeams);
-            
+
             /*
              * Get mySchreiber
              */
