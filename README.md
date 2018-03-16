@@ -8,7 +8,7 @@ MyVBC - Online Administration for a Volleyball Club
 * Membermanagement, for Addresses of the Members
 * Teammanagement, which Teams do we have and which Member is part of the Team
 * Licence Ordering, for easy licence Ordering of the Team-Responsible
-* Gamemanagement, All Games directly imported from SwissVolley (VolleyManager) or Swissvolley Region Solothurn
+* Gamemanagement, all Games directly imported from SwissVolley (VolleyManager) or Swissvolley Region Solothurn
 * Game-Writer Management, easy assign Writers to a Game
 * Keymanagement, all (physical)-Keys from the Club,
 * Reports, some preconfigured Reports
