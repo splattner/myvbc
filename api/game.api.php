@@ -141,8 +141,8 @@ class APIGame extends PublicAPI
                 $games = $mgame->getGamesFromSource($teamID);
 
                 $team = new MTeam();
-                $rs = $team->getRS(array($team->pk ." =" => $teamID));
-                $team = $rs->fetch();
+                $recordSet = $team->getRS(array($team->pk ." =" => $teamID));
+                $team = $recordSet->fetch();
 
                 foreach ($games as $game) {
 
@@ -164,7 +164,7 @@ class APIGame extends PublicAPI
 
                     if ($game["local"] == 1 || $game["local"] == 2) {
                         $localgame->update(array("extid" => $game["extid"]));
-                        
+
                     } else {
                         $localgame->insert();
                     }

@@ -53,8 +53,8 @@ abstract class MyVBCPage extends Page
     public function render()
     {
         $notification = new MNotification();
-        $rs = $notification->getNotificationStatus($this->session->uid);
-        $this->smarty->assign("numOfNotification", $rs->rowCount());
+        $recordSet = $notification->getNotificationStatus($this->session->uid);
+        $this->smarty->assign("numOfNotification", $recordSet->rowCount());
 
 
         parent::render();

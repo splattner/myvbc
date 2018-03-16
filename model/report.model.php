@@ -11,23 +11,23 @@ defined('_MYVBC') or die('Restricted access');
 class MReport extends Model
 {
     public $table = 'reports';
-    
-    
+
+
     public function getReport($reportID)
     {
-        $rs = $this->getRS(array("id =" => $reportID));
-        $currentReport = $rs->fetch();
-        
+        $recordSet = $this->getRS(array("id =" => $reportID));
+        $currentReport = $recordSet->fetch();
+
         $sql = $currentReport["query"];
-        
+
         return $this->pdo->query($sql);
     }
-    
+
     public function getTitle($reportID)
     {
-        $rs = $this->getRS(array("id =" => $reportID));
-        $currentReport = $rs->fetch();
-        
+        $recordSet = $this->getRS(array("id =" => $reportID));
+        $currentReport = $recordSet->fetch();
+
         return $currentReport["title"];
     }
 }

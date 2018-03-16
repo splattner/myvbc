@@ -10,7 +10,7 @@ use splattner\myvbc\models\MLicence;
 class PPersondata extends Plugin
 {
     private $formURL;
-    
+
 
     public function __toString()
     {
@@ -30,7 +30,7 @@ class PPersondata extends Plugin
             case "editEntry":
                 $this->contentFile = "plugins/persondata/edit.tpl";
                 $return = $this->editEntry();
-    
+
             break;
         }
 
@@ -85,17 +85,17 @@ class PPersondata extends Plugin
             $person->licence = $_POST["licence"];
             $person->licence_comment = $_POST["licence_comment"];
             $person->refid = $_POST["refid"];
-            
+
             $person->insert();
-            
+
             $this->smarty->assign("messages", "Neue Person wurde eingetragen");
-            
+
             return "main";
         }
-        
+
         $licences = new MLicence();
-        $rs = $licences->getLicenceList();
-        $this->smarty->assign("licences", $rs->fetchAll());
+        $recordSet = $licences->getLicenceList();
+        $this->smarty->assign("licences", $recordSet->fetchAll());
     }
 
 
@@ -145,22 +145,22 @@ class PPersondata extends Plugin
             $person->refid = $_POST["refid"];
 
             $person->update(array($person->pk => $this->data["personID"]));
-            
+
 
             $this->smarty->assign("messages", "Die Daten wurden bearbeitet!");
 
             unset($_POST["doEdit"]);
-            
+
             return "main";
         }
-        
+
         $person = new MPerson();
-        $rs = $person->getAddressEntry(array("persons.id =" => $this->data["personID"]));
-        $this->smarty->assign("person", $rs->fetch());
-        
+        $recordSet = $person->getAddressEntry(array("persons.id =" => $this->data["personID"]));
+        $this->smarty->assign("person", $recordSet->fetch());
+
         $licences = new MLicence();
-        $rs = $licences->getLicenceList();
-        $this->smarty->assign("licences", $rs->fetchAll());
+        $recordSet = $licences->getLicenceList();
+        $this->smarty->assign("licences", $recordSet->fetchAll());
 
         $this->smarty->assign("allowSignature", $this->acl->isAllowed($this->session->role, "setSignature", "view"));
     }

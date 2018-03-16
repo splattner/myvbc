@@ -17,13 +17,13 @@ class APINotification extends PublicAPI
 
         // Check if this is a DataTable
         if (isset($args[3]) && $args[3] == "dt"){
-            $dt = array();
+            $dataTable = array();
 
-            $dt["recordsTotal"] = count($result);
-            $dt["recordsFiltered"] = count($result);
-            $dt["draw"] = 0;
-            $dt["data"] = $result;
-            echo json_encode($dt, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+            $dataTable["recordsTotal"] = count($result);
+            $dataTable["recordsFiltered"] = count($result);
+            $dataTable["draw"] = 0;
+            $dataTable["data"] = $result;
+            echo json_encode($dataTable, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
             return;
         }

@@ -41,7 +41,7 @@ class APISchreiber extends PublicAPI
             echo json_encode($game->getSchreiber($gameID)->fetchAll(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
             return;
-        } 
+        }
 
         http_response_code(400);
     }
@@ -63,12 +63,12 @@ class APISchreiber extends PublicAPI
 
     public function changeSchreiber($args = array(), $input = array()) {
         // Get ID
-        if (isset($args[3]) ) {
-            $gameID = $args[3];
-        } else {
+        if (!isset($args[3]) ) {
             http_response_code(400);
             return;
         }
+
+        $gameID = $args[3];
 
         $schreiber = new MSchreiber();
 
@@ -79,12 +79,12 @@ class APISchreiber extends PublicAPI
             case "DELETE":
 
                 // Get PersonID
-                if (isset($args[4]) ) {
-                    $personID = $args[4];
-                } else {
+                if (!isset($args[4]) ) {
                     http_response_code(400);
                     return;
                 }
+
+                $personID = $args[4];
 
                 $schreiber->removeSchreiber($personID, $gameID);
 
@@ -97,20 +97,18 @@ class APISchreiber extends PublicAPI
 
 
         // Get ID
-        if (isset($args[3]) ) {
-            $gameID = $args[3];
-        } else {
+        if (!isset($args[3]) ) {
             http_response_code(400);
             return;
         }
+        $gameID = $args[3];
 
         // Get PersonID
-        if (isset($args[4]) ) {
-            $personID = $args[4];
-        } else {
+        if (!isset($args[4]) ) {
             http_response_code(400);
             return;
         }
+        $personID = $args[4];
 
         $game = new MGame();
         $currentGame = $game->getRS(array($game->pk ." =" => $gameID))->fetch();
