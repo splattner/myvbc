@@ -1,7 +1,7 @@
 <h3>Zugangsverwaltung Verwaltung</h3>
 
 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Neue Zugangsberechtigung zum System hinzuf&uuml;gen" href="index.php?page={$currentPage}&action=addAccess">
-	<i class="fa fa-plus-square"></i>
+	<i class="fas fa-plus-square"></i>
 </a>
 
 
@@ -28,7 +28,7 @@
                 <a class="btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Zugangsberechtigung entfernen" class="icons"
                    onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
                    href="index.php?page={$currentPage}&action=removeAccess&personID={$member.personID}">
-                    <i class="fa fa-trash-o"></i>
+                    <i class="fas fa-trash"></i>
                 </a>
             </td>
         </tr>

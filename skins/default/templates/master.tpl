@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" media="screen, print" href="skins/default/css/style.css">
     <link rel="stylesheet" type="text/css" media="print" href="skins/default/css/print.css">
 
-    
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -34,7 +34,8 @@
     <link rel="image_src" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen-sprite.png">
 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
     <!-- Datatables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/fc-3.2.4/fh-3.1.3/datatables.min.css"/>
@@ -76,21 +77,17 @@
 <body>
 
 <div class="bg-white container">
-  <nav>
-    <div class="row d-print-none" >
-        <div class="col">
-          {include file='navigation.tpl'}
-        </div>
-    </div>
-  </nav>
+
+  {include file='navigation.tpl'}
+
   <div class="row" >
-      <div class="col">
+      <div class="col pt-3">
           {include file=$content}
           <p>&nbsp;</p>
       </div>
   </div>
   <nav class="navbar fixed-bottom navbar-dark bg-dark d-print-none">
-      <a class="navbar-brand" href="https://github.com/splattner/myvbc" target="_blank" >v{$appVersion} <i class="fa fa-github" aria-hidden="true"></i></a>
+      <a class="navbar-brand" href="https://github.com/splattner/myvbc" target="_blank" >v{$appVersion} <i class="fab fa-github" aria-hidden="true"></i></a>
   </nav>
 </div>
 

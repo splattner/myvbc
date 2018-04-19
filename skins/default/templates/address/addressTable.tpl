@@ -4,7 +4,7 @@
 </a>
 
 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
-    <i class="fa fa-print"></i>
+    <i class="fas fa-print"></i>
 </a>
 
 {include file='messages/info.tpl'}
@@ -47,11 +47,11 @@
                             if(data == 1){
                                 return "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person auf inaktiv setzen'" +
                                         " href='index.php?page=address&action=setState&state=0&personID=" + row.id + "' }>" +
-                                        "<i class='fa fa-user' style='color:green'></i></a>";
+                                        "<i class='fas fa-user' style='color:green'></i></a>";
                             } else {
                                 return "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person auf aktiv setzen'" +
                                         " href='index.php?page=address&action=setState&state=1&personID=" + row.id + "' }>" +
-                                        "<i class='fa fa-user' style='color:red'></i></a>";
+                                        "<i class='fas fa-user' style='color:red'></i></a>";
                             }
                         }
                     },
@@ -65,14 +65,14 @@
                             var output = "";
                             var newLine = false;
                             if (row.phone != null && row.phone != "") {
-                              output = output + "<i class='fa fa-phone'></i>&nbsp;" + row.phone;
+                              output = output + "<i class='fas fa-phone'></i>&nbsp;" + row.phone;
                               newLine = true;
                             }
                             if (row.mobile != null && row.mobile != "") {
                               if (newLine) {
                                 output = output + "<br />";
                               }
-                              output = output + "<i class='fa fa-mobile'></i>&nbsp;&nbsp;" + row.mobile;
+                              output = output + "<i class='fas fa-mobile'></i>&nbsp;&nbsp;" + row.mobile;
                             }
 
                             return output;
@@ -90,26 +90,26 @@
                                 html = html +
                                         "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' target='_blank' title='Beitrittsgesuch' class='icons'" +
                                         " href='index.php?page=address&action=requestForm&personID=" + row.id + "'>" +
-                                        " <i class='fa fa-file-pdf-o'></i></a>";
+                                        " <i class='fas fa-file-pdf'></i></a>";
                             }
 
                             if (row.active == 1 && row.liga != null) {
                                 html = html +
                                         " <a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='" + row.liga +"'>" +
-                                        "<i class='fa fa-users'></i></a>";
+                                        "<i class='fas fa-users'></i></a>";
                             }
 
 
                             html = html +
                                     " <a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person bearbeiten' class='icons'" +
                                     " href='index.php?page=address&action=edit&personID=" + row.id +"'>" +
-                                    "<i class='fa fa-pencil-square-o'></i></a>";
+                                    "<i class='fas fa-edit'></i></a>";
 
                             html = html +
                                     " <a class='btn btn-outline-danger' data-toggle='tooltip' data-placement='bottom' title='Person l&ouml;schen' class='icons'" +
                                     "onclick='return confirm(\"Willst du diesen Eintrag wirklich l&ouml;schen?\")'" +
                                     "href='index.php?page=address&action=delete&personID=" + row.id + "'>" +
-                                    "<i class='fa fa-trash-o'></i></a>";
+                                    "<i class='fas fa-trash'></i></a>";
 
                             return html;
 

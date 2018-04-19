@@ -3,7 +3,7 @@
 
 <div class="card">
 	<h4 class="card-header">
-		<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=createAccess"><i class="fa fa-times"></i></a> Zugang einrichten
+		<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=createAccess"><i class="fas fa-times"></i></a> Zugang einrichten
 	</h4>
 	<div class="card-body">
 		<form action="index.php?page={$currentPage}&action=createAccess&step2" method="POST">
@@ -13,14 +13,14 @@
 				</div>
 				<div class="col-sm-8">
 					<p>
-						Ihr Passwort wird Ihnen per SMS oder E-Mail zugestellt. 
+						Ihr Passwort wird Ihnen per SMS oder E-Mail zugestellt.
 						Deshalb ist es wichtig, dass Ihre Angaben stimmen. <br/>
 						Wenn keine Mobile-Nummer hinterlegt ist, wird Ihnen dass Passwort per E-Mail zugestellt.<br />
 						Pr&uuml;fen Sie deshalb bitte ob 1. Ihre Mobile Nummer simmt, wenn keine Mobile Nummer vorhanden ist,
 						pr&uuml;fen Sie bitte Ihre E-Mail Adresse.
 					</p>
 					<p>
-						<b style="color: #FF0000;">Achtung:</b> Wenn die hier angezeigten Daten nicht stimmen, 
+						<b style="color: #FF0000;">Achtung:</b> Wenn die hier angezeigten Daten nicht stimmen,
 						m&uuml;ssen Sie dies zuerst per E-Mail an  <a href="mailto:myVBC@vbclangenthal.ch" >myVBC@vbclangenthal.ch</a> melden,
 						damit die korrekte Adresse eingetragen werden kann!
 						<br /> <br /><b>Erst danach kann Ihr Zugang erstellt werden!</b>
@@ -51,7 +51,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
-					
+
 				</div>
 				<div class="col-sm-8">
 					{if ($persons.mobile != "") or ($persons.email != "")}

@@ -1,6 +1,6 @@
-<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="neue Person hinzuf&uuml;gen" href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}"><i class="fa fa-plus-square"></i></a>
-<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fa fa-caret-square-o-left"></i></a>
-<a class="btn btn-outline-dark" href="#" onClick='window.print()' data-toggle="tooltip" data-placement="bottom" title="Drucken"><i class="fa fa-print"></i></a>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="neue Person hinzuf&uuml;gen" href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}"><i class="fas fa-plus-square"></i></a>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fas fa-caret-square-left"></i></a>
+<a class="btn btn-outline-dark" href="#" onClick='window.print()' data-toggle="tooltip" data-placement="bottom" title="Drucken"><i class="fas fa-print"></i></a>
 
 
 <h3>
@@ -48,7 +48,7 @@
 				{/if}
 			</td>
 			<td style="text-align: right;">
-				<a class="btn btn-danger" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" class="icons" data-toggle="tooltip" data-placement="bottom" title="aus Team entfernen" href="index.php?page={$currentPage}&action=deleteMember&teamID={$teamID}&personID={$person.personID}"><i class="fa fa-trash-o"></i></a>
+				<a class="btn btn-danger" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" class="icons" data-toggle="tooltip" data-placement="bottom" title="aus Team entfernen" href="index.php?page={$currentPage}&action=deleteMember&teamID={$teamID}&personID={$person.personID}"><i class="fas fa-trash"></i></a>
 			</td>
 		</tr>
 	{/foreach}

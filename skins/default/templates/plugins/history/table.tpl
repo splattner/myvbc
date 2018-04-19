@@ -34,10 +34,10 @@
 <table class="legend">
 	<tr>
 		<td>
-			<i class="fa fa-dot-circle-o" style="color: green" aria-hidden="true"></i> Erfassen<br/>
-			<i class="fa fa-dot-circle-o" style="color: yellow" aria-hidden="true"></i> Bestellung ausgel&ouml;st<br/>
-			<i class="fa fa-dot-circle-o" style="color: blue" aria-hidden="true"></i> In Bearbeitung<br/>
-			<i class="fa fa-dot-circle-o" style="color: red" aria-hidden="true"></i> Abgeschlossen<br/>
+			<i class="fas fa-dot-circle" style="color: green" aria-hidden="true"></i> Erfassen<br/>
+			<i class="fas fa-dot-circle" style="color: yellow" aria-hidden="true"></i> Bestellung ausgel&ouml;st<br/>
+			<i class="fas fa-dot-circle" style="color: blue" aria-hidden="true"></i> In Bearbeitung<br/>
+			<i class="fas fa-dot-circle" style="color: red" aria-hidden="true"></i> Abgeschlossen<br/>
 		</td>
 	</tr>
 </table>

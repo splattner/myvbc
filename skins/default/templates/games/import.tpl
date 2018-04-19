@@ -1,4 +1,4 @@
-<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fa fa-caret-square-o-left"></i></a>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fas fa-caret-square-left"></i></a>
 
 
 <h3>Spiele importieren</h3>
@@ -9,7 +9,7 @@
 		<label for="team">Team ausw&auml;hlen:</label>
 		<select id="team" class="form-control" ng-change="getGames()" ng-model="selectedTeam" ng-options="team.name for team in teams track by team.id" >
 		</select>
-		<a class="btn btn-outline-dark" data-toggle="tooltip" ng-click="importGames()" data-placement="bottom" title="Spiele importieren" href="#"><i class="fa fa-plus-square"></i></a>
+		<a class="btn btn-outline-dark" data-toggle="tooltip" ng-click="importGames()" data-placement="bottom" title="Spiele importieren" href="#"><i class="fas fa-plus-square"></i></a>
 	</div>
 </div>
 

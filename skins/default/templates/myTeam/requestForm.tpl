@@ -18,12 +18,12 @@
 </style>
 
 <div class="d-print-none">
-  <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index"><i class="fa fa-caret-square-o-left"></i></a>
-  <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onclick="window.print()"><i class="fa fa-print"></i></a>
+  <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index"><i class="fas fa-caret-square-left"></i></a>
+  <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onclick="window.print()"><i class="fas fa-print"></i></a>
       -
-  <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Infoblatt" href="https://www.vbclangenthal.ch/vbc-langenthal/dokumente/send/2-reglemente-statuten/47-infoblatt" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
-  <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Finanz- und Bussenreglement" href="https://www.vbclangenthal.ch/vbc-langenthal/dokumente/send/2-reglemente-statuten/45-finanzreglement-vbc-langenthal" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
-  <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Statuten" href="https://www.vbclangenthal.ch/vbc-langenthal/dokumente/send/2-reglemente-statuten/1-statuten-vbc-langenthal" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+  <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Infoblatt" href="https://www.vbclangenthal.ch/vbc-langenthal/dokumente/send/2-reglemente-statuten/47-infoblatt" target="_blank"><i class="fas fa-file-pdf"></i></a>
+  <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Finanz- und Bussenreglement" href="https://www.vbclangenthal.ch/vbc-langenthal/dokumente/send/2-reglemente-statuten/45-finanzreglement-vbc-langenthal" target="_blank"><i class="fas fa-file-pdf"></i></a>
+  <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Statuten" href="https://www.vbclangenthal.ch/vbc-langenthal/dokumente/send/2-reglemente-statuten/1-statuten-vbc-langenthal" target="_blank"><i class="fas fa-file-pdf"></i></a>
 </div>
 
 <h1>Beitrittsgesuch in den VBC Langenthal</h1>

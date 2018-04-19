@@ -2,7 +2,7 @@
 <div data-allowEdit="{$allowedit}" data-orderID="{$orderID}" ng-controller="OrderController">
     <div class="card">
         <h4 class="card-header">
-            <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=order&action=main"><i class="fa fa-times"></i></a> Bestellung bearbeiten
+            <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=order&action=main"><i class="fas fa-times"></i></a> Bestellung bearbeiten
         </h4>
         <div class="card-body">
             <form action="index.php?page=order&action=editorder&orderID=" method="POST">
@@ -23,7 +23,7 @@
 
                         <span ng-if="allowEdit == 0 && order.owner == uid && order.status == 1">[[ order.statustext ]]
                             <a class="btn btn-dakr" ng-click="updateStatus(2)" data-toggle="tooltip" data-placement="bottom" title="Sobald sie die Bestellung schliessen, wird der Bestellvorgang eingeleitet. Achtung: Danach k&ouml;nnen Sie an dieser Bestellung nichts mehr &auml;ndern!" >
-                                <img src="{$templateDir}/images/icons/accept.png" > Bestellung abschliessen
+                                <i class="fas fa-check-circle"></i> Bestellung abschliessen
                             </a>
                         </span>
                     </div>
@@ -81,10 +81,10 @@
                         <td align="right">
                             <a class="btn btn-danger" ng-if="orderItem.orderitemid > 0 && ((allowEdit && orderItem.status !=4) || (order.owner == uid && order.status == 1))" ng-click="removeOrderItem([[ orderItem.personID]])"
                                data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Diese Lizenz entfernen" href="#">
-                                <i class="fa fa-trash-o"></i>
+                                <i class="fas fa-trash"></i>
                             </a>
                             <a class="btn btn-dark" ng-if="orderItem.orderitemid == 0" href="#" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Lizenz f&uuml;r diese Person zur Bestellung hinzuf&uuml;gen" ng-click="addLicence(orderItem.personID)">
-                                <i class="fa fa-plus-square"></i>
+                                <i class="fas fa-plus-square"></i>
                             </a>
                         </td>
                     </tr>
@@ -104,4 +104,3 @@
         </div>
     </div>
 </div>
-    

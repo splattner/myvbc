@@ -67,7 +67,7 @@
 	                <input type="text" class="form-control" id="birthday" name="birthday">
 									<div class="input-group-append">
 										<span class="input-group-text">
-												<i class="fa fa-calendar-plus-o"></i>
+												<i class="fas fa-calendar-plus"></i>
 										</span>
 									</div>
 	            </div>

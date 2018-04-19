@@ -2,7 +2,7 @@
 
 <div class="card">
     <h4 class="card-header">
-        <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main&teamID={$teamID}"><i class="fa fa-times"></i></a> Mitglied zu Team hinzuf&uuml;gen
+        <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main&teamID={$teamID}"><i class="fas fa-times"></i></a> Mitglied zu Team hinzuf&uuml;gen
     </h4>
     <div class="card-body">
     	<form action="index.php?page={$currentPage}&action=addMember&teamID={$teamID}" method="POST">
@@ -19,7 +19,7 @@
 
 					{if $canAddMember}
 					<p>
-						<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Neue Person erfassen"  href="index.php?page={$currentPage}&action=new&teamID={$teamID}"><i class="fa fa-plus-square"></i></a>
+						<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Neue Person erfassen"  href="index.php?page={$currentPage}&action=new&teamID={$teamID}"><i class="fas fa-plus-square"></i></a>
 						Wenn eine Person noch nicht im System erfasst ist, k&ouml;nnen Sie diese hier hinzuf&uuml;gen.
 					</p>
 				{/if}

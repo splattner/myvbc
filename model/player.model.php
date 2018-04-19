@@ -11,16 +11,16 @@ defined('_MYVBC') or die('Restricted access');
 class MPlayer extends Model
 {
     public $table = 'players';
-    
+
     public function updateStatus()
     {
-        
+
         //Reset All Status
         $sql = "UPDATE persons SET active = 0";
         $this->pdo->query($sql);
-        
+
         //Set new Status
-        
+
         $sql = "UPDATE persons RIGHT JOIN players ON persons.id = players.person SET active = 1";
         $this->pdo->query($sql);
     }
@@ -32,11 +32,10 @@ class MPlayer extends Model
         /* Add Notification */
         $notification = Application::getService("ServiceNotification");
         $notification->addNewTeamMemberNotification($this->person, $this->team);
-        
+
         // Update Active Status. After affing to a Team he is for sure active
-        $sql = "UPDATE persons SET active = 1 WHERE id = ?";
-        $sql = $this->pdo->Prepare($sql);
-        $sql->Execute(array($this->person));
+        $person = new MPerson();
+        $person->setState($this->person, 1);
     }
 
 

@@ -9,7 +9,7 @@
 		{if not $isAuth}
             <p>
                 Sie m&uuml;ssen sich zuerst anmelden.<br/>
-                <a class="btn btn-dark" href="index.php"><i class="fa fa-caret-square-o-right"></i> Login</a>
+                <a class="btn btn-dark" href="index.php"><i class="fas fa-caret-square-right"></i> Login</a>
             </p>
         {else}
             <p>
@@ -20,4 +20,3 @@
 </div>
 
 </div>
-

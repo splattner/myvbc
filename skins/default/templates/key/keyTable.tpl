@@ -1,5 +1,5 @@
 <a class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neue Schl&uuml;ssel erfassen" href="#">
-    <i class="fa fa-plus-square"></i>
+    <i class="fas fa-plus-square"></i>
 </a>
 
 {include file='messages/info.tpl'}
@@ -76,7 +76,7 @@
             <td align="right">
                 </a>
                 <a class="btn btn-outline-dark" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" data-toggle="tooltip" data-placement="bottom" title="Schl&uuml;ssel löschen" href="index.php?page={$currentPage}&action=delete&keyID={$key.id}">
-                    <i style="color: red;" class="fa fa-trash-o"></i>
+                    <i style="color: red;" class="fas fa-trash"></i>
                 </a>
             </td>
         </tr>

@@ -1,6 +1,16 @@
 # Changelog
 ## [Unreleased]
 
+## [1.2.13] - 2018-04-19
+### Added
+
+### Changed
+- Update Font Awesome
+- Use Model to Update State in add Player to trigger Mailman Sync
+
+### Removed
+
+
 ## [1.2.12] - 2018-04-19
 ### Added
 
