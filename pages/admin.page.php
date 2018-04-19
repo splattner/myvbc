@@ -157,18 +157,26 @@ class PageAdmin extends MyVBCPage
 
     public function syncMailManAction()
     {
-        $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
+        if ($this->config["mailman"]["enable"]) {
+          $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
 
-        // Remove all Members
-        $allMembers = $mailman->getMemberlist();
-        $mailman->removeMembers($allMembers);
+          // Remove all Members
+          $allMembers = $mailman->getMemberlist();
+          $mailman->removeMembers($allMembers);
 
-        // Add new Members
-        $person = new MPerson();
-        $allMembers = $person->getEMailActive();
-        $mailman->addMembers($allMembers);
+          // Add new Members
+          $person = new MPerson();
+          $allMembers = $person->getEMailActive();
+          $mailman->addMembers($allMembers);
 
-        $this->smarty->assign("messages", "Mailman synced");
+          $notification = Application::getService("ServiceNotification");
+          $notification->addNewNotification(4, "Manueller Mailman Sync", 0);
+
+
+          $this->smarty->assign("messages", "Mailman synced");
+        } else {
+          $this->smarty->assign("messages", "Mailman nicht eingerichtet");
+        }
 
         return "functions";
     }
