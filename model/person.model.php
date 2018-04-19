@@ -326,6 +326,10 @@ class MPerson extends Model
                 $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
                 $mailman->removeMembers([$personData["email_parent"]]);
             }
+
+
+            $notification = Application::getService("ServiceNotification");
+            $notification->addNewNotification(4, "Mailman Update nach dem Löschen einer Person", 0);
         }
 
 
@@ -353,6 +357,9 @@ class MPerson extends Model
                 $mailman->addMembers([$personData["email"]]);
                 $mailman->addMembers([$personData["email_parent"]]);
             }
+
+            $notification = Application::getService("ServiceNotification");
+            $notification->addNewNotification(4, "Mailman Update nach Status Änderung", 0);
         }
     }
 
