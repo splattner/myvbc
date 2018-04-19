@@ -3,6 +3,7 @@
 
 namespace splattner\myvbc\pages;
 
+use splattner\framework\Application;
 use splattner\myvbc\models\MPerson;
 use splattner\myvbc\models\MReport;
 use splattner\myvbc\models\MPlayer;
