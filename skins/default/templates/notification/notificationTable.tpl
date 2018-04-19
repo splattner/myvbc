@@ -1,5 +1,5 @@
 <a class="btn btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Alle l&ouml;schen" href="index.php?page={$currentPage}&action=delete&notificationID=0">
-    <i class="fa fa-trash-o"></i>
+    <i class="fas fa-trash"></i>
 </a>
 <table class="table table-striped">
 	<thead  class="thead-inverse">
@@ -19,7 +19,7 @@
             <td>{$notification.date|date_format:"%d.%m.%Y - %H:%M"}</td>
             <td>{$notification.prename} {$notification.name}</td>
             <td align="right">
-                <a class="btn btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Nachricht löschen" href="index.php?page={$currentPage}&action=delete&notificationID={$notification.notificationID}"><i style="color: red;" class="fa fa-trash-o"></i></a>
+                <a class="btn btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Nachricht löschen" href="index.php?page={$currentPage}&action=delete&notificationID={$notification.notificationID}"><i style="color: red;" class="fas fa-trash"></i></a>
             </td>
         </tr>
         {/foreach}

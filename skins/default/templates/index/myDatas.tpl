@@ -2,10 +2,10 @@
 	<h4 class="card-header">
 		Meine Daten
 		<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Meine Daten bearbeiten" href="index.php?page=mydata&action=edit">
-			<i class="fa fa-pencil-square-o"></i>
+			<i class="fas fa-edit"></i>
 		</a>
 		<a class="btn btn-outline-dark		" data-tooltip="true" data-placement="bottom" data-toggle="modal" data-target="#myModal" title="Mein Password &auml;ndern" href="#">
-			<i class="fa fa-key"></i>
+			<i class="fas fa-key"></i>
 		</a>
 	</h4>
 	<div class="card-body">
@@ -13,8 +13,8 @@
 			{$user.prename} {$user.name}<br />
 			{$user.address}<br />
 			{$user.plz} {$user.ort} <br />
-			{if $user.phone != ""}<i class="fa fa-phone"></i>  {$user.phone}<br />{/if}
-			{if $user.mobile != ""}<i class="fa fa-mobile" ></i> {$user.mobile}<br />{/if}
+			{if $user.phone != ""}<i class="fas fa-phone"></i>  {$user.phone}<br />{/if}
+			{if $user.mobile != ""}<i class="fas fa-mobile" ></i> {$user.mobile}<br />{/if}
 			E-Mail: {$user.email}<br />
 		</p>
 

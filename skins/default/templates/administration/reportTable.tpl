@@ -1,7 +1,7 @@
 <h3>Berichte Verwaltung</h3>
 
 <a class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neuer Bericht erfassen" href="#">
-	<i class="fa fa-plus-square"></i>
+	<i class="fas fa-plus-square"></i>
 </a>
 
 
@@ -57,10 +57,10 @@
 			<td>{$report.title}</td>
 			<td align="right">
 				<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Report bearbeiten" href="index.php?page={$currentPage}&action=editReport&reportID={$report.id}">
-					<i class="fa fa-pencil-square-o"></i>
+					<i class="fas fa-edit"></i>
 				</a>
 				<a class="btn btn-outline-danger" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" data-toggle="tooltip" data-placement="bottom" title="Report l&ouml;schen" href="index.php?page={$currentPage}&action=deleteReport&reportID={$report.id}">
-					<i style="color: red;" class="fa fa-trash-o"></i>
+					<i style="color: red;" class="fas fa-trash"></i>
 				</a>
 
 			</td>

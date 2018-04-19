@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-print-none">
     <a class="navbar-brand" href="#">myVBC</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
                 {else}
                 <li class="nav-item">
                 {/if}
-                <a class="nav-link" href="?page=index" data-toggle="tooltip" data-placement="bottom" title="myVBC Startseite"><i class="fa fa-2x fa-home"></i></a>
+                <a class="nav-link" href="?page=index" data-toggle="tooltip" data-placement="bottom" title="myVBC Startseite"><i class="fas fa-2x fa-home"></i></a>
             </li>
 
             {if $canAddress}
@@ -21,7 +21,7 @@
                 {else}
                 <li class="nav-item">
                 {/if}
-                    <a class="nav-link" href="?page=address" data-toggle="tooltip" data-placement="bottom" title="Mitglieder Verwaltung"><i class="fa fa-2x fa-globe"></i></a>
+                    <a class="nav-link" href="?page=address" data-toggle="tooltip" data-placement="bottom" title="Mitglieder Verwaltung"><i class="fas fa-2x fa-globe"></i></a>
                 </li>
             {/if}
 
@@ -31,7 +31,7 @@
                 {else}
                 <li class="nav-item">
                 {/if}
-                    <a class="nav-link" href="?page=order" data-toggle="tooltip" data-placement="bottom" title="Lizenzbestellung"><i class="fa fa-2x fa-shopping-cart"></i></a>
+                    <a class="nav-link" href="?page=order" data-toggle="tooltip" data-placement="bottom" title="Lizenzbestellung"><i class="fas fa-2x fa-shopping-cart"></i></a>
                 </li>
             {/if}
 
@@ -41,7 +41,7 @@
                 {else}
                 <li class="nav-item">
                 {/if}
-                    <a class="nav-link" href="?page=team" data-toggle="tooltip" data-placement="bottom" title="Team Verwaltung"><i class="fa fa-2x fa-users"></i></a>
+                    <a class="nav-link" href="?page=team" data-toggle="tooltip" data-placement="bottom" title="Team Verwaltung"><i class="fas fa-2x fa-users"></i></a>
                 </li>
             {/if}
 
@@ -51,17 +51,17 @@
                 {else}
                 <li class="nav-item">
                 {/if}
-                    <a class="nav-link" href="?page=games" data-toggle="tooltip" data-placement="bottom" title="Spiele"><i class="fa fa-2x fa-futbol-o"></i></a>
+                    <a class="nav-link" href="?page=games" data-toggle="tooltip" data-placement="bottom" title="Spiele"><i class="fas fa-2x fa-futbol"></i></a>
                 </li>
             {/if}
 
             {if $canKey}
-                {if $currentPage == "key        "}
+                {if $currentPage == "key"}
                 <li class="nav-item active">
                 {else}
                 <li class="nav-item">
                 {/if}
-                    <a class="nav-link" href="?page=key" data-toggle="tooltip" data-placement="bottom" title="Schl&uuml;ssel"><i class="fa fa-2x fa-key"></i></a>
+                    <a class="nav-link" href="?page=key" data-toggle="tooltip" data-placement="bottom" title="Schl&uuml;ssel"><i class="fas fa-2x fa-key"></i></a>
                 </li>
             {/if}
 
@@ -71,7 +71,7 @@
                 {else}
                 <li class="nav-item">
                 {/if}
-                    <a class="nav-link" href="?page=report" data-toggle="tooltip" data-placement="bottom" title="Reports"><i class="fa fa-2x fa-book"></i></a>
+                    <a class="nav-link" href="?page=report" data-toggle="tooltip" data-placement="bottom" title="Reports"><i class="fas fa-2x fa-book"></i></a>
                 </li>
             {/if}
 
@@ -82,7 +82,7 @@
                 {else}
                 <li class="nav-item">
                 {/if}
-                    <a class="nav-link" href="?page=notification" data-toggle="tooltip" data-placement="bottom" title="Benachrichtigungen"><i class="fa fa-2x fa-comments"></i>
+                    <a class="nav-link" href="?page=notification" data-toggle="tooltip" data-placement="bottom" title="Benachrichtigungen"><i class="fas fa-2x fa-comments"></i>
 
                         {if $numOfNotification > 0}
                             <span style="background-color: red" class="badge">{$numOfNotification}</span>
@@ -100,7 +100,7 @@
                 {else}
                 <li class="nav-item dropdown">
                 {/if}
-                
+
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-2x fa-wrench"></i><span class="caret"></span>
                     </a>
@@ -130,4 +130,3 @@
         </ul>
     </div>
 </nav>
-

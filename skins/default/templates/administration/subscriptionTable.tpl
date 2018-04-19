@@ -1,7 +1,7 @@
 <h3>Benachrichtigungs Verwaltung</h3>
 
 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Person auf einen Nachrichtentype einschreiben" href="index.php?page={$currentPage}&action=addNoteSubscription">
-	<i class="fa fa-plus-square"></i>
+	<i class="fas fa-plus-square"></i>
 </a>
 
 {include file='messages/info.tpl'}
@@ -20,11 +20,11 @@
 			<td>{$subscription.type}</td>
 			<td>{$subscription.prename} {$subscription.name}</td>
 			<td align="right">
-				{if $subscription.email == 1}<i class="fa fa-envelope-o"></i>{/if}
-				<a class="btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Subscription entfernen." class="icons"
+				{if $subscription.email == 1}<i class="btn btn-outline-dark fas fa-envelope" data-toggle="tooltip" data-placement="bottom" title="inkl. E-Mail"></i>{/if}
+				<a class="btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Subscription entfernen"
 				   onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
 				   href="index.php?page={$currentPage}&action=deleteNoteSubscription&typeID={$subscription.typeid}&personID={$subscription.personid}">
-					<i style="color: red;" class="fa fa-trash-o"></i>
+					<i style="color: red;" class="fas fa-trash"></i>
 				</a>
 			</td>
 		</tr>
@@ -70,7 +70,7 @@
                             html = " <a class='btn btn-outline-danger' data-toggle='tooltip' data-placement='bottom' title='Person l&ouml;schen' class='icons'" +
                                     "onclick='return confirm(\"Willst du diesen Eintrag wirklich l&ouml;schen?\")'" +
                                     "href='index.php?page=admin&action=deleteNote&notificationID=" + row.notificationID + "'>" +
-                                    "<i class='fa fa-trash-o'></i></a>";
+                                    "<i class='fas fa-trash'></i></a>";
 
                             return html;
 

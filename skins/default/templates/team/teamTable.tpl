@@ -1,6 +1,6 @@
 
 <a class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal" data-tooltip="true" title="Neue Team erfassen" href="#">
-    <i class="fa fa-plus-square"></i>
+    <i class="fas fa-plus-square"></i>
 </a>
 {include file='messages/info.tpl'}
 
@@ -99,13 +99,13 @@
             <td>{$team.liga}</td>
             <td align="right">
                 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Team bearbeiten" href="index.php?page={$currentPage}&action=edit&teamID={$team.id}">
-                    <i class="fa fa-pencil-square-o"></i>
+                    <i class="fas fa-edit"></i>
                 </a>
                 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Team Mitglieder bearbeiten" href="index.php?page={$currentPage}&action=member&teamID={$team.id}">
-                    <i class="fa fa-users"></i>
+                    <i class="fas fa-users"></i>
                 </a>
                 <a class="btn btn-outline-danger" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" data-toggle="tooltip" data-placement="bottom" title="Team löschen" href="index.php?page={$currentPage}&action=delete&teamID={$team.id}">
-                    <i class="fa fa-trash-o"></i>
+                    <i class="fas fa-trash"></i>
                 </a>
             </td>
         </tr>

@@ -1,6 +1,6 @@
 <div class="card">
 	<h4 class="card-header">
-		<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck" href="index.php?page={$currentPage}&action=report"><i class="fa fa-times"></i></a> Bericht bearbeiten
+		<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck" href="index.php?page={$currentPage}&action=report"><i class="fas fa-times"></i></a> Bericht bearbeiten
 	</h4>
 	<div class="card-body">
 		<form action="index.php?page={$currentPage}&action=editReport&reportID={$report[0].id}" method="POST">
@@ -16,7 +16,7 @@
 					<textarea class="form-control" id="query" name="query" rows="20" cols="40">{$report.query}</textarea>
 				</div>
 			</div>
-			
+
 			<input class="btn btn-dark" type="submit" name="doEdit" value="bearbeiten" />
 		</form>
 	</div>

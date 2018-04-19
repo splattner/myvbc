@@ -2,11 +2,11 @@
 {if $canAddMember}
 	<a class="btn btn-outline-dark" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Person dem Team hinzuf&uuml;gen"
 	   href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}">
-		<i class="fa fa-plus-square"></i>
+		<i class="fas fa-plus-square"></i>
 	</a>
 {/if}
 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>
-	<i class="fa fa-print"></i>
+	<i class="fas fa-print"></i>
 </a>
 
 
@@ -40,7 +40,7 @@
                 {if $person.signature == 0}
                     <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" target="_blank" title="Beitrittsgesuch" class="icons"
                        href="index.php?page={$currentPage}&action=requestForm&personID={$person.personID}">
-                        <i class="fa fa-file-pdf-o"></i>
+                        <i class="fas fa-file-pdf"></i>
                     </a>
                 {/if}
             </td>
@@ -61,14 +61,14 @@
                 {if $canEditMember}
                     <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Daten dieser Person bearbeiten" class="icons"
                        href="index.php?page={$currentPage}&action=edit&teamID={$person.teamID}&personID={$person.personID}">
-                        <i class="fa fa-pencil-square-o"></i>
+                        <i class="fas fa-pencil-square"></i>
                     </a>
                 {/if}
                 {if $canDeleteMember}
                     <a class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Diese Person aus dem Team entfernen" class="icons"
                        onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')"
                        href="index.php?page={$currentPage}&action=deleteMember&teamID={$person.teamID}&personID={$person.personID}">
-                        <i class="fa fa-trash-o"></i>
+                        <i class="fas fa-trash"></i>
                     </a>
                 {/if}
 

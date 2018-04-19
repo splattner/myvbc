@@ -350,10 +350,10 @@ class MPerson extends Model
 
             $mailman = new MailmanAPI($this->config["mailman"]["baseurl"], $this->config["mailman"]["adminpw"]);
 
-            if ($newState == 0) {
-                $mailman->removeMembers([$personData["email"]]);
-                $mailman->removeMembers([$personData["email_parent"]]);
-            } else {
+            $mailman->removeMembers([$personData["email"]]);
+            $mailman->removeMembers([$personData["email_parent"]]);
+
+            if ($newState == 1) {
                 $mailman->addMembers([$personData["email"]]);
                 $mailman->addMembers([$personData["email_parent"]]);
             }

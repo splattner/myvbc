@@ -1,7 +1,7 @@
 <div data-gameID="{$gameID}" ng-controller="SchreiberController">
 	<div class="card">
 		<h4 class="card-header">
-			<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fa fa-times"></i></a>
+			<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fas fa-times"></i></a>
 			Schreiber zu Spiel hinzuf&uuml;gen
 		</h4>
 		<div class="card-body">
@@ -31,7 +31,7 @@
 	                        <td>[[ schreiber.prename]] [[ schreiber.name]] </td>
 	                        <td>
 	                        	<a class="btn btn-danger" ng-click="removeSchreiber([[schreiber.id]])" href="#" data-toggle="tooltip" data-placement="bottom" title="Diesen Schreiber vom Spiel entfernen">
-	                                <i class="fa fa-trash-o"></i>
+	                                <i class="fas fa-trash"></i>
 	                            </a>
 	                        </td>
 	                    </tr>
@@ -43,7 +43,7 @@
 		                    </td>
 		                    <td>
 		                        <a class="btn btn-dark" href="#" ng-click="addSchreiber()" data-toggle="tooltip" data-placement="bottom" title="Diesen Schreiber dem Spiel hinzuf&uuml;gen">
-		                            <i class="fa fa-plus-square"></i>
+		                            <i class="fas fa-plus-square"></i>
 		                        </a>
 		                    </td>
 		            </table>

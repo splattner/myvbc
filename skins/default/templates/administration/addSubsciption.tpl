@@ -1,6 +1,6 @@
 <div class="card">
 	<h4 class="card-header">
-		<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=notifications"><i class="fa fa-times"></i></a> Subscription hinzuf&uuml;gen
+		<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=notifications"><i class="fas fa-times"></i></a> Subscription hinzuf&uuml;gen
 	</h4>
 	<div class="card-body">
 		<form action="index.php?page={$currentPage}&action=addNoteSubscription" method="POST">

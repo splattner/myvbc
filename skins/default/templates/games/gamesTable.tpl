@@ -1,5 +1,5 @@
 <div ng-controller="GameController">
-<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Spiele importieren" href="index.php?page={$currentPage}&action=import"><i class="fa fa-cloud-download"></i></a>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Spiele importieren" href="index.php?page={$currentPage}&action=import"><i class="fas fa-cloud-download-alt"></i></a>
 
 
 <div class="form-row">
@@ -43,7 +43,7 @@
             <td align="right">
                 <a class="btn btn-outline-dark" ng-if="game.heimspiel == 1" data-toggle="tooltip" data-placement="bottom" title="Schreiber verwalten"
                    href="index.php?page=games&action=editSchreiber&gameID=[[game.id]]">
-                    <i class="fa fa-users"></i>
+                    <i class="fas fa-users"></i>
                 </a>
 
             </td>

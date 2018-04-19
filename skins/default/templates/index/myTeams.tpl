@@ -12,7 +12,7 @@
 					</td>
 					<td style="text-align: right;">
 						<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Teamliste mit Kontaktdaten " href="index.php?page=myteam&action=main&teamID={$myTeam.id}">
-							<i class="fa fa-users"></i>
+							<i class="fas fa-users"></i>
 						</a>
 					</td>
 				</tr>
@@ -20,4 +20,3 @@
 		</table>
 	</div>
 </div>
-
