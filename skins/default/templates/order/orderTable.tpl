@@ -79,13 +79,13 @@
             <td align="right">
                 <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="anzeigen &amp; bearbeiten"
                    href="index.php?page={$currentPage}&action=list&orderID={$order.id}">
-                    <i class="fa fa-pencil-square-o"></i>
+                    <i class="fas fa-edit"></i>
                 </a>
                 {if (($allowedit && $order.status != 4 )|| ($order.owner == $uid && $order.status == 1))}
                     <a class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="l&ouml;schen"
                        onclick="return confirm('Willst du diesen Bestellung wirklich l&ouml;schen?')"
                        href="index.php?page={$currentPage}&action=delete&orderID={$order.id}">
-                        <i class="fa fa-trash-o"></i>
+                        <i class="fas fa-trash"></i>
                     </a>
                 {/if}
             </td>
