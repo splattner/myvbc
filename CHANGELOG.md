@@ -1,6 +1,11 @@
 # Changelog
 ## [Unreleased]
 
+
+## [1.2.14] - 2018-04-27
+## Fixed
+- Some missing icons
+
 ## [1.2.13] - 2018-04-19
 ### Added
 
