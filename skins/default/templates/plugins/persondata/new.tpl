@@ -126,8 +126,19 @@
     <script type="text/javascript">
         $(function () {
 
-						$('#birthday').datepicker({
-							format: 'yyyy-mm-dd',
+					$('#birthday').datepicker({
+							format: {
+								toDisplay: function (date, format, language) {
+                  var d = moment(date, "DD.MM.YYYY");
+                  return d.format("DD.MM.YYYY");
+                },
+                toValue: function (date, format, language) {
+									var d = moment(date, "DD.MM.YYYY");
+                  date = d.toDate();
+                  date.setMinutes( date.getMinutes() - date.getTimezoneOffset() );
+									return date;
+                }
+							},
 							language: 'de',
               autoclose: true,
 						});

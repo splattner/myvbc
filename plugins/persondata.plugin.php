@@ -48,7 +48,6 @@ class PPersondata extends Plugin
         if (isset($_POST["doNew"])) {
             $datepart = explode(".", $_POST["birthday"]);
 
-
             $person = new MPerson();
             $person->name = $_POST["name"];
             $person->prename = $_POST["prename"];
@@ -84,7 +83,12 @@ class PPersondata extends Plugin
 
             $person->licence = $_POST["licence"];
             $person->licence_comment = $_POST["licence_comment"];
-            $person->refid = $_POST["refid"];
+            if ($_POST["refid"] != '') {
+              $person->refid = $_POST["refid"];
+            }
+
+            $person->password = "";
+            $person->role = "";
 
             $person->insert();
 
@@ -142,7 +146,9 @@ class PPersondata extends Plugin
 
             $person->licence = $_POST["licence"];
             $person->licence_comment = $_POST["licence_comment"];
-            $person->refid = $_POST["refid"];
+            if ($_POST["refid"] != '') {
+              $person->refid = $_POST["refid"];
+            }
 
             $person->update(array($person->pk => $this->data["personID"]));
 
