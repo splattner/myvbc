@@ -61,7 +61,7 @@
                 {if $canEditMember}
                     <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Daten dieser Person bearbeiten" class="icons"
                        href="index.php?page={$currentPage}&action=edit&teamID={$person.teamID}&personID={$person.personID}">
-                        <i class="fas fa-pencil-square"></i>
+                        <i class="fas fa-edit"></i>
                     </a>
                 {/if}
                 {if $canDeleteMember}
