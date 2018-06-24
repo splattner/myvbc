@@ -1,7 +1,7 @@
 {
 
   "name" : "splattner/myvbc",
-  "version" : "1.2.14",
+  "version" : "1.2.15",
   "type" : "project",
   "license": "MIT",
 
@@ -20,7 +20,7 @@
     "robmorgan/phinx": "^0.8.1",
     "gburtini/acl": "^0.1.0",
     "splattner/mailmanapi": "^1.0.1",
-    "vlucas/phpdotenv": "dev-master"
+    "vlucas/phpdotenv": "2.5.x-dev"
 
   }
 }

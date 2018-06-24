@@ -1,6 +1,10 @@
 # Changelog
 ## [Unreleased]
 
+## [1.2.15] - 2018-06-24
+## Fixed
+- Bug with Birthday on persons
+- Update Dependencies
 
 ## [1.2.14] - 2018-04-27
 ## Fixed
