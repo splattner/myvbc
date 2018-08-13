@@ -16,9 +16,9 @@
 <table class="legend">
 <tr>
 	<td>
-		<img src="{$templateDir}/images/icons/bullet_green.png"> Spiel lokal in Datenbank <br />
-		<img src="{$templateDir}/images/icons/bullet_orange.png"> Spiel lokal in Datenbank nicht aktuell<br />
-		<img src="{$templateDir}/images/icons/bullet_red.png"> Spiel nicht lokal in Datenbank<br />
+		<i class="fas fa-check-circle"></i> Spiel lokal in Datenbank <br />
+		<i class="fas fa-sync"></i> Spiel lokal in Datenbank nicht aktuell<br />
+		<i class="fas fa-times-circle"></i> Spiel nicht lokal in Datenbank<br />
 	</td>
 </tr>
 </table>
@@ -36,9 +36,10 @@
     <tbody>
 		<tr ng-repeat="game in games">
 			<td>
-                <img ng-if="game.local == 1" src="{$templateDir}/images/icons/bullet_green.png">
-                <img ng-if="game.local == 2" src="{$templateDir}/images/icons/bullet_orange.png">
-                <img ng-if="game.local != 1 && game.local != 2" src="{$templateDir}/images/icons/bullet_red.png">
+
+								<i ng-if="game.local == 1" class="fas fa-check-circle"></i>
+								<i ng-if="game.local == 2"class="fas fa-sync"></i>
+								<i ng-if="game.local != 1 && game.local != 2" class="fas fa-times-circle"></i>
 			<td>
 				[[ game.datum ]]
 			</td>
