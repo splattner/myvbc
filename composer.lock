@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8aa53cc28bafcbc7d963684bdc5fe32",
+    "content-hash": "5d394f3fe61f6ebdde3371900a13a1b7",
     "packages": [
         {
             "name": "gburtini/acl",
@@ -52,6 +52,187 @@
                 "user"
             ],
             "time": "2015-05-04T16:21:04+00:00"
+        },
+        {
+            "name": "guzzlehttp/guzzle",
+            "version": "6.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "407b0cb880ace85c9b63c5f9551db498cb2d50ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/407b0cb880ace85c9b63c5f9551db498cb2d50ba",
+                "reference": "407b0cb880ace85c9b63c5f9551db498cb2d50ba",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.4",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
+                "psr/log": "^1.0"
+            },
+            "suggest": {
+                "psr/log": "Required for using the Log middleware"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.3-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2018-04-22T15:46:56+00:00"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "time": "2016-12-20T10:07:11+00:00"
+        },
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "PSR-7 message implementation that also provides common utility methods",
+            "keywords": [
+                "http",
+                "message",
+                "request",
+                "response",
+                "stream",
+                "uri",
+                "url"
+            ],
+            "time": "2017-03-20T17:10:46+00:00"
         },
         {
             "name": "nadar/aspsms",
@@ -374,55 +555,6 @@
             "time": "2016-10-10T12:19:37+00:00"
         },
         {
-            "name": "ptcong/easyrequest",
-            "version": "1.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ptcong/easyrequest.git",
-                "reference": "f5c87818e961a9eed50047352d1bf546ca562f86"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ptcong/easyrequest/zipball/f5c87818e961a9eed50047352d1bf546ca562f86",
-                "reference": "f5c87818e961a9eed50047352d1bf546ca562f86",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3",
-                "psr/http-message": "^1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "EasyRequest\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Phan Thanh Cong",
-                    "email": "ptcong90@gmail.com",
-                    "homepage": "http://ptcong.com"
-                }
-            ],
-            "description": "A light weight PHP http client implements PSR7, use socket/curl for sending requests.",
-            "keywords": [
-                "Socket",
-                "curl",
-                "http",
-                "php",
-                "php http client",
-                "request"
-            ],
-            "time": "2016-12-04T14:06:46+00:00"
-        },
-        {
             "name": "robmorgan/phinx",
             "version": "v0.8.1",
             "source": {
@@ -590,21 +722,21 @@
         },
         {
             "name": "splattner/mailmanapi",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/splattner/mailmanAPI.git",
-                "reference": "d3596aa8a2e2c0ec14d6a439e9e4d392f53a04a9"
+                "reference": "749c121ab09b01b5b086a918125ab9b23102a4fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/splattner/mailmanAPI/zipball/d3596aa8a2e2c0ec14d6a439e9e4d392f53a04a9",
-                "reference": "d3596aa8a2e2c0ec14d6a439e9e4d392f53a04a9",
+                "url": "https://api.github.com/repos/splattner/mailmanAPI/zipball/749c121ab09b01b5b086a918125ab9b23102a4fd",
+                "reference": "749c121ab09b01b5b086a918125ab9b23102a4fd",
                 "shasum": ""
             },
             "require": {
-                "paquettg/php-html-parser": "^1.7",
-                "ptcong/easyrequest": "^1.0"
+                "guzzlehttp/guzzle": "~6.0",
+                "paquettg/php-html-parser": "^1.7"
             },
             "type": "library",
             "autoload": {
@@ -625,7 +757,7 @@
             ],
             "description": "A simple API to work with Mailman 2.x Mailing Lists",
             "homepage": "https://github.com/splattner/mailmanAPI",
-            "time": "2017-10-20T07:59:14+00:00"
+            "time": "2018-08-13T16:25:53+00:00"
         },
         {
             "name": "symfony/config",
