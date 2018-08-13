@@ -1,6 +1,10 @@
 # Changelog
 ## [Unreleased]
 
+## [1.2.16] - 2018-08-13
+## Fixed
+- Game Import, change Icons to FontAwesome
+
 ## [1.2.15] - 2018-06-24
 ## Fixed
 - Bug with Birthday on persons
