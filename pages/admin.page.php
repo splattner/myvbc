@@ -9,6 +9,7 @@ use splattner\myvbc\models\MReport;
 use splattner\myvbc\models\MPlayer;
 use splattner\myvbc\models\MGame;
 use splattner\myvbc\models\MNotification;
+use splattner\myvbc\models\MConfig;
 use splattner\mailmanapi\MailmanAPI;
 
 class PageAdmin extends MyVBCPage
@@ -33,12 +34,12 @@ class PageAdmin extends MyVBCPage
     {
     }
 
-    public function configsAction()
+    public function configAction()
     {
         $this->smarty->assign("subContent1", "administration/config.tpl");
 
-        $config = new MConfig();
-        $allconfig = $config->getRS();
+        $mconfig = new MConfig();
+        $allconfig = $mconfig->getRS();
 
         $this->smarty->assign("allconfig", $allconfig->fetchAll());
     }
