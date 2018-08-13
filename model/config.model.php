@@ -12,7 +12,7 @@ defined('_MYVBC') or die('Restricted access');
 
 class MConfig extends Model
 {
-    public $table = config';
+    public $table = 'config';
 
 
 
