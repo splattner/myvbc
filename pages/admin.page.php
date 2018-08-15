@@ -9,6 +9,7 @@ use splattner\myvbc\models\MReport;
 use splattner\myvbc\models\MPlayer;
 use splattner\myvbc\models\MGame;
 use splattner\myvbc\models\MNotification;
+use splattner\myvbc\models\MConfig;
 use splattner\mailmanapi\MailmanAPI;
 
 class PageAdmin extends MyVBCPage
@@ -19,7 +20,7 @@ class PageAdmin extends MyVBCPage
         $this->pagename = "admin";
         $this->template = "administration/administration.tpl";
 
-        $this->acl->allow("administrator", ["main", "access", "addAccess", "removeAccess", "report","editReport","addReport","deleteReport","functions","updateStatus","clearGames","changePassword","notifications","deleteNote","deleteNoteSubscription","addNoteSubscription","syncMailMan"], ["view"]);
+        $this->acl->allow("administrator", ["main", "access", "addAccess", "removeAccess", "report","editReport","addReport","deleteReport","functions","updateStatus","clearGames","changePassword","notifications","deleteNote","deleteNoteSubscription","addNoteSubscription","syncMailMan", "config"], ["view"]);
     }
 
     public function init()
@@ -31,6 +32,16 @@ class PageAdmin extends MyVBCPage
 
     public function mainAction()
     {
+    }
+
+    public function configAction()
+    {
+        $this->smarty->assign("subContent1", "administration/config.tpl");
+
+        $mconfig = new MConfig();
+        $allconfig = $mconfig->getRS();
+
+        $this->smarty->assign("allconfig", $allconfig->fetchAll());
     }
 
     public function accessAction()

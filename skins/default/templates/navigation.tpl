@@ -107,18 +107,14 @@
                     <div class="dropdown-menu bg-dark">
                         <a class="nav-link" href="index.php?page=admin&action=access">Zugangsberechtigung</a>
                         <a class="nav-link" href="index.php?page=admin&action=report">Berichte</a>
-
                         <a class="nav-link" href="index.php?page=admin&action=notifications">Benachrichtigungen</a>
-
                         <a class="nav-link" href="index.php?page=admin&action=updateStatus">Aktiv Status aktualisieren</a>
-
                         <a class="nav-link" href="index.php?page=admin&action=syncMailMan">Mailman synchonisieren</a>
-
                         <a class="nav-link" href="index.php?page=admin&action=changePassword">Passw&ouml;rter &auml;ndern</a>
-
                         <a class="nav-link" href="index.php?page=admin&action=clearGames">
-                                <i class="fa fa-exclamation-triangle" style="color:red" aria-hidden="true"></i> Spiele entfernen
-                            </a>
+                          <i class="fa fa-exclamation-triangle" style="color:red" aria-hidden="true"></i> Spiele entfernen
+                        </a>
+                        <a class="nav-link" href="index.php?page=admin&action=config">Konfiguration</a>
                      </div>
                 </li>
             {/if}
