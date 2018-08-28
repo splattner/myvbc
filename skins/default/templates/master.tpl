@@ -9,7 +9,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    {$env_javascript}
+
 
     <link rel="stylesheet" type="text/css" media="screen, print" href="skins/default/css/style.css">
     <link rel="stylesheet" type="text/css" media="print" href="skins/default/css/print.css">
@@ -56,7 +56,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js" integrity="sha256-59IZ5dbLyByZgSsRE3Z0TjDuX7e1AiqW5bZ8Bg50dsU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/de-ch.js" integrity="sha256-Qsf/BCiIN3Sbv1OHR6930eSMDej2uwzYDi6uvRjveYY=" crossorigin="anonymous"></script>
 
-    
+
     <!-- My stuff -->
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/controller/OrderController.js"></script>
@@ -75,6 +75,8 @@
 
         </script>
     {/literal}
+
+    {$env_javascript}
 
 
 </head>
