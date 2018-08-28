@@ -1,4 +1,6 @@
-<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index"><i class="fa fa-caret-square-o-left"></i></a>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index">
+	<i class="fas fa-caret-square-left">
+</a>
 {if $canAddMember}
 	<a class="btn btn-outline-dark" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Person dem Team hinzuf&uuml;gen"
 	   href="index.php?page={$currentPage}&action=addMember&teamID={$teamID}">
@@ -32,9 +34,9 @@
         <tr>
             <td>
                 {if $person.typ == 1}{/if}
-                {if $person.typ == 2}Teamverantwortlicher{/if}
-                {if $person.typ == 3}Trainer{/if}
-                {if $person.typ == 4}Sonstige Funktion{/if}
+                {if $person.typ == 2}<i data-toggle="tooltip" data-placement="bottom" title="Captain" class="fas fa-copyright"></i>{/if}
+                {if $person.typ == 3}<i data-toggle="tooltip" data-placement="bottom" title="Coach" class="fas fa-bookmark"></i>{/if}
+                {if $person.typ == 4}<i data-toggle="tooltip" data-placement="bottom" title="Sonstige Funktion" class="fas fa-paperclip"></i>{/if}
             </td>
             <td>
                 {if $person.signature == 0}
