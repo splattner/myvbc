@@ -38,6 +38,25 @@ class PageAdmin extends MyVBCPage
     {
         $this->smarty->assign("subContent1", "administration/config.tpl");
 
+        if (isset($_POST["doNew"])) {
+          $mconfig = new MConfig($this->db);
+          $mconfig->key = $_POST["key"];
+          $mconfig->value = $_POST["value"];
+
+          $mconfig->insert();
+
+          $this->smarty->assign("messages", "Neue Config gespeichert");
+        }
+
+        if (isset($_GET["delete"])) {
+          $mconfig = new MConfig($this->db);
+          $mconfig->delete(array("key" => $_GET["key"]));
+
+          $this->smarty->assign("messages", "Neue Config gel&ouml;scht");
+
+        }
+
+
         $mconfig = new MConfig();
         $allconfig = $mconfig->getRS();
 
