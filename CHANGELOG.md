@@ -1,6 +1,12 @@
 # Changelog
 ## [Unreleased]
 
+## [1.2.17] - 2018-08-28
+## Fixed
+- Update Docker Image
+- Initial Work for Configuration Page
+- Layout for my Team
+
 ## [1.2.16] - 2018-08-13
 ## Fixed
 - Game Import, change Icons to FontAwesome

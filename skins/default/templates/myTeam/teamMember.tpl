@@ -1,5 +1,5 @@
 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index">
-	<i class="fas fa-caret-square-left">
+	<i class="fas fa-caret-square-left"></i>
 </a>
 {if $canAddMember}
 	<a class="btn btn-outline-dark" data-toggle="tooltip" data-tooltip="true" data-placement="bottom" title="Person dem Team hinzuf&uuml;gen"
