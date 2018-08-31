@@ -23,6 +23,8 @@ $config["template"]["master"] = "master.tpl";
 
 $config["system"]["name"] = "VBC Langenthal - Web Administration";
 $config["system"]["debug"] = false;
+$config["system"]["dev"] = getenv('DEVELOPMENT') ? getenv('DEVELOPMENT') : "false";
+
 
 
 $config["system"]["models-folder"] = "model";
