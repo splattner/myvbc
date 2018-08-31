@@ -1,5 +1,10 @@
 # Changelog
-## [Unreleased]
+
+## [1.2.18] -
+## Fixed
+-
+
+
 
 ## [1.2.17] - 2018-08-28
 ## Fixed
