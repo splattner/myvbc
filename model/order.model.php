@@ -11,17 +11,17 @@ defined('_MYVBC') or die('Restricted access');
 class MOrder extends Model
 {
     public $table = 'order';
-    
-    
+
+
     public function addLicenceToOrder($personID, $orderID)
     {
-        $sql_query = "INSERT INTO 
-					orderitem (orderid, personid) 
+        $sql_query = "INSERT INTO
+					orderitem (orderid, personid)
 				VALUES(?,?)";
         $sql = $this->pdo->Prepare($sql_query);
         $sql->Execute(array($orderID, $personID));
-        
-        $sql_query = "UPDATE orderitem SET 
+
+        $sql_query = "UPDATE orderitem SET
 					licence_id = (SELECT persons.licence FROM persons WHERE persons.id = ?),
 					licence_comment = (SELECT persons.licence_comment FROM persons WHERE persons.id = ?)
 				WHERE
@@ -31,10 +31,10 @@ class MOrder extends Model
         $sql = $this->pdo->Prepare($sql_query);
         $sql->Execute(array($personID, $personID, $orderID, $personID));
     }
-    
+
     public function removeLicenceFromOrder($personID, $orderID)
     {
-        $sql = "DELETE FROM 
+        $sql = "DELETE FROM
 					orderitem
 				WHERE
 					orderid = ? AND
@@ -42,10 +42,10 @@ class MOrder extends Model
         $sql = $this->pdo->Prepare($sql);
         $sql->Execute(array($orderID, $personID));
     }
-    
+
     public function getOrder($orderID = "")
     {
-        $sql = "SELECT 
+        $sql = "SELECT
 					order.id AS id,
 					order.createdate AS createdate,
 					order.lastupdate as lastupdate,
@@ -54,20 +54,18 @@ class MOrder extends Model
 					CONCAT(persons.prename, ' ', persons.name) AS ownername,
 					order.owner AS owner,
 					order.comment as comment
-				FROM 
+				FROM
 					`" . $this->table . "`
 				LEFT JOIN
 					persons ON order.owner = persons.id
 				LEFT JOIN
 					orderstatus ON order.status = orderstatus.id";
-        
-        
-        
+
             
         if ($orderID != "") {
             $sql .= " WHERE order.id = ?";
         }
-        
+
         $sql .= " ORDER BY order.status ASC, order.lastupdate DESC";
 
         $sql = $this->pdo->Prepare($sql);
@@ -79,7 +77,7 @@ class MOrder extends Model
         }
         return $sql;
     }
-    
+
     public function getPersonOrders($personID)
     {
         $sql = "SELECT
@@ -103,7 +101,7 @@ class MOrder extends Model
         return $sql;
     }
 
-    
+
     public function getOrderItems($orderID)
     {
         $sql = "SELECT
@@ -131,29 +129,29 @@ class MOrder extends Model
         $sql->Execute(array($orderID));
         return $sql;
     }
-    
+
     public function getStatusList()
     {
         $sql = "SELECT
 					*
 				FROM
 					orderstatus";
-        
+
         return $this->pdo->query($sql);
     }
-    
+
     public function updateStatus($statusID, $orderID)
     {
-        $sql = "UPDATE 
+        $sql = "UPDATE
 					`order`
 				SET status = ?, lastupdate = NOW() WHERE id = ?";
         $sql = $this->pdo->Prepare($sql);
         $sql->Execute(array($statusID, $orderID));
-        
+
         /* Add Notifications if order is complete */
         if ($statusID == 4) {
             $notification = Application::getService("ServiceNotification");
-            
+
             $sql = "SELECT
 						personid
 					FROM
@@ -163,23 +161,23 @@ class MOrder extends Model
             $sql = $this->pdo->Prepare($sql);
             $sql->Execute($sql, array($orderID));
             $persons = $sql->fetchAll();
-            
+
             $mperson = new MPerson();
             foreach ($persons as $person) {
                 $mperson->setChanged($person["personid"], 0); // Reset Change Status
                 $notification->addNewLicenceNotification($person["personid"]);
             }
         }
-        
+
         if ($statusID == 2) {
             $notification = Application::getService("ServiceNotification");
             $notification->addNewOrderNotification();
         }
     }
-    
+
     public function addNewOrder()
     {
-        $sql = "INSERT INTO 
+        $sql = "INSERT INTO
 					`order` (createdate, lastupdate, status, comment, owner)
 				VALUES (
 					NOW(),
@@ -189,7 +187,7 @@ class MOrder extends Model
 					" . $this->session->uid . ")";
         $sql = $this->pdo->Prepare($sql);
         $sql->Execute(array($this->comment));
-        
+
         return $this->pdo->lastInsertId();
     }
 }

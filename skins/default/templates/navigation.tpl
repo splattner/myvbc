@@ -120,7 +120,9 @@
             {/if}
             <li class="nav-item">
                 {if $isAuth}
-                    <a class="nav-link" href="?page=auth" data-toggle="tooltip" data-placement="bottom" title="Beenden"><i class="fa fa-2x fa-sign-out"></i></a>
+                    <a class="nav-link" href="?page=auth" data-toggle="tooltip" data-placement="bottom" title="Beenden">
+                      <i class="fas fa-2x fa-sign-out-alt"></i>
+                    </a>
                 {/if}
             </li>
         </ul>
