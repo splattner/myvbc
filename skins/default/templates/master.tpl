@@ -92,8 +92,15 @@
           <p>&nbsp;</p>
       </div>
   </div>
-  <nav class="navbar fixed-bottom navbar-dark bg-dark d-print-none">
+
+  {if $development == "true"}
+      <nav style="background-color: #ff0000;" class="navbar fixed-bottom navbar-dark d-print-none">
+        <a class="navbar-brand" href="https://github.com/splattner/myvbc" target="_blank" >v{$appVersion}-dev <i class="fab fa-github" aria-hidden="true"></i></a>
+  {else}
+    <nav class="navbar fixed-bottom navbar-dark bg-dark d-print-none">
       <a class="navbar-brand" href="https://github.com/splattner/myvbc" target="_blank" >v{$appVersion} <i class="fab fa-github" aria-hidden="true"></i></a>
+  {/if}
+
   </nav>
 </div>
 

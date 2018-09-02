@@ -39,6 +39,9 @@ abstract class MyVBCPage extends Page
         $this->smarty->assign("canReport", $this->acl->isAllowed($this->session->role, "reportPage", "view"));
         $this->smarty->assign("canNotification", $this->acl->isAllowed($this->session->role, "notificationPage", "view"));
         $this->smarty->assign("canKey", $this->acl->isAllowed($this->session->role, "keyPage", "view"));
+
+
+        $this->smarty->assign("development", $this->config["system"]["dev"]);
     }
 
     /**
