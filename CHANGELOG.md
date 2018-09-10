@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.2.20] - 
+
 ## [1.2.19] - 2018-09-10
 ## Fixed
 - Teams Details (ID, Name etc) are now imported from Swissvolley Volley-Manager
