@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19f26ed5faa5b1c0d873c82d7ea658e9",
+    "content-hash": "612423b70cc5a113ecd41699eb983323",
     "packages": [
         {
             "name": "gburtini/acl",
@@ -675,16 +675,16 @@
         },
         {
             "name": "splattner/framework",
-            "version": "1.1.8",
+            "version": "1.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/splattner/framework.git",
-                "reference": "d9beeb08d579445b68b200e364d1710c6119a0bb"
+                "reference": "467ba85e11a0dd2646dddce8036d228918070443"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/splattner/framework/zipball/d9beeb08d579445b68b200e364d1710c6119a0bb",
-                "reference": "d9beeb08d579445b68b200e364d1710c6119a0bb",
+                "url": "https://api.github.com/repos/splattner/framework/zipball/467ba85e11a0dd2646dddce8036d228918070443",
+                "reference": "467ba85e11a0dd2646dddce8036d228918070443",
                 "shasum": ""
             },
             "require": {
@@ -718,7 +718,7 @@
             ],
             "description": "Simple PHP Framework used by splattner/myvbc",
             "homepage": "https://github.com/splattner/framework",
-            "time": "2018-09-02T11:37:26+00:00"
+            "time": "2018-09-10T13:54:25+00:00"
         },
         {
             "name": "splattner/mailmanapi",
