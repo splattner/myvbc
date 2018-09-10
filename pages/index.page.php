@@ -33,17 +33,6 @@ class PageIndex extends MyVBCPage
 
             $this->smarty->assign("user", $currentUser);
 
-            /*
-             * Check if RefID is available
-             */
-            if ($currentUser["refid"] > 0) {
-                $source = Application::getService("ServiceSVRS");
-
-
-                $refGames = $source->getGamesbyRef($currentUser["refid"]);
-                $this->smarty->assign("refGames", $refGames);
-                $this->smarty->assign("refID", $currentUser["refid"]);
-            }
 
             /*
              * Get myGames

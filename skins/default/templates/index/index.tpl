@@ -6,7 +6,6 @@
 	{include file='index/myTeams.tpl'}
 	{include file='index/myGames.tpl'}
 	{include file='index/mySchreiber.tpl'}
-	{include file='index/myRefGames.tpl'}
 {else}
 <div class="card">
 	<div class="card-body">

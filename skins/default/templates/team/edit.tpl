@@ -62,12 +62,8 @@
             <div class="col-sm-9">
                 <select class="form-control" name="typ" disabled>
                 	{if $team.typ == 1}
-				<option value="1" selected="selected">SwissVolley (Volley-Manager)</option>
-				<option value="2">Swissvolley Region Solothurn</option>
-			{elseif $team.typ == 2}
-				<option value="1" >SwissVolley (Volley-Manager)</option>
-				<option value="2" selected="selected">Swissvolley Region Solothurn</option>
-			{/if}
+									<option value="1" selected="selected">SwissVolley (Volley-Manager)</option>
+									{/if}
                 </select>
             </div>
         </div>

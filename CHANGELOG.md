@@ -3,6 +3,7 @@
 ## [1.2.19] -
 ## Fixed
 - Teams Details (ID, Name etc) are now imported from Swissvolley Volley-Manager
+- Remove Swissvolley Solothurn
 
 
 ## [1.2.18] - 2018-09-02
