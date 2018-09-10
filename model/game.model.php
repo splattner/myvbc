@@ -13,11 +13,11 @@ defined('_MYVBC') or die('Restricted access');
 class MGame extends Model
 {
     public $table = 'games';
-    
+
     public function getValidSchreiber($gameID)
     {
         $schreiber = array();
-        
+
         $game = new MGame();
         $rs_game = $game->getRS(array($game->pk . " =" => $gameID));
         $arr_game = $rs_game->fetch(); //All Datas for the current Game
@@ -37,14 +37,14 @@ class MGame extends Model
                 $personTeams[] = $arr_team["id"];
             }
 
-            
+
             if (!in_array($currentTeam, $personTeams)) {
                 $schreiber[] = $row;
             }
         }
         return $schreiber;
     }
-    
+
     public function getSchreiber($gameID)
     {
         $sql = "
@@ -56,7 +56,7 @@ class MGame extends Model
 					schreiber
 				LEFT JOIN
 					persons ON schreiber.person = persons.id
-				LEFT JOIN 
+				LEFT JOIN
 					games ON schreiber.game = games.id
 				WHERE
 					games.id = ? ";
@@ -64,23 +64,23 @@ class MGame extends Model
         $sql->Execute(array($gameID));
         return $sql;
     }
-    
+
     public function getGamesFromPersonOnDate($personID, $date)
     {
         $date = $date . "%";
-        
-        $sql = "SELECT 
+
+        $sql = "SELECT
 					games.date as date,
 					games.gegner as gegner,
 					games.ort as ort,
 					games.halle as halle,
 					games.heimspiel as heimspiel,
 					teams.name as name
-					
+
 				FROM games
-				LEFT JOIN 
+				LEFT JOIN
 					players ON games.team = players.team
-				LEFT JOIN 
+				LEFT JOIN
 					persons ON players.person = persons.id
 				LEFT JOIN
 					teams ON games.team = teams.id
@@ -110,11 +110,6 @@ class MGame extends Model
             case "1":
                 //Swissvolley
                 $source = Application::getService("ServiceSwissvolley");
-                break;
-
-            case "2":
-                //SVRS
-                $source = Application::getService("ServiceSVRS");
                 break;
         }
 

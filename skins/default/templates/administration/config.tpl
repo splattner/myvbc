@@ -59,7 +59,7 @@
             <td>{$config.value}</td>
 
             <td align="right">
-							<a class="btn btn-danger" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" class="icons" data-toggle="tooltip" data-placement="bottom" title="aus Team entfernen" href="index.php?page={$currentPage}&action=config&key=config.key}&delete"><i class="fas fa-trash"></i></a>
+							<a class="btn btn-danger" onclick="return confirm('Willst du diesen Eintrag wirklich l&ouml;schen?')" class="icons" data-toggle="tooltip" data-placement="bottom" title="Konfiguration l&ouml;schen" href="index.php?page={$currentPage}&action=config&key={$config.key}&delete"><i class="fas fa-trash"></i></a>
             </td>
         </tr>
         {/foreach}

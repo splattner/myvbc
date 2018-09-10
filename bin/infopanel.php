@@ -1,10 +1,8 @@
 <?php
 
 
-require "class.svrs.php";
 require "class.swissvolley.php";
 
-$clubID_regional = 22;
 $clubID_cup = 908240;
 $clubID_bern = 907920;
 $days = 21;
@@ -34,109 +32,42 @@ function parseRawGamesSV($raw_games) {
 
 	foreach($raw_games as $game) {
 
-			$today = new DateTime("now");
-			$playDate = DateTime::createFromFormat("Y-m-d H:i:s", $game->PlayDate);
+		$today = new DateTime("now");
+		$playDate = DateTime::createFromFormat("Y-m-d H:i:s", $game->PlayDate);
 
-			$diff = $today->diff($playDate);
+		$diff = $today->diff($playDate);
 
-			if ($game->IsResultCommited == 1 && $diff->d <= $days && $diff->m == 0) {
+		if ($game->IsResultCommited == 1 && $diff->d <= $days && $diff->m == 0) {
 
-				$volleyGame = new VolleyGame();
-				$volleyGame->date = $playDate->format("d.m.Y");
+			$volleyGame = new VolleyGame();
+			$volleyGame->date = $playDate->format("d.m.Y");
+			$volleyGame->league = $game->LeagueCatCaption;
+			$volleyGame->teamHome = $game->TeamHomeCaption;
+			$volleyGame->teamAway = $game->TeamAwayCaption;
+			$volleyGame->NumberOfWinsHome = $game->NumberOfWinsHome;
+			$volleyGame->NumberOfWinsAway = $game->NumberOfWinsAway;
+
+      $lastGames[] = $volleyGame;
+
+		} else {
+      if($diff->d <= $days && $diff->m == 0 && $diff->invert == 0) {
+
+      	$volleyGame = new VolleyGame();
+				$volleyGame->date = $playDate->format("d.m.Y H:i");
 				$volleyGame->league = $game->LeagueCatCaption;
 				$volleyGame->teamHome = $game->TeamHomeCaption;
 				$volleyGame->teamAway = $game->TeamAwayCaption;
-				$volleyGame->NumberOfWinsHome = $game->NumberOfWinsHome;
-				$volleyGame->NumberOfWinsAway = $game->NumberOfWinsAway;
+				$volleyGame->HallPlace = $game->HallPlace;
+				$volleyGame->HallCaption = $game->HallCaption;
 
-	            $lastGames[] = $volleyGame;
-
-			} else {
-	            if($diff->d <= $days && $diff->m == 0 && $diff->invert == 0) {
-
-	            	$volleyGame = new VolleyGame();
-					$volleyGame->date = $playDate->format("d.m.Y H:i");
-					$volleyGame->league = $game->LeagueCatCaption;
-					$volleyGame->teamHome = $game->TeamHomeCaption;
-					$volleyGame->teamAway = $game->TeamAwayCaption;
-					$volleyGame->HallPlace = $game->HallPlace;
-					$volleyGame->HallCaption = $game->HallCaption;
-
-	                $nextGames[] = $volleyGame;
-	            }
-
-	        }
+          $nextGames[] = $volleyGame;
+      }
 		}
+	}
 
 	return array($lastGames, $nextGames);
 }
 
-function parseRawNextGamesSVSolothurn($raw_games) {
-
-	$nextGames = array();
-
-	if (count($raw_games) == 0) {
-    	return $nextGames;
-    }
-
-	foreach ($raw_games as $game) {
-
-		list ($datum, $zeit) = explode(" ", $game["isodatum"]);
-		list ($stunde, $minute, $sekunde) = explode (":", $zeit);
-		list ($jahr, $monat, $tag) = explode("-", $datum);
-		$date = $tag . "." . $monat . "." . $jahr . " " . $stunde . ":" . $minute;
-		$datum = $tag . "." . $monat . "." . $jahr;
-
-		if (date("d.m.Y") == $datum  && (date("G") > $stunde || (date("G") == $stunde && date("m") >= $minute))) {
-		    // Nothing
-		} else {
-
-			$volleyGame = new VolleyGame();
-			$volleyGame->date = $date;
-			$volleyGame->league = $game["liga"];
-			$volleyGame->teamHome = $game["heimteam"];
-			$volleyGame->teamAway = $game["gastteam"];
-			$volleyGame->HallPlace = $game["ort"];
-			$volleyGame->HallCaption = $game["halle"];
-
-			$nextGames[] = $volleyGame;
-		}
-	}
-
-	return $nextGames;
-}
-
-function parseRawLastGamesSVSolothurn($raw_games) {
-
-	$lastGames = array();
-
-	if (gettype($raw_games) == "string") {
-    	return $lastGames;
-    }
-
-	foreach (array_reverse($raw_games) as $game) {
-        if ($game["satzheim"] != 0 || $game["satzgast"] != 0) {
-
-	        list ($datum, $zeit) = explode(" ", $game["isodatum"]);
-	        list ($stunde, $minute, $sekunde) = explode (":", $zeit);
-	        list ($jahr, $monat, $tag) = explode("-", $datum);
-	        $date = $tag . "." . $monat . "." . $jahr;
-
-	        $volleyGame = new VolleyGame();
-			$volleyGame->date = $date;
-			$volleyGame->league = $game["liga"];
-			$volleyGame->teamHome = $game["heimteam"];
-			$volleyGame->teamAway = $game["gastteam"];
-			$volleyGame->NumberOfWinsHome = $game["satzheim"];
-			$volleyGame->NumberOfWinsAway = $game["satzgast"];
-
-
-			$lastGames[] = $volleyGame;
-        }
-	}
-
-	return $lastGames;
-}
 
 
 if (isset($_GET["do"])) {
@@ -146,43 +77,35 @@ if (isset($_GET["do"])) {
 }
 
 if ($do == "buildTable") {
-	$svrs = new svrs();
 	$sv = new swissvolley();
 
-
-	$nextGames_regional_raw = $svrs->get_nextGamesbyVerein($clubID_regional,$days);
-	$lastGames_regional_raw = $svrs->get_lastGamesbyVerein($clubID_regional,$days);
 
 	$games_cup_raw = $sv->getGamesByClub($clubID_cup);
 	$games_bern_raw = $sv->getGamesByClub($clubID_bern);
 
-	// Parse National Games (SwissVolley)    
-    $parsedGamesNational = parseRawGamesSV($games_cup_raw);
-    $parsedGamesNational = parseRawGamesSV($games_cup_raw);
-    $lastGamesNational = $parsedGamesNational[0];
-    $nextGamesNational = $parsedGamesNational[1];
+	// Parse National Games (SwissVolley for Cup)
+  $parsedGamesNational = parseRawGamesSV($games_cup_raw);
+  $parsedGamesNational = parseRawGamesSV($games_cup_raw);
+  $lastGamesNational = $parsedGamesNational[0];
+  $nextGamesNational = $parsedGamesNational[1];
+
+  // Parse Games Region Bern-Solothurn
+  $parsedGamesBern= parseRawGamesSV($games_bern_raw);
+  $parsedGamesBern = parseRawGamesSV($games_bern_raw);
+  $lastGamesBern = $parsedGamesBern[0];
+  $nextGamesBern = $parsedGamesBern[1];
 
 
-    // Parse Games Region Bern
-    $parsedGamesBern= parseRawGamesSV($games_bern_raw);
-    $parsedGamesBern = parseRawGamesSV($games_bern_raw);
-    $lastGamesBern = $parsedGamesBern[0];
-    $nextGamesBern = $parsedGamesBern[1];
 
+  $nextGames = array_merge($nextGamesNational,$nextGamesBern, $nextGamesSolothurn);
+  $lastGames = array_merge($lastGamesNational, $lastGamesBern, $lastGamesSolothurn);
 
-    $lastGamesSolothurn = parseRawLastGamesSVSolothurn($lastGames_regional_raw);
-    $nextGamesSolothurn = parseRawNextGamesSVSolothurn($nextGames_regional_raw);
+  function sortFunction($a, $b) {
+  	return(strtotime($a->date) - strtotime($b->date));
+  }
 
-
-    $nextGames = array_merge($nextGamesNational,$nextGamesBern, $nextGamesSolothurn);
-    $lastGames = array_merge($lastGamesNational, $lastGamesBern, $lastGamesSolothurn);
-
-    function sortFunction($a, $b) {
-    	return(strtotime($a->date) - strtotime($b->date));
-    }
-
-    usort($nextGames, "sortFunction");
-    usort($lastGames, "sortFunction");
+  usort($nextGames, "sortFunction");
+  usort($lastGames, "sortFunction");
 
 
 
@@ -194,7 +117,7 @@ if ($do == "buildTable") {
 							<th width=\"30%\">Gastteam</th>
 							<th width=\"20%\"></th>
 						</tr>";
-	
+
     $header_nextGames = "<table class=\"results_small\">
                         <tr>
                             <th width=\"15%\">Datum / Zeit</th>
@@ -232,12 +155,12 @@ if ($do == "buildTable") {
                             <td>" . $game->NumberOfWinsHome . ":". $game->NumberOfWinsAway ."</td>
                             </tr>";
 	}
-	
 
-	
+
+
 	$footer = "</table>";
 
-	
+
 
     // Next Games
 	$output_nextGames = $header_nextGames;
@@ -252,10 +175,10 @@ if ($do == "buildTable") {
         $output_lastGames .= $body_lastGames;
     }
     $output_lastGames .= $footer;
-	
-	
+
+
 	echo "<h3>Resultate</h3>" . $output_lastGames . "<h3>N&auml;chste Spiele</h3>". $output_nextGames;
-	
+
 
 } else {
 ?>
