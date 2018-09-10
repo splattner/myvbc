@@ -1,9 +1,13 @@
 # Changelog
 
+## [1.2.19] -
+## Fixed
+- Teams Details (ID, Name etc) are now imported from Swissvolley Volley-Manager
+
+
 ## [1.2.18] - 2018-09-02
 ## Fixed
 - Update Dependencies splattner/framework which fixes some Problems with Session Handling
-
 
 
 ## [1.2.17] - 2018-08-28

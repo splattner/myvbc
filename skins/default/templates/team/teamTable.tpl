@@ -4,7 +4,7 @@
 </a>
 {include file='messages/info.tpl'}
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div ng-controller="TeamImportController" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,10 +16,19 @@
                           method="POST">
 
                         <div class="form-group row">
+                            <label for="extid" class="col-sm-3 col-form-label">Von SwissVolley importieren</label>
+
+                            <div class="col-sm-9">
+                          		<select class="form-control" ng-change="selectTeam()" ng-model="selectedTeam" ng-options="team.Caption + ' - ' + team.LeagueCaption + ' - ' + team.Gender for team in teams track by team.ID_team" >
+                          		</select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="extid" class="col-sm-3 col-form-label">Externe ID</label>
 
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" id="extid" name="extid">
+                                <input ng-disabled="!isEmpty(selectedTeam)" ng-model="selectedTeam.ID_team" class="form-control" type="text" id="extid" name="extid">
                             </div>
                         </div>
 
@@ -35,7 +44,7 @@
                             <label for="extname" class="col-sm-3 col-form-label">Externer Name</label>
 
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" id="extname" name="extname">
+                                <input ng-disabled="!isEmpty(selectedTeam)" ng-model="selectedTeam.Caption" class="form-control" type="text" id="extname" name="extname">
                             </div>
                         </div>
 
@@ -52,7 +61,7 @@
                             <label for="extliga" class="col-sm-3 col-form-label">Externe Liga</label>
 
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" id="extliga" name="extliga">
+                                <input ng-disabled="!isEmpty(selectedTeam)" ng-model="selectedTeam.LeagueCaption" class="form-control" type="text" id="extliga" name="extliga">
                             </div>
                         </div>
 
@@ -60,9 +69,9 @@
                             <label for="typ" class="col-sm-3 col-form-label">Type</label>
 
                             <div class="col-sm-9">
-                                <select class="form-control" name="typ">
-                                    <option value="1">SwissVolley (National)</option>
-                                    <option value="2">Swissvolley Region Solothurn</option>
+                                <select class="form-control" name="typ" disabled>
+                                    <option value="1">SwissVolley (Volley-Manager)</option>
+                                    
 
                                 </select>
                             </div>

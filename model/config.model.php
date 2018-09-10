@@ -14,6 +14,4 @@ class MConfig extends Model
 {
     public $table = 'config';
 
-
-
 }
