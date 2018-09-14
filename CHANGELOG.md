@@ -1,6 +1,7 @@
 # Changelog
 
-## [1.2.20] - 
+## [1.2.20] - 2018-09-14
+- Update Dependencies splattner/framework which fixes a Bug in Model Update function
 
 ## [1.2.19] - 2018-09-10
 ## Fixed
