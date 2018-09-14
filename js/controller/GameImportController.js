@@ -3,7 +3,7 @@
  */
 
 
-myApp.controller('GameImportController', ['$scope', '$http', '$attrs', '$window', function($scope, $http, $attrs, $window) {
+myApp.controller("GameImportController", ["$scope", "$http", "$attrs", "$window", function($scope, $http, $attrs, $window) {
 
 
   $scope.selectedTeam = 0;
@@ -29,7 +29,7 @@ myApp.controller('GameImportController', ['$scope', '$http', '$attrs', '$window'
       .then(function(response) {
         $scope.games = response.data;
       });
-  }
+  };
 
   /**
    * Import all games for a team from the external source
@@ -41,7 +41,7 @@ myApp.controller('GameImportController', ['$scope', '$http', '$attrs', '$window'
 
         $scope.getGames();
       });
-  }
+  };
 
   $scope.getTeams();
 
