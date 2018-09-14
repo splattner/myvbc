@@ -1,7 +1,7 @@
 {
 
   "name" : "splattner/myvbc",
-  "version" : "1.2.19",
+  "version" : "1.2.20",
   "type" : "project",
   "license": "MIT",
 
@@ -16,7 +16,7 @@
   "require": {
     "nadar/aspsms": "1.0.4",
     "phpmailer/phpmailer": "^5.2",
-    "splattner/framework": "^1.1.9",
+    "splattner/framework": "^1.1.10",
     "robmorgan/phinx": "^0.8.1",
     "gburtini/acl": "^0.1.0",
     "splattner/mailmanapi": "^1.1.0",
