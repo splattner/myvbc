@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.2.22] -
+- 
+
 ## [1.2.21] - 2018-09-15
 - Allow manager to view Team Page and all Team Member. No edit of Team or Members is allowed
 - Fix New and Edit Team
