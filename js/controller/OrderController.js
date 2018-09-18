@@ -3,7 +3,7 @@
  */
 
 
-myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', function($scope, $http, $attrs, $window) {
+myApp.controller("OrderController", ["$scope", "$http", "$attrs", "$window", function($scope, $http, $attrs, $window) {
 
 
   $scope.uid = $window.uid;
@@ -39,7 +39,7 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
   $scope.getOrderItems = function(orderID) {
     $http.get("index.php/api/order/getItemsEntry/" + orderID)
       .then(function(response) {
-        $scope.orderItems = response.data
+        $scope.orderItems = response.data;
       });
   };
 
@@ -55,7 +55,7 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
 
     $scope.getAllPersons();
 
-    licence = {
+    var licence = {
       "orderID": 0,
       "orderitemid": 0,
       "personID": 0,
@@ -72,7 +72,7 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
 
   $scope.addLicence = function(person) {
 
-    newLicence = {
+    var newLicence = {
       "personID": person.id,
       "orderID": $scope.orderID
     };
@@ -88,7 +88,7 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
 
   $scope.updateStatus = function(newStatus) {
 
-    data = {
+    var data = {
       "status": newStatus
     };
 
@@ -102,7 +102,7 @@ myApp.controller('OrderController', ['$scope', '$http', '$attrs', '$window', fun
   $scope.editOrder = function() {
 
 
-    data = {
+    var data = {
       "id": $scope.order.id,
       "comment": $scope.order.comment,
       "status": $scope.order.status

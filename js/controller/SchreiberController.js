@@ -3,7 +3,7 @@
  */
 
 
-myApp.controller('SchreiberController', ['$scope', '$http', '$attrs', '$window', function($scope, $http, $attrs, $window) {
+myApp.controller("SchreiberController", ["$scope", "$http", "$attrs", "$window", function($scope, $http, $attrs, $window) {
 
   $scope.gameID = $attrs.gameid;
   $scope.selectedSchreiber = {};
@@ -61,7 +61,7 @@ myApp.controller('SchreiberController', ['$scope', '$http', '$attrs', '$window',
 
   $scope.addSchreiber = function() {
 
-    newSchreiber = {
+    var newSchreiber = {
       "personID": $scope.selectedSchreiber.id,
       "gameID": $scope.gameID
     };

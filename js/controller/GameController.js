@@ -2,7 +2,7 @@
  * Created by sebastianplattner on 28.08.16.
  */
 
-myApp.controller('GameController', ['$scope', '$http', '$attrs', '$window', function($scope, $http, $attrs, $window) {
+myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", function($scope, $http, $attrs, $window) {
 
 
   $scope.selectedTeam = 0;
@@ -31,8 +31,7 @@ myApp.controller('GameController', ['$scope', '$http', '$attrs', '$window', func
         $scope.teams = response.data;
 
       });
-
-  }
+  };
 
   /**
    * Call getGames on a change of team

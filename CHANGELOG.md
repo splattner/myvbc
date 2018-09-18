@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.21] - 2018-09-15
+- Allow manager to view Team Page and all Team Member. No edit of Team or Members is allowed
+- Fix New and Edit Team
+
 ## [1.2.20] - 2018-09-14
 - Update Dependencies splattner/framework which fixes a Bug in Model Update function
 

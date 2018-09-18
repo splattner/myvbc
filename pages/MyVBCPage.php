@@ -21,7 +21,7 @@ abstract class MyVBCPage extends Page
             }
         }
 
-        $this->acl->allow("manager", ["notificationPage", "orderPage"], ["view"]);
+        $this->acl->allow("manager", ["notificationPage", "teamPage", "orderPage"], ["view"]);
         $this->acl->allow("vorstand", ["addressPage","teamPage","gamesPage","reportPage","keyPage"], ["view"]);
         $this->acl->allow("administrator", ["adminPage"], ["view"]);
 

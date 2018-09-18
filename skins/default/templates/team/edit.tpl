@@ -23,21 +23,21 @@
             <label for="extid" class="col-sm-3 col-form-label">Externe ID</label>
 
             <div class="col-sm-9">
-                <input ng-disabled="!isEmpty(selectedTeam)" ng-model="selectedTeam.ID_team" class="form-control" type="text" id="extid" name="extid" value="{$team.extid}"	>
+                <input ng-readonly="!isEmpty(selectedTeam)" ng-model="team.extid" ng-init="team.extid='{$team.extid}'" class="form-control" type="text" id="extid" name="extid"	>
             </div>
         </div>
         <div class="form-group row">
             <label for="name" class="col-sm-3 col-form-label">Name</label>
 
             <div class="col-sm-9">
-                <input class="form-control" type="text" id="name" name="name" value="{$team.name}">
+                <input class="form-control" type="text" ng-model="team.name" ng-init="team.name='{$team.name}'" id="name" name="name">
             </div>
         </div>
         <div class="form-group row">
             <label for="extname" class="col-sm-3 col-form-label">Externer Name</label>
 
             <div class="col-sm-9">
-                <input ng-disabled="!isEmpty(selectedTeam)" ng-model="selectedTeam.Caption" class="form-control" type="text" id="extname" name="extname" value="{$team.extname}">
+                <input ng-readonly="!isEmpty(selectedTeam)" ng-model="team.extname" ng-init="team.extname='{$team.extname}'" class="form-control" type="text" id="extname" name="extname"">
             </div>
         </div>
 
@@ -45,14 +45,14 @@
             <label for="liga" class="col-sm-3 col-form-label">Liga</label>
 
             <div class="col-sm-9">
-                <input  class="form-control" type="text" id="liga" name="liga" value="{$team.liga}">
+                <input  class="form-control" type="text" ng-model="team.liga" ng-init="team.liga='{$team.liga}'" id="liga" name="liga" >
             </div>
         </div>
         <div class="form-group row">
             <label for="extliga" class="col-sm-3 col-form-label">Externe Liga</label>
 
             <div class="col-sm-9">
-                <input ng-disabled="!isEmpty(selectedTeam)" ng-model="selectedTeam.LeagueCaption" class="form-control" type="text" id="extliga" name="extliga" value="{$team.extliga}">
+                <input ng-readonly="!isEmpty(selectedTeam)" ng-model="team.extliga" ng-init="team.extliga='{$team.extliga}'" class="form-control" type="text" id="extliga" name="extliga">
             </div>
         </div>
 
@@ -60,7 +60,7 @@
             <label for="typ" class="col-sm-3 col-form-label">Type</label>
 
             <div class="col-sm-9">
-                <select class="form-control" name="typ" disabled>
+                <select class="form-control" name="typ" readonly>
                 	{if $team.typ == 1}
 									<option value="1" selected="selected">SwissVolley (Volley-Manager)</option>
 									{/if}
