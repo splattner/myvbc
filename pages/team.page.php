@@ -16,6 +16,7 @@ class PageTeam extends MyVBCPage
 
 
         $this->acl->allow("vorstand", ["main", "edit","member","deleteMember","addMember","new","delete"], ["view"]);
+        $this->acl->allow("manager", ["main","member"], ["view"]);
     }
 
     public function init()
@@ -35,6 +36,11 @@ class PageTeam extends MyVBCPage
         $recordSet = $teams->getRS(array(), array("teams.name" => "ASC"));
 
         $this->smarty->assign("teams", $recordSet->fetchAll());
+
+        $this->smarty->assign("canAddTeam", $this->acl->isAllowed($this->session->role, "new", "view"));
+        $this->smarty->assign("canViewTeam", $this->acl->isAllowed($this->session->role, "member", "view"));
+        $this->smarty->assign("canEditTeam", $this->acl->isAllowed($this->session->role, "edit", "view"));
+        $this->smarty->assign("canDeleteTeam", $this->acl->isAllowed($this->session->role, "delete", "view"));
     }
 
     public function editAction()
@@ -51,6 +57,7 @@ class PageTeam extends MyVBCPage
             $team->liga = $_POST["liga"];
             $team->extliga = $_POST["extliga"];
             $team->typ = $_POST["typ"];
+
 
             $team->update(array($team->pk => $teamID));
 
@@ -79,6 +86,9 @@ class PageTeam extends MyVBCPage
         $currentTeam = $recordSet->fetch();
         $teamName = $currentTeam["name"];
         $this->smarty->assign("teamName", $teamName);
+
+        $this->smarty->assign("canAddMember", $this->acl->isAllowed($this->session->role, "addMember", "view"));
+        $this->smarty->assign("canDeleteMember", $this->acl->isAllowed($this->session->role, "deleteMember", "view"));
     }
 
     public function deleteMemberAction()
@@ -140,6 +150,7 @@ class PageTeam extends MyVBCPage
             $team->liga = $_POST["liga"];
             $team->extliga = $_POST["extliga"];
             $team->typ = $_POST["typ"];
+
 
             $team->insert();
 
