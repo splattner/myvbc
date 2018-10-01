@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.2.23] - 
+
+
 ## [1.2.22] - 2018-10-01
 - Game Details from SwissVolley (via API/SOAP)
 - Team Details from SwissVolley (via API/SOAP)
