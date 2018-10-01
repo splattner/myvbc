@@ -36,6 +36,7 @@ myApp.controller("MyGamesController", ["$scope", "$http", "$attrs", "$window", f
    * Get GameDetailed
    */
   $scope.getGameDetailed = function(gameID) {
+    $scope.gameDetailed = {};
     $http.get("index.php/api/game/getGameDetailed/" + gameID)
       .then(function(response) {
         $scope.gameDetailed = response.data;
@@ -47,6 +48,7 @@ myApp.controller("MyGamesController", ["$scope", "$http", "$attrs", "$window", f
    * Get GameDetailed
    */
   $scope.getAddressesByTeam = function(gameId, home) {
+    $scope.teamDetailed = {}:
 
     // Away
     if (home == 0) {

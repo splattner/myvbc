@@ -69,18 +69,21 @@
     <thead class="thead-inverse">
         <tr>
             <th width="15%">Datum / Zeit</th>
-            <th width="35%">Team / Gegner </th>
+            <th width="15%">Team</th>
+            <th width="20%">Gegner </th>
             <th width="20%">Ort / Halle</th>
             <th width="13%">Schreiber</th>
             <th width="15%">&nbsp;</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="game in games" ng-init="$last && gamesReady()">
+        <tr ng-repeat="game in games">
 
             <td>[[ game.date | dateToISO | date : "dd. MMM yyyy - HH:mm" ]]</td>
             <td>
-              <span class="badge badge-secondary">[[ game.name ]]</span> /
+              <span class="badge badge-secondary">[[ game.name ]]</span>
+            </td>
+            <td>
               <a href="#" ng-click="getAddressesByTeam([[game.extid]], [[game.heimspiel]])" data-target="#teamDetailed" data-toggle="modal" data-tooltip="true" data-placement="bottom" class="badge badge-secondary">[[ game.gegner ]]
                 <i class="fas fa-info-circle"></i>
               </a>

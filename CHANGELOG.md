@@ -1,7 +1,8 @@
 # Changelog
 
-## [1.2.22] -
-- 
+## [1.2.22] - 2018-10-01
+- Game Details from SwissVolley (via API/SOAP)
+- Team Details from SwissVolley (via API/SOAP)
 
 ## [1.2.21] - 2018-09-15
 - Allow manager to view Team Page and all Team Member. No edit of Team or Members is allowed
