@@ -134,10 +134,10 @@ class APIGame extends PublicAPI
       }
 
       $sw = Application::getService("ServiceSwissvolley");
-      $teams = $sw->getGameDetailed($gameID);
+      $game = $sw->getGameDetailed($gameID);
 
 
-      echo json_encode($games, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+      echo json_encode($game, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
     }
 
     public function importGames($args = array()) {
