@@ -20,6 +20,11 @@ class ServiceSwissvolley extends Service
         return $this->games;
     }
 
+    public function getGameDetailed($gameID)
+    {
+        return $this->soap_client->getGameDetailed($gameID);
+    }
+
     public function getTeamsByClub($clubId)
     {
 

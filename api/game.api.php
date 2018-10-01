@@ -123,6 +123,22 @@ class APIGame extends PublicAPI
         echo json_encode($games, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
     }
 
+    public function getGameDetailed($args = array()) {
+      // Get ID
+      if (isset($args[3]) ) {
+          $gameID = $args[3];
+      } else {
+          http_response_code(400);
+          return;
+      }
+
+      $sw = Application::getService("ServiceSwissvolley");
+      $teams = $sw->getGameDetailed($gameID);
+
+
+      echo json_encode($games, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+    }
+
     public function importGames($args = array()) {
 
         // Get ID
