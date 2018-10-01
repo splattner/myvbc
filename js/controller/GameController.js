@@ -7,6 +7,8 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
 
   $scope.selectedTeam = 0;
 
+  $scope.gameDetailed = {};
+
 
   /**
    * Get all Games for a Team
@@ -17,6 +19,13 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
     $http.get("index.php/api/game/getGames/" + teamID)
       .then(function(response) {
         $scope.games = response.data;
+
+        /*$scope.games.forEach(function(entry) {
+          $http.get("index.php/api/game/getGameDetailed/" + entry.extid)
+            .then(function(response) {
+              entry.detailed = response.data
+            });
+        })*/
 
 
       });
@@ -40,6 +49,17 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
 
     $scope.getGames($scope.selectedTeam);
   }
+
+  /**
+   * Get GameDetailed
+   */
+  $scope.getGameDetailed = function(gameID) {
+    $http.get("index.php/api/game/getGameDetailed/" + gameID)
+      .then(function(response) {
+        $scope.gameDetailed = response.data;
+
+      });
+  };
 
   $scope.getTeams();
   $scope.getGames(0);

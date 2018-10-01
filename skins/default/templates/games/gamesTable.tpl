@@ -2,6 +2,33 @@
 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Spiele importieren" href="index.php?page={$currentPage}&action=import"><i class="fas fa-cloud-download-alt"></i></a>
 
 
+<div class="modal fade" id="gameDetailed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                  <table class="table">
+
+                  <tbody>
+                    <tr ng-repeat="(key, value) in gameDetailed">
+                      <td> [[key]] </td> <td> [[ value ]] </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="form-row">
   <div class="form-group col-md-3">
     <label for="team">Team ausw&auml;hlen:</label>
@@ -15,12 +42,12 @@
 <table class="table table-striped">
     <thead class="thead-inverse">
         <tr>
-            <th width="20%">Datum / Zeit</th>
+            <th width="15%">Datum / Zeit</th>
             <th width="15%">Team</th>
             <th width="20%">Gegner</th>
             <th width="20%">Ort / Halle</th>
             <th width="13%">Schreiber</th>
-            <th width="10%">&nbsp;</th>
+            <th width="15%">&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +56,7 @@
             <td>[[ game.date | dateToISO | date : "dd. MMM yyyy - HH:mm" ]]</td>
             <td>[[ game.name ]]</td>
             <td>[[ game.gegner ]]</td>
-            <td>[[ game.ort ]] / [[ game.halle ]]</td>
+            <td>[[ game.ort ]] / [[ game.halle ]] </td>
             <td>
                 <span ng-if="game.heimspiel == 1" ng-repeat="schreiber in game.schreiber">
                     [[ schreiber.prename ]] [[ schreiber.name ]]
@@ -41,11 +68,14 @@
 
             </td>
             <td align="right">
-                <a class="btn btn-outline-dark" ng-if="game.heimspiel == 1" data-toggle="tooltip" data-placement="bottom" title="Schreiber verwalten"
-                   href="index.php?page=games&action=editSchreiber&gameID=[[game.id]]">
-                    <i class="fas fa-users"></i>
-                </a>
-
+              <a class="btn btn-outline-dark" ng-click="getGameDetailed([[game.extid]])" data-target="#gameDetailed" data-toggle="modal" data-tooltip="true" data-placement="bottom" title="Details"
+                 href="#">
+                  <i class="fas fa-info-circle"></i>
+              </a>
+              <a class="btn btn-outline-dark" ng-if="game.heimspiel == 1" data-toggle="tooltip" data-placement="bottom" title="Schreiber verwalten"
+                 href="index.php?page=games&action=editSchreiber&gameID=[[game.id]]">
+                  <i class="fas fa-users"></i>
+              </a>
             </td>
         </tr>
     </tbody>

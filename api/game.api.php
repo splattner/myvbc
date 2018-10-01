@@ -63,6 +63,7 @@ class APIGame extends PublicAPI
 
         $sql = "SELECT
 					games.id AS id,
+          games.extid AS extid,
 					games.date AS date,
 					teams.name AS name,
 					games.gegner AS gegner,
