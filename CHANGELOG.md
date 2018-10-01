@@ -1,8 +1,10 @@
 # Changelog
 
+## [1.2.24] -
+
+
 ## [1.2.23] - 2018-10-01
 - Bugfix
-
 
 ## [1.2.22] - 2018-10-01
 - Game Details from SwissVolley (via API/SOAP)
