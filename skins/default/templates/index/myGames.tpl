@@ -51,7 +51,7 @@
 	        </div>
 	    </div>
 	</div>
-	
+
 	<h4 class="card-header">
 		Meine Spiele
 	</h4>
@@ -64,11 +64,12 @@
 					<td>[[ game.date | dateToISO | date : "dd. MMM yyyy"]]</td>
 					<td>[[ game.date | dateToISO | date : "HH:mm" ]]</td>
 					<td>
-						<span class="badge badge-secondary">[[ game.name ]]</span> /
+						<span class="badge badge-secondary">[[ game.name ]]</span>
+					</td>
+					<td>
 						<a href="#" ng-click="getAddressesByTeam([[game.extid]], [[game.heimspiel]])" data-target="#teamDetailed" data-toggle="modal" data-tooltip="true" data-placement="bottom" class="badge badge-secondary">[[ game.gegner ]]
 							<i class="fas fa-info-circle"></i>
 						</a>
-
 					</td>
 					<td>[[ game.ort ]] / [[ game.halle ]] </td>
 					<td align="right">
