@@ -66,7 +66,7 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
    * Get GameDetailed
    */
   $scope.getAddressesByTeam = function(gameId, home) {
-    $scope.teamDetailed = {}
+    $scope.teamDetailed = {};
 
     // Away
     if (home == 0) {
