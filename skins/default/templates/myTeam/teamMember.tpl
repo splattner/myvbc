@@ -11,6 +11,12 @@
 	<i class="fas fa-print"></i>
 </a>
 
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Hilfe" target="_blank" href="https://github.com/splattner/myvbc/wiki/Spieler-zu-Team-hinzuf%C3%BCgen">
+	<i class="fas fa-question-circle"></i>
+</a>
+
+
+
 
 {include file='messages/info.tpl'}
 
