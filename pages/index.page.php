@@ -35,16 +35,6 @@ class PageIndex extends MyVBCPage
 
 
             /*
-             * Get myGames
-             */
-            $currentGames = $user->getMyGames($this->session->uid);
-            $myGames = array();
-            while ($currentGame = $currentGames->fetch()) {
-                $myGames[] = $currentGame;
-            }
-            $this->smarty->assign("myGames", $myGames);
-
-            /*
              * Get myTeams
              */
             $currentTeams = $user->getMyTeams($this->session->uid);

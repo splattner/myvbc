@@ -17,6 +17,7 @@ class MPerson extends Model
     public function getMyGames($personID)
     {
         $sql = "SELECT
+          games.extid as extid,
 					games.date as date,
 					games.gegner as gegner,
 					games.ort as ort,

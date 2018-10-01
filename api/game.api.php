@@ -9,6 +9,7 @@
 namespace splattner\myvbc\api;
 use splattner\framework\PublicAPI;
 use splattner\framework\Model;
+use splattner\framework\Application;
 use splattner\myvbc\models\MGame;
 use splattner\myvbc\models\MTeam;
 use splattner\myvbc\models\MPerson;
@@ -50,6 +51,23 @@ class APIGame extends PublicAPI
     }
 
 
+    public function getMyGames() {
+
+        $session = Application::getInstance("session");
+
+        $user = new MPerson();
+        $currentGames = $user->getMyGames($session->uid);
+
+        $myGames = array();
+        while ($currentGame = $currentGames->fetch()) {
+            $myGames[] = $currentGame;
+        }
+
+
+        echo json_encode($myGames, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+
+    }
+
     public function getGames($args = array()) {
 
 
@@ -62,6 +80,7 @@ class APIGame extends PublicAPI
 
         $sql = "SELECT
 					games.id AS id,
+          games.extid AS extid,
 					games.date AS date,
 					teams.name AS name,
 					games.gegner AS gegner,
@@ -103,7 +122,6 @@ class APIGame extends PublicAPI
 
         echo json_encode($games, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
-
     }
 
     public function getGamesFromExternal($args = array()) {
@@ -121,6 +139,38 @@ class APIGame extends PublicAPI
 
 
         echo json_encode($games, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+    }
+
+    public function getGameDetailed($args = array()) {
+      // Get ID
+      if (isset($args[3]) ) {
+          $gameID = $args[3];
+      } else {
+          http_response_code(400);
+          return;
+      }
+
+      $sw = Application::getService("ServiceSwissvolley");
+      $game = $sw->getGameDetailed($gameID);
+
+
+      echo json_encode($game, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+    }
+
+    public function getAddressesByTeam($args = array()) {
+      // Get ID
+      if (isset($args[3]) ) {
+          $teamID = $args[3];
+      } else {
+          http_response_code(400);
+          return;
+      }
+
+      $sw = Application::getService("ServiceSwissvolley");
+      $game = $sw->getAddressesByTeam($teamID);
+
+
+      echo json_encode($game, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
     }
 
     public function importGames($args = array()) {
