@@ -2,10 +2,10 @@
  * Created by sebastianplattner on 28.08.16.
  */
 
-myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", function($scope, $http, $attrs, $window) {
+myApp.controller("MyGamesController", ["$scope", "$http", "$attrs", "$window", function($scope, $http, $attrs, $window) {
 
 
-  $scope.selectedTeam = 0;
+  $scope.myGames = {}
 
   $scope.gameDetailed = {};
   $scope.teamDetailed = {};
@@ -16,10 +16,10 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
    *
    * @param teamID
    */
-  $scope.getGames = function(teamID) {
-    $http.get("index.php/api/game/getGames/" + teamID)
+  $scope.getMyGames = function() {
+    $http.get("index.php/api/game/getMyGames/")
       .then(function(response) {
-        $scope.games = response.data;
+        $scope.myGames = response.data;
 
         /*
         $scope.games.forEach(function(entry) {
@@ -31,24 +31,6 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
       });
   };
 
-  /**
-   * Get all Teams
-   */
-  $scope.getTeams = function() {
-    $http.get("index.php/api/game/getTeams/")
-      .then(function(response) {
-        $scope.teams = response.data;
-
-      });
-  };
-
-  /**
-   * Call getGames on a change of team
-   */
-  $scope.changeTeam = function() {
-
-    $scope.getGames($scope.selectedTeam);
-  }
 
   /**
    * Get GameDetailed
@@ -94,7 +76,7 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
 
   };
 
-  $scope.getTeams();
-  $scope.getGames(0);
+  $scope.getMyGames();
+
 
 }]);

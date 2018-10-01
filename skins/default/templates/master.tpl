@@ -61,6 +61,7 @@
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/controller/OrderController.js"></script>
     <script type="text/javascript" src="js/controller/GameController.js"></script>
+    <script type="text/javascript" src="js/controller/MyGamesController.js"></script>
     <script type="text/javascript" src="js/controller/GameImportController.js"></script>
     <script type="text/javascript" src="js/controller/SchreiberController.js"></script>
     <script type="text/javascript" src="js/controller/TeamImportController.js"></script>
