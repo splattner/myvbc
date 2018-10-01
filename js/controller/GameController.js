@@ -8,6 +8,7 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
   $scope.selectedTeam = 0;
 
   $scope.gameDetailed = {};
+  $scope.teamDetailed = {};
 
 
   /**
@@ -20,14 +21,13 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
       .then(function(response) {
         $scope.games = response.data;
 
-        /*$scope.games.forEach(function(entry) {
+        /*
+        $scope.games.forEach(function(entry) {
           $http.get("index.php/api/game/getGameDetailed/" + entry.extid)
             .then(function(response) {
               entry.detailed = response.data
             });
         })*/
-
-
       });
   };
 
@@ -59,6 +59,41 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
         $scope.gameDetailed = response.data;
 
       });
+  };
+
+  /**
+   * Get GameDetailed
+   */
+  $scope.getAddressesByTeam = function(gameId, home) {
+
+    // Away
+    if (home == 0) {
+      $http.get("index.php/api/game/getGameDetailed/" + gameId)
+        .then(function(response) {
+
+          $http.get("index.php/api/game/getAddressesByTeam/" + response.data.TeamHomeID)
+            .then(function(response) {
+              $scope.teamDetailed = response.data[0];
+              console.log($scope.teamDetailed );
+
+            });
+
+        });
+    } // End Away Case
+
+    // Home
+    if (home == 1) {
+      $http.get("index.php/api/game/getGameDetailed/" + gameId)
+        .then(function(response) {
+
+          $http.get("index.php/api/game/getAddressesByTeam/" + response.data.TeamAwayID)
+            .then(function(response) {
+              $scope.teamDetailed = response.data[0];
+            });
+
+        });
+    } // End Home Case
+
   };
 
   $scope.getTeams();

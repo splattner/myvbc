@@ -51,6 +51,23 @@ class APIGame extends PublicAPI
     }
 
 
+    public function getMyGames() {
+
+        $session = Application::getInstance("session");
+
+        $user = new MPerson();
+        $currentGames = $user->getMyGames($session->uid);
+
+        $myGames = array();
+        while ($currentGame = $currentGames->fetch()) {
+            $myGames[] = $currentGame;
+        }
+
+
+        echo json_encode($myGames, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+
+    }
+
     public function getGames($args = array()) {
 
 
@@ -105,7 +122,6 @@ class APIGame extends PublicAPI
 
         echo json_encode($games, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
-
     }
 
     public function getGamesFromExternal($args = array()) {
@@ -136,6 +152,22 @@ class APIGame extends PublicAPI
 
       $sw = Application::getService("ServiceSwissvolley");
       $game = $sw->getGameDetailed($gameID);
+
+
+      echo json_encode($game, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+    }
+
+    public function getAddressesByTeam($args = array()) {
+      // Get ID
+      if (isset($args[3]) ) {
+          $teamID = $args[3];
+      } else {
+          http_response_code(400);
+          return;
+      }
+
+      $sw = Application::getService("ServiceSwissvolley");
+      $game = $sw->getAddressesByTeam($teamID);
 
 
       echo json_encode($game, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);

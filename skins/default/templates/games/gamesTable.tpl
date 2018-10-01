@@ -28,6 +28,32 @@
     </div>
 </div>
 
+<div class="modal fade" id="teamDetailed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                  <table class="table">
+
+                  <tbody>
+                    <tr ng-repeat="(key, value) in teamDetailed">
+                      <td> [[key]] </td> <td> [[ value ]] </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="form-row">
   <div class="form-group col-md-3">
@@ -43,19 +69,23 @@
     <thead class="thead-inverse">
         <tr>
             <th width="15%">Datum / Zeit</th>
-            <th width="15%">Team</th>
-            <th width="20%">Gegner</th>
+            <th width="35%">Team / Gegner </th>
             <th width="20%">Ort / Halle</th>
             <th width="13%">Schreiber</th>
             <th width="15%">&nbsp;</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="game in games">
+        <tr ng-repeat="game in games" ng-init="$last && gamesReady()">
 
             <td>[[ game.date | dateToISO | date : "dd. MMM yyyy - HH:mm" ]]</td>
-            <td>[[ game.name ]]</td>
-            <td>[[ game.gegner ]]</td>
+            <td>
+              <span class="badge badge-secondary">[[ game.name ]]</span> /
+              <a href="#" ng-click="getAddressesByTeam([[game.extid]], [[game.heimspiel]])" data-target="#teamDetailed" data-toggle="modal" data-tooltip="true" data-placement="bottom" class="badge badge-secondary">[[ game.gegner ]]
+                <i class="fas fa-info-circle"></i>
+              </a>
+
+            </td>
             <td>[[ game.ort ]] / [[ game.halle ]] </td>
             <td>
                 <span ng-if="game.heimspiel == 1" ng-repeat="schreiber in game.schreiber">
