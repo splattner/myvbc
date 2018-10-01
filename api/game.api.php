@@ -9,6 +9,7 @@
 namespace splattner\myvbc\api;
 use splattner\framework\PublicAPI;
 use splattner\framework\Model;
+use splattner\framework\Application;
 use splattner\myvbc\models\MGame;
 use splattner\myvbc\models\MTeam;
 use splattner\myvbc\models\MPerson;
