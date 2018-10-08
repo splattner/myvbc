@@ -16,11 +16,10 @@ class MOrder extends Model
     public function addLicenceToOrder($personID, $orderID)
     {
         $sql_query = "INSERT INTO
-					orderitem (orderid, personid)
-				VALUES(?,?)";
+					`orderitem` (orderid, personid)
+				VALUES(?, ?)";
         $sql = $this->pdo->Prepare($sql_query);
         $sql->Execute(array($orderID, $personID));
-
         $sql_query = "UPDATE orderitem SET
 					licence_id = (SELECT persons.licence FROM persons WHERE persons.id = ?),
 					licence_comment = (SELECT persons.licence_comment FROM persons WHERE persons.id = ?)

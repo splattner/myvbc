@@ -124,8 +124,8 @@ class InitialDbSetup extends AbstractMigration
         $orderitem = $this->table('orderitem');
         $orderitem->addColumn('orderid', 'integer')
             ->addColumn('personid', 'integer')
-            ->addColumn('licence_id', 'integer')
-            ->addColumn('licence_comment', 'text')
+            ->addColumn('licence_id', 'integer', ['default' => 0])
+            ->addColumn('licence_comment', 'text', ['default' => ''])
             ->create();
 
         $orderitem
