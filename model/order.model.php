@@ -61,7 +61,7 @@ class MOrder extends Model
 				LEFT JOIN
 					orderstatus ON order.status = orderstatus.id";
 
-            
+
         if ($orderID != "") {
             $sql .= " WHERE order.id = ?";
         }
@@ -178,15 +178,16 @@ class MOrder extends Model
     public function addNewOrder()
     {
         $sql = "INSERT INTO
-					`order` (createdate, lastupdate, status, comment, owner)
+					`order` (createdate, lastupdate, status, comment, owner, teamid)
 				VALUES (
 					NOW(),
 					NOW(),
 					1,
 					?,
-					" . $this->session->uid . ")";
+					" . $this->session->uid . ",
+          ?)";
         $sql = $this->pdo->Prepare($sql);
-        $sql->Execute(array($this->comment));
+        $sql->Execute(array($this->comment, $order->teamid));
 
         return $this->pdo->lastInsertId();
     }

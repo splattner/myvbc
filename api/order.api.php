@@ -83,10 +83,10 @@ class APIOrder extends PublicAPI
 
                     $order->removeLicenceFromOrder($personID, $orderID);
                     break;
-                } 
-                
+                }
+
                 http_response_code(400);
-                break;  
+                break;
         }
     }
 
@@ -126,11 +126,11 @@ class APIOrder extends PublicAPI
 
             $orderdetail = $order->getRS(array($order->pk ." =" => $orderID))->fetch();
 
-            echo json_encode($orderdetail[0], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);    
+            echo json_encode($orderdetail[0], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
             return;
 
-        } 
+        }
 
         http_response_code(400);
     }
