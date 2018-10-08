@@ -16,11 +16,10 @@ class MOrder extends Model
     public function addLicenceToOrder($personID, $orderID)
     {
         $sql_query = "INSERT INTO
-					orderitem (orderid, personid)
-				VALUES(?,?)";
+					`orderitem` (orderid, personid)
+				VALUES(?, ?)";
         $sql = $this->pdo->Prepare($sql_query);
         $sql->Execute(array($orderID, $personID));
-
         $sql_query = "UPDATE orderitem SET
 					licence_id = (SELECT persons.licence FROM persons WHERE persons.id = ?),
 					licence_comment = (SELECT persons.licence_comment FROM persons WHERE persons.id = ?)
@@ -61,7 +60,7 @@ class MOrder extends Model
 				LEFT JOIN
 					orderstatus ON order.status = orderstatus.id";
 
-            
+
         if ($orderID != "") {
             $sql .= " WHERE order.id = ?";
         }
@@ -159,7 +158,7 @@ class MOrder extends Model
 					WHERE
 						orderid = ?";
             $sql = $this->pdo->Prepare($sql);
-            $sql->Execute($sql, array($orderID));
+            $sql->Execute(array($orderID));
             $persons = $sql->fetchAll();
 
             $mperson = new MPerson();
@@ -178,15 +177,17 @@ class MOrder extends Model
     public function addNewOrder()
     {
         $sql = "INSERT INTO
-					`order` (createdate, lastupdate, status, comment, owner)
+					`order` (createdate, lastupdate, status, comment, owner, teamid)
 				VALUES (
 					NOW(),
 					NOW(),
 					1,
 					?,
-					" . $this->session->uid . ")";
+					" . $this->session->uid . ",
+          ?)";
         $sql = $this->pdo->Prepare($sql);
-        $sql->Execute(array($this->comment));
+
+        $sql->Execute(array($this->comment, $this->teamid));
 
         return $this->pdo->lastInsertId();
     }

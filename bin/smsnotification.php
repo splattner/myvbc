@@ -8,7 +8,7 @@ define( '_MYVBC', 1 );
 /**
  * Composer
  */
-require '/home/sebasti4/public_html/vbcl/myvbc-git/vendor/autoload.php';
+require '../vendor/autoload.php';
 
 
 // Load Environment from .env File
@@ -19,7 +19,7 @@ $dotenv->safeLoad();
 /**
  * Config
  */
-require_once "/home/sebasti4/public_html/vbcl/myvbc-git/etc/confic.inc.php";
+require_once "../etc/confic.inc.php";
 
 
 use Aspsms\Aspsms;
@@ -82,32 +82,32 @@ while ($row = $pdoStatement->fetch()) {
 		list($datum, $zeit) = explode(" ", $row["date"]);
 		list($jahr, $monat, $tag) = explode ("-", $datum);
 		list($stunden, $minuten, $sekunden) = explode(":", $zeit);
-		
-$smstext = 
+
+$smstext =
 "Hallo " . $row["prename"] ."\nErrinnerung an Schreibereinsatz!
 Datum: " . $tag . "." . $monat . "." . $jahr .
 " Spielbeginn: " . $stunden . ":" . $minuten ."\n" .
 "Halle: " . $row["halle"] . "\nTeam: " . $row["teamname"];
-	
+
 	if($row["sms"] && $row["mobile"] != "") {
-		
+
 		$mailcontent .= $smstext . "\n\n";
-		
+
 		list($datum, $zeit) = explode(" ", $row["date"]);
 		list($jahr, $monat, $tag) = explode ("-", $datum);
 		list($stunden, $minuten, $sekunden) = explode(":", $zeit);
-		
+
 		if ($send == "send") {
-			
-			
+
+
 			$aspsms = new Aspsms($config["aspsms"]["username"], $config["aspsms"]["password"], array(
 					'Originator' => 'myVBC'
 			));
-			
+
 			$status = $aspsms->sendTextSms($smstext, array(
 					'0' => $row["mobile"]
 			));
-			
+
 			// If something went wrong while sending, we want to see what happens.
 			if (!$status) {
 				echo "Aspsms Error: " . $aspsms->getSendStatus();
