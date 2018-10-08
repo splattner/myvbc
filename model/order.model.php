@@ -159,7 +159,7 @@ class MOrder extends Model
 					WHERE
 						orderid = ?";
             $sql = $this->pdo->Prepare($sql);
-            $sql->Execute($sql, array($orderID));
+            $sql->Execute(array($orderID));
             $persons = $sql->fetchAll();
 
             $mperson = new MPerson();
@@ -187,7 +187,8 @@ class MOrder extends Model
 					" . $this->session->uid . ",
           ?)";
         $sql = $this->pdo->Prepare($sql);
-        $sql->Execute(array($this->comment, $order->teamid));
+
+        $sql->Execute(array($this->comment, $this->teamid));
 
         return $this->pdo->lastInsertId();
     }
