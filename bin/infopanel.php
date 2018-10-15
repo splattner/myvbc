@@ -1,11 +1,21 @@
 <?php
 
+$http_origin = $_SERVER['HTTP_ORIGIN'];  //allow multiple domains
+
+$allowed_domains = array(
+  'https://www.vbclangenthal.ch'
+);
+
+if (in_array($http_origin, $allowed_domains))
+{
+    header("Access-Control-Allow-Origin: $http_origin");
+}
 
 require "class.swissvolley.php";
 
 $clubID_cup = 908240;
 $clubID_bern = 907920;
-$days = 21;
+$days = 14;
 
 class VolleyGame {
 
@@ -17,18 +27,20 @@ class VolleyGame {
 	public $teamAway;
 	public $NumberOfWinsHome;
 	public $NumberOfWinsAway;
+	public $gender;
 
 }
 
 function parseRawGamesSV($raw_games) {
 
-	$lastGames = array();
-    $nextGames = array();
-    global $days;
 
-    if (count($raw_games) == 0) {
-    	return array($lastGames,$nextGames);
-    }
+	$lastGames = array();
+  $nextGames = array();
+  global $days;
+
+  if (count($raw_games) == 0) {
+  	return array($lastGames,$nextGames);
+  }
 
 	foreach($raw_games as $game) {
 
@@ -41,7 +53,7 @@ function parseRawGamesSV($raw_games) {
 
 			$volleyGame = new VolleyGame();
 			$volleyGame->date = $playDate->format("d.m.Y");
-			$volleyGame->league = $game->LeagueCatCaption;
+			$volleyGame->league = $game->LeagueCaption;
 			$volleyGame->teamHome = $game->TeamHomeCaption;
 			$volleyGame->teamAway = $game->TeamAwayCaption;
 			$volleyGame->NumberOfWinsHome = $game->NumberOfWinsHome;
@@ -54,7 +66,7 @@ function parseRawGamesSV($raw_games) {
 
       	$volleyGame = new VolleyGame();
 				$volleyGame->date = $playDate->format("d.m.Y H:i");
-				$volleyGame->league = $game->LeagueCatCaption;
+				$volleyGame->league = $game->LeagueCaption;
 				$volleyGame->teamHome = $game->TeamHomeCaption;
 				$volleyGame->teamAway = $game->TeamAwayCaption;
 				$volleyGame->HallPlace = $game->HallPlace;
@@ -83,22 +95,23 @@ if ($do == "buildTable") {
 	$games_cup_raw = $sv->getGamesByClub($clubID_cup);
 	$games_bern_raw = $sv->getGamesByClub($clubID_bern);
 
+
 	// Parse National Games (SwissVolley for Cup)
   $parsedGamesNational = parseRawGamesSV($games_cup_raw);
-  $parsedGamesNational = parseRawGamesSV($games_cup_raw);
+
+
   $lastGamesNational = $parsedGamesNational[0];
   $nextGamesNational = $parsedGamesNational[1];
 
+
+
   // Parse Games Region Bern-Solothurn
   $parsedGamesBern= parseRawGamesSV($games_bern_raw);
-  $parsedGamesBern = parseRawGamesSV($games_bern_raw);
   $lastGamesBern = $parsedGamesBern[0];
   $nextGamesBern = $parsedGamesBern[1];
 
-
-
-  $nextGames = array_merge($nextGamesNational,$nextGamesBern, $nextGamesSolothurn);
-  $lastGames = array_merge($lastGamesNational, $lastGamesBern, $lastGamesSolothurn);
+  $nextGames = array_merge($nextGamesNational,$nextGamesBern);
+  $lastGames = array_merge($lastGamesNational, $lastGamesBern);
 
   function sortFunction($a, $b) {
   	return(strtotime($a->date) - strtotime($b->date));
@@ -164,7 +177,7 @@ if ($do == "buildTable") {
 
     // Next Games
 	$output_nextGames = $header_nextGames;
-    if(count($body_nextGames > 0)) {
+    if(count($nextGames) > 0) {
         $output_nextGames .= $body_nextGames;
     }
     $output_nextGames .= $footer;
@@ -183,13 +196,13 @@ if ($do == "buildTable") {
 } else {
 ?>
 
-<script src="http://www.vbclangenthal.ch/myvbc/bin/jquery-1.3.2.min.js" type="text/javascript"></script>
+<script src="jquery-1.3.2.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 <!--
 	jQuery.noConflict();
 	jQuery(document).ready(function() {
-	jQuery('#results').load('http://www.vbclangenthal.ch/myvbc/bin/infopanel.php');
+	jQuery('#results').load('infopanel.php');
 	});
 //-->
 </script>
@@ -198,15 +211,11 @@ if ($do == "buildTable") {
 </div>
 
 <p class="copyright" >
-	Ranglisten &amp; Spieldaten: &copy; <a href="http://www.volleyballvrs.ch" target="_blank" title="Swiss Volley - Region Solothurn">Swiss Volley - Regio Solothurn </a>
+	Ranglisten &amp; Spieldaten: &copy; <a href="https://www.volleybern-solothurn.ch" target="_blank" title="Swiss Volley - Region Bern-Solothurn">Swiss Volley - Regio Bern-Solothurn </a>
 	 &amp; <a href="http://www.swissvolley.ch" target="_blank" title="Swiss Volley">Swiss Volley</a>
 </p>
 
 
 <?
-
 }
-
-
-
 ?>
