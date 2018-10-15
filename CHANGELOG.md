@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.2.27] -
+- 
+
 ## [1.2.26] - 2018-10-15
 - Update Infopanel
 
