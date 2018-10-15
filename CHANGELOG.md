@@ -1,7 +1,7 @@
 # Changelog
 
-## [1.2.25] -
--
+## [1.2.25] - 2018-10-15
+- Fix SMS Notification
 
 ## [1.2.24] - 2018-10-08
 - Update to latest Datatables

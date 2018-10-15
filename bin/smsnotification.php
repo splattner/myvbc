@@ -2,7 +2,7 @@
 <?php
 
 // Set flag that this is a parent file
-define( '_MYVBC', 1 );
+define('_MYVBC', 1);
 
 
 /**
@@ -12,8 +12,12 @@ require '../vendor/autoload.php';
 
 
 // Load Environment from .env File
-$dotenv = new \Dotenv\Dotenv(__DIR__);
+$dotenv = new \Dotenv\Dotenv("../");
 $dotenv->safeLoad();
+
+
+
+use Aspsms\Aspsms;
 
 
 /**
@@ -22,15 +26,19 @@ $dotenv->safeLoad();
 require_once "../etc/confic.inc.php";
 
 
-use Aspsms\Aspsms;
+if $config["smsnotification"]["key"] != $_GET["keyval"] {
+	http_response_code(401);
+	exit("Authorization Required")
+}
+
 
 /**
  * Initialize the Database Connection
  */
 $pdo = new \PDO($config["db"]["url"], $config["db"]["username"], $config["db"]["password"]);
 
-$days = 2;
-$send = "send";
+$days = $config["smsnotification"]["numberofdays"];
+$send = $config["smsnotification"]["enabled"];
 
 
 $day = date('Y-m-d', strtotime('+' . $days . ' days'));
@@ -62,70 +70,66 @@ $pdoStatement->Execute();
 
 
 $mail = new PHPMailer();
-$mail->SMTPOptions = array(
-    'ssl' => array(
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => true
-    )
-);
+
 $mail->IsSMTP();
-$mail->Host = "localhost";
-$mail->SetFrom("myVBC@vbclangenthal.ch", "myVBC");
-$mail->AddAddress("sebastian@vbclangenthal.ch","Sebastian Plattner");
+
+$mail->Host = $config["mail"]["host"];
+$mail->Port = $config["mail"]["port"];
+$mail->SMTPAuth = true;
+$mail->SMTPSecure = 'tls';
+$mail->Username = $config["mail"]["username"];
+$mail->Password = $config["mail"]["password"];
+
+
+$mail->SetFrom($config["mail"]["from"], $config["mail"]["from_name"]);
+$mail->AddAddress($config["mail"]["admin"], $config["mail"]["admin_name"]);
 $mail->Subject = "myVBC SMS Notification Report";
 $mail->IsHTML(false);
 
+
 $mailcontent = "Report for Today, Games on " . $day . ": \n\n";
 
-while ($row = $pdoStatement->fetch()) {
-		list($datum, $zeit) = explode(" ", $row["date"]);
-		list($jahr, $monat, $tag) = explode ("-", $datum);
-		list($stunden, $minuten, $sekunden) = explode(":", $zeit);
 
-$smstext =
-"Hallo " . $row["prename"] ."\nErrinnerung an Schreibereinsatz!
-Datum: " . $tag . "." . $monat . "." . $jahr .
-" Spielbeginn: " . $stunden . ":" . $minuten ."\n" .
-"Halle: " . $row["halle"] . "\nTeam: " . $row["teamname"];
+foreach ($pdoStatement->fetchAll() as $row) {
+    list($datum, $zeit) = explode(" ", $row["date"]);
+    list($jahr, $monat, $tag) = explode("-", $datum);
+    list($stunden, $minuten, $sekunden) = explode(":", $zeit);
 
-	if($row["sms"] && $row["mobile"] != "") {
+    $smstext =
+    "Hallo " . $row["prename"] ."\nErrinnerung an Schreibereinsatz!\nDatum: " . $tag . "." . $monat . "." . $jahr . " Spielbeginn: " . $stunden . ":" . $minuten ."\n" .
+    "Halle: " . $row["halle"] . "\nTeam: " . $row["teamname"];
 
-		$mailcontent .= $smstext . "\n\n";
+    if ($row["sms"] && $row["mobile"] != "") {
+        $mailcontent .= $smstext . "\n\n";
 
-		list($datum, $zeit) = explode(" ", $row["date"]);
-		list($jahr, $monat, $tag) = explode ("-", $datum);
-		list($stunden, $minuten, $sekunden) = explode(":", $zeit);
+        list($datum, $zeit) = explode(" ", $row["date"]);
+        list($jahr, $monat, $tag) = explode("-", $datum);
+        list($stunden, $minuten, $sekunden) = explode(":", $zeit);
 
-		if ($send == "send") {
+        if ($send == "send") {
+            $aspsms = new Aspsms($config["aspsms"]["username"], $config["aspsms"]["password"], array(
+                        'Originator' => 'myVBC'
+                ));
 
+            $status = $aspsms->sendTextSms($smstext, array(
+                        '0' => $row["mobile"]
+                ));
 
-			$aspsms = new Aspsms($config["aspsms"]["username"], $config["aspsms"]["password"], array(
-					'Originator' => 'myVBC'
-			));
-
-			$status = $aspsms->sendTextSms($smstext, array(
-					'0' => $row["mobile"]
-			));
-
-			// If something went wrong while sending, we want to see what happens.
-			if (!$status) {
-				echo "Aspsms Error: " . $aspsms->getSendStatus();
-			}
-
-		}
-
-
-	}
-
+            // If something went wrong while sending, we want to see what happens.
+            if (!$status) {
+                echo "Aspsms Error: " . $aspsms->getSendStatus();
+            }
+        }
+    }
 }
 
-if($send != "send") {
-	$mailcontent .= "\n\nTest mode without send Command";
+if ($send != "send") {
+    $mailcontent .= "\n\nTest mode without send Command";
 }
 
 echo $mailcontent . "\n";
 
 $mail->Body = $mailcontent;
+
 $mail->Send();
 ?>
