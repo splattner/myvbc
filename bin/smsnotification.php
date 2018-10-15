@@ -28,7 +28,7 @@ require_once "../etc/confic.inc.php";
 
 if ($config["smsnotification"]["key"] != $_GET["key"]) {
 	http_response_code(401);
-	exit("Authorization Required")
+	exit("Authorization Required");
 }
 
 
