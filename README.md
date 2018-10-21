@@ -1,8 +1,9 @@
 MyVBC - Online Administration for a Volleyball Club
 =====
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4c276e5990f140168513b17530eefd62)](https://www.codacy.com/app/splattner/myvbc?utm_source=github.com&utm_medium=referral&utm_content=splattner/myvbc&utm_campaign=badger)
 [![Docker Repository on Quay](https://quay.io/repository/splattner/myvbc/status "Docker Repository on Quay")](https://quay.io/repository/splattner/myvbc)
+[![GitHub release](https://img.shields.io/github/release/splattner/myvbc.svg)](https://github.com/splattner/myvbc)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4c276e5990f140168513b17530eefd62)](https://www.codacy.com/app/splattner/myvbc?utm_source=github.com&utm_medium=referral&utm_content=splattner/myvbc&utm_campaign=badger)
 
 # Features
 
