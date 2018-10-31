@@ -64,7 +64,7 @@
             <label for="birthday" class="col-sm-4 col-form-label">Geburtstag</label>
             <div class="col-sm-8">
                 <div class="input-group" id="birthday_group">
-                    <input type="text" class="form-control" id="birthday" name="birthday" value="{$person.birthday|date_format:"%d.%m.%Y"}">
+                    <input type="text" readonly class="form-control" id="birthday" name="birthday" value="{$person.birthday|date_format:"%d.%m.%Y"}">
                     <div class="input-group-append">
                       <span class="input-group-text">
                           <i class="fas fa-calendar-plus"></i>
@@ -179,6 +179,8 @@
 
 							language: 'de',
               autoclose: true,
+              startView: 2,
+							autoclose: true,
 						});
         });
     </script>

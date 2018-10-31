@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.2.27] - 2018-10-21
+- Update some Datepicker params in Person edit & new
+
 ## [1.2.26] - 2018-10-15
 - Update Infopanel
 
