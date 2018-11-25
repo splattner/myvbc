@@ -15,7 +15,12 @@ require "class.swissvolley.php";
 
 $clubID_cup = 908240;
 $clubID_bern = 907920;
-$days = 14;
+
+if (isset($_GET["days"])) {
+  $days = $_GET["days"];
+} else {
+  $days = 7;
+}
 
 class VolleyGame {
 
