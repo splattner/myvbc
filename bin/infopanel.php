@@ -144,7 +144,7 @@ if ($do == "buildTable") {
                             <th width=\"10%\">Liga</th>
                             <th style=\"text-align: right;\" width=\"24%\">Heimteam</th>
                             <th width=\"2%\"></th>
-                            <th tyle=\"text-align: left;\" width=\"24%\">Gastteam</th>
+                            <th style=\"text-align: left;\" width=\"24%\">Gastteam</th>
                 		</tr>";
 
 
