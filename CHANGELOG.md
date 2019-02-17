@@ -1,7 +1,8 @@
 # Changelog
 
 ## [1.2.29] - 2019-02-17
-- Layout Change for infopanel 
+- Layout Change for infopanel
+- Upgrade PHP Version 
 
 ## [1.2.28] - 2018-11-25
 - Configurable Days in InfoPanel
