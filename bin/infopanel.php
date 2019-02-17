@@ -131,10 +131,10 @@ if ($do == "buildTable") {
 						<tr>
 							<th width=\"13%\">Datum</th>
 							<th width=\"10%\">Liga</th>
-							<th width=\"20%\">Heimteam</th>
-              <th style=\"text-align: right;\" width=\"2%\"></th>
-							<th width=\"20%\">Gastteam</th>
-							<th tyle=\"text-align: left;\" width=\"20%\"></th>
+							<th style=\"text-align: right;\" width=\"20%\">Heimteam</th>
+              <th style=\"text-align: center;\" width=\"2%\"></th>
+							<th style=\"text-align: left;\" width=\"20%\">Gastteam</th>
+							<th width=\"20%\"></th>
 						</tr>";
 
     $header_nextGames = "<table class=\"results_small\">
