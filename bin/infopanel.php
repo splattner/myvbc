@@ -129,10 +129,11 @@ if ($do == "buildTable") {
 
 	$header_lastGames = "<table class=\"results_small\">
 						<tr>
-							<th width=\"15%\">Datum</th>
+							<th width=\"13%\">Datum</th>
 							<th width=\"10%\">Liga</th>
-							<th width=\"30%\">Heimteam</th>
-							<th width=\"30%\">Gastteam</th>
+							<th style=\"text-align: right;\" width=\"20%\">Heimteam</th>
+              <th style=\"text-align: center;\" width=\"2%\"></th>
+							<th style=\"text-align: left;\" width=\"20%\">Gastteam</th>
 							<th width=\"20%\"></th>
 						</tr>";
 
@@ -143,7 +144,7 @@ if ($do == "buildTable") {
                             <th width=\"10%\">Liga</th>
                             <th style=\"text-align: right;\" width=\"24%\">Heimteam</th>
                             <th width=\"2%\"></th>
-                            <th tyle=\"text-align: left;\" width=\"24%\">Gastteam</th>
+                            <th style=\"text-align: left;\" width=\"24%\">Gastteam</th>
                 		</tr>";
 
 
@@ -154,24 +155,24 @@ if ($do == "buildTable") {
 	foreach($nextGames as $game) {
 
 		$body_nextGames .= "<tr>
-							<td>" . $game->date . "</td>
-							<td>" . $game->HallPlace . " " . $game->HallCaption ."</td>
-							<td>" . $game->league . "</td>
-							<td style=\"text-align: right;\">" . $game->teamHome . "</td>
-							<td style=\"text-align: center;\">:</td>
-							<td style=\"text-align: left;\">" . $game->teamAway . "</td>
-							</tr>";
-
+					<td>" . $game->date . "</td>
+					<td>" . $game->HallPlace . " " . $game->HallCaption ."</td>
+					<td>" . $game->league . "</td>
+					<td style=\"text-align: right;\">" . $game->teamHome . "</td>
+					<td style=\"text-align: center;\">:</td>
+					<td style=\"text-align: left;\">" . $game->teamAway . "</td>
+					</tr>";
 	}
 
 	foreach($lastGames as $game) {
 		$body_lastGames .= "<tr>
-                            <td>" . $game->date . "</td>
-                            <td>" . $game->league. "</td>
-                            <td>" . $game->teamHome . "</td>
-                            <td>" . $game->teamAway . "</td>
-                            <td>" . $game->NumberOfWinsHome . ":". $game->NumberOfWinsAway ."</td>
-                            </tr>";
+          <td>" . $game->date . "</td>
+          <td>" . $game->league. "</td>
+          <td style=\"text-align: right;\">" . $game->teamHome . "</td>
+          <td style=\"text-align: center;\">:</td>
+          <td style=\"text-align: left;\">" . $game->teamAway . "</td>
+          <td>" . $game->NumberOfWinsHome . ":". $game->NumberOfWinsAway ."</td>
+          </tr>";
 	}
 
 

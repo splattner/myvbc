@@ -1,8 +1,11 @@
 # Changelog
 
+## [1.2.29] - 2019-02-17
+- Layout Change for infopanel
+- Upgrade PHP Version 
+
 ## [1.2.28] - 2018-11-25
 - Configurable Days in InfoPanel
-
 
 ## [1.2.27] - 2018-10-31
 - Update some Datepicker params in Person edit & new
