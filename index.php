@@ -28,6 +28,8 @@ $dotenv->safeLoad();
  */
 require_once "etc/confic.inc.php";
 
+Sentry\init(['dsn' => $config["sentry"]["dsn"] ]);
+
 
 Application::init($config);
 

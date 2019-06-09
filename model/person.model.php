@@ -69,33 +69,33 @@ class MPerson extends Model
 
 
         $sql = "SELECT
-				persons.id,
-				persons.name,
-				persons.prename,
-				persons.address,
-				persons.plz,
-				persons.ort,
-				persons.email,
-				persons.email_parent,
-				persons.phone,
-				persons.mobile,
-				persons.birthday,
-				persons.gender,
-				persons.schreiber,
-				persons.sms,
-				persons.licence,
-				persons.licence_comment,
-				persons.active,
-				persons.signature,
-				persons.refid,
-				CONCAT('[', GROUP_CONCAT(CONCAT('{\"name\": \"', teams.name , '\",', '\"liga\": \"', teams.liga , '\"}')), ']') as teams,
-				GROUP_CONCAT(teams.liga SEPARATOR '\n') AS liga
-			FROM
-				persons
-			LEFT JOIN
-				players ON persons.id = players.person
-			LEFT JOIN
-				teams on players.team = teams.id";
+  				persons.id,
+  				persons.name,
+  				persons.prename,
+  				persons.address,
+  				persons.plz,
+  				persons.ort,
+  				persons.email,
+  				persons.email_parent,
+  				persons.phone,
+  				persons.mobile,
+  				persons.birthday,
+  				persons.gender,
+  				persons.schreiber,
+  				persons.sms,
+  				persons.licence,
+  				persons.licence_comment,
+  				persons.active,
+  				persons.signature,
+  				persons.refid,
+  				CONCAT('[', GROUP_CONCAT(CONCAT('{\"name\": \"', teams.name , '\",', '\"liga\": \"', teams.liga , '\"}')), ']') as teams,
+  				GROUP_CONCAT(teams.liga SEPARATOR '\n') as liga
+  			FROM
+  				persons
+  			LEFT JOIN
+  				players ON persons.id = players.person
+  			LEFT JOIN
+  				teams on players.team = teams.id";
 
         if (count($where) > 0) {
             $sql .= " WHERE ";
