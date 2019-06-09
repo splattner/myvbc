@@ -28,7 +28,7 @@ $dotenv->safeLoad();
  */
 require_once "etc/confic.inc.php";
 
-Sentry\init([
+\Sentry\init([
   'dsn' => $config["sentry"]["dsn"],
   'environment' => $config["sentry"]["environment"]
  ]);
