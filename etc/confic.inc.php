@@ -62,5 +62,6 @@ $config["smsnotification"]["numberofdays"] = getenv('SMS_NOTIFICATION_DAYS') ? g
 $config["smsnotification"]["enabled"] = getenv('SMS_NOTIFICATION_ENABLED') ? getenv('SMS_NOTIFICATION_ENABLED') : "";
 
 $config["sentry"]["dsn"] = getenv('SENTRY_DSN') ? getenv('SENTRY_DSN') : "";
+$config["sentry"]["environment"] = getenv('SENTRY_ENVIRONMENT') ? getenv('SENTRY_ENVIRONMENT') : "dev";
 
 ?>
