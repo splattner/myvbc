@@ -1,7 +1,8 @@
 # Changelog
 
-## [1.2.30] -
-- 
+## [1.3.0] - 2019-06-09
+- Update Dependencies
+- Include Sentry
 
 ## [1.2.29] - 2019-02-17
 - Layout Change for infopanel
