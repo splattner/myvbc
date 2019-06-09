@@ -304,6 +304,10 @@ class MPerson extends Model
         }
         */
 
+        if ($personID == 0) {
+          throw new Exception("Error adding new Person!");
+        }
+
         /* Add Notification */
         $notification = Application::getService("ServiceNotification");
         $notification->addNewAdressNotifcation($personID);
