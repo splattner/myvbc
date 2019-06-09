@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.3.1] - 
+-
+
 ## [1.3.0] - 2019-06-09
 - Update Dependencies
 - Include Sentry
