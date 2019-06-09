@@ -1,8 +1,12 @@
 # Changelog
 
+## [1.3.0] - 2019-06-09
+- Update Dependencies
+- Include Sentry
+
 ## [1.2.29] - 2019-02-17
 - Layout Change for infopanel
-- Upgrade PHP Version 
+- Upgrade PHP Version
 
 ## [1.2.28] - 2018-11-25
 - Configurable Days in InfoPanel
