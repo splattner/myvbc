@@ -42,6 +42,8 @@ abstract class MyVBCPage extends Page
 
 
         $this->smarty->assign("development", $this->config["system"]["dev"]);
+
+        $this->smarty->assign("messages", "0");
     }
 
     /**
