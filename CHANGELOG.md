@@ -1,6 +1,7 @@
 # Changelog
 
-## [1.3.3] -
+## [1.3.3] - 2019-06-10
+- Link Version to sentrys
 
 ## [1.3.2] - 2019-06-10
 - Fix Create Access
