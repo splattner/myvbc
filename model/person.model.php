@@ -304,7 +304,7 @@ class MPerson extends Model
         }
         */
 
-        if ($personID == 0) {
+        if ($personID == 0) {
           throw new Exception("Error adding new Person!");
         }
 

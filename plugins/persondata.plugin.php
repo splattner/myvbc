@@ -46,7 +46,7 @@ class PPersondata extends Plugin
     private function newEntry()
     {
         if (isset($_POST["doNew"])) {
-            $datepart = explode(".", $_POST["birthday"]);
+
 
             $person = new MPerson();
             $person->name = $_POST["name"];
@@ -58,7 +58,14 @@ class PPersondata extends Plugin
             $person->mobile = $_POST["mobile"];
             $person->email = $_POST["email"];
             $person->email_parent = $_POST["email_parent"];
-            $person->birthday = $datepart[2] . "-" . $datepart[1] . "-" . $datepart[0];
+
+            if ($_POST["birthday"] != "") {
+              $datepart = explode(".", $_POST["birthday"]);
+              $person->birthday = $datepart[2] . "-" . $datepart[1] . "-" . $datepart[0];
+            } else {
+              $person->birthday = date("Y-m-d");
+            }
+
             $person->gender = $_POST["gender"];
 
 
