@@ -1,8 +1,8 @@
 # Changelog
 
 
-## [1.3.2] - 
--
+## [1.3.2] -2019-06-10
+- Fix Create Access
 
 ## [1.3.1] - 2019-06-10
 - Initialize some Values

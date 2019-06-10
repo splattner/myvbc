@@ -72,7 +72,7 @@ class PageAuth extends MyVBCPage
             $content = "Zugangsdaten für myVBC\nE-Mail Adresse: " . $currentPerson["email"] . "\nPasswort: " . $password;
 
             if ($currentPerson["mobile"] != "") {
-                Helper::sendSMS("myVBC", $currentPerson["mobile"], $content);
+                $helper->sendSMS("myVBC", $currentPerson["mobile"], $content);
 
                 $this->smarty->assign("messages", "Ihr Zugang wurde erstellt und das Passwort wurde Ihnen zugesandt");
             } else {
