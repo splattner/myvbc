@@ -32,7 +32,7 @@
 					Mobile
 				</div>
 				<div class="col-sm-8">
-					{$persons.mobile}
+					{$persons.mobile|regex_replace:"/(\d{3}\s?)(\d{3}\s?\d{1})(\d{1}\s?\d{2})/":"$1*** *$3"}
 					{if not $persons.mobile == ""}
 					<br /><b style="color: #FF0000;">Diese Nummer wird f&uuml;r den Passwort versand benutzt!</b>
 					{/if}

@@ -28,9 +28,13 @@ $dotenv->safeLoad();
  */
 require_once "etc/confic.inc.php";
 
+$composerJSON = json_decode(file_get_contents('composer.json'), true);
+
 \Sentry\init([
   'dsn' => $config["sentry"]["dsn"],
-  'environment' => $config["sentry"]["environment"]
+  'environment' => $config["sentry"]["environment"],
+  'release' => $composerJSON["version"]
+
  ]);
 
 
