@@ -56,7 +56,11 @@ class PageAuth extends MyVBCPage
 
     public function createAccessAction()
     {
-        $personID = $_POST["personID"];
+        if (isset($_POST["personID"])) {
+          $personID = $_POST["personID"];
+        } else {
+          $personID = 0;
+        }
 
 
         if (isset($_POST["doAdd"])) {
