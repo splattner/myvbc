@@ -31,7 +31,7 @@ require_once "etc/confic.inc.php";
 $composerJSON = json_decode(file_get_contents('composer.json'), true);
 
 
-if ($this->config["system"]["dev"]) {
+if ($config["system"]["dev"]) {
   $release = $composerJSON["version"] . "-dev";
 } else {
   $release = $composerJSON["version"];
