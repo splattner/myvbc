@@ -59,7 +59,7 @@ class PageAuth extends MyVBCPage
         if (isset($_POST["personID"])) {
           $personID = $_POST["personID"];
         } else {
-          $personID = 0;
+          $personID = 0;
         }
 
 
