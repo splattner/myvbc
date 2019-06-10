@@ -4,6 +4,7 @@ namespace splattner\myvbc\services;
 
 use Aspsms\Aspsms;
 use splattner\framework\Service;
+use splattner\framework\Application;
 
 class ServiceHelper extends Service
 {
@@ -24,27 +25,27 @@ class ServiceHelper extends Service
         }
         return $out;
     }
-    
+
     public function generatePW($length=8)
     {
         $dummy = array_merge(range('0', '9'), range('a', 'z'), range('A', 'Z'));
-          
+
         // shuffle array
-          
+
         mt_srand((double)microtime()*1000000);
-        
+
         for ($i = 1; $i <= (count($dummy)*2); $i++) {
             $swap = mt_rand(0, count($dummy)-1);
             $tmp = $dummy[$swap];
             $dummy[$swap] = $dummy[0];
             $dummy[0] = $tmp;
         }
-          
+
         // get password
-          
+
         return substr(implode('', $dummy), 0, $length);
     }
-    
+
     public function sendSMS($originator, $recipient, $content)
     {
         $config = Application::getConfig();
@@ -61,21 +62,21 @@ class ServiceHelper extends Service
             //print_r($e);
         }
 
-        
 
-        
+
+
         unset($aspsms);
     }
-    
+
     public function sendEMail($originator_email, $originator_name, $recipient_email, $recipient_name, $subject, $content)
     {
-        $mail = new PHPMailer();
-                
+        $mail = new \PHPMailer();
+
         $mail->IsSMTP();
         $mail->Host       = "localhost"; // sets the SMTP server
         $mail->Port       = 25;                    // set the SMTP port for the GMAIL server
 
-        
+
         $mail->SetFrom($originator_email, $originator_name);
         $mail->AddAddress($recipient_email, $recipient_name);
         $mail->Subject = $subject;

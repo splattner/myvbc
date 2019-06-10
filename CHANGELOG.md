@@ -1,9 +1,12 @@
 # Changelog
 
+
+## [1.3.2] -2019-06-10
+- Fix Create Access
+
 ## [1.3.1] - 2019-06-10
 - Initialize some Values
 - Fix error when Birthday is missing
-
 
 ## [1.3.0] - 2019-06-09
 - Update Dependencies
