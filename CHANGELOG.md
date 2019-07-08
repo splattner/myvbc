@@ -1,7 +1,7 @@
 # Changelog
 
 ## [1.3.4] -
-- 
+- Fix error on Report Admin Page
 
 ## [1.3.3] - 2019-06-10
 - Link Version to sentry
