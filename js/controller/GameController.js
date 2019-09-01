@@ -15,7 +15,7 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
   $scope.filterHeimspiele = function(game) {
 
     if ($scope.onlyHeimspiele == 0) {
-      return false;
+      return true;
     }
     
     if ($scope.onlyHeimspiele == 1 && game.heimspiel == 1) {
