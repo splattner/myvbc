@@ -1,7 +1,11 @@
 # Changelog
 
+## [1.3.4] - 2019-09-01
+- Fix error on Report Admin Page
+- Allow Filtering by Heimspiel
+
 ## [1.3.3] - 2019-06-10
-- Link Version to sentrys
+- Link Version to sentry
 
 ## [1.3.2] - 2019-06-10
 - Fix Create Access

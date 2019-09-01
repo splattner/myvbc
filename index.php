@@ -30,10 +30,17 @@ require_once "etc/confic.inc.php";
 
 $composerJSON = json_decode(file_get_contents('composer.json'), true);
 
+
+if ($config["system"]["dev"]) {
+  $release = $composerJSON["version"] . "-dev";
+} else {
+  $release = $composerJSON["version"];
+}
+
 \Sentry\init([
   'dsn' => $config["sentry"]["dsn"],
   'environment' => $config["sentry"]["environment"],
-  'release' => $composerJSON["version"]
+  'release' => $release
 
  ]);
 
