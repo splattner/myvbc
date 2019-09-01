@@ -61,6 +61,7 @@
     <select id="team" class="form-control" ng-model="selectedTeam" ng-Change="changeTeam()">
       <option ng-repeat="team in teams" value="[[ team.id ]]">[[ team.name ]]</option>
     </select>
+    <input type="checkbox" value="1" ng-model="onlyHeimspiele" /> nur Heimspiele
   </div>
 </div>
 
@@ -77,7 +78,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="game in games">
+        <tr ng-repeat="game in games | filter:filterHeimspiele">
 
             <td>[[ game.date | dateToISO | date : "dd. MMM yyyy - HH:mm" ]]</td>
             <td>

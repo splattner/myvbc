@@ -6,9 +6,25 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
 
 
   $scope.selectedTeam = 0;
+  $scope.onlyHeimspiele = 0;
 
   $scope.gameDetailed = {};
   $scope.teamDetailed = {};
+
+
+  $scope.filterHeimspiele = function(game) {
+
+    if ($scope.onlyHeimspiele == 0) {
+      return true;
+    }
+    
+    if ($scope.onlyHeimspiele == 1 && game.heimspiel == 1) {
+      return false;
+    }
+
+    return true;
+
+  }
 
 
   /**
