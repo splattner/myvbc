@@ -1,7 +1,9 @@
 # Changelog
 
-## [1.3.5] - 
+## [1.3.6] - 
 
+## [1.3.5] - 2019-09-06
+- Force reload of scripts on new app version
 
 ## [1.3.4] - 2019-09-01
 - Fix error on Report Admin Page
