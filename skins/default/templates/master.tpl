@@ -58,13 +58,13 @@
 
 
     <!-- My stuff -->
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/controller/OrderController.js"></script>
-    <script type="text/javascript" src="js/controller/GameController.js"></script>
-    <script type="text/javascript" src="js/controller/MyGamesController.js"></script>
-    <script type="text/javascript" src="js/controller/GameImportController.js"></script>
-    <script type="text/javascript" src="js/controller/SchreiberController.js"></script>
-    <script type="text/javascript" src="js/controller/TeamImportController.js"></script>
+    <script type="text/javascript" src="js/app.js?"></script>
+    <script type="text/javascript" src="js/controller/OrderController.js?v={$appVersion}"></script>
+    <script type="text/javascript" src="js/controller/GameController.js?v={$appVersion}"></script>
+    <script type="text/javascript" src="js/controller/MyGamesController.js?v={$appVersion}"></script>
+    <script type="text/javascript" src="js/controller/GameImportController.js?v={$appVersion}"></script>
+    <script type="text/javascript" src="js/controller/SchreiberController.js?"v={$appVersion}></script>
+    <script type="text/javascript" src="js/controller/TeamImportController.js?v={$appVersion}"></script>
 
 
     {literal}
