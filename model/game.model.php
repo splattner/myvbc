@@ -117,7 +117,7 @@ class MGame extends Model
 
         for ($i = 0 ; $i < count($games); $i++) {
             $localGame = new MGame();
-            $localGames_rs = $localGame->getRS(array("extid =" => $games[$i]["extid"]));
+            $localGames_rs = $localGame->getRS(array("extid =" => $games[$i]["extid"], "team = " => $teamID));
             $localGames = $localGames_rs->fetch();
             if ($localGames_rs->rowCount() >= 1) {
                 if (strcmp($games[$i]["datum"], $localGames["date"]) !== 0 || strcmp($games[$i]["ort"], $localGames["ort"]) !== 0 || strcmp($games[$i]["halle"], $localGames["halle"]) !== 0) {
