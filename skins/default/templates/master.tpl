@@ -63,7 +63,7 @@
     <script type="text/javascript" src="js/controller/GameController.js?v={$appVersion}"></script>
     <script type="text/javascript" src="js/controller/MyGamesController.js?v={$appVersion}"></script>
     <script type="text/javascript" src="js/controller/GameImportController.js?v={$appVersion}"></script>
-    <script type="text/javascript" src="js/controller/SchreiberController.js?"v={$appVersion}></script>
+    <script type="text/javascript" src="js/controller/SchreiberController.js?v={$appVersion}"></script>
     <script type="text/javascript" src="js/controller/TeamImportController.js?v={$appVersion}"></script>
 
 
