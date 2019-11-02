@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.3.9] - 
+- 
+
 ## [1.3.8] - 2019-11-05
 - Remove signature when person is set to inactive
 
