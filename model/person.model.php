@@ -377,7 +377,9 @@ class MPerson extends Model
         $personoldData = $personoldRS->fetch();
 
 
-        $this->setState($personID, $newState);
+        $sql = "UPDATE persons SET signature = ? WHERE id = ?";
+        $sql = $this->pdo->Prepare($sql);
+        $sql->Execute(array($newState, $personID));
 
         /* Generate Notification after */
         $personnew = new MPerson();
