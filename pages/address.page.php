@@ -82,6 +82,10 @@ class PageAddress extends MyVBCPage
         $person = new MPerson();
         $person->setState($personID, $state);
 
+        if ($state == 0) {
+            $person->setSignature($personID, $state);
+        }
+
         return "main";
     }
 
