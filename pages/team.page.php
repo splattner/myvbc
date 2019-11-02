@@ -143,7 +143,7 @@ class PageTeam extends MyVBCPage
     public function newAction()
     {
         if (isset($_POST["doNew"])) {
-            $team = new MTeam($this->db);
+            $team = new MTeam();
             $team->extid = $_POST["extid"];
             $team->name = $_POST["name"];
             $team->extname = $_POST["extname"];
