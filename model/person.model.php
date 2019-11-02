@@ -374,7 +374,7 @@ class MPerson extends Model
         /* Generate Notification befor */
         $personold = new MPerson();
         $personoldRS = $personold->getRS(array($personold->pk ." =" => $personID));
-        $personoldData = $personoldRS->fethc();
+        $personoldData = $personoldRS->fetch();
 
 
         $this->setState($personID, $newState);
