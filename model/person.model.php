@@ -89,7 +89,7 @@ class MPerson extends Model
   				persons.signature,
   				persons.refid,
   				CONCAT('[', GROUP_CONCAT(CONCAT('{\"name\": \"', teams.name , '\",', '\"liga\": \"', teams.liga , '\"}')), ']') as teams,
-  				GROUP_CONCAT(teams.liga SEPARATOR '\n') as liga
+  				GROUP_CONCAT(CONCAT(teams.liga, ' als ', REPLACE(REPLACE(REPLACE(REPLACE(players.typ,1,'Spieler'),2,'Captain'),3,'Coach'),4,'Sonstige Funktion')) SEPARATOR '<br />\n') as liga
   			FROM
   				persons
   			LEFT JOIN
