@@ -37,7 +37,7 @@ class APIAddress extends PublicAPI
 
         $result = $person->getAddressEntry($where, $orderby)->fetchAll();
 
-        // Extract temas (as Json) for proper JSON encode
+        // Extract teams (as Json) for proper JSON encode
         for ($i = 0 ; $i < count($result); $i++) {
             $result[$i]["teams"] = json_decode($result[$i]["teams"], true);
         }

@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.9] - 2019-12-16
+- Change Container Base Image to php:7.4.0-apache
+- Require confirmation befor setting a person to inactive
+- show player / team function in adress table
+
 ## [1.3.8] - 2019-11-05
 - Remove signature when person is set to inactive
 

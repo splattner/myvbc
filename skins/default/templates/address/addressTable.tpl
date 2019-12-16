@@ -45,12 +45,13 @@
                         "orderable": false,
                         "render" : function( data, type, row, meta) {
                             if(data == 1){
-                                return "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person auf inaktiv setzen'" +
-                                        " href='index.php?page=address&action=setState&state=0&personID=" + row.id + "' }>" +
+                                return "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person auf inaktiv setzen' " +
+                                        "onclick='return confirm(\"Willst du diesen Person wirklich auf inaktiv setzen?\")' " + 
+                                        "href='index.php?page=address&action=setState&state=0&personID=" + row.id + "' }>" +
                                         "<i class='fas fa-user' style='color:green'></i></a>";
                             } else {
-                                return "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person auf aktiv setzen'" +
-                                        " href='index.php?page=address&action=setState&state=1&personID=" + row.id + "' }>" +
+                                return "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person auf aktiv setzen' " +
+                                        "href='index.php?page=address&action=setState&state=1&personID=" + row.id + "' }>" +
                                         "<i class='fas fa-user' style='color:red'></i></a>";
                             }
                         }
@@ -95,14 +96,14 @@
 
                             if (row.active == 1 && row.liga != null) {
                                 html = html +
-                                        " <a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='" + row.liga +"'>" +
+                                        " <a class='btn btn-outline-dark' data-html='true' data-toggle='tooltip' data-placement='bottom' title='" + row.liga +"'>" +
                                         "<i class='fas fa-users'></i></a>";
                             }
 
 
                             html = html +
-                                    " <a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person bearbeiten' class='icons'" +
-                                    " href='index.php?page=address&action=edit&personID=" + row.id +"'>" +
+                                    "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' title='Person bearbeiten' class='icons'" +
+                                    "href='index.php?page=address&action=edit&personID=" + row.id +"'>" +
                                     "<i class='fas fa-edit'></i></a>";
 
                             html = html +
