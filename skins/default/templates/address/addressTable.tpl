@@ -89,7 +89,7 @@
                             html = "";
                             if(row.signature == 0) {
                                 html = html +
-                                        "<a class='btn btn-outline-dark' data-toggle='tooltip' data-placement='bottom' target='_blank' title='Beitrittsgesuch' class='icons'" +
+                                        "<a class='btn btn-outline-dark' data-html='true' data-toggle='tooltip' data-placement='bottom' target='_blank' title='Beitrittsgesuch' class='icons'" +
                                         " href='index.php?page=address&action=requestForm&personID=" + row.id + "'>" +
                                         " <i class='fas fa-file-pdf'></i></a>";
                             }
