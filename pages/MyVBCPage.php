@@ -4,6 +4,7 @@ namespace splattner\myvbc\pages;
 
 use splattner\framework\Page;
 use splattner\myvbc\models\MNotification;
+use splattner\myvbc\models\MPerson;
 
 abstract class MyVBCPage extends Page
 {
