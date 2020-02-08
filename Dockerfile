@@ -1,4 +1,4 @@
-FROM php:7.4.0-apache
+FROM php:7.4.2-apache
 
 LABEL maintainer="sebastian.plattner@gmail.com"
 
