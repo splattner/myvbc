@@ -43,6 +43,12 @@
             </div>
         </div>
         <div class="form-group row">
+			<label for="email" class="col-sm-4 col-form-label">AHV Nummer</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" id="ahv" name="ahv" value="{$person.ahv}">
+			</div>
+		</div>
+        <div class="form-group row">
             <label for="email" class="col-sm-4 col-form-label">E-Mail</label>
             <div class="col-sm-8">
                 <input type="email" class="form-control" id="email" name="email" value="{$person.email}">

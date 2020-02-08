@@ -1,7 +1,8 @@
 # Changelog
 
 ## [1.3.10] - 
-- 
+- Add AHV Nummer
+- Cange SMS Notification
 
 ## [1.3.9] - 2019-12-16
 - Change Container Base Image to php:7.4.0-apache

@@ -69,6 +69,13 @@
     </tr>
 
     <tr>
+        <td width="30%">
+            <b>AHV Nummer</b>
+        </td>
+        <td>{$person.ahv}</td>
+    </tr>
+    
+    <tr>
         <td width="30%"><b>Geburtsdatum</b></td>
         <td>{$person.birthday|date_format:"%d.%m.%Y"}</td>
     </tr>
