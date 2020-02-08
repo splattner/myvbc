@@ -48,7 +48,7 @@ abstract class MyVBCPage extends Page
         $person = new MPerson();
         $me = $person->getAddressEntry(array("persons.id =" => $this->session->id))->fetch();
 
-        \Sentry\configureScope(function (Sentry\State\Scope $scope): void {
+        \Sentry\configureScope(function (\Sentry\State\Scope $scope): void {
             $scope->setUser(['id' => $me->id, 'email' => $me->email]);
           });
     }
