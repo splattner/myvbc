@@ -11,7 +11,7 @@ class MSchreiber extends Model
 {
     public $table = 'schreiber';
     
-    public function addSchreiber($schreiberID, $gameID)
+    public function addSchreiber($schreiberID, $gameID, $type)
     {
         if ($schreiberID > 0) {
             
@@ -28,11 +28,11 @@ class MSchreiber extends Model
             $sql_check->Execute(array($gameID, $schreiberID));
             
             if ($sql_check->rowCount() == 0) {
-                $sql = "INSERT INTO schreiber (game, person) 
-					VALUES(?,?)";
+                $sql = "INSERT INTO schreiber (game, person, type) 
+					VALUES(?,?,?)";
 
                 $sql = $this->pdo->Prepare($sql);
-                $sql->Execute(array($gameID, $schreiberID));
+                $sql->Execute(array($gameID, $schreiberID, (int)$type));
             }
         }
     }

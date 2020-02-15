@@ -7,6 +7,7 @@ myApp.controller("SchreiberController", ["$scope", "$http", "$attrs", "$window",
 
   $scope.gameID = $attrs.gameid;
   $scope.selectedSchreiber = {};
+  $scope.selectedTypeSchiri = 0;
   $scope.schreiberInfo = null;
 
   $scope.getGame = function(gameID) {
@@ -63,7 +64,8 @@ myApp.controller("SchreiberController", ["$scope", "$http", "$attrs", "$window",
 
     var newSchreiber = {
       "personID": $scope.selectedSchreiber.id,
-      "gameID": $scope.gameID
+      "gameID": $scope.gameID,
+      "type": $scope.selectedTypeSchiri
     };
 
     $http.post("index.php/api/schreiber/changeSchreiber/" + $scope.gameID, newSchreiber)

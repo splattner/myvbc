@@ -73,7 +73,7 @@
             <th width="15%">Team</th>
             <th width="20%">Gegner </th>
             <th width="20%">Ort / Halle</th>
-            <th width="13%">Schreiber</th>
+            <th width="13%">Schreiber/Schiedsrichter <i class="fas fa-asterisk"></i></th>
             <th width="15%">&nbsp;</th>
         </tr>
     </thead>
@@ -93,7 +93,7 @@
             <td>[[ game.ort ]] / [[ game.halle ]] </td>
             <td>
                 <span ng-if="game.heimspiel == 1" ng-repeat="schreiber in game.schreiber">
-                    [[ schreiber.prename ]] [[ schreiber.name ]]
+                    [[ schreiber.prename ]] [[ schreiber.name ]] <span ng-if="schreiber.type == 0" ><i class="fas fa-pen"></i></span><span ng-if="schreiber.type > 0" ><i class="fas fa-asterisk"></i></span><br />
                 </span>
 
                 <span ng-if="(game.schreiber).length == 0 && game.heimspiel == 1">
