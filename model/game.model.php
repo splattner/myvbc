@@ -51,7 +51,8 @@ class MGame extends Model
 				SELECT
 					persons.id as id,
 					persons.prename as prename,
-					persons.name as name
+                    persons.name as name,
+                    schreiber.type as type
 				FROM
 					schreiber
 				LEFT JOIN
