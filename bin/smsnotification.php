@@ -51,7 +51,8 @@ $sqlquery = "SELECT
 			persons.mobile AS mobile,
 			persons.email AS email,
 			persons.sms AS sms,
-			teams.name AS teamname
+			teams.name AS teamname,
+            schreiber.type AS type
 		FROM
 			games
 		LEFT JOIN
@@ -95,9 +96,17 @@ foreach ($pdoStatement->fetchAll() as $row) {
     list($jahr, $monat, $tag) = explode("-", $datum);
     list($stunden, $minuten, $sekunden) = explode(":", $zeit);
 
+    $einsatz = "Schreibereinsatz";
+
+    if ($row["type"] > 0) { 
+        $einsatz = "Schiedsrichtereinsatz";s
+    }
+
     $smstext =
-    "Hallo " . $row["prename"] ."\nErrinnerung an Schreibereinsatz!\nDatum: " . $tag . "." . $monat . "." . $jahr . " Spielbeginn: " . $stunden . ":" . $minuten ."\n" .
+    "Hallo " . $row["prename"] ."\nErrinnerung an " . $einsatz . "s!\nDatum: " . $tag . "." . $monat . "." . $jahr . " Spielbeginn: " . $stunden . ":" . $minuten ."\n" .
     "Halle: " . $row["halle"] . "\nTeam: " . $row["teamname"] . "\nBitte sei min. 30 Minuten vor Spielbeginn vor Ort.";
+
+
 
     if ($row["sms"] && $row["mobile"] != "") {
         $mailcontent .= $smstext . "\n\n";
