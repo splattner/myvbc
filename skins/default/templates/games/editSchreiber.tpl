@@ -28,7 +28,7 @@
 				<div class="col-sm-10">
 					<table class="table table-sm">
 	                    <tr ng-repeat="schreiber in schreibers">
-	                        <td>[[ schreiber.prename]] [[ schreiber.name]] <span ng-if="(schreiber.type) > 0" >/ Schiedsrichtereinsatz</span></td>
+	                        <td>[[ schreiber.prename]] [[ schreiber.name]] <i ng-if="(schreiber.type) = 0" class="fas fa-pen"></i> <i ng-if="(schreiber.type) > 0" class="fas fa-asterisk"></i></td>
 	                        <td>
 	                        	<a class="btn btn-danger" ng-click="removeSchreiber([[schreiber.id]])" href="#" data-toggle="tooltip" data-placement="bottom" title="Diesen Schreiber vom Spiel entfernen">
 	                                <i class="fas fa-trash"></i>
@@ -40,7 +40,7 @@
 		                        <select data-placeholder-text-single="'Bitte Person ausw&auml;hlen'" ng-change="getSchreiberInfo()" ng-model="selectedSchreiber" ng-options="schreiber.prename + ' ' + schreiber.name for schreiber in allSchreiber track by schreiber.id" >
 		                            <option value=""></option>
 		                        </select>
-								<input type="checkbox" ng-model="selectedTypeSchiri" /> Schiedsrichtereinsatz
+								<input type="checkbox" ng-model="selectedTypeSchiri" /> Schiedsrichtereinsatz <i class="fas fa-asterisk"></i>
 		                    </td>
 		                    <td>
 		                        <a class="btn btn-dark" href="#" ng-click="addSchreiber()" data-toggle="tooltip" data-placement="bottom" title="Diesen Schreiber dem Spiel hinzuf&uuml;gen">
