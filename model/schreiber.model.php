@@ -32,7 +32,7 @@ class MSchreiber extends Model
 					VALUES(?,?,?)";
 
                 $sql = $this->pdo->Prepare($sql);
-                $sql->Execute(array($gameID, $schreiberID, $type));
+                $sql->Execute(array($gameID, $schreiberID, (int)$type));
             }
         }
     }
