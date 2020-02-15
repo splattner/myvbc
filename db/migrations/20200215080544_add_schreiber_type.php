@@ -27,8 +27,8 @@ class AddSchreiberType extends AbstractMigration
      */
     public function change()
     {
-        $persons = $this->table('schreiber');
-        $persons->addColumn('type', 'integer')
+        $schreiber = $this->table('schreiber');
+        $schreiber->addColumn('type', 'integer')
               ->update();
     }
 }
