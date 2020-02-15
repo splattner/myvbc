@@ -74,7 +74,7 @@ class APISchreiber extends PublicAPI
 
         switch($this->method) {
             case "POST":
-                $schreiber->addSchreiber($input["personID"], $gameID);
+                $schreiber->addSchreiber($input["personID"], $gameID, $input["type"]);
                 break;
             case "DELETE":
 

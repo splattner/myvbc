@@ -20,7 +20,7 @@ $config["db"]["username"] = getenv('MYSQL_DB_USERNAME') ? getenv('MYSQL_DB_USERN
 $config["db"]["password"] = getenv('MYSQL_DB_PASSWORD') ? getenv('MYSQL_DB_PASSWORD') : "myvbc";
 $config["db"]["database"] = getenv('MYSQL_DB_NAME') ? getenv('MYSQL_DB_NAME') :  "myvbc";
 $config["db"]["url"] = "mysql:host=" .  $config["db"]["host"] . ":" . $config["db"]["port"] . ";dbname=" . $config["db"]["database"];
-$config["db"]["version"] = 20200208131855;
+$config["db"]["version"] = 20200215080544;
 
 $config["template"]["default"] = "default";
 $config["template"]["master"] = "master.tpl";
