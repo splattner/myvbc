@@ -28,7 +28,7 @@
 				<div class="col-sm-10">
 					<table class="table table-sm">
 	                    <tr ng-repeat="schreiber in schreibers">
-	                        <td>[[ schreiber.prename]] [[ schreiber.name]] <span ng-if="(schreiber.type) = 0" ><i class="fas fa-pen"></i></span><span ng-if="(schreiber.type) > 0"><i class="fas fa-asterisk"></i> / Schiedsrichter</span></td>
+	                        <td>[[ schreiber.prename]] [[ schreiber.name]] <span ng-if="(schreiber.type) == 0" ><i class="fas fa-pen"></i></span><span ng-if="(schreiber.type) > 0"><i class="fas fa-asterisk"></i> / Schiedsrichter</span></td>
 	                        <td>
 	                        	<a class="btn btn-danger" ng-click="removeSchreiber([[schreiber.id]])" href="#" data-toggle="tooltip" data-placement="bottom" title="Diesen Schreiber vom Spiel entfernen">
 	                                <i class="fas fa-trash"></i>
