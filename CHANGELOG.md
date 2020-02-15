@@ -1,7 +1,7 @@
 # Changelog
 
-## [1.3.11] -
-- 
+## [1.3.11] - 2020-02-15
+- Allow special Schiedsrichter Type as Schreiber
 
 ## [1.3.10] - 2020-02-08
 - Add AHV Nummer
