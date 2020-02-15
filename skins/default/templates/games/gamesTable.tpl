@@ -73,7 +73,7 @@
             <th width="15%">Team</th>
             <th width="20%">Gegner </th>
             <th width="20%">Ort / Halle</th>
-            <th width="13%">Schreiber/Schiedsrichter</th>
+            <th width="13%">Schreiber/Schiedsrichter <i class="fas fa-asterisk"></i></th>
             <th width="15%">&nbsp;</th>
         </tr>
     </thead>

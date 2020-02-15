@@ -63,7 +63,7 @@
 	                <b>Achtung:</b> Diese Person hat bereits selbst Spiele an diesem Tag:
 	            </p>
 
-	            <ul ng-if="(schreiberInfo.games).length > 0" style="list-style-image:url({$templateDir}/images/icons/bullet_red.png)">
+	            <ul ng-if="(schreiberInfo.games).length > 0">
 	                <li ng-repeat="game in (schreiberInfo.games)">[[ game.date ]], [[ game.ort]] - [[game.halle]]</li>
 	            </ul>
 
