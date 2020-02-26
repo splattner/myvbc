@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.3.12] - 2020-02-26
+- Fix SMS Notification
+
 ## [1.3.11] - 2020-02-15
 - Allow special Schiedsrichter Type as Schreiber
 
