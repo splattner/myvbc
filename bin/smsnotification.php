@@ -99,7 +99,7 @@ foreach ($pdoStatement->fetchAll() as $row) {
     $einsatz = "Schreibereinsatz";
 
     if ($row["type"] > 0) { 
-        $einsatz = "Schiedsrichtereinsatz";s
+        $einsatz = "Schiedsrichtereinsatz";
     }
 
     $smstext =
