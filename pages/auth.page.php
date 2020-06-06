@@ -14,8 +14,8 @@ class PageAuth extends MyVBCPage
         $this->template = "auth/auth.tpl";
 
         $this->acl->allow("guest", ["main","createAccess", "login","logout"], ["view"]);
+        $this->acl->allow("administrator",["createAccess"], ["view"]);
         //$this->acl->allow("registered",["main","login","logout"], ["view"]);
-        //$this->acl->allow("administrator",["createAccess","login","logout"], ["view"]);
     }
 
     public function init()
