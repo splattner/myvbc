@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.13] - 2020-06-06
+- Update Dependencies
+- Add create access to admin menu
+- Change password, auto generate new password and send by SMS or E-Mail
+- Create access only with Administrator role
+
 ## [1.3.12] - 2020-02-26
 - Fix SMS Notification
 

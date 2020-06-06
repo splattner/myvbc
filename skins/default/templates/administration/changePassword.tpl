@@ -18,7 +18,7 @@
 			<div class="form-group row">
 				<div class="col-sm-2">Passwort</div>
 				<div class="col-sm-10">
-					<input class="form-controltype="password" name="password" />
+					Ein neues Passwort wird automatisch generiert und an die Person per SMS oder E-Mail versendet.
 				</div>
 			</div>
 

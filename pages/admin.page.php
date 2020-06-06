@@ -228,13 +228,50 @@ class PageAdmin extends MyVBCPage
     {
         if (isset($_POST["changePassword"])) {
             $person = new MPerson();
-            $person->changePassword($_POST["personID"], $_POST["password"]);
+            $personID = $_POST["personID"];
+
+            $recordSet = $person->getRS(array($person->pk ." =" => $personID));
+            $currentPerson = $recordSet->fetch();
+
+            $helper = Application::getService("ServiceHelper");
+
+            $password = $helper->generatePW(8);
+
+            $content = "Zugangsdaten für myVBC\nE-Mail Adresse: " . $currentPerson["email"] . "\nPasswort: " . $password;
+
+            if ($currentPerson["mobile"] != "") {
+                $helper->sendSMS("myVBC", $currentPerson["mobile"], $content);
+
+                $this->smarty->assign("messages", "Ihr Zugang wurde erstellt und das Passwort wurde Ihnen zugesandt");
+            } else {
+                $mail = new \PHPMailer();
+
+                $mail->IsSMTP();
+
+                $mail->Host       = "localhost"; // sets the SMTP server
+                $mail->Port       = 25;                    // set the SMTP port for the GMAIL server
+
+
+                $mail->SetFrom("myVBC@vbclangenthal.ch", "myVBC");
+                $mail->AddAddress($currentPerson["email"], $currentPerson["prename"] . " " . $currentPerson["name"]);
+                $mail->Subject = "[myVBC] Zugangsdaten";
+                $mail->IsHTML(false);
+                $mail->Body = $content;
+                $mail->Send();
+
+                $this->smarty->assign("messages", "Ihr Zugang wurde erstellt und das Passwort wurde Ihnen zugesandt");
+            }
+
+
+
+            $person->changePassword($personID, $password);
 
             $this->smarty->assign("messages", "Passwort wurde ge&auml;ndert");
 
 
             return "functions";
         }
+
         $this->smarty->assign("subContent1", "administration/changePassword.tpl");
 
         $persons = new MPerson();
