@@ -1,6 +1,6 @@
 <div class="card">
 	<h4 class="card-header">
-		<a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page=index"><i class="fas fa-times"></i></a> Zugang einrichten
+		Zugang einrichten
 	</h4>
 	<div class="card-body">
 		<form action="index.php?page={$currentPage}&action=createAccess&step2" method="POST">
