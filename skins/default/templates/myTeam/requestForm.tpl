@@ -28,8 +28,9 @@
 
 <h1>Beitrittserklärung in den VBC Langenthal</h1>
 
-<p style="margin: 40px; font-size: 10pt;">
-<b>Herzlich willkommen beim VBC Langenthal!</b><br />
+<h2>Herzlich willkommen beim VBC Langenthal!<h2>
+
+<p style="margin: 40px; font-size: 12pt;">
 Es freut uns, dich in Zukunft zu unseren Mitgliedern zählen zu dürfen. Wir wünschen dir schon
 jetzt viel Erfolg und Freude beim “bäuele“ und natürlich keine Verletzungen.
 </p>
@@ -91,12 +92,12 @@ jetzt viel Erfolg und Freude beim “bäuele“ und natürlich keine Verletzunge
 <p></p>
 <p></p>
 
-<p style="margin: 40px; font-size: 10pt;">
+<p style="margin: 40px; font-size: 12pt;">
     Ich möchte Mitglied des VBC Langenthal werden, habe die Statuten gelesen und anerkenne sie als verbindlich.
     Insbesondere verpflichte ich mich, anlässlich der vom Verein durchgeführten Anlässe (Schreibereinsätze, Minivolleyballturniere, Beachturniere oder sonstige Anlässe) als Helfer/in aktiv mitzuwirken.
 </p>
      
-<p style="float: left; margin: 35px; font-size: 10pt;">
+<p style="float: left; margin: 35px; font-size: 12pt;">
     ____________________________ <br />
     Ort, Datum
     <br /><br /><br />
@@ -104,7 +105,7 @@ jetzt viel Erfolg und Freude beim “bäuele“ und natürlich keine Verletzunge
     Unterschrift Neumitglied
 </p>
 
-<p style="float: left; margin: 35px; font-size: 10pt;">
+<p style="float: left; margin: 35px; font-size: 12pt;">
     ____________________________ <br />
     Ort, Datum
     <br /><br /><br />
@@ -112,7 +113,7 @@ jetzt viel Erfolg und Freude beim “bäuele“ und natürlich keine Verletzunge
     Unterschrift gesetzlicher Vormund*
 </p>
 
-<p style="clear: left; margin: 40px; font-size: 8pt;">
+<p style="clear: left; margin: 40px; font-size: 10pt;">
     *   (bei minderjährigen Neumitgliedern bedarf es der Unterschrift eines Elternteils bzw. des gesetzlichen Vormunds) <br />
 </p>
 <p style="margin: 40px; font-size: 10pt;">
