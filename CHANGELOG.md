@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.14] - 2020-08-12
+- Update Dependencies
+- Layout Changes Beitrittsgesuch
+
 ## [1.3.13] - 2020-06-06
 - Update Dependencies
 - Add create access to admin menu
