@@ -26,7 +26,14 @@
   <a class="btn btn-dark" data-toggle="tooltip" data-placement="bottom" title="Statuten" href="https://www.vbclangenthal.ch/vbc-langenthal/dokumente/send/2-reglemente-statuten/1-statuten-vbc-langenthal" target="_blank"><i class="fas fa-file-pdf"></i></a>
 </div>
 
-<h1>Beitrittsgesuch in den VBC Langenthal</h1>
+<h1>Beitrittserklärung in den VBC Langenthal</h1>
+
+<p style="margin: 40px; font-size: 10pt;">
+<b>Herzlich willkommen beim VBC Langenthal!</b><br />
+Es freut uns, dich in Zukunft zu unseren Mitgliedern zählen zu dürfen. Wir wünschen dir schon
+jetzt viel Erfolg und Freude beim “bäuele“ und natürlich keine Verletzungen.
+</p>
+
 <h2>Angaben Neumitglied</h2>
 
 <table class="requestForm">
@@ -86,7 +93,7 @@
 
 <p style="margin: 40px; font-size: 10pt;">
     Ich möchte Mitglied des VBC Langenthal werden, habe die Statuten gelesen und anerkenne sie als verbindlich.
-    Insbesondere verpflichte ich mich, anlässlich der vom Verein durchgeführten Anlässe (SAR-SM, Minivolleyballturniere, Beachturniere oder sonstige Anlässe) als Helfer/in aktiv mitzuwirken.
+    Insbesondere verpflichte ich mich, anlässlich der vom Verein durchgeführten Anlässe (Schreibereinsätze, Minivolleyballturniere, Beachturniere oder sonstige Anlässe) als Helfer/in aktiv mitzuwirken.
 </p>
      
 <p style="float: left; margin: 35px; font-size: 10pt;">
@@ -94,7 +101,7 @@
     Ort, Datum
     <br /><br /><br />
     ____________________________ <br />
-    Unterschrift Neumitglier
+    Unterschrift Neumitglied
 </p>
 
 <p style="float: left; margin: 35px; font-size: 10pt;">
@@ -109,7 +116,7 @@
     *   (bei minderjährigen Neumitgliedern bedarf es der Unterschrift eines Elternteils bzw. des gesetzlichen Vormunds) <br />
 </p>
 <p style="margin: 40px; font-size: 10pt;">
-    Bitte Angaben prüfen (ggfs. korrigieren) und Formular per Post zurücksenden an: <br />
+    Bitte Angaben prüfen und falls nötig ergänzen und/oder korrigieren und anschliessend das Formuular per Post zurücksenden an: <br />
     VBC Langenthal <br />
     Postfach 1034 <br />
     4901 Langenthal
