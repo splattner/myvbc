@@ -1,6 +1,7 @@
 # Changelog
 
-## [1.3.15] - 
+## [1.3.15] - 2021-04-15
+- Update Dependencies
 
 ## [1.3.14] - 2020-08-12
 - Update Dependencies
