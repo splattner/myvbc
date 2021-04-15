@@ -3,7 +3,7 @@
  */
 
 
-var myApp = angular.module('myvbc', ['angular.chosen'])
+var myApp = angular.module("myvbc", ["angular.chosen"])
   .config(["$interpolateProvider", function($interpolateProvider) {
     $interpolateProvider.startSymbol("[[");
     $interpolateProvider.endSymbol("]]");

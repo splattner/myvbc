@@ -23,8 +23,7 @@ myApp.controller("GameController", ["$scope", "$http", "$attrs", "$window", func
     }
 
     return false;
-
-  }
+  };
 
 
   /**
