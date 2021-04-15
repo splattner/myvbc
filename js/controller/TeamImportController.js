@@ -27,7 +27,7 @@ myApp.controller("TeamImportController", ["$scope", "$http", "$attrs", "$window"
             return (team.ID_team === $scope.selectedTeamID);
           })[0];
 
-          $scope.team.extid = $scope.selectedTeam.ID_team
+          $scope.team.extid = $scope.selectedTeam.ID_team;
           $scope.team.extname = $scope.selectedTeam.Caption;
           $scope.team.extliga = $scope.selectedTeam.LeagueCaption;
 
@@ -40,7 +40,7 @@ myApp.controller("TeamImportController", ["$scope", "$http", "$attrs", "$window"
 
   $scope.init = function(teamId) {
     $scope.selectedTeamID = teamId;
-  }
+  };
 
   $scope.selectTeam = function() {
 
@@ -48,7 +48,7 @@ myApp.controller("TeamImportController", ["$scope", "$http", "$attrs", "$window"
     $scope.team.extname = $scope.selectedTeam.Caption;
     $scope.team.extliga = $scope.selectedTeam.LeagueCaption;
 
-  }
+  };
 
 
   $scope.getTeams();
