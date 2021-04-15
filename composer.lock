@@ -4,19 +4,19 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1d3f1e81262bfc181030c1d12567e79e",
+    "content-hash": "21df8ac7353864e5a8a8d94970f1d4ec",
     "packages": [
         {
             "name": "clue/stream-filter",
             "version": "v1.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/clue/php-stream-filter.git",
+                "url": "https://github.com/clue/stream-filter.git",
                 "reference": "5a58cc30a8bd6a4eb8f856adf61dd3e013f53f71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-stream-filter/zipball/5a58cc30a8bd6a4eb8f856adf61dd3e013f53f71",
+                "url": "https://api.github.com/repos/clue/stream-filter/zipball/5a58cc30a8bd6a4eb8f856adf61dd3e013f53f71",
                 "reference": "5a58cc30a8bd6a4eb8f856adf61dd3e013f53f71",
                 "shasum": ""
             },
@@ -55,6 +55,16 @@
                 "stream",
                 "stream_filter_append",
                 "stream_filter_register"
+            ],
+            "funding": [
+                {
+                    "url": "https://clue.engineering/support",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/clue",
+                    "type": "github"
+                }
             ],
             "time": "2019-04-09T12:31:48+00:00"
         },
@@ -466,16 +476,16 @@
         },
         {
             "name": "nadar/aspsms",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nadar/aspsms.git",
-                "reference": "e8e27e6cce0b3b2fb0bccc50e97070dfb351e037"
+                "reference": "1ee90f0c527f38ac85b8309cbb17ce1f5ae9e324"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nadar/aspsms/zipball/e8e27e6cce0b3b2fb0bccc50e97070dfb351e037",
-                "reference": "e8e27e6cce0b3b2fb0bccc50e97070dfb351e037",
+                "url": "https://api.github.com/repos/nadar/aspsms/zipball/1ee90f0c527f38ac85b8309cbb17ce1f5ae9e324",
+                "reference": "1ee90f0c527f38ac85b8309cbb17ce1f5ae9e324",
                 "shasum": ""
             },
             "require": {
@@ -487,6 +497,11 @@
                 "phpunit/phpunit": "^5.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Aspsms\\": "src/"
@@ -513,7 +528,7 @@
                 "php",
                 "sms"
             ],
-            "time": "2017-06-27T11:20:11+00:00"
+            "time": "2018-07-14T18:09:08+00:00"
         },
         {
             "name": "paquettg/php-html-parser",
