@@ -20,7 +20,7 @@
     "robmorgan/phinx": "0.12.6",
     "gburtini/acl": "0.1.0",
     "splattner/mailmanapi": "1.2.0",
-    "vlucas/phpdotenv": "2.6.7",
+    "vlucas/phpdotenv": "5.3.0",
     "sentry/sdk": "3.1.0"
   }
 }
