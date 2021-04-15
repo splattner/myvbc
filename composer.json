@@ -17,7 +17,7 @@
     "nadar/aspsms": "1.0.5",
     "phpmailer/phpmailer": "5.2.28",
     "splattner/framework": "1.1.11",
-    "robmorgan/phinx": "0.8.1",
+    "robmorgan/phinx": "0.12.6",
     "gburtini/acl": "0.1.0",
     "splattner/mailmanapi": "1.2.0",
     "vlucas/phpdotenv": "2.5.2",
