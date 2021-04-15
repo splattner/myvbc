@@ -21,13 +21,13 @@ class APIGame extends PublicAPI
 
     public function getGame($args = array()) {
 
-        // Get ID
-        if (isset($args[3]) ) {
-            $gameID = $args[3];
-        } else {
+        // Return if no gameID is set
+        if (!isset($args[3]) ) {
             http_response_code(400);
             return;
         }
+
+        $gameID = $args[3];
 
         // Get Game Details
         $sql_game = "SELECT

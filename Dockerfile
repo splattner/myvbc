@@ -1,6 +1,5 @@
 FROM php:7-apache
 
-
 LABEL maintainer="sebastian.plattner@gmail.com"
 
 ENV PORT 8080
@@ -10,10 +9,8 @@ CMD sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apa
 
 RUN apt-get update && apt-get install -y \
   libxml2-dev git curl\
-  && docker-php-ext-install pdo pdo_mysql soap
-
-RUN apt-get clean
-
+  && docker-php-ext-install pdo pdo_mysql soap\
+  && apt-get clean
 
 RUN curl -sS https://getcomposer.org/installer | php \
       && mv composer.phar /usr/local/bin/ \
@@ -26,7 +23,6 @@ RUN composer install --prefer-source --no-interaction
 
 EXPOSE $PORT
 
-RUN chmod -R a+w /var/www/html/skins/default/templates_c
-RUN chown www-data:www-data -R /var/www/html/
+RUN chmod -R a+w /var/www/html/skins/default/templates_c && chown www-data:www-data -R /var/www/html/
 
 ENV PATH="~/.composer/vendor/bin:./vendor/bin:${PATH}"

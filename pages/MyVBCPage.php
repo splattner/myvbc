@@ -46,8 +46,8 @@ abstract class MyVBCPage extends Page
 
         $this->smarty->assign("messages", "0");
 
-        $person = new MPerson();
-        $me = $person->getAddressEntry(array("persons.id =" => $this->session->uid))->fetch();
+        // $person = new MPerson();
+        // $me = $person->getAddressEntry(array("persons.id =" => $this->session->uid))->fetch();
 
         // \Sentry\configureScope(function (\Sentry\State\Scope $scope, $me): void {
         //     $scope->setUser(['id' => $me->id, 'email' => $me->email]);
