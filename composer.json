@@ -15,7 +15,7 @@
 
   "require": {
     "nadar/aspsms": "1.0.5",
-    "phpmailer/phpmailer": "5.2.28",
+    "phpmailer/phpmailer": "6.4.0",
     "splattner/framework": "1.1.11",
     "robmorgan/phinx": "0.12.6",
     "gburtini/acl": "0.1.0",
