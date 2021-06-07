@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ffc277faf0ac815d2b9ce4863792c79a",
+    "content-hash": "ac516aec1a55d4b5a96fba4668781a7c",
     "packages": [
         {
             "name": "cakephp/core",
@@ -734,16 +734,16 @@
         },
         {
             "name": "nadar/aspsms",
-            "version": "1.0.5",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nadar/aspsms.git",
-                "reference": "1ee90f0c527f38ac85b8309cbb17ce1f5ae9e324"
+                "reference": "4268ee26283c86093da6b475c27d03a579062ce1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nadar/aspsms/zipball/1ee90f0c527f38ac85b8309cbb17ce1f5ae9e324",
-                "reference": "1ee90f0c527f38ac85b8309cbb17ce1f5ae9e324",
+                "url": "https://api.github.com/repos/nadar/aspsms/zipball/4268ee26283c86093da6b475c27d03a579062ce1",
+                "reference": "4268ee26283c86093da6b475c27d03a579062ce1",
                 "shasum": ""
             },
             "require": {
@@ -788,9 +788,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nadar/aspsms/issues",
-                "source": "https://github.com/nadar/aspsms/tree/master"
+                "source": "https://github.com/nadar/aspsms/tree/1.1.0"
             },
-            "time": "2018-07-14T18:09:08+00:00"
+            "time": "2021-06-07T12:48:22+00:00"
         },
         {
             "name": "paquettg/php-html-parser",
