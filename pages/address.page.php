@@ -165,7 +165,7 @@ class PageAddress extends MyVBCPage
                         break;
                 }
                 $datepart = explode("-", $person["birthday"]);
-                $birthday = $datepart[1] . "." . $datepart[2] . "." . $datepart[0];
+                $birthday = $datepart[2] . "." . $datepart[1] . "." . $datepart[0];
                 $row[] = $birthday;
                 $row[] = $person["ahv"];
                 $row[] = $person["typ"];
