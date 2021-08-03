@@ -114,7 +114,6 @@ class PageAddress extends MyVBCPage
 
             $writer = WriterEntityFactory::createCSVWriter();
             $writer->openToBrowser("export_clubdesk.csv");
-            $writer->setShouldAddBOM(false);
 
             $header = [
                 "Nachname",
