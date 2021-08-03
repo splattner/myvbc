@@ -14,7 +14,7 @@
 				<div class="col-sm-12">
                     <div class="form-check">
 					    <input class="form-check-input" type="checkbox" checked="checked" name="onlyActive" value="1" id="onlyActive">
-                        <label for="onlyActive" class="class="form-check-label">Nur aktive exportieren</label>
+                        <label for="onlyActive" class="class="form-check-label">Nur aktive Personen exportieren</label>
                     </div>
 				</div>
 			</div>
