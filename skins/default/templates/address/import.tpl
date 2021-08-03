@@ -38,7 +38,7 @@
 
 					<th>Kontakt aus Clubdesk Export</th>
 					<th>Status</th>
-					<th>Verknüpfen mit myvbc Person</th>
+					<th>Verkn&uuml;pfen mit myvbc Person</th>
 				</tr>
 				</thead>
 				<tbody>
