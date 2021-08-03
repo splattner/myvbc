@@ -22,6 +22,6 @@
     "splattner/mailmanapi": "1.2.0",
     "vlucas/phpdotenv": "5.3.0",
     "sentry/sdk": "3.1.0",
-    "box/spout": "^3.3"
+    "box/spout": "3.3.0"
   }
 }
