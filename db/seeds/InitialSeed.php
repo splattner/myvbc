@@ -12,16 +12,21 @@ class InitialSeed extends AbstractSeed
         // `myvbc`.`licences`
         $licences = array(
           array('id' => '1','typ' => 'keine Lizenz'),
-          array('id' => '2','typ' => 'Junioren Lizenz'),
-          array('id' => '3','typ' => 'Doppellizenz Regional'),
-          array('id' => '4','typ' => 'Regional Lizenz'),
-          array('id' => '5','typ' => 'Doppellizenz National'),
-          array('id' => '6','typ' => 'National Lizenz'),
-          array('id' => '7','typ' => 'Trainer Lizenz'),
-          array('id' => '8','typ' => 'Trainer C Lizenz'),
-          array('id' => '9','typ' => 'Trainer B Lizenz'),
-          array('id' => '10','typ' => 'Trainer A Lizenz'),
-          array('id' => '11','typ' => 'Kontingenz Lizenz')
+          array('id' => '2','typ' => 'JLL Junioren'),
+          array('id' => '3','typ' => 'DLR Doppellizenz Regional'),
+          array('id' => '4','typ' => 'RLL Regionalliga'),
+          array('id' => '5','typ' => 'DLN Doppellizenz National'),
+          array('id' => '6','typ' => 'NLL Nationalliga'),
+          array('id' => '7','typ' => 'TL Trainer'),
+          array('id' => '8','typ' => 'TLC Trainer C'),
+          array('id' => '9','typ' => 'TLB Trainer B'),
+          array('id' => '10','typ' => 'TLA Trainer A'),
+          array('id' => '11','typ' => 'Kontingenz Lizenz'),
+          array('id' => '12','typ' => 'PL Pendlerlizenz'),
+          array('id' => '13','typ' => 'TLEN Trainer'),
+          array('id' => '14','typ' => 'TLER Trainer'),
+          array('id' => '15','typ' => 'U15L Jugdend U15'),
+          array('id' => '16','typ' => 'U13L Mini U13'),
         );
 
         $table = $this->table('licences');

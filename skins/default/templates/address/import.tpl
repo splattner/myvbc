@@ -27,7 +27,7 @@
 		{if $importStage == "preview" }
 		<div class="container">
 			<div class="form-group row">
-				Bitte Daten zum importieren prüfen
+				Bitte Daten zum importieren prüfen:
 			</div>
 
 		</div>
@@ -37,7 +37,7 @@
 				<tr>
 
 					<th>Kontakt aus Clubdesk Export</th>
-					<th>Status & &Auml;nderungen</th>
+					<th>Status</th>
 					<th>Verknüpfen mit myvbc Person</th>
 				</tr>
 				</thead>
@@ -47,18 +47,6 @@
 						<td>
 							{$import["Vorname"]} {$import["Nachname"]}
 							<br />Geburtsdatum: {$import["Geburtsdatum"]|date_format:"%d.%m.%Y"}
-							<br />E-Mail: {$import["E-Mail"]}
-							<br />Mobile: {$import["Telefon Mobil"]}
-						</td>
-						<td>
-							{if $import["linkedPersonAvailable"] eq true}
-							<i class="fas fa-check" style="color:green;"></i> in myVBC vorhanden
-							<br /><input type="checkbox" checked="checked" name="override[]" value="true" /> leere Felder &uuml;berschreiben
-							{else}
-							<i class="fas fa-check" style="color:red;"></i> in myVBC nicht vorhanden
-							{/if}
-
-
 							{if $import["warnings"]["birthdayNotSet"] eq true}
 							<br /><i class="fas fa-exclamation-triangle" style="color:red;" ></i> Geburtdstag nicht vorhanden!
 							{/if}
@@ -74,7 +62,14 @@
 							{if $import["warnings"]["addressNotSet"] eq true}
 							<br /><i class="fas fa-exclamation-triangle" style="color:red;" ></i> Adresse nicht vorhanden!
 							{/if}
-
+						</td>
+						<td>
+							{if $import["linkedPersonAvailable"] eq true}
+							<i class="fas fa-check" style="color:green;"></i> in myVBC vorhanden
+							<br /><input type="checkbox" checked="checked" name="override[]" value="true" /> leere Felder &uumlbertragen
+							{else}
+							<i class="fas fa-check" style="color:red;"></i> in myVBC nicht vorhanden
+							{/if}
 						</td>
 						<td>
 
@@ -100,9 +95,9 @@
 									{/if}
 									{foreach item=person from=$allPersons}
 										{if $import["linkedPerson"]["id"] eq $person.id}
-											<option selected="selected" value="{$person.id}">{$person.name} {$person.prename}</option>
+											<option selected="selected" value="{$person.id}">{$person.prename} {$person.name}</option>
 										{else}
-											<option  value="{$person.id}">{$person.name} {$person.prename}</option>
+											<option  value="{$person.id}">{$person.prename} {$person.name}</option>
 										{/if}
 									{/foreach}
 								</select>

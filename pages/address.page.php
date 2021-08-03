@@ -106,81 +106,89 @@ class PageAddress extends MyVBCPage
     public function exportAction()
     {
 
-        $this->enableRender = false; // Only CSV Output
+        $this->smarty->assign("subContent1", "address/export.tpl");
 
-        $writer = WriterEntityFactory::createCSVWriter();
-        $writer->openToBrowser("export_clubdesk.csv");
-        $writer->setShouldAddBOM(false);
+        if (isset($_POST["doExport"])) {
 
-        $header = [
-            "Nachname",
-            "Vorname",
-            "Adresse",
-            "PLZ",
-            "Ort",
-            "Telefon Privat",
-            "Telefon Mobil",
-            "E-Mail",
-            "E-Mail Alternativ",
-            "Geschlecht",
-            "Geburtsdatum",
-            "AHV Nr.",
-            "Lizenz Spieler(in)",
-            "Schreiber"
-        ];
+            $this->enableRender = false; // Only CSV Output
 
-        $rowFromValues = WriterEntityFactory::createRowFromArray($header);
-        $writer->addRow($rowFromValues);
+            $writer = WriterEntityFactory::createCSVWriter();
+            $writer->openToBrowser("export_clubdesk.csv");
+            $writer->setShouldAddBOM(false);
 
-        $person = new MPerson();
-        $allpersons = $person->getRS(array("active =" => 1), array("name" => "ASC", "prename" => "ASC"))->fetchAll();
+            $header = [
+                "Nachname",
+                "Vorname",
+                "Adresse",
+                "PLZ",
+                "Ort",
+                "Telefon Privat",
+                "Telefon Mobil",
+                "E-Mail",
+                "E-Mail Alternativ",
+                "Geschlecht",
+                "Geburtsdatum",
+                "AHV Nr.",
+                "Lizenz Spieler(in)",
+                "Schreiber"
+            ];
 
-        foreach($allpersons as $person) {
-
-            $row = array();
-            $row[] = $person["name"];
-            $row[] = $person["prename"];
-            $row[] = $person["address"];
-            $row[] = $person["plz"];
-            $row[] = $person["ort"];
-            $row[] = $person["phone"];
-            $row[] = $person["mobile"];
-            $row[] = trim($person["email"]);
-            $row[] = trim($person["email_parent"]);
-            switch ($person["gender"]) {
-                case "m":
-                    $row[] = "männlich";
-                    break;
-                case "w":
-                    $row[] = "weiblich";
-                    break;
-            }
-            $datepart = explode("-", $person["birthday"]);
-            $birthday = $datepart[1] . "." . $datepart[2] . "." . $datepart[0];
-            $row[] = $birthday;
-            $row[] = $person["ahv"];
-            // TODO: Lizenz
-            $row[] = "";
-            switch ($person["schreiber"]) {
-                case 1:
-                    $row[] = "Ja";
-                    break;
-                case 0:
-                    $row[] = "Nein";
-                    break;
-            }
-
-        
-
-            $rowFromValues = WriterEntityFactory::createRowFromArray($row);
+            $rowFromValues = WriterEntityFactory::createRowFromArray($header);
             $writer->addRow($rowFromValues);
 
+            $person = new MPerson();
 
+            if ($_POST["onlyActive"] == "1") {
+                $allpersons = $person->getRS(array("active =" => 1), array("name" => "ASC", "prename" => "ASC"), array(),array("RIGHT JOIN licences ON persons.licence = licences.id"))->fetchAll();
+            } else {
+                $allpersons = $person->getRS(array(), array("name" => "ASC", "prename" => "ASC"),array(),array("RIGHT JOIN licences ON persons.licence = licences.id"))->fetchAll();
+            }
+            
+
+            foreach($allpersons as $person) {
+
+                $row = array();
+                $row[] = $person["name"];
+                $row[] = $person["prename"];
+                $row[] = $person["address"];
+                $row[] = $person["plz"];
+                $row[] = $person["ort"];
+                $row[] = $person["phone"];
+                $row[] = $person["mobile"];
+                $row[] = trim($person["email"]);
+                $row[] = trim($person["email_parent"]);
+                switch ($person["gender"]) {
+                    case "m":
+                        $row[] = "männlich";
+                        break;
+                    case "w":
+                        $row[] = "weiblich";
+                        break;
+                }
+                $datepart = explode("-", $person["birthday"]);
+                $birthday = $datepart[1] . "." . $datepart[2] . "." . $datepart[0];
+                $row[] = $birthday;
+                $row[] = $person["ahv"];
+                $row[] = $person["typ"];
+                switch ($person["schreiber"]) {
+                    case 1:
+                        $row[] = "Ja";
+                        break;
+                    case 0:
+                        $row[] = "Nein";
+                        break;
+                }
+
+            
+
+                $rowFromValues = WriterEntityFactory::createRowFromArray($row);
+                $writer->addRow($rowFromValues);
+
+
+            }
+
+            $writer->close();
         }
-
-
-
-        $writer->close();
  
     }
 
