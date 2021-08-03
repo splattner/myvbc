@@ -29,7 +29,7 @@ class AddAhv extends AbstractMigration
     {
 
         $persons = $this->table('persons');
-        $persons->addColumn('ahv', 'string')
+        $persons->addColumn('ahv', 'string', ['null' => true])
               ->update();
 
     }

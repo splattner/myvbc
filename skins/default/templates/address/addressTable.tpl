@@ -4,7 +4,11 @@
 </a>
 
 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Import von Clubdesk" href="index.php?page={$currentPage}&action=import">
-    <i class="a-solid fa-file-import"></i>
+    <i class="fa fa-file-import"></i>
+</a>
+
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Export für Clubdesk" href="index.php?page={$currentPage}&action=export">
+    <i class="fa fa-file-export"></i>
 </a>
 
 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Liste drucken" href="#" onClick='window.print()'>

@@ -70,6 +70,7 @@ class MPerson extends Model
 
         $sql = "SELECT
   				persons.id,
+                persons.externalid,
   				persons.name,
   				persons.prename,
   				persons.address,
@@ -306,7 +307,7 @@ class MPerson extends Model
         */
 
         if ($personID == 0) {
-          throw new Exception("Error adding new Person!");
+          throw new \Exception("Error adding new Person!");
         }
 
         /* Add Notification */

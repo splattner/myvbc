@@ -8,8 +8,9 @@ CMD sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apa
 
 
 RUN apt-get update && apt-get install -y \
-  libxml2-dev git curl\
-  && docker-php-ext-install pdo pdo_mysql soap\
+  libxml2-dev git curl libzip-dev\
+  && export EXTRA_CFLAGS="-I/usr/src/php" \
+  && docker-php-ext-install pdo pdo_mysql soap zip xmlreader \
   && apt-get clean
 
 RUN curl -sS https://getcomposer.org/installer | php \

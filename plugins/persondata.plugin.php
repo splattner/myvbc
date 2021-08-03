@@ -49,6 +49,7 @@ class PPersondata extends Plugin
 
 
             $person = new MPerson();
+            $person->externalid = $_POST["externalid"];
             $person->name = $_POST["name"];
             $person->prename = $_POST["prename"];
             $person->ort = $_POST["ort"];
@@ -56,8 +57,8 @@ class PPersondata extends Plugin
             $person->address = $_POST["address"];
             $person->phone = $_POST["phone"];
             $person->mobile = $_POST["mobile"];
-            $person->email = $_POST["email"];
-            $person->email_parent = $_POST["email_parent"];
+            $person->email = trim($_POST["email"]);
+            $person->email_parent = trim($_POST["email_parent"]);
             $person->ahv = $_POST["ahv"];
 
             if ($_POST["birthday"] != "") {
@@ -117,6 +118,7 @@ class PPersondata extends Plugin
             $datepart = explode(".", $_POST["birthday"]);
 
             $person = new MPerson();
+            $person->externalid = $_POST["externalid"];
             $person->name = $_POST["name"];
             $person->prename = $_POST["prename"];
             $person->ort = $_POST["ort"];
@@ -124,8 +126,8 @@ class PPersondata extends Plugin
             $person->address = $_POST["address"];
             $person->phone = $_POST["phone"];
             $person->mobile = $_POST["mobile"];
-            $person->email = $_POST["email"];
-            $person->email_parent = $_POST["email_parent"];
+            $person->email = trim($_POST["email"]);
+            $person->email_parent = trim($_POST["email_parent"]);
             $person->birthday = $datepart[2] . "-" . $datepart[1] . "-" . $datepart[0];
             $person->gender = $_POST["gender"];
             $person->ahv = $_POST["ahv"];

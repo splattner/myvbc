@@ -38,6 +38,13 @@ class ServiceNotification extends Service
             $message .= "<li>Name : " . $personOld["name"] . " / " . $personNew["name"] . "</li>";
         }
 
+        if ($personOld["ahv"] != $personNew["ahv"]) {
+            $changedStatus = true;
+            $message .= "<li>AHV : " . $personOld["ahv"] . " / <b>" . $personNew["ahv"] . "</b></li>";
+        } else {
+            $message .= "<li>AHV : " . $personOld["ahv"] . " / " . $personNew["ahv"] . "</li>";
+        }
+
         if ($personOld["ort"] != $personNew["ort"]) {
             $changedStatus = true;
             $message .= "<li>Ort : " . $personOld["ort"] . " / <b>" . $personNew["ort"] . "</b></li>";
@@ -126,6 +133,7 @@ class ServiceNotification extends Service
 
         $message .= "<li>Vorname : " . $personNew["prename"] . "</li>";
         $message .= "<li>Name : " . $personNew["name"] . "</li>";
+        $message .= "<li>AHV : " . $personNew["ahv"] . "</li>";
         $message .= "<li>Ort : " . $personNew["ort"] . "</li>";
         $message .= "<li>PLZ : " . $personNew["plz"] . "</li>";
         $message .= "<li>Adresse : " . $personNew["address"] . "</li>";

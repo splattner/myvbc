@@ -10,6 +10,8 @@ abstract class MyVBCPage extends Page
 {
     private $AppVersion;
 
+    protected $enableRender = true;
+
     public function init()
     {
         parent::init();
@@ -70,6 +72,9 @@ abstract class MyVBCPage extends Page
         $this->smarty->assign("numOfNotification", $recordSet->rowCount());
 
 
-        parent::render();
+        if ($this->enableRender) {
+            parent::render();
+        }
+        
     }
 }

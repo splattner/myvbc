@@ -20,7 +20,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 
 // Load Environment from .env File
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
 
 /**

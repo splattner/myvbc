@@ -1,6 +1,12 @@
 <div class="container">
     <form action="{eval var=$formURL}" method="POST">
         <div class="form-group row">
+            <label for="externalid" class="col-sm-4 col-form-label">Externe ID (Clubdesk)</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="externalid" name="externalid" value="{$person.externalid}">
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="prename" class="col-sm-4 col-form-label">Vorname</label>
             <div class="col-sm-8">
                 <input type="text" class="form-control" id="prename" name="prename" value="{$person.prename}">
