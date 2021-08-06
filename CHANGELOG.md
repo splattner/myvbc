@@ -1,3 +1,9 @@
+## [v1.3.21](v1.3.21) - 2021-08-06
+### Fix
+- PHPMailer not found issue #76 ([#76](https://github.com/splattner/myvbc/pull/76))
+
+
+
 ## [v1.3.20](v1.3.20) - 2021-08-03
 ### Fix
 - birthday in wrong order for export ([#74](https://github.com/splattner/myvbc/pull/74))
