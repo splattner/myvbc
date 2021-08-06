@@ -4,6 +4,8 @@ namespace splattner\myvbc\models;
 
 use splattner\framework\Model;
 
+use PHPMailer\PHPMailer\PHPMailer;
+
 // no direct access
 defined('_MYVBC') or die('Restricted access');
 
@@ -51,7 +53,7 @@ class MNotification extends Model
                 $currentPerson = $sql3->fetch();
                 
                 $content = "<p>Du hast eine neue Benachrichtigung auf myVBC erhalten:</p><p>" . $message . "</p>";
-                $mail = new \PHPMailer();
+                $mail = new PHPMailer();
                 $mail->IsSMTP();
                 $mail->Host       = "localhost"; // sets the SMTP server
                 $mail->Port       = 25;                    // set the SMTP port for the GMAIL server
