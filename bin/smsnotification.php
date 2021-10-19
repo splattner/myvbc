@@ -12,9 +12,8 @@ require '../vendor/autoload.php';
 
 
 // Load Environment from .env File
-$dotenv = new \Dotenv\Dotenv("../");
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
-
 
 
 use Aspsms\Aspsms;
