@@ -97,11 +97,11 @@ Password: myvbc
 
 ## Docker images
 
-MyVBC is available as Docker Image: https://quay.io/repository/splattner/myvbc
+MyVBC is available as Container Image: https://github.com/splattner/myvbc/pkgs/container/myvbc
 Run
 
 ```
-docker pull quay.io/splattner/myvbc
+docker pull docker pull ghcr.io/splattner/myvbc:latest
 ```
 
 to get the latest Version.
@@ -109,13 +109,13 @@ to get the latest Version.
 Start with (using default credentials, see etc/config.inc.php):
 
 ```
-docker run -d -P --link mydb:mysql quay.io/splattner/myvbc
+docker run -d -P --link mydb:mysql ghcr.io/splattner/myvbc:latest
 ```
 
 or with Environment Variables for the DB Connection:
 
 ```
-docker run -d -P --link mydbserver:mysql -e MYSQL_DB_NAME=mydbname -e MYSQL_DB_PASSWORD=mypassword -e MYSQL_DB_USERNAME=myusername quay.io/splattner/myvbc
+docker run -d -P --link mydbserver:mysql -e MYSQL_DB_NAME=mydbname -e MYSQL_DB_PASSWORD=mypassword -e MYSQL_DB_USERNAME=myusername ghcr.io/splattner/myvbc:latest
 ```
 
 replace mydbserver, mydbname, mypassword, myusername to suit your Environment.
