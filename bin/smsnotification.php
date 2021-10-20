@@ -17,7 +17,9 @@ $dotenv->safeLoad();
 
 
 use Aspsms\Aspsms;
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 /**
  * Config
@@ -69,7 +71,7 @@ $pdoStatement = $pdo->Prepare($sqlquery);
 $pdoStatement->Execute();
 
 
-$mail = new \PHPMailer();
+$mail = new PHPMailer();
 
 $mail->IsSMTP();
 
