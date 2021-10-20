@@ -69,7 +69,7 @@ $pdoStatement = $pdo->Prepare($sqlquery);
 $pdoStatement->Execute();
 
 
-$mail = new PHPMailer();
+$mail = new \PHPMailer();
 
 $mail->IsSMTP();
 
