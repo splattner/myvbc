@@ -40,6 +40,10 @@ $pdo = new \PDO($config["db"]["url"], $config["db"]["username"], $config["db"]["
 $days = $config["smsnotification"]["numberofdays"];
 $send = $config["smsnotification"]["enabled"];
 
+if (isset($_GET["days"])) {
+    $days = $_GET["days"];
+}
+
 
 $day = date('Y-m-d', strtotime('+' . $days . ' days'));
 $sqlquery = "SELECT
@@ -103,7 +107,7 @@ foreach ($pdoStatement->fetchAll() as $row) {
     }
 
     $smstext =
-    "Hallo " . $row["prename"] ."\nErrinnerung an " . $einsatz . "s!\nDatum: " . $tag . "." . $monat . "." . $jahr . " Spielbeginn: " . $stunden . ":" . $minuten ."\n" .
+    "Hallo " . $row["prename"] ."\nErrinnerung an " . $einsatz . "!\nDatum: " . $tag . "." . $monat . "." . $jahr . " Spielbeginn: " . $stunden . ":" . $minuten ."\n" .
     "Halle: " . $row["halle"] . "\nTeam: " . $row["teamname"] . "\nBitte sei min. 30 Minuten vor Spielbeginn vor Ort.";
 
 
