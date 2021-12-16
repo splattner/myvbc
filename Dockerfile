@@ -17,6 +17,9 @@ RUN curl -sS https://getcomposer.org/installer | php \
       && mv composer.phar /usr/local/bin/ \
       && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
+# Use the default production configuration
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
 COPY . /var/www/html/
 WORKDIR /var/www/html
 
