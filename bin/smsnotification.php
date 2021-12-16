@@ -108,7 +108,7 @@ foreach ($pdoStatement->fetchAll() as $row) {
     }
 
     $smstext =
-    "Hallo " . $row["prename"] ."\nErrinnerung an " . $einsatz . "!\nDatum: " . $tag . "." . $monat . "." . $jahr . " Spielbeginn: " . $stunden . ":" . $minuten ."\n" .
+    "Hallo " . $row["prename"] ."\nErinnerung an " . $einsatz . "!\nDatum: " . $tag . "." . $monat . "." . $jahr . " Spielbeginn: " . $stunden . ":" . $minuten ."\n" .
     "Halle: " . $row["halle"] . "\nTeam: " . $row["teamname"] . "\nBitte sei min. 30 Minuten vor Spielbeginn vor Ort.";
 
 
