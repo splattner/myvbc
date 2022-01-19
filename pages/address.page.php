@@ -138,9 +138,9 @@ class PageAddress extends MyVBCPage
             $person = new MPerson();
 
             if ($_POST["onlyActive"] == "1") {
-                $allpersons = $person->getRS(array("active =" => 1), array("name" => "ASC", "prename" => "ASC"), array(),array("RIGHT JOIN licences ON persons.licence = licences.id"))->fetchAll();
+                $allpersons = $person->getRS(array("active =" => 1), array("name" => "ASC", "prename" => "ASC"), array(),array("LEFT JOIN licences ON persons.licence = licences.id"))->fetchAll();
             } else {
-                $allpersons = $person->getRS(array(), array("name" => "ASC", "prename" => "ASC"),array(),array("RIGHT JOIN licences ON persons.licence = licences.id"))->fetchAll();
+                $allpersons = $person->getRS(array(), array("name" => "ASC", "prename" => "ASC"),array(),array("LEFT JOIN licences ON persons.licence = licences.id"))->fetchAll();
             }
             
 
