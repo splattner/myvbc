@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0c65aaeb96dff41d09b070b6725be54",
+    "content-hash": "8a4ab0e3b7bd760f3eca7e4d0252e354",
     "packages": [
         {
             "name": "box/spout",
@@ -2242,16 +2242,16 @@
         },
         {
             "name": "splattner/framework",
-            "version": "1.1.12",
+            "version": "1.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/splattner/framework.git",
-                "reference": "d811680c19b8797516a781783b37ce5711107576"
+                "reference": "ed05ec21201427a8cd96389d37f91432d5bd20be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/splattner/framework/zipball/d811680c19b8797516a781783b37ce5711107576",
-                "reference": "d811680c19b8797516a781783b37ce5711107576",
+                "url": "https://api.github.com/repos/splattner/framework/zipball/ed05ec21201427a8cd96389d37f91432d5bd20be",
+                "reference": "ed05ec21201427a8cd96389d37f91432d5bd20be",
                 "shasum": ""
             },
             "require": {
@@ -2285,9 +2285,9 @@
             "description": "Simple PHP Framework used by splattner/myvbc",
             "homepage": "https://github.com/splattner/framework",
             "support": {
-                "source": "https://github.com/splattner/framework/tree/v1.1.12"
+                "source": "https://github.com/splattner/framework/tree/v1.1.13"
             },
-            "time": "2021-10-31T10:36:53+00:00"
+            "time": "2022-01-19T15:38:09+00:00"
         },
         {
             "name": "splattner/mailmanapi",
