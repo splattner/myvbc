@@ -2,7 +2,12 @@
 {if $isAuth}
 	<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Zur&uuml;ck zur &Uuml;bersicht" href="index.php?page={$currentPage}&action=main"><i class="fas fa-caret-square-left"></i></a>
 {/if}
-<a class="btn btn-outline-dark" href="#" onClick='window.print()' data-toggle="tooltip" data-placement="bottom" title="Drucken"><i class="fas fa-print"></i></a>
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Export für Clubdesk" href="index.php?page={$currentPage}&action=exportReportA&reportID={$reportID}">
+    <i class="fa fa-file-export"></i>
+</a>
+<a class="btn btn-outline-dark" href="#" onClick='window.print()' data-toggle="tooltip" data-placement="bottom" title="Drucken">
+  <i class="fas fa-print"></i>
+</a>
 
 
 {if $reportID == 5}

@@ -4,6 +4,9 @@ namespace splattner\myvbc\pages;
 
 use splattner\myvbc\models\MReport;
 
+use \Box\Spout\Reader\Common\Creator\ReaderEntityFactory;
+use \Box\Spout\Writer\Common\Creator\WriterEntityFactory;
+
 class PageReport extends MyVBCPage
 {
     private $publicReports;
@@ -14,7 +17,7 @@ class PageReport extends MyVBCPage
         $this->pagename = "report";
         $this->template = "report/report.tpl";
 
-        $this->acl->allow("vorstand", ["main", "getReport"], ["view"]);
+        $this->acl->allow("vorstand", ["main", "getReport", "exportReport"], ["view"]);
     }
 
     public function init()
@@ -62,6 +65,57 @@ class PageReport extends MyVBCPage
         } else {
             $this->notAllowed();
         }
+    }
+
+    public function exportReportAction()
+    {
+        $this->enableRender = false; // Only CSV Output
+
+
+        $writer = WriterEntityFactory::createCSVWriter();
+        $writer->openToBrowser("export.csv");
+
+        
+        $reportID = $_GET["reportID"];
+        $this->smarty->assign("reportID", $reportID);
+
+        $reports = new MReport();
+        $currentReport = $reports->getReport($reportID);
+        $values = $currentReport->fetchAll();
+
+        $header = array();
+        $content = array();
+
+        if (count($values) > 0) {
+            //Build Table Header
+            foreach ($values[0] as $title => $value) {
+                if (!is_numeric($title)) {
+                    $header[] = $title;
+                }
+            }
+
+            $rowFromValues = WriterEntityFactory::createRowFromArray($header);
+            $writer->addRow($rowFromValues);
+
+            //Build Table Content
+            foreach ($values as $value) {
+                $row = array();
+                foreach ($value as $title => $item) {
+                    if (!is_numeric($title)) {
+                        $row[] = $item;
+                    }
+                }
+                 
+
+                $rowFromValues = WriterEntityFactory::createRowFromArray($row);
+                $writer->addRow($rowFromValues);
+            }
+
+
+        }
+
+        $writer->close();
+
     }
 
     public function getDefaultReport($reportID)
