@@ -77,17 +77,15 @@ class PageReport extends MyVBCPage
 
         
         $reportID = $_GET["reportID"];
-        $this->smarty->assign("reportID", $reportID);
 
         $reports = new MReport();
         $currentReport = $reports->getReport($reportID);
         $values = $currentReport->fetchAll();
 
         $header = array();
-        $content = array();
 
         if (count($values) > 0) {
-            //Build Table Header
+            //Build Header
             foreach ($values[0] as $title => $value) {
                 if (!is_numeric($title)) {
                     $header[] = $title;
@@ -97,7 +95,7 @@ class PageReport extends MyVBCPage
             $rowFromValues = WriterEntityFactory::createRowFromArray($header);
             $writer->addRow($rowFromValues);
 
-            //Build Table Content
+            //Build Content
             foreach ($values as $value) {
                 $row = array();
                 foreach ($value as $title => $item) {
@@ -105,8 +103,7 @@ class PageReport extends MyVBCPage
                         $row[] = $item;
                     }
                 }
-                 
-
+                
                 $rowFromValues = WriterEntityFactory::createRowFromArray($row);
                 $writer->addRow($rowFromValues);
             }
