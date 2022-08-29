@@ -174,7 +174,7 @@ class InitialDbSetup extends AbstractMigration
         $config = $this->table('config', array('id' => false));
         $config
             ->addColumn('key', 'string')
-            ->addColumn('value', 'string')
+            ->addColumn('value', 'text')
             ->create();
     }
 }
