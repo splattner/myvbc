@@ -194,19 +194,37 @@ class PageAddress extends MyVBCPage
     public function importAction()
     {
 
+        # Clubdesk
+        // $fieldMapping = array(
+        //     "name" => "Nachname",
+        //     "prename" => "Vorname",
+        //     "plz" => "PLZ",
+        //     "ort" => "Ort",
+        //     "address" => "Adresse",
+        //     "phone" => "Telefon Privat",
+        //     "mobile" => "Telefon Mobil",
+        //     "email" => "E-Mail",
+        //     "email_parent" => "E-Mail Alternativ",
+        //     "ahv" => "AHV Nr.",
+        //     "externalid" => "[Id]",
+        //     "der" => "Geschlecht",
+        //     "schreiber" => "Schreiber",
+        //     "birthday" => "Geburtsdatum"
+        // );
+
+        # Fairgate
         $fieldMapping = array(
             "name" => "Nachname",
             "prename" => "Vorname",
-            "plz" => "PLZ",
-            "ort" => "Ort",
-            "address" => "Adresse",
-            "phone" => "Telefon Privat",
-            "mobile" => "Telefon Mobil",
-            "email" => "E-Mail",
+            "plz" => "PLZ (Korr.)",
+            "ort" => "Ort (Korr.)",
+            "address" => "Strasse (Korr.)",
+            "phone" => "Telefon",
+            "mobile" => "Handy",
+            "email" => "Prim�re E-Mail",
             "email_parent" => "E-Mail Alternativ",
             "ahv" => "AHV Nr.",
-            "externalid" => "[Id]",
-            "genger" => "Geschlecht",
+            "gen der" => "Geschlecht",
             "schreiber" => "Schreiber",
             "birthday" => "Geburtsdatum"
         );
@@ -254,17 +272,17 @@ class PageAddress extends MyVBCPage
                         $birthday = $datepart[2] . "-" . $datepart[1] . "-" . $datepart[0];
 
                         $person = new MPerson();
-                        $linkedperson = $person->getAddressEntry(array("persons.externalid =" => $entry["Id"]))->fetch();
+                        #$linkedperson = $person->getAddressEntry(array("persons.externalid =" => $entry["Id"]))->fetch();
 
-                        if (!is_array($linkedperson)) {
-                            if ($entry[$fieldMapping["birthday"]] != "") {
-                                // More accurate with Birthday and Name
-                                $linkedperson = $person->getAddressEntry(array("persons.name =" => $entry[$fieldMapping["name"]], "persons.prename =" => $entry[$fieldMapping["prename"]], "persons.birthday =" => $birthday))->fetch();
-                            } else {
-                                // Only Name
-                                $linkedperson = $person->getAddressEntry(array("persons.name =" => $entry[$fieldMapping["name"]], "persons.prename =" => $entry[$fieldMapping["prename"]]))->fetch();
-                            }
+                        #if (!is_array($linkedperson)) {
+                        if ($entry[$fieldMapping["birthday"]] != "") {
+                            // More accurate with Birthday and Name
+                            $linkedperson = $person->getAddressEntry(array("persons.name =" => $entry[$fieldMapping["name"]], "persons.prename =" => $entry[$fieldMapping["prename"]], "persons.birthday =" => $birthday))->fetch();
+                        } else {
+                            // Only Name
+                            $linkedperson = $person->getAddressEntry(array("persons.name =" => $entry[$fieldMapping["name"]], "persons.prename =" => $entry[$fieldMapping["prename"]]))->fetch();
                         }
+                        #}
 
                         if (is_array($linkedperson)) {
                             $entry["linkedPerson"] = $linkedperson;
