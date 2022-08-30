@@ -3,6 +3,10 @@
     <i class="fa fa-plus-square"></i>
 </a>
 
+<a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Import von Fairgate" href="index.php?page={$currentPage}&action=importFairgate">
+    <i class="fa fa-file-import"></i>
+</a>
+
 <a class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Import von Clubdesk" href="index.php?page={$currentPage}&action=import">
     <i class="fa fa-file-import"></i>
 </a>
