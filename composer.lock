@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05584fa3390e2cc3e93c5c1c0b91d677",
+    "content-hash": "db1923bdc0b3eab80907fbaa875c5ae0",
     "packages": [
         {
             "name": "box/spout",
@@ -2287,6 +2287,49 @@
                 "source": "https://github.com/smarty-php/smarty/tree/v3.1.46"
             },
             "time": "2022-08-01T21:58:13+00:00"
+        },
+        {
+            "name": "splattner/fairgateapi",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/splattner/fairgateapi.git",
+                "reference": "bf0d6b3687f9b3aeabe3bebc61758390576b27aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/splattner/fairgateapi/zipball/bf0d6b3687f9b3aeabe3bebc61758390576b27aa",
+                "reference": "bf0d6b3687f9b3aeabe3bebc61758390576b27aa",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0",
+                "paquettg/php-html-parser": "^1.7"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/api.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Plattner",
+                    "email": "sebastian.plattner@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple API to work with Fairgate",
+            "homepage": "https://github.com/splattner/fairgateAPI",
+            "support": {
+                "issues": "https://github.com/splattner/fairgateapi/issues",
+                "source": "https://github.com/splattner/fairgateapi/tree/1.0.1"
+            },
+            "time": "2022-08-30T16:12:50+00:00"
         },
         {
             "name": "splattner/framework",

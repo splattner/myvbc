@@ -6,8 +6,13 @@ use splattner\myvbc\models\MPerson;
 use splattner\myvbc\plugins\PHistory;
 use splattner\myvbc\plugins\PPersondata;
 
+use splattner\myvbc\models\MConfig;
+
+
 use \Box\Spout\Reader\Common\Creator\ReaderEntityFactory;
 use \Box\Spout\Writer\Common\Creator\WriterEntityFactory;
+
+use splattner\fairgateapi\FairgateAPI;
 
 class PageAddress extends MyVBCPage
 {
@@ -19,7 +24,7 @@ class PageAddress extends MyVBCPage
 
         //$this->noACL["import"] = true;
 
-        $this->acl->allow("vorstand", ["main","edit","new","delete","setState","setSignature","import","export","requestForm"], ["view"]);
+        $this->acl->allow("vorstand", ["main","edit","new","delete","setState","setSignature","import","importFairgate", "export","requestForm"], ["view"]);
     }
 
     public function init()
@@ -195,39 +200,23 @@ class PageAddress extends MyVBCPage
     {
 
         # Clubdesk
-        // $fieldMapping = array(
-        //     "name" => "Nachname",
-        //     "prename" => "Vorname",
-        //     "plz" => "PLZ",
-        //     "ort" => "Ort",
-        //     "address" => "Adresse",
-        //     "phone" => "Telefon Privat",
-        //     "mobile" => "Telefon Mobil",
-        //     "email" => "E-Mail",
-        //     "email_parent" => "E-Mail Alternativ",
-        //     "ahv" => "AHV Nr.",
-        //     "externalid" => "[Id]",
-        //     "der" => "Geschlecht",
-        //     "schreiber" => "Schreiber",
-        //     "birthday" => "Geburtsdatum"
-        // );
-
-        # Fairgate
         $fieldMapping = array(
             "name" => "Nachname",
             "prename" => "Vorname",
-            "plz" => "PLZ (Korr.)",
-            "ort" => "Ort (Korr.)",
-            "address" => "Strasse (Korr.)",
-            "phone" => "Telefon",
-            "mobile" => "Handy",
-            "email" => "Prim�re E-Mail",
+            "plz" => "PLZ",
+            "ort" => "Ort",
+            "address" => "Adresse",
+            "phone" => "Telefon Privat",
+            "mobile" => "Telefon Mobil",
+            "email" => "E-Mail",
             "email_parent" => "E-Mail Alternativ",
             "ahv" => "AHV Nr.",
-            "gen der" => "Geschlecht",
+            "externalid" => "[Id]",
+            "der" => "Geschlecht",
             "schreiber" => "Schreiber",
             "birthday" => "Geburtsdatum"
         );
+
 
         $this->smarty->assign("subContent1", "address/import.tpl");
         $this->smarty->assign("importStage", "new");
@@ -260,6 +249,7 @@ class PageAddress extends MyVBCPage
                         foreach ($cells as $cell) {
                             $entry[$header[$i]] = $cell->getValue();
                             $i++;
+
         
                         }
 
@@ -271,18 +261,19 @@ class PageAddress extends MyVBCPage
                         $datepart = explode(".", $entry[$fieldMapping["birthday"]]);
                         $birthday = $datepart[2] . "-" . $datepart[1] . "-" . $datepart[0];
 
-                        $person = new MPerson();
-                        #$linkedperson = $person->getAddressEntry(array("persons.externalid =" => $entry["Id"]))->fetch();
 
-                        #if (!is_array($linkedperson)) {
-                        if ($entry[$fieldMapping["birthday"]] != "") {
-                            // More accurate with Birthday and Name
-                            $linkedperson = $person->getAddressEntry(array("persons.name =" => $entry[$fieldMapping["name"]], "persons.prename =" => $entry[$fieldMapping["prename"]], "persons.birthday =" => $birthday))->fetch();
-                        } else {
-                            // Only Name
-                            $linkedperson = $person->getAddressEntry(array("persons.name =" => $entry[$fieldMapping["name"]], "persons.prename =" => $entry[$fieldMapping["prename"]]))->fetch();
+                        $person = new MPerson();
+                        $linkedperson = $person->getAddressEntry(array("persons.externalid =" => $entry["Id"]))->fetch();
+
+                        if (!is_array($linkedperson)) {
+                            if ($entry[$fieldMapping["birthday"]] != "") {
+                                // More accurate with Birthday and Name
+                                $linkedperson = $person->getAddressEntry(array("persons.name =" => $entry[$fieldMapping["name"]], "persons.prename =" => $entry[$fieldMapping["prename"]], "persons.birthday =" => $birthday))->fetch();
+                            } else {
+                                // Only Name
+                                $linkedperson = $person->getAddressEntry(array("persons.name =" => $entry[$fieldMapping["name"]], "persons.prename =" => $entry[$fieldMapping["prename"]]))->fetch();
+                            }
                         }
-                        #}
 
                         if (is_array($linkedperson)) {
                             $entry["linkedPerson"] = $linkedperson;
@@ -368,6 +359,177 @@ class PageAddress extends MyVBCPage
                 }
 
                 switch($personToImport[$fieldMapping["schreiber"]]) {
+                    case "Ja":
+                        $person->schreiber = 1;
+                        break;
+                    case "Nein":
+                        $person->schreiber = 0;
+                        break;
+                }
+
+                if ($_POST["linkedPerson"][$i] == 0) {
+                    // Create new Person
+                    $person->password = "";
+                    $person->role = "";
+                    $person->sms = 1;
+                    $person->signature = 1;
+
+
+                    $person->insert();
+
+                    $importLog = $importLog . $person->prename . " " . $person->name . " wurde neu hinzugefügt\n";
+
+                }
+
+                if ($_POST["linkedPerson"][$i] > 0) {
+                    // Update the person
+                    $person->update(array($person->pk => $_POST["linkedPerson"][$i]));
+
+                    $importLog = $importLog .  $person->prename . " " . $person->name . " wurde aktualisiert\n";
+                }
+
+                $i++;
+            }
+            
+            $this->smarty->assign("importStage", "imported");
+            $this->smarty->assign("importLog", $importLog);
+            $importData = array();
+        }
+
+        $this->smarty->assign("importData", $importData);
+
+    }
+
+    public function importFairgateAction()
+    {
+
+
+        $this->smarty->assign("subContent1", "address/import-fairgate.tpl");
+        $this->smarty->assign("importStage", "new");
+
+        $importData = array();
+
+        if (isset($_POST["doImport"])) {
+
+
+            $mconfig = new MConfig();
+            $fairgateUser = $mconfig->getRS(array("`key` =" =>"fairgateUser"))->fetchAll()[0]["value"];
+            $fairgatePassword = $mconfig->getRS(array("`key` =" =>"fairgatePassword"))->fetchAll()[0]["value"];
+            $fairgateHost = $mconfig->getRS(array("`key` =" =>"fairgateHost"))->fetchAll()[0]["value"];
+
+            $fairgate = new FairgateAPI($fairgateHost, $fairgateUser,$fairgatePassword);
+            $allMembers = $fairgate->getContactList();
+
+
+            $importData = array(); // Reset for new import
+            
+
+            foreach ($allMembers as $contact) {
+
+                // Search if person is already in myvbc
+                // First with the externalid (if it was already imported once)
+                // Then with prename/name and birthday
+                // And final only prename/name
+
+                $datepart = explode(".", $contact["birthday"]);
+                $birthday = $datepart[2] . "-" . $datepart[1] . "-" . $datepart[0];
+
+
+                $person = new MPerson();
+                $linkedperson = $person->getAddressEntry(array("persons.externalid =" => $contact["external_id"]))->fetch();
+
+                if (!is_array($linkedperson)) {
+                    if ($contact["birthday"] != "") {
+                        // More accurate with Birthday and Name
+                        $linkedperson = $person->getAddressEntry(array("persons.name =" => $contact["name"], "persons.prename =" => $contact["prename"], "persons.birthday =" => $birthday))->fetch();
+                    } else {
+                        // Only Name
+                        $linkedperson = $person->getAddressEntry(array("persons.name =" => $contact["name"], "persons.prename =" => $contact["prename"]))->fetch();
+                    }
+                }
+
+                if (is_array($linkedperson)) {
+                    $contact["linkedPerson"] = $linkedperson;
+                    $contact["linkedPersonAvailable"] = true;
+                } else {
+                    $contact["linkedPersonAvailable"] = false;
+                }
+
+                // Make some tests 
+                $contact["warnings"] = array();
+                $contact["warnings"]["birthdayNotSet"] = $contact["birthday"] == "";
+                $contact["warnings"]["genderNotSet"] = $contact["gender"] == "";
+                $contact["warnings"]["emailNotSet"] = $contact["email"] == "";
+                $contact["warnings"]["mobileNotSet"] = $contact["email"] == "";
+                $contact["warnings"]["addressNotSet"] = $contact["address"] == "" || $contact["ort"] == "" || $contact["plz"] == "";
+
+                $importData[] = $contact;
+            
+
+            }
+
+
+            $this->session->share["clubdeskimport"] = $importData;
+            $this->smarty->assign("importStage", "preview");
+
+            // For the dropdown
+            $allpersons = new MPerson();
+            $recordSet = $allpersons->getRS(array(), array("name" => "ASC", "prename" => "ASC"));
+            $this->smarty->assign("allPersons", $recordSet->fetchAll());
+
+        }
+
+        if (isset($_POST["doImportFinal"])) {
+
+            $importLog = "";
+
+            // Load the data from preview stage
+            if (count($this->session->share["clubdeskimport"]) > 0) {
+                $importData = $this->session->share["clubdeskimport"];
+            }
+
+            $i=0;
+            foreach ($importData as $personToImport) {
+
+                $person = new MPerson();
+
+                if ($_POST["linkedPerson"][$i] > 0) {
+                    // Load existing person
+                    $linkedperson = $person->getAddressEntry(array("persons.id =" => $_POST["linkedPerson"][$i]))->fetch();
+                }
+                
+                $person->name = $personToImport["name"];
+                $person->prename = $personToImport["prename"];
+
+                $person->externalid = $personToImport["external_id"];
+
+                // Do not overwrite data in myvbc if empty
+                if ($personToImport["ort"] != "" || $_POST["override"][$i] == "true") { $person->ort = $personToImport["ort"];}
+                if ($personToImport["plz"] != "" || $_POST["override"][$i] == "true") { $person->plz = $personToImport["plz"];}
+                if ($personToImport["address"] != "" || $_POST["override"][$i] == "true") { $person->address = $personToImport["address"];}
+                if ($personToImport["phone"] != "" || $_POST["override"][$i] == "true") { $person->phone = $personToImport["phone"];}
+                if ($personToImport["mobile"] != "" || $_POST["override"][$i] == "true") { $person->mobile = $personToImport["mobile"];}
+                if ($personToImport["email"] != "" || $_POST["override"][$i] == "true") { $person->email = $personToImport["email"];}
+                if ($personToImport["email_parent"] != "" || $_POST["override"][$i] == "true") { $person->email_parent = $personToImport["email_parent"];}
+                if ($personToImport["ahv"] != "" || $_POST["override"][$i] == "true") { $person->ahv = $personToImport["ahv"];}
+                
+
+                if ($personToImport["birthday"] != "") { 
+                    $datepart = explode(".", $personToImport["birthday"]);
+                    $birthday = $datepart[2] . "-" . $datepart[1] . "-" . $datepart[0];
+                    $person->birthday = $birthday;
+                }
+
+                switch($personToImport["gender"]) {
+                    case "Männlich":
+                        $person->gender = "m";
+                        break;
+                    case "Weiblich":
+                        $person->gender = "w";
+                        break;
+                }
+
+                switch($personToImport["schreiber"]) {
                     case "Ja":
                         $person->schreiber = 1;
                         break;

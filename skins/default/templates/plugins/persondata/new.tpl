@@ -1,7 +1,7 @@
 <div class="container">
 	<form action="{eval var=$formURL}" method="POST">
 		<div class="form-group row">
-			<label for="externalid" class="col-sm-4 col-form-label">Externe ID (Clubdesk)<</label>
+			<label for="externalid" class="col-sm-4 col-form-label">Externe ID<</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" id="externalid" name="externalid">
 			</div>
