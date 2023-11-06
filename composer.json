@@ -21,7 +21,7 @@
     "gburtini/acl": "0.1.0",
     "splattner/mailmanapi": "1.2.0",
     "vlucas/phpdotenv": "5.4.1",
-    "sentry/sdk": "3.1.1",
+    "sentry/sdk": "4.0.0",
     "box/spout": "3.3.0",
     "splattner/fairgateapi": "1.0.1"
   }
